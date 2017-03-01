@@ -13,9 +13,11 @@ const isomorphicRenderer = (req, res) => {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     } else if (renderProps) {
-      const appContent = renderToString(<RouterContext {...renderProps} />);
+      const appContent = renderToString(
+        <RouterContext {...renderProps}/>
+      );
       res.status(200).send(renderToStaticMarkup(
-        <Scaffold appContent={appContent} />
+        <Scaffold appContent={appContent} context={res.locals}/>
       ));
     } else {
       res.status(404).send('Not found');

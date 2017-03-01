@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "author": "Colton Brown <coltonTB@me.com> (http://coltontbrown.com/)",
+  "license": "ISC",
   "config": {
     "s3BucketName": "cb-dev-1",
     "region": "us-west-1",
@@ -23,6 +25,7 @@
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.3.2",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
@@ -43,7 +46,5 @@
     "build": "rm -rf ./dist/* && npm run build-browser & npm run build-server & npm run build-deps & wait",
     "deploy": "npm run build && npm run deploy-lambda && npm run deploy-assets",
     "local": "./node_modules/.bin/babel-node ./src/server"
-  },
-  "author": "Colton Brown <coltonTB@me.com> (http://coltontbrown.com/)",
-  "license": "ISC"
+  }
 }
