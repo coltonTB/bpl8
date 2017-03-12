@@ -11,9 +11,9 @@ export default (req, res, next) => {
     <meta key={3} name="author" content="" />
   ];
 
-  const link = () => [
+  const link = (assetUrl) => [
     <link key={4} href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css" />,
-    <link key={5} rel="stylesheet" href="assets/main.css" />
+    <link key={5} rel="stylesheet" href={assetUrl("assets/main.css")} />
   ];
 
   res.locals.header = {
@@ -21,7 +21,7 @@ export default (req, res, next) => {
       return [
         title(),
         meta(),
-        link(),
+        link(res.locals.assetUrl),
       ];
     }
   };

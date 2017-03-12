@@ -5,7 +5,7 @@ const defaultContext = {
 
 export default (req, res, next) => {
 
-  let stageContext = defaultContext;
+  let stageContext;
   const apiGatewayEventHeader = req.headers['x-apigateway-event']
   if (apiGatewayEventHeader) {
     try {
@@ -13,7 +13,7 @@ export default (req, res, next) => {
     } catch (e) {}
   }
 
-  res.locals = {stageContext};
+  res.locals.stageContext = stageContext || defaultContext;
 
   next();
 }

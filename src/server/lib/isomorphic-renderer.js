@@ -17,7 +17,7 @@ const isomorphicRenderer = (req, res) => {
         <RouterContext {...renderProps}/>
       );
       res.status(200).send(renderToStaticMarkup(
-        <Scaffold appContent={appContent} context={res.locals}/>
+        <Scaffold appContent={appContent} locals={res.locals}/>
       ));
     } else {
       res.status(404).send('Not found');
