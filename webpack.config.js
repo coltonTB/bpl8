@@ -18,7 +18,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.sass'],
     alias: {
-      Stylesheets: path.resolve(__dirname, './src/stylesheets')
+      stylesheets: path.resolve(__dirname, './src/stylesheets')
     }
   },
   module: {
