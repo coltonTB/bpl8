@@ -5,8 +5,11 @@ import express from 'express'
 
 import assetUrl from './lib/asset-url-middleware';
 import contextMiddleware from './lib/context-middleware';
-import htmlHead from './lib/html-head';
+import headerRenderer from './lib/header-renderer-middleware';
 import isomorphicRenderer from './lib/isomorphic-renderer';
+
+import { routes } from '../routes';
+import { asArray } from './html-head';
 
 const PORT = 3000;
 const app = express()
@@ -19,8 +22,8 @@ app.use(assetUrl);
 
 app.use('/assets', express.static(`${__dirname}/../../dist/assets`))
 
-app.use(htmlHead);
-app.use(isomorphicRenderer);
+app.use(headerRenderer(asArray));
+app.use(isomorphicRenderer(routes));
 
 app.listen(PORT, () => console.log(`Listening on ${PORT} ...`))
 

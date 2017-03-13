@@ -1,6 +1,5 @@
 import React from 'react';
 import Scaffold from './scaffold.js';
-import { routes } from '../../routes';
 import { match, RouterContext } from 'react-router';
 import { renderToString, renderToStaticMarkup } from 'react-dom/server';
 
@@ -23,7 +22,7 @@ const renderPage = (res, renderProps) => {
     .send(html);
 }
 
-const isomorphicRenderer = (req, res) => {
+const isomorphicRenderer = routes => (req, res) => {
   // Note that req.url here should be the full URL path from
   // the original request, including the query string.
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
