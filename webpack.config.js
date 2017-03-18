@@ -7,13 +7,17 @@ const sassLoaders = [
 ]
 
 module.exports = {
-  entry: './src/browser/index.js',
+  target: 'node',
+  entry: {
+    browser: './src/browser/index.js',
+    server: './src/server/index.js'
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name]-bundle.js',
     path: path.resolve(__dirname, 'dist/assets')
   },
   plugins: [
-    new ExtractTextPlugin('[name].css')
+    new ExtractTextPlugin('style.css')
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.sass'],

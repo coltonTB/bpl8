@@ -41,16 +41,16 @@
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "package-function": "cd dist && zip -q -r lambda-function.zip lambda.js routes.js server node_modules shared",
-    "upload-function": "aws s3 cp ./dist/lambda-function.zip s3://$npm_package_config_s3BucketName --region $npm_package_config_region",
-    "update-function": "aws lambda update-function-code --function-name $npm_package_config_lambdaFunctionName --region $npm_package_config_region --zip-file fileb://./dist/lambda-function.zip",
-    "deploy-lambda": "npm run package-function && npm run upload-function && npm run update-function",
+    "lambda-zip": "cd dist && zip -q -r lambda-function.zip lambda.js routes.js server node_modules shared",
+    "lambda-upload": "aws s3 cp ./dist/lambda-function.zip s3://$npm_package_config_s3BucketName --region $npm_package_config_region",
+    "lambda-update": "aws lambda update-function-code --function-name $npm_package_config_lambdaFunctionName --region $npm_package_config_region --zip-file fileb://./dist/lambda-function.zip",
+    "lambda-deploy": "npm run lambda-zip && npm run lambda-upload && npm run lambda-update",
     "deploy-assets": "aws s3 cp --recursive $npm_package_config_assetSources s3://$npm_package_config_s3BucketName --region $npm_package_config_region",
-    "build-deps": "cp package.json dist && cd dist && npm i --production",
-    "build-server": "./node_modules/.bin/babel src -d dist",
-    "build-browser": "./node_modules/.bin/webpack",
-    "build": "rm -rf ./dist/* && npm run build-browser & npm run build-server & npm run build-deps & wait",
-    "deploy": "npm run build && npm run deploy-lambda && npm run deploy-assets",
-    "local": "./node_modules/.bin/babel-node ./src/server"
+    "deploy": "rm -rf ./dist/* && npm run build && npm run build-node-modules && npm run deploy-lambda && npm run deploy-assets",
+    "build-node-modules": "cp package.json dist && cd dist && npm i --production",
+
+    "build": "./node_modules/.bin/webpack",
+    "local": "./node_modules/.bin/nodemon ./dist/assets/server-bundle.js",
+    "watch": "npm run build -- --watch"
   }
 }
