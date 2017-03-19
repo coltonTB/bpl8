@@ -1,6 +1,7 @@
 const defaultContext = {
   stage: 'local',
-  pathPrefix: ''
+  resourceBase: '',
+  assetBase: ''
 };
 
 export default (req, res, next) => {

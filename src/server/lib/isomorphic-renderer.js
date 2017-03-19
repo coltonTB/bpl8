@@ -8,7 +8,7 @@ const renderPage = (res, renderProps) => {
   // modifying anchor tags
   const oldCreateHref = renderProps.router.createHref;
   renderProps.router.createHref = path =>
-    res.locals.assetUrl(oldCreateHref(path))
+    res.locals.resourceUrl(oldCreateHref(path))
 
   const appContent = renderToString(
     <RouterContext {...renderProps}/>
