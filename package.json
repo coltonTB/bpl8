@@ -8,9 +8,7 @@
   "config": {
     "s3BucketName": "cb-dev-1",
     "region": "us-west-1",
-    "lambdaFunctionName": "ExpressTestFunction",
-    "lambdaSources": "dist/build dist/node_modules",
-    "assetSources": "dist/assets"
+    "lambdaFunctionName": "ExpressTestFunction"
   },
   "dependencies": {
     "aws-serverless-express": "^2.1.3",
@@ -36,21 +34,20 @@
     "eslint-plugin-react": "^6.10.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "node-sass": "^4.5.0",
+    "null-loader": "^0.1.1",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.13.2",
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "lambda-zip": "cd dist && zip -q -r lambda-function.zip lambda.js routes.js server node_modules shared",
-    "lambda-upload": "aws s3 cp ./dist/lambda-function.zip s3://$npm_package_config_s3BucketName --region $npm_package_config_region",
+    "clean": "rm -rf dist/* && cp -r src/images src/lambda.js dist",
+    "lambda-zip": "cd dist && zip -q lambda-function.zip lambda.js server-bundle.js && cd ..",
+    "deploy-assets": "aws s3 cp --recursive ./dist s3://$npm_package_config_s3BucketName --region $npm_package_config_region --exclude '*' --include 'images/*' --include 'assets/*'",
     "lambda-update": "aws lambda update-function-code --function-name $npm_package_config_lambdaFunctionName --region $npm_package_config_region --zip-file fileb://./dist/lambda-function.zip",
-    "lambda-deploy": "npm run lambda-zip && npm run lambda-upload && npm run lambda-update",
-    "deploy-assets": "aws s3 cp --recursive $npm_package_config_assetSources s3://$npm_package_config_s3BucketName --region $npm_package_config_region",
-    "deploy": "rm -rf ./dist/* && npm run build && npm run build-node-modules && npm run deploy-lambda && npm run deploy-assets",
-    "build-node-modules": "cp package.json dist && cd dist && npm i --production",
-
+    "deploy": "npm run clean && npm run build && npm run lambda-zip && npm run deploy-assets && npm run lambda-update",
+    "fast-deploy": "npm run lambda-zip && npm run deploy-assets && npm run lambda-update",
     "build": "./node_modules/.bin/webpack",
-    "local": "./node_modules/.bin/nodemon ./dist/assets/server-bundle.js",
+    "local": "./node_modules/.bin/nodemon -w ./dist/server-bundle.js",
     "watch": "npm run build -- --watch"
   }
 }

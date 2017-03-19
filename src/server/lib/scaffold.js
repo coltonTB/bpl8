@@ -12,7 +12,7 @@ const Scaffold = props => (
     </head>
     <body>
       <div id="app-content" dangerouslySetInnerHTML={{ __html: props.appContent}} />
-      <script src={props.locals.assetUrl("assets/bundle.js")} />
+      <script src={props.locals.assetUrl("assets/browser-bundle.js")} />
     </body>
   </html>
 );

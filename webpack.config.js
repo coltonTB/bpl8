@@ -6,14 +6,49 @@ const sassLoaders = [
   'sass-loader?indentedSyntax=sass&includePaths[]=' + path.resolve(__dirname, './src/stylehseets')
 ]
 
-module.exports = {
+const serverConfig = {
   target: 'node',
+  node: {
+    __filename: false,
+    __dirname: false
+  },
   entry: {
-    browser: './src/browser/index.js',
     server: './src/server/index.js'
   },
   output: {
     filename: '[name]-bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    library: 'handler',
+    libraryTarget: 'commonjs2'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.sass'],
+    alias: {
+      Stylesheets: path.resolve(__dirname, './src/stylesheets')
+    }
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.sass$|\.css$/,
+        loader: 'null-loader'
+      },
+      {
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react']
+        }
+      }
+    ]
+  }
+};
+
+const browserConfig = {
+  target: 'web',
+  entry: './src/browser/index.js',
+  output: {
+    filename: 'browser-bundle.js',
     path: path.resolve(__dirname, 'dist/assets')
   },
   plugins: [
@@ -43,4 +78,6 @@ module.exports = {
       }
     ]
   }
-};
+}
+
+module.exports = [serverConfig, browserConfig];

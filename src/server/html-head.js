@@ -21,7 +21,7 @@ export const asArray = ({assetUrl}) => (
       key={5}
       rel="stylesheet"
       type="text/css"
-      href={assetUrl("assets/main.css")}
+      href={assetUrl("assets/style.css")}
     />,
 
     <link
