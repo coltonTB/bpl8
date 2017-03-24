@@ -20,11 +20,11 @@ export const Dashboard = (props, context) => (
     Cool Dashboard
     <Link to="/">Home</Link>
     <div>
-      {context.locals.assetUrl('test.jpg')}
+      { context.localContext.assetUrl('test.jpg') }
     </div>
   </div>
 );
 
 Dashboard.contextTypes = {
-  locals: React.PropTypes.object
+  localContext: React.PropTypes.object
 }

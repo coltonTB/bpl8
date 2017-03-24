@@ -3,20 +3,23 @@ import { render } from 'react-dom';
 import { Router, match } from 'react-router';
 import React from 'react';
 
-import {locals} from './helpers';
-import { routes } from '../routes.jsx';
-import withLocalContext from '../server/lib/with-local-context';
+import { routes } from '../shared/routes.jsx';
+import getLocalContext from '../../lib/get-local-context';
+import withLocalContext from '../../lib/with-local-context';
 
 import 'Stylesheets/main';
 
-// Run our app under the /base URL.
+const localContext = getLocalContext({
+  stageContext: window.__locals__.stageContext
+});
+
 const history = useBasename(createHistory)({
-  basename: window.__locals__.stageContext.resourceBase
+  basename: localContext.stageContext.resourceBase
 });
 
 const RouterWithLocalContext = withLocalContext(
   Router,
-  {locals}
+  localContext
 );
 
 match({ history, routes }, (error, redirectLocation, renderProps) => {
@@ -24,4 +27,4 @@ match({ history, routes }, (error, redirectLocation, renderProps) => {
     React.createElement(RouterWithLocalContext, {...renderProps}),
     document.getElementById('app-content')
   )
-})
+});
