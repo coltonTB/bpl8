@@ -1,20 +1,27 @@
-import React from 'react';
-
-const Scaffold = props => (
+const Scaffold = (props, reactContent) =>
+`
+  <!doctype html>
   <html lang="en">
+
     <head>
-      {
-        props.locals.renderHeader()
-      }
-      <script type="text/javascript" dangerouslySetInnerHTML={{
-        __html: `window.__locals__=${JSON.stringify(props.locals)}`
-      }}/>
+      <title>Radical Machines</title>
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css"/>
+      <link rel="stylesheet" type="text/css" href=${props.locals.assetUrl("assets/style.css")} />
+      <link rel="icon" type="image/png" href="http://d1tug40blkttrl.cloudfront.net/icons/dot.ico"/>
+
+      <script type="text/javascript">
+        window.__locals__=${JSON.stringify(props.locals)}
+      </script>
     </head>
+
     <body>
-      <div id="app-content" dangerouslySetInnerHTML={{ __html: props.appContent}} />
-      <script src={props.locals.assetUrl("assets/browser-bundle.js")} />
+      <div id="app-content">${reactContent}</div>
+      <script type="text/javascript" src="${props.locals.assetUrl("assets/browser-bundle.js")}"></script>
     </body>
+
   </html>
-);
+`
 
 export default Scaffold;

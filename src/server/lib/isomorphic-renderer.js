@@ -1,7 +1,7 @@
 import React from 'react';
-import Scaffold from './scaffold.js';
+import scaffold from './scaffold.js';
 import { match, RouterContext } from 'react-router';
-import { renderToString, renderToStaticMarkup } from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 
 const renderPage = (res, renderProps) => {
   // Hijack createHref function to account for assetUrl
@@ -13,8 +13,9 @@ const renderPage = (res, renderProps) => {
   const appContent = renderToString(
     <RouterContext {...renderProps}/>
   );
-  const html = renderToStaticMarkup(
-    <Scaffold appContent={appContent} locals={res.locals}/>
+  const html = scaffold(
+    {...renderProps, locals: res.locals},
+    appContent
   );
 
   res
@@ -25,7 +26,10 @@ const renderPage = (res, renderProps) => {
 const isomorphicRenderer = routes => (req, res) => {
   // Note that req.url here should be the full URL path from
   // the original request, including the query string.
-  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+  match({
+    routes,
+    location: req.url
+  }, (error, redirectLocation, renderProps) => {
     if (error) {
       res
         .status(500)

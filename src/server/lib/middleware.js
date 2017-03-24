@@ -7,7 +7,6 @@ const defaultContext = {
 };
 
 export const contextMiddleware = (req, res, next) => {
-
   let stageContext;
   const apiGatewayEventHeader = req.headers['x-apigateway-event']
   if (apiGatewayEventHeader) {
@@ -15,29 +14,16 @@ export const contextMiddleware = (req, res, next) => {
       stageContext = JSON.parse(apiGatewayEventHeader).stageVariables;
     } catch (e) {}
   }
-
   res.locals.stageContext = stageContext || defaultContext;
-
   next();
 }
-
 
 export const urlHelperMiddleware = (req, res, next) => {
   const assetBase = res.locals.stageContext.assetBase;
-  res.locals.assetUrl = assetPath => path.join('/', assetBase, assetPath);
-
   const resourceBase = res.locals.stageContext.resourceBase;
-  res.locals.resourceUrl = resourcePath => path.join('/', resourceBase, resourcePath);
 
-  next();
-}
+  res.locals.assetUrl = assetPath => path.join('/', assetBase, assetPath)
+  res.locals.resourceUrl = resourcePath => path.join('/', resourceBase, resourcePath)
 
-export const renderHeader = headerRenderer => (req, res, next) => {
-  res.locals.renderHeader = () => {
-    return headerRenderer({
-      assetUrl: res.locals.assetUrl,
-      resourceUrl: res.locals.resourceUrl
-    });
-  };
   next();
 }

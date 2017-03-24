@@ -4,15 +4,9 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
 
-import isomorphicRenderer from './lib/isomorphic-renderer';
-import {
-  contextMiddleware,
-  urlHelperMiddleware,
-  headerRendererMiddleware
-} from './lib/middleware';
-
 import { routes } from '../routes';
-import { head } from './html-head';
+import {contextMiddleware, urlHelperMiddleware} from './lib/middleware';
+import isomorphicRenderer from './lib/isomorphic-renderer';
 
 const PORT = 3000;
 const app = express()
@@ -24,10 +18,12 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(contextMiddleware);
 app.use(urlHelperMiddleware);
-app.use(headerRendererMiddleware(head));
 
-app.use('/assets', express.static(`${__dirname}/../dist/assets`))
-app.use('/images', express.static(`${__dirname}/./images`))
+/*
+  Note: locally, the server runs out of 'dist'
+*/
+app.use('/assets', express.static(`${__dirname}/assets`))
+app.use('/images', express.static(`${__dirname}/images`))
 
 app.use(isomorphicRenderer(routes));
 
