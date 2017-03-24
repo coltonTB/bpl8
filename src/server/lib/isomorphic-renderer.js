@@ -3,16 +3,31 @@ import scaffold from './scaffold.js';
 import { match, RouterContext } from 'react-router';
 import { renderToString } from 'react-dom/server';
 
+import withLocalContext from './with-local-context';
+
 const renderPage = (res, renderProps) => {
-  // Hijack createHref function to account for assetUrl
-  // modifying anchor tags
+  /*
+    Hijack createHref function to synchronize assetUrl
+    with anchor tags
+  */
   const oldCreateHref = renderProps.router.createHref;
   renderProps.router.createHref = path =>
     res.locals.resourceUrl(oldCreateHref(path))
 
-  const appContent = renderToString(
-    <RouterContext {...renderProps}/>
+  /*
+    Render React application root
+  */
+  const RouterContextWithLocalContext = withLocalContext(
+    RouterContext,
+    {locals: res.locals}
   );
+  const appContent = renderToString(
+    <RouterContextWithLocalContext {...renderProps} />
+  );
+
+  /*
+    Inject app content into the HTML scaffold
+  */
   const html = scaffold(
     {...renderProps, locals: res.locals},
     appContent
@@ -24,8 +39,6 @@ const renderPage = (res, renderProps) => {
 }
 
 const isomorphicRenderer = routes => (req, res) => {
-  // Note that req.url here should be the full URL path from
-  // the original request, including the query string.
   match({
     routes,
     location: req.url
