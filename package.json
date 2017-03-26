@@ -8,7 +8,7 @@
   "config": {
     "s3BucketName": "rad-assets",
     "region": "us-west-1",
-    "lambdaFunctionName": "ExpressTestFunction"
+    "lambdaFunctionName": "radicalMachinesWebserver"
   },
   "dependencies": {
     "aws-serverless-express": "^2.1.3",
