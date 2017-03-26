@@ -5,7 +5,7 @@ import CenterNav from './center-nav';
 
 import 'Stylesheets/home';
 
-const Home = props => (
+const Home = (props, context) => (
   <div className="rm--home">
     <CenterNav />
     <div className="px">
@@ -17,13 +17,15 @@ const Home = props => (
             <h1>It's a thing</h1>
           </div>
         </div>
-        <div className="px__layer--3 hero-bg-image" />
+        <div className="px__layer--3 hero-bg-image" style={{
+          backgroundImage: `url(${context.localContext.assetUrl('/images/RAD.jpg')})`
+        }}/>
       </div>
 
       <div className="px__section" style={{zIndex: 2}}>
         <div className="px__layer--6">
           <div className="title">
-            Foreground
+            Foreground :-
           </div>
         </div>
         <div className="px__layer--5">
@@ -72,5 +74,9 @@ const Home = props => (
     </div>
   </div>
 );
+
+Home.contextTypes = {
+  localContext: React.PropTypes.object
+}
 
 export default Home;
