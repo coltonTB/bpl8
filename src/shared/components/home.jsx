@@ -7,27 +7,23 @@ import 'Stylesheets/home';
 
 const Home = (props, context) => (
   <div className="rm--home">
-    <CenterNav />
     <div className="px">
 
+      {/* First Section */}
       <div className="px__section" style={{zIndex: 5}}>
+        <CenterNav />
         <div className="px__layer--4">
           <div className="title">
             <h1>Radical Machines</h1>
             <h1>It's a thing</h1>
           </div>
         </div>
-        <div className="px__layer--3 hero-bg-image" style={{
-          backgroundImage: `url(${context.localContext.assetUrl('/images/RAD.jpg')})`
-        }}/>
+        <div className="px__layer--3" style={{background: 'black'}}/>
       </div>
 
       <div className="px__section" style={{zIndex: 2}}>
-        <div className="px__layer--6">
-          <div className="title">
-            Foreground :-
-          </div>
-        </div>
+        <CenterNav style={{transform: 'translateY(156px)'}}/>
+
         <div className="px__layer--5">
           <div className="title">
             Mid

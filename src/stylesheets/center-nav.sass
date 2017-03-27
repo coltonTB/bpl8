@@ -1,9 +1,18 @@
+$rad_gold: #ffc200
+
 .rm--center-nav
-  position: fixed
+  display: flex
+  justify-content: center
   top: 0
   width: 100vw
-  z-index: 1
-  text-align: center
+
+  .rm--center-nav__inner
+    position: fixed
+    background: $rad_gold
+    width: 100px
+    z-index: 1
+    height: 110vh
+
   ul
     text-align: center
     list-style: none
