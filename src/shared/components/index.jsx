@@ -1,11 +1,15 @@
 import {Link} from 'react-router';
 import React from 'react';
+import Styletron from 'styletron-server';
+import { StyletronProvider } from 'styletron-react';
 
-export const App = (props) => (
-  <div>
-    <h1>Hello!</h1>
-    {props.children}
-  </div>
+export const App = props => (
+  <StyletronProvider styletron={global.styletron}>
+    <div>
+      <h1>Hello!</h1>
+      {props.children}
+    </div>
+  </StyletronProvider>
 );
 
 export const Welcome = () => (
