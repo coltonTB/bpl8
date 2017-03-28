@@ -2,9 +2,8 @@ import React from 'react';
 
 import 'Stylesheets/main'
 
-export const App = (props) => (
+export const Index = (props) => (
   <div>
-    <h1>Hello!</h1>
     {props.children}
   </div>
 );
