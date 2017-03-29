@@ -1,12 +1,41 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {Link as UnstyledLink} from 'react-router';
+import styled from 'styled-components';
 
-import 'Stylesheets/center-nav';
+const COLORS = {
+  gold: '#ffc200'
+};
 
-const CenterNav = props => (
-  <div className="rm--center-nav" style={props.style}>
-    <div className="rm--center-nav__inner">
-      <ul>
+const CenterNav = styled.div`
+  display: flex;
+  justify-content: center;
+  top: 0;
+  width: 100vw;
+`;
+
+const CenterNavInner = styled.div`
+  position: fixed;
+  background: ${COLORS.gold};
+  width: 100px;
+  z-index: 1;
+  height: 110vh;
+`;
+
+const Ul = styled.ul`
+  text-align: center;
+  list-style: none;
+`;
+
+const Link = styled(UnstyledLink)`
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+`;
+
+const CenterNavComponent = props => (
+  <CenterNav style={props.style}>
+    <CenterNavInner className="rm--center-nav__inner">
+      <Ul>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -25,9 +54,9 @@ const CenterNav = props => (
         <li>
           <Link to="/shop">Gift Shop</Link>
         </li>
-      </ul>
-    </div>
-  </div>
+      </Ul>
+    </CenterNavInner>
+  </CenterNav>
 );
 
-export default CenterNav;
+export default CenterNavComponent;
