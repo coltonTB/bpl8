@@ -1,29 +1,30 @@
 import React from 'react';
-import {Link as UnstyledLink} from 'react-router';
+import { Link as UnstyledLink } from 'react-router';
 import styled from 'styled-components';
 
-const COLORS = {
-  gold: '#ffc200'
-};
+import { COLORS } from '../constants';
 
-const CenterNav = styled.div`
+export const CenterNav = styled.div`
+  __comment: centerNav;
   display: flex;
   justify-content: center;
   top: 0;
   width: 100vw;
 `;
 
-const CenterNavInner = styled.div`
+export const CenterNavInner = styled.div`
   position: fixed;
-  background: ${COLORS.gold};
-  width: 100px;
-  z-index: 1;
+  background: ${ props => props.background || COLORS.gold };
+  width: 140px;
   height: 110vh;
+  padding-top: 20px;
 `;
 
 const Ul = styled.ul`
   text-align: center;
   list-style: none;
+  position: fixed;
+  z-index: 1;
 `;
 
 const Link = styled(UnstyledLink)`
@@ -32,30 +33,32 @@ const Link = styled(UnstyledLink)`
   font-weight: bold;
 `;
 
+export const CenterNavList = props => (
+  <Ul>
+    <li>
+      <Link to="/">Home</Link>
+    </li>
+    <li>
+      <Link to="/info">Information</Link>
+    </li>
+    <li>
+      <Link to="/calendar">Calendar</Link>
+    </li>
+    <li>
+      <Link to="/background">Background</Link>
+    </li>
+    <li>
+      <Link to="/overview">Overview</Link>
+    </li>
+    <li>
+      <Link to="/shop">Gift Shop</Link>
+    </li>
+  </Ul>
+);
+
 const CenterNavComponent = props => (
-  <CenterNav style={props.style}>
-    <CenterNavInner className="rm--center-nav__inner">
-      <Ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/info">Information</Link>
-        </li>
-        <li>
-          <Link to="/calendar">Calendar</Link>
-        </li>
-        <li>
-          <Link to="/background">Background</Link>
-        </li>
-        <li>
-          <Link to="/overview">Overview</Link>
-        </li>
-        <li>
-          <Link to="/shop">Gift Shop</Link>
-        </li>
-      </Ul>
-    </CenterNavInner>
+  <CenterNav {...props} >
+    <CenterNavInner {...props} />
   </CenterNav>
 );
 

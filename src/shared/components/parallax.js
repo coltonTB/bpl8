@@ -24,13 +24,15 @@ export const PxTitle = styled.div`
 `;
 
 export const PxSection = styled.div`
+  __comment: px-section;
   position: relative;
   height: 100vh;
   transform-style: preserve-3d;
+  z-index: ${ props => props.zIndex }
 `;
 
 export const PxLayer = styled.div`
-  __comment: depth ${props => props.depth};
+  __comment: px-layer depth ${props => props.depth};
   position: absolute;
   top: 0;
   right: 0;
