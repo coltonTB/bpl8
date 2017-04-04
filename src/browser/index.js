@@ -1,8 +1,6 @@
 import { createHistory, useBasename } from 'history';
 import { render } from 'react-dom';
 import { Router, match } from 'react-router';
-import { StyletronProvider } from 'styletron-react';
-import Styletron from 'styletron-client'
 import React from 'react';
 
 import { routes } from '../shared/routes.jsx';
@@ -23,9 +21,6 @@ const RouterWithLocalContext = withLocalContext(
   Router,
   localContext
 );
-
-const styleElements = document.getElementsByClassName('_styletron_hydrate_');
-const styletron = global.styletron = new Styletron(styleElements);
 
 match({ history, routes }, (error, redirectLocation, renderProps) => {
   render(
