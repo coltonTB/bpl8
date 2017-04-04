@@ -3,11 +3,10 @@ import {Link} from 'react-router';
 import styled from 'styled-components';
 
 import { COLORS } from '../constants';
+import { FlexContainer, FlexItem } from '../style/flexbox';
+import { Px, PxTitle, PxSection, PxLayer } from '../style/parallax';
 
-import { FlexContainer, FlexItem } from './flexbox';
 import { CenterNav, CenterNavInner, CenterNavList } from './center-nav';
-import { Px, PxTitle, PxSection, PxLayer } from './parallax';
-
 
 const HeroBgImage = styled(PxLayer)`
   background-image: url(${ props => props.imageUrl });
@@ -29,75 +28,124 @@ const BgColor = styled(PxLayer)`
 `;
 
 const HeroText = styled(FlexItem)`
-  color: ${ COLORS.white };
-  font-size: 46pt;
+  color: ${ props => props.color || COLORS.white };
   padding: 18px 28px;
-  width: 26%;
+  width: ${ props => props.width || '400px' };
   position: relative;
-  bottom: 100px;
-  line-height: 50pt;
+  /* correct for center misalignment */
+  bottom: ${ props => props.align === 'flex-start' ? '0' : '100px' };
+  flex-wrap: wrap;
 `;
 
-const Home = (props, context) => (
-  <div className="rm--home">
+const HeroTextLeft = styled(HeroText)`
+  text-align: right;
+  flex-direction: row-reverse;
+`;
 
-    <CenterNav>
-      <CenterNavList />
-    </CenterNav>
+const HeroImage = styled.img`
+  width: 500px;
+  margin-bottom: 12px;
+`;
 
-    <Px>
+const Home = (props, { localContext }) => {
 
-      <PxSection zIndex={5}>
+  const content = key => localContext.content('home', key);
 
-        <CenterNav>
-          <CenterNavInner />
-        </CenterNav>
+  return (
+    <div className="rm--home">
+      <CenterNav>
+        <CenterNavList />
+      </CenterNav>
+      <Px>
 
-        <PxLayer depth={0}>
-          <FlexContainer>
-            <HeroText style={{textAlign: 'right'}}>
-              Radical Machines
-            </HeroText>
-            <CenterNavPlaceholder />
-            <HeroText>
-              Chinese in the Information Age
-            </HeroText>
-          </FlexContainer>
-        </PxLayer>
-        <PxLayer depth={-2} style={{background: COLORS.black }}/>
-      </PxSection>
+        <PxSection zIndex={5}>
+          <CenterNav>
+            <CenterNavInner />
+          </CenterNav>
+          <PxLayer depth={1}>
+            <FlexContainer>
+              <HeroTextLeft>
+                <h1>
+                  { content('hero_text_left') }
+                </h1>
+              </HeroTextLeft>
+              <CenterNavPlaceholder />
+              <HeroText>
+                <h1>
+                  { content('hero_text_right') }
+                </h1>
+              </HeroText>
+            </FlexContainer>
+          </PxLayer>
+          <PxLayer depth={-2} style={{ background: COLORS.black }}/>
+        </PxSection>
 
-      <PxSection zIndex={5}>
-        <CenterNav>
-          <CenterNavInner background={ COLORS.black } style={{zIndex: 1}}/>
-        </CenterNav>
-        <PxLayer depth={0} style={{ background: COLORS.gold }} />
-      </PxSection>
+        <PxSection zIndex={5}>
+          <CenterNav>
+            <CenterNavInner background={ COLORS.black } style={{ zIndex: 1 }}/>
+          </CenterNav>
+          <PxLayer depth={0} style={{ background: COLORS.gold }}>
+            <FlexContainer>
+              <HeroTextLeft>
+                <h2 style={{ color: COLORS.black }}>
+                  { content('hero_2_title') }
+                </h2>
+                <h2>
+                  { content('hero_2_subtitle') }
+                </h2>
+              </HeroTextLeft>
+              <CenterNavPlaceholder />
+              <HeroText>
+                <div>
+                  <HeroImage src={ localContext.assetUrl('/images/hero_2.png') } />
+                </div>
+                <h4>
+                  { content('hero_2_caption') }
+                </h4>
+                <p>
+                  { content('hero_2_text') }
+                </p>
+              </HeroText>
+            </FlexContainer>
+          </PxLayer>
+        </PxSection>
 
-      <PxSection zIndex={5}>
-        <PxLayer depth={3}>
-          <PxTitle> Foreground</PxTitle>
-        </PxLayer>
-        <PxLayer depth={0} style={{background: 'purple'}}>
-          <PxTitle> Background</PxTitle>
-        </PxLayer>
-      </PxSection>
+        <PxSection zIndex={5}>
+          <PxLayer depth={0} style={{background: COLORS.white, paddingTop: '24px'}}>
+            <FlexContainer>
+              <HeroTextLeft align="flex-start">
+                <h2 style={{ color: COLORS.black }}>
+                  { content('video_title') }
+                </h2>
+              </HeroTextLeft>
+              <CenterNavPlaceholder />
+              <HeroText align="flex-start">
+                <h5 style={{ color: COLORS.gold }}>
+                  { content('video_subtitle') }
+                </h5>
+              </HeroText>
 
-      <PxSection zIndex={3}>
-        <PxLayer depth={-2}>
-          <PxTitle> Foreground</PxTitle>
-        </PxLayer>
-        <PxLayer depth={0}>
-          <PxTitle> Mid</PxTitle>
-        </PxLayer>
-        <PxLayer depth={-5} style={{background: 'red'}}>
-          <PxTitle> Background</PxTitle>
-        </PxLayer>
-      </PxSection>
+              <div style={{
+                textAlign: 'center',
+                width: '100vw',
+                position: 'absolute',
+                top: '220px'
+              }}>
+                <img
+                  style={{
+                    width: '90%'
+                  }}
+                  src={ localContext.assetUrl('/images/video_preview.png') } />
+              </div>
 
-    </Px>
-  </div>
-);
+            </FlexContainer>
+          </PxLayer>
+        </PxSection>
+
+      </Px>
+    </div>
+  );
+}
 
 Home.contextTypes = {
   localContext: React.PropTypes.object

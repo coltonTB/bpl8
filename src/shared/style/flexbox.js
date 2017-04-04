@@ -12,4 +12,5 @@ export const FlexContainer = styled.div`
 export const FlexItem = styled.div`
   display: flex;
   flex-direction: ${ props => props.flexDirection || 'row' };
+  align-self: ${ props => props.align || 'center' }
 `;
