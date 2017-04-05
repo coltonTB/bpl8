@@ -20,6 +20,7 @@ const HeroBgImage = styled(PxLayer)`
 
 const CenterNavPlaceholder = styled(CenterNavInner)`
   display: flex;
+  flex-shrink: 0;
   position: static;
   background: none;
   height: ${ props => props.fullHeight ? '100vh' : 'initial' };
@@ -33,10 +34,8 @@ const HeroText = styled(FlexItem)`
   color: ${ props => props.color };
   padding: 18px 28px;
   width: ${ props => props.width };
-  position: relative;
-  /* correct for center misalignment */
-  bottom: ${ props => props.align === 'flex-start' ? '0' : '100px' };
   flex-wrap: wrap;
+  flex-shrink: 0;
 `;
 
 HeroText.defaultProps = {
@@ -51,6 +50,14 @@ const HeroTextLeft = styled(HeroText)`
 
 const Image = styled.img`
   height: ${ props => props.height }
+`;
+
+const Input = styled.input`
+  background: ${ COLORS.black };
+  border: 1px solid ${ COLORS.gold };
+  color: ${ COLORS.white };
+  font-size: 1.5em;
+  padding: 6px 12px;
 `;
 
 const Home = (props, { localContext }) => {
@@ -185,16 +192,16 @@ const Home = (props, { localContext }) => {
           </PxLayer>
         </PxSection>
 
-        <PxSection height="30vh">
+        <PxSection height="40vh">
           <PxLayer depth={0} background={COLORS.black} style={{paddingTop: '24px'}}>
             <FlexContainer>
               <HeroTextLeft align="flex-start">
                 <div>
-                  <h2 style={{ color: COLORS.gold }}>
+                  <h2 style={{ color: COLORS.gold, marginBottom: '15px' }}>
                     { localContext.content('footer', 'contact') }
                   </h2>
                   <Image src={ localContext.assetUrl('/images/social_shim.png') } height="36px" />
-                  <div style={{ marginTop: '50px' }}>
+                  <div style={{ marginTop: '92px' }}>
                     { localContext.content('footer', 'brand') }
                   </div>
                 </div>
@@ -202,7 +209,8 @@ const Home = (props, { localContext }) => {
               <CenterNavPlaceholder />
               <HeroText align="flex-start">
                 <div>
-                  <div style={{marginTop: '50px'}}>
+                  <Input placeholder={ localContext.content('footer', 'subscribe_prompt') } />
+                  <div style={{marginTop: '30px'}}>
                     { localContext.content('footer', 'tom_contact') }
                   </div>
                   <div style={{marginTop: '30px'}}>
