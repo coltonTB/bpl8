@@ -26,10 +26,15 @@ export const PxTitle = styled.div`
 export const PxSection = styled.div`
   __comment: px-section;
   position: relative;
-  height: 100vh;
+  height: ${ props => props.height };
+  z-index: ${ props => props.zIndex };
   transform-style: preserve-3d;
-  z-index: ${ props => props.zIndex }
 `;
+
+PxSection.defaultProps = {
+  zIndex: 0,
+  height: '100vh'
+}
 
 export const PxLayer = styled.div`
   __comment: px-layer depth ${props => props.depth};
@@ -38,6 +43,7 @@ export const PxLayer = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
+  background: ${ props => props.background };
   z-index: ${ props => props.depth };
   transform:
     translateZ(${ props => factor * props.depth }px)
@@ -45,5 +51,6 @@ export const PxLayer = styled.div`
 `
 
 PxLayer.defaultProps = {
-  depth: 0
+  depth: 0,
+  background: 'none'
 }
