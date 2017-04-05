@@ -9,6 +9,6 @@ export const Button = styled.button`
   border-radius: 0;
   color: ${ COLORS.white };
   font-weight: bold;
-  font-size: 1.5rem;
-  padding: 0 36px;
+  font-size: 1.4rem;
+  padding: 12px 36px;
 `;

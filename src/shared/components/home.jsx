@@ -164,7 +164,7 @@ const Home = (props, { localContext }) => {
 
             <FlexContainer flexDirection="column">
               <Image src={ localContext.assetUrl('/images/insta_shim.png') } height="30vh" />
-              <Button style={{ marginTop: '30px' }}>
+              <Button style={{ marginTop: '40px' }}>
                 { content('see_more_btn') }
               </Button>
             </FlexContainer>
