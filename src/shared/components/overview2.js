@@ -3,66 +3,53 @@ import styled from 'styled-components';
 
 import { COLORS } from '../constants';
 import { FlexContainer, FlexItem } from '../style/flexbox';
-import { Span } from '../style/util'
 
 import { HeroText, HeroTextLeft } from './hero-text';
 import { CenterNav, CenterNavInner, CenterNavList, CenterNavPlaceholder } from './center-nav';
 import { Footer } from './footer'
 
-const ImagesLeft = styled(HeroTextLeft)`
-  flex-wrap: nowrap;
-  flex-direction: column;
-`;
-const ImagesRight = styled(HeroText)`
-  flex-wrap: nowrap;
-  flex-direction: column;
-`;
-
 const MachinesContainer = styled.div`
   margin-top: 60px;
   display: flex;
-  flex-wrap: nowrap;
-  max-width: 1300px;
+  flex-wrap: wrap;
+  width: 80%;
+  max-width: 1200px;
   margin-bottom: 60px;
 `;
 
 const MachineWrapper = styled(FlexItem)`
+  margin: 14px;
   flex-direction: column;
+  width: 29%;
   flex: 1 1 auto;
 `;
 
-const MachineImg = styled.img`
-  width: 100%;
+const MachineBg = styled.div`
+  background: ${ COLORS.gold };
+  height: 260px;
 `;
 
 const MachineCaption = styled.div`
-  text-align: left;
+  text-align: center;
   color: ${ COLORS.white };
   font-weight: bold;
-  margin-bottom: 80px;
 `;
 
-const Machine = ({ data }, { localContext }) => (
-  <MachineWrapper>
-    <MachineImg src={ localContext.assetUrl(data.fullImg) }/>
+const Machine = (machine, i) => (
+  <MachineWrapper key={i}>
+    <MachineBg />
     <MachineCaption>
-      <p>
-        <Span textTransform="uppercase">{ data.title },</Span>
-        <Span color={ COLORS.gold }> from { data.year } </Span>
-        <Span color={ COLORS.gold }>{ data.caption_a }, </Span>
-        <Span>{ data.caption_b } </Span>
-      </p>
+      <p>{ `${machine.title} - ${machine.year}` }</p>
     </MachineCaption>
   </MachineWrapper>
 )
 
-Machine.contextTypes =  {
-  localContext: React.PropTypes.object
-};
+const PlaceHolderMachine = styled(MachineWrapper)`
+  visibility: hidden;
+`;
 
 const Overview = (props, { localContext }) => {
   const content = key => localContext.content('overview', key);
-
   return (
     <div style={{ background: COLORS.black, paddingTop: '20px' }}>
       <CenterNav>
@@ -83,20 +70,9 @@ const Overview = (props, { localContext }) => {
         </HeroText>
       </FlexContainer>
 
-
       <FlexContainer wrap>
         <MachinesContainer>
-          <ImagesLeft align="flex-start" width="500px">
-            <Machine data={content('machines')[0] } />
-            <Machine data={content('machines')[2] } />
-            <Machine data={content('machines')[4] } />
-          </ImagesLeft>
-          <CenterNavPlaceholder />
-          <ImagesRight color={ COLORS.gold } align="flex-start" width="500px">
-            <Machine data={content('machines')[1] } />
-            <Machine data={content('machines')[3] } />
-            <Machine data={content('machines')[5] } />
-          </ImagesRight>
+          { [ ...content('machines').map(Machine), <PlaceHolderMachine key={10}/> ] }
         </MachinesContainer>
       </FlexContainer>
 
@@ -108,6 +84,6 @@ const Overview = (props, { localContext }) => {
 
 Overview.contextTypes = {
   localContext: React.PropTypes.object
-};
+}
 
 export default Overview;

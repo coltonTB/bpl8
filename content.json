@@ -18,29 +18,47 @@ export const overview = {
   "title": "Machines Overview",
   "subtitle": "await whoever solves the puzzle first. How would you design a Chinese typewriter? Lore moluptaest et as nos et ut volorro volores tibus, core voluptur adignam qui il magnihiti cor rempore liasped que volori re aut vit volorercil in porerspis et odis ma pera nesed. ut eos dit quide sitio iur aut ipsa eos",
   "machines": [{
-      "img": "/",
-      "caption": "Chinese Typewriter - 1876"
+      "img": "",
+      "fullImg": "/images/machine_1.png",
+      "title": "Chinese Letter Bed Machine",
+      "year": "1876",
+      "caption_a": "used in the lower eastern part of Xi'An China",
+      "caption_b": "by both scholars and students in the Universities"
+    }, {
+      "img": "",
+      "fullImg": "/images/machine_2.png",
+      "title": "A Concentric Typewriter",
+      "year": "1876",
+      "caption_a": "used in the lower eastern part of Xi'An China",
+      "caption_b": "by both scholars and students in the Universities"
     }, {
       "img": "/",
-      "caption": "Chinese Typewriter - 1876"
+      "fullImg": "/images/machine_3.png",
+      "title": "American Typewriter",
+      "year": "1876",
+      "caption_a": "used in the lower eastern part of Xi'An China",
+      "caption_b": "by both scholars and students in the Universities"
     }, {
       "img": "/",
-      "caption": "Chinese Typewriter - 1876"
+      "fullImg": "/images/machine_4.png",
+      "title": "A Character Manual",
+      "year": "1876",
+      "caption_a": "used in the lower eastern part of Xi'An China",
+      "caption_b": "by both scholars and students in the Universities"
     }, {
       "img": "/",
-      "caption": "Chinese Typewriter - 1876"
+      "fullImg": "/images/machine_5.png",
+      "title": "First Computer Typer",
+      "year": "1876",
+      "caption_a": "used in the lower eastern part of Xi'An China",
+      "caption_b": "by both scholars and students in the Universities"
     }, {
       "img": "/",
-      "caption": "Chinese Typewriter - 1876"
-    }, {
-      "img": "/",
-      "caption": "Chinese Typewriter - 1876"
-    }, {
-      "img": "/",
-      "caption": "Chinese Typewriter - 1876"
-    }, {
-      "img": "/",
-      "caption": "Chinese Typewriter - 1876"
+      "fullImg": "/images/machine_6.png",
+      "title": "A Dictionary Booklet",
+      "year": "1876",
+      "caption_a": "used in the lower eastern part of Xi'An China",
+      "caption_b": "by both scholars and students in the Universities"
     }
   ]
 };
