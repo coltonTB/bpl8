@@ -3,16 +3,19 @@ import styled from 'styled-components';
 
 import { COLORS } from '../constants';
 import { FlexContainer, FlexItem } from '../style/flexbox';
+import { Px, PxSection } from '../style/parallax';
 
 import { HeroText, HeroTextLeft } from './hero-text';
 import { CenterNav, CenterNavInner, CenterNavList, CenterNavPlaceholder } from './center-nav';
+import { Footer } from './footer'
 
 const MachinesWrapper = styled.div`
   margin-top: 60px;
   display: flex;
   flex-wrap: wrap;
   width: 80%;
-  max-width: 1000px;
+  max-width: 1200px;
+  margin-bottom: 60px;
 `;
 
 const MachineWrapper = styled(FlexItem)`
@@ -24,7 +27,7 @@ const MachineWrapper = styled(FlexItem)`
 
 const MachineBg = styled.div`
   background: ${ COLORS.gold };
-  height: 220px;
+  height: 260px;
 `;
 
 const MachineCaption = styled.div`
@@ -53,27 +56,31 @@ const Overview = (props, { localContext }) => {
       <CenterNav>
         <CenterNavList />
       </CenterNav>
-      <div>
-        <FlexContainer>
-          <HeroTextLeft align="flex-start">
-            <h2>
-              { content('title') }
-            </h2>
-          </HeroTextLeft>
-          <CenterNavPlaceholder />
-          <HeroText color={ COLORS.gold }>
-            <h5>
-              { content('subtitle') }
-            </h5>
-          </HeroText>
-        </FlexContainer>
+      <Px style={{minHeight: '120vh'}}>
+        <PxSection>
+          <FlexContainer>
+            <HeroTextLeft align="flex-start">
+              <h2>
+                { content('title') }
+              </h2>
+            </HeroTextLeft>
+            <CenterNavPlaceholder />
+            <HeroText color={ COLORS.gold }>
+              <h5>
+                { content('subtitle') }
+              </h5>
+            </HeroText>
+          </FlexContainer>
 
-        <FlexContainer wrap>
-          <MachinesWrapper>
-            { [ ...content('machines').map(Machine), <PlaceHolderMachine /> ] }
-          </MachinesWrapper>
-        </FlexContainer>
-      </div>
+          <FlexContainer wrap>
+            <MachinesWrapper>
+              { [ ...content('machines').map(Machine), <PlaceHolderMachine key={10}/> ] }
+            </MachinesWrapper>
+          </FlexContainer>
+
+          <Footer />
+        </PxSection>
+      </Px>
     </div>
   );
 }

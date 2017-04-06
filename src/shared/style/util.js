@@ -12,3 +12,15 @@ export const Button = styled.button`
   font-size: 1.4rem;
   padding: 12px 36px;
 `;
+
+export const Img = styled.img`
+  height: ${ props => props.height }
+`;
+
+export const Input = styled.input`
+  background: ${ COLORS.black };
+  border: 1px solid ${ COLORS.gold };
+  color: ${ COLORS.white };
+  font-size: 1.5em;
+  padding: 6px 12px;
+`;
