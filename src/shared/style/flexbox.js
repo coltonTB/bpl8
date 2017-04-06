@@ -3,14 +3,27 @@ import styled from 'styled-components';
 
 export const FlexContainer = styled.div`
   display: flex;
-  flex-direction: ${ props => props.flexDirection || 'row' };
-  justify-content: ${ props => props.justifyContent || 'center' };
-  align-items: ${ props => props.align || 'center' };
-  align-content: ${ props => props.align || 'center' };
+  flex-direction: ${ props => props.flexDirection };
+  justify-content: ${ props => props.justifyContent };
+  align-items: ${ props => props.align };
+  align-content: ${ props => props.align };
+  flex-wrap: ${ props => props.wrap ? 'wrap' : 'nowrap' };
 `;
+
+FlexContainer.defaultProps = {
+  flexDirection: 'row',
+  justifyContent: 'center',
+  align: 'center',
+  wrap: false
+};
 
 export const FlexItem = styled.div`
   display: flex;
-  flex-direction: ${ props => props.flexDirection || 'row' };
-  align-self: ${ props => props.align || 'center' }
+  flex-direction: ${ props => props.flexDirection };
+  align-self: ${ props => props.align }
 `;
+
+FlexItem.defaultProps = {
+  flexDirection: 'row',
+  align: 'center'
+};

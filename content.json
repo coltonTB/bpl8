@@ -14,6 +14,37 @@ export const home = {
   "press_subtitle": "Await whoever solves the puzzle first. How would you design a Chinese typewriter?"
 };
 
+export const overview = {
+  "title": "Machines Overview",
+  "subtitle": "await whoever solves the puzzle first. How would you design a Chinese typewriter? Lore moluptaest et as nos et ut volorro volores tibus, core voluptur adignam qui il magnihiti cor rempore liasped que volori re aut vit volorercil in porerspis et odis ma pera nesed. ut eos dit quide sitio iur aut ipsa eos",
+  "machines": [{
+      "img": "/",
+      "caption": "Chinese Typewriter - 1876"
+    }, {
+      "img": "/",
+      "caption": "Chinese Typewriter - 1876"
+    }, {
+      "img": "/",
+      "caption": "Chinese Typewriter - 1876"
+    }, {
+      "img": "/",
+      "caption": "Chinese Typewriter - 1876"
+    }, {
+      "img": "/",
+      "caption": "Chinese Typewriter - 1876"
+    }, {
+      "img": "/",
+      "caption": "Chinese Typewriter - 1876"
+    }, {
+      "img": "/",
+      "caption": "Chinese Typewriter - 1876"
+    }, {
+      "img": "/",
+      "caption": "Chinese Typewriter - 1876"
+    }
+  ]
+};
+
 export const footer = {
   "contact": "Contact",
   "subscribe_prompt": "Subscribe",

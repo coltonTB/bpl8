@@ -7,7 +7,8 @@ import { FlexContainer, FlexItem } from '../style/flexbox';
 import { Px, PxTitle, PxSection, PxLayer } from '../style/parallax';
 import { Button } from '../style/util';
 
-import { CenterNav, CenterNavInner, CenterNavList } from './center-nav';
+import { CenterNav, CenterNavInner, CenterNavList, CenterNavPlaceholder } from './center-nav';
+import { HeroText, HeroTextLeft } from './hero-text';
 
 const HeroBgImage = styled(PxLayer)`
   background-image: url(${ props => props.imageUrl });
@@ -18,34 +19,8 @@ const HeroBgImage = styled(PxLayer)`
   width: 100%;
 `;
 
-const CenterNavPlaceholder = styled(CenterNavInner)`
-  display: flex;
-  flex-shrink: 0;
-  position: static;
-  background: none;
-  height: ${ props => props.fullHeight ? '100vh' : 'initial' };
-`;
-
 const BgColor = styled(PxLayer)`
   background-color: ${props => props.color}
-`;
-
-const HeroText = styled(FlexItem)`
-  color: ${ props => props.color };
-  padding: 18px 28px;
-  width: ${ props => props.width };
-  flex-wrap: wrap;
-  flex-shrink: 0;
-`;
-
-HeroText.defaultProps = {
-  color: COLORS.white,
-  width: '400px'
-};
-
-const HeroTextLeft = styled(HeroText)`
-  text-align: right;
-  flex-direction: row-reverse;
 `;
 
 const Image = styled.img`
@@ -65,10 +40,12 @@ const Home = (props, { localContext }) => {
   const content = key => localContext.content('home', key);
 
   return (
-    <div className="rm--home">
+    <div>
+
       <CenterNav>
         <CenterNavList />
       </CenterNav>
+
       <Px>
 
         <PxSection zIndex={5}>

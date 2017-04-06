@@ -20,6 +20,14 @@ export const CenterNavInner = styled.div`
   padding-top: 20px;
 `;
 
+export const CenterNavPlaceholder = styled(CenterNavInner)`
+  display: flex;
+  flex-shrink: 0;
+  position: static;
+  background: none;
+  height: ${ props => props.fullHeight ? '100vh' : 'initial' };
+`;
+
 const Ul = styled.ul`
   text-align: center;
   list-style: none;
