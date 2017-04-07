@@ -53,7 +53,7 @@ const Home = (props, { localContext }) => {
             <FlexContainer>
               <HeroTextLeft>
                 <H2 color={ COLORS.black }>
-                  { content('hero_2_title') }
+                  { content('hero_2_title') }&mdash;
                 </H2>
                 <H2>
                   { content('hero_2_subtitle') }

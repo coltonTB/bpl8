@@ -11,6 +11,7 @@ import { HeroText, HeroTextLeft } from './hero-text';
 const FooterContainer = styled(FlexContainer)`
   padding-top: 40px;
   padding-bottom: 40px;
+  background: ${ COLORS.black }
 `;
 
 const Footer = (props, { localContext }) => (

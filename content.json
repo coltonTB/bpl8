@@ -63,6 +63,49 @@ export const overview = {
   ]
 };
 
+export const shop = {
+  "title": "Exhibition Store",
+  "subtitle": "await whoever solves the puzzle first. How would you design a Chinese typewriter? Lore moluptaest et as nos et ut volorro volores tibus, core voluptur adignam qui il magnihiti cor rempore liasped que volori re aut vit volorercil in porerspis et odis ma pera nesed. ut eos dit quide sitio iur aut ipsa eos",
+  "buy_btn": "Buy Now",
+  "items": [{
+      "img": "/images/store_item_1.png",
+      "title": "Limited edition exhibition poster",
+      "title_2": "Screenprint archival paper",
+      "price": 20,
+      "printInfo": "24\" x 36\", Printed in Italy. Edition of 500.",
+      "fgm": "Design by For Good Measure"
+    }, {
+      "img": "/images/store_item_2.png",
+      "title": "Radical Machines Totebag",
+      "title_2": "100% Recycled Canvas Material",
+      "price": 30,
+      "printInfo": "24\" x 36\", Printed in Italy. Edition of 500.",
+      "fgm": "Design by For Good Measure"
+    }, {
+      "img": "/images/store_item_3.png",
+      "title": "Technology & Culture",
+      "title_2": "by Tom Mullaney",
+      "price": 24,
+      "printInfo": "24\" x 36\", Printed in Italy. Edition of 500.",
+      "fgm": "Design by For Good Measure"
+    }, {
+      "img": "/images/store_item_4.png",
+      "title": "Radical Slider Toy",
+      "title_2": "Plastic and Metal, 12+",
+      "price": 24,
+      "printInfo": "24\" x 36\", Printed in Italy. Edition of 500.",
+      "fgm": "Design by For Good Measure"
+    }, {
+      "img": "/images/store_item_5.png",
+      "title": "Postcard Set",
+      "title_2": "Paper",
+      "price": 24,
+      "printInfo": "24\" x 36\", Printed in Italy. Edition of 500.",
+      "fgm": "Design by For Good Measure"
+    }
+  ]
+};
+
 export const footer = {
   "contact": "Contact",
   "subscribe_prompt": "Subscribe",

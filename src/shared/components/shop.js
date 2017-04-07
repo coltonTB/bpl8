@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
-import { Div } from '../style/util'
+import { Div, H5 } from '../style/util'
 
 import { HeroText, HeroTextLeft } from './hero-text';
 import { CenterNav, CenterNavList, CenterNavPlaceholder } from './center-nav';
 import { Footer } from './footer'
-import { Machine } from './machine';
+import { StoreItem } from './store-item';
 
 const ImagesLeft = styled(HeroTextLeft)`
   flex-wrap: nowrap;
@@ -19,7 +19,7 @@ const ImagesRight = styled(HeroText)`
   flex-direction: column;
 `;
 
-const MachinesContainer = styled.div`
+const StoreItemContainer = styled.div`
   margin-top: 60px;
   display: flex;
   flex-wrap: nowrap;
@@ -27,11 +27,11 @@ const MachinesContainer = styled.div`
   margin-bottom: 60px;
 `;
 
-const Overview = (props, { localContext }) => {
-  const content = key => localContext.content('overview', key);
+const Shop = (props, { localContext }) => {
+  const content = key => localContext.content('shop', key);
 
   return (
-    <Div background={COLORS.black} paddingTop="20px">
+    <Div background={COLORS.gold} paddingTop="20px">
 
       <CenterNav>
         <CenterNavList />
@@ -45,26 +45,25 @@ const Overview = (props, { localContext }) => {
         </HeroTextLeft>
         <CenterNavPlaceholder />
         <HeroText color={ COLORS.gold }>
-          <h5>
+          <H5 color={ COLORS.black }>
             { content('subtitle') }
-          </h5>
+          </H5>
         </HeroText>
       </FlexContainer>
 
       <FlexContainer>
-        <MachinesContainer>
+        <StoreItemContainer>
           <ImagesLeft align="flex-start" width="500px">
-            <Machine data={ content('machines')[0] } />
-            <Machine data={ content('machines')[2] } />
-            <Machine data={ content('machines')[4] } />
+            <StoreItem data={ content('items')[0] } />
+            <StoreItem data={ content('items')[2] } />
           </ImagesLeft>
           <CenterNavPlaceholder />
           <ImagesRight color={ COLORS.gold } align="flex-start" width="500px">
-            <Machine data={ content('machines')[1] } />
-            <Machine data={ content('machines')[3] } />
-            <Machine data={ content('machines')[5] } />
+            <StoreItem data={ content('items')[1] } />
+            <StoreItem data={ content('items')[3] } />
+            <StoreItem data={ content('items')[4] } />
           </ImagesRight>
-        </MachinesContainer>
+        </StoreItemContainer>
       </FlexContainer>
 
       <Footer />
@@ -73,8 +72,8 @@ const Overview = (props, { localContext }) => {
   );
 }
 
-Overview.contextTypes = {
+Shop.contextTypes = {
   localContext: React.PropTypes.object
 };
 
-export default Overview;
+export default Shop;
