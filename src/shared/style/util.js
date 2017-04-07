@@ -39,6 +39,7 @@ const sharedFeatures = [
   'paddingRight',
   'paddingTop',
   'textTransform',
+  'textAlign',
   'width',
   'zIndex'
 ];

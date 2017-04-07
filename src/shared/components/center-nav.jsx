@@ -4,7 +4,9 @@ import styled from 'styled-components';
 
 import { COLORS } from '../constants';
 
-export const CenterNav = styled.div`
+import { Ul, Div } from '../style/util';
+
+export const CenterNav = styled(Div)`
   __comment: centerNav;
   display: flex;
   justify-content: center;
@@ -12,13 +14,15 @@ export const CenterNav = styled.div`
   width: 100vw;
 `;
 
-export const CenterNavInner = styled.div`
+export const CenterNavInner = styled(Div)`
   position: fixed;
-  background: ${ props => props.background || COLORS.gold };
   width: 140px;
   height: 110vh;
   padding-top: 20px;
 `;
+CenterNavInner.defaultProps = {
+  background: COLORS.gold
+};
 
 export const CenterNavPlaceholder = styled(CenterNavInner)`
   display: flex;
@@ -28,7 +32,7 @@ export const CenterNavPlaceholder = styled(CenterNavInner)`
   height: ${ props => props.fullHeight ? '100vh' : 'initial' };
 `;
 
-const Ul = styled.ul`
+const List = styled(Ul)`
   text-align: center;
   list-style: none;
   position: fixed;
@@ -38,31 +42,34 @@ const Ul = styled.ul`
 
 const Link = styled(UnstyledLink)`
   text-decoration: none;
-  color: white;
+  color: ${ props => props.color };
   font-weight: bold;
 `;
+Link.defaultProps = {
+  color: COLORS.white
+};
 
 export const CenterNavList = props => (
-  <Ul>
+  <List >
     <li>
-      <Link to="/">Home</Link>
+      <Link color={props.color} to="/">Home</Link>
     </li>
     <li>
-      <Link to="/info">Information</Link>
+      <Link color={props.color} to="/info">Information</Link>
     </li>
     <li>
-      <Link to="/calendar">Calendar</Link>
+      <Link color={props.color} to="/calendar">Calendar</Link>
     </li>
     <li>
-      <Link to="/background">Background</Link>
+      <Link color={props.color} to="/background">Background</Link>
     </li>
     <li>
-      <Link to="/overview">Overview</Link>
+      <Link color={props.color} to="/overview">Overview</Link>
     </li>
     <li>
-      <Link to="/shop">Gift Shop</Link>
+      <Link color={props.color} to="/shop">Gift Shop</Link>
     </li>
-  </Ul>
+  </List>
 );
 
 const CenterNavComponent = props => (

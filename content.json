@@ -106,6 +106,39 @@ export const shop = {
   ]
 };
 
+export const info = {
+  "title": "Information",
+  "subtitle": "await whoever solves the puzzle first. How would you design a Chinese typewriter? Lore moluptaest et as nos et ut volorro volores tibus, core voluptur adignam qui il magnihiti cor rempore liasped que volori re aut vit volorercil in porerspis et odis ma pera nesed.",
+  "mission_title": "The Mission",
+  "mission_text": "Thousands of characters. No alphabet. Millions of customers await whoever solves the puzzle first. How would you design a Chinese typewriter? Lore moluptaest et as nos et ut volorro volores tibus, core voluptur adignam qui il magnihiti cor rempore liasped que volori re aut vit volorercil in porerspis et odis ma pera nesed ut eos dit quide sitio iur aut ipsa eos\n\nTam lab ipsant perae. Nequi nis modis non porecti cus aut anda dolliae laut rectem et hario mosam faciatu scimus audis eaquame nihit apeliqui to bea doluptae con estior re, aut atur? Del maioritem est, eos undit ut ipsaest occus sitaqui ut quo blabor am non rempore nam hita nam as exerferovidi",
+  "gallery_img": "/images/gallery_info.png",
+  "gallery_img_title": "The man behind the exhibition",
+  "gallery_img_caption": "Thousands of characters. No alphabet. Millions of customre await whoever solves the puzzle fist.",
+  "tom_img": "/images/tom_mug.png",
+  "tom_img_title": "The Man Behind the exhibition",
+  "tom_img_caption": "Thousands of characters. No alphabet. Millions of customre await whoever solves the puzzle fist.",
+  "tom_title": "The man behind the radical machines exhibition",
+  "tom_text": "Thousands of characters. No alphabet. Millions of customers await whoever solves the puzzle first. How would you design a Chinese typewriter? Lore moluptaest et as nos et ut volorro volores tibus, core voluptur adignam qui il magnihiti cor rempore liasped que volori re aut vit volorercil in porerspis et odis ma pera nesed ut eos dit quide sitio iur aut ipsa eos\n\nTam lab ipsant perae. Nequi nis modis non porecti cus aut anda dolliae laut rectem et hario mosam faciatu scimus audis eaquame nihit apeliqui to bea doluptae con estior re, aut atur? Del maioritem est, eos undit ut ipsaest occus sitaqui ut quo blabor am non rempore nam hita nam as exerferovidi",
+  "partners_title": "The Partners &\nCollaborators",
+  "partners_list": [{
+      "name": "For Good Measure",
+      "description": "Exhibiton design / website design / web development"
+    }, {
+      "name": "Barbara Walters",
+      "description": "Press coverage / social media"
+    }, {
+      "name": "Sandra Bullock",
+      "description": "Museum engagement / Citation expert"
+    }, {
+      "name": "Jeff Besos",
+      "description": "Press Coverage / Social Media"
+    }, {
+      "name": "Johannes Sebastion",
+      "description": "Musical Director / Dead Composer"
+    }
+  ]
+};
+
 export const footer = {
   "contact": "Contact",
   "subscribe_prompt": "Subscribe",
