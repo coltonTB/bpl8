@@ -25,11 +25,22 @@ const domElements = [
 const sharedFeatures = [
   'background',
   'color',
-  'textTransform',
+  'fontSize',
   'fontWeight',
   'height',
+  'margin',
+  'marginBottom',
+  'marginLeft',
+  'marginRight',
+  'marginTop',
+  'padding',
+  'paddingBottom',
+  'paddingLeft',
+  'paddingRight',
+  'paddingTop',
+  'textTransform',
   'width',
-  'fontSize'
+  'zIndex'
 ];
 
 const conditionalProp = (props, propName) => {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { COLORS } from '../constants';
 import { FlexContainer, FlexItem } from '../style/flexbox';
-import { Span } from '../style/util'
+import { Span, Div } from '../style/util'
 
 import { HeroText, HeroTextLeft } from './hero-text';
 import { CenterNav, CenterNavInner, CenterNavList, CenterNavPlaceholder } from './center-nav';
@@ -64,7 +64,7 @@ const Overview = (props, { localContext }) => {
   const content = key => localContext.content('overview', key);
 
   return (
-    <div style={{ background: COLORS.black, paddingTop: '20px' }}>
+    <Div background={COLORS.black} paddingTop="20px">
       <CenterNav>
         <CenterNavList />
       </CenterNav>
@@ -102,7 +102,7 @@ const Overview = (props, { localContext }) => {
 
       <Footer />
 
-    </div>
+    </Div>
   );
 }
 

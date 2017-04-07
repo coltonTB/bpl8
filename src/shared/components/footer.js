@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
-import { Input, Img } from '../style/util';
+import { Input, Img, H2, Div } from '../style/util';
 
 import { CenterNavPlaceholder } from './center-nav';
 import { HeroText, HeroTextLeft } from './hero-text';
@@ -17,25 +17,25 @@ const Footer = (props, { localContext }) => (
   <FooterContainer>
     <HeroTextLeft align="flex-start">
       <div>
-        <h2 style={{ color: COLORS.gold, marginBottom: '15px' }}>
+        <H2 color={ COLORS.gold } marginBottom="15px" >
           { localContext.content('footer', 'contact') }
-        </h2>
+        </H2>
         <Img src={ localContext.assetUrl('/images/social_shim.png') } height="36px" />
-        <div style={{ marginTop: '92px' }}>
+        <Div marginTop="92px">
           { localContext.content('footer', 'brand') }
-        </div>
+        </Div>
       </div>
     </HeroTextLeft>
     <CenterNavPlaceholder />
     <HeroText align="flex-start">
       <div>
         <Input placeholder={ localContext.content('footer', 'subscribe_prompt') } />
-        <div style={{marginTop: '30px'}}>
+        <Div marginTop="30px">
           { localContext.content('footer', 'tom_contact') }
-        </div>
-        <div style={{marginTop: '30px'}}>
+        </Div>
+        <Div marginTop="30px">
           { localContext.content('footer', 'rad_contact') }
-        </div>
+        </Div>
       </div>
     </HeroText>
   </FooterContainer>

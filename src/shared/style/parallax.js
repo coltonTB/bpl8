@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { Div } from './util';
+
 const factor = 30;
 const perspective = 600;
 
@@ -8,14 +10,14 @@ const calculateScale = depth => (
   1 - depth / perspective
 );
 
-export const Px = styled.div`
+export const Px = styled(Div)`
   perspective: ${perspective}px;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
 `;
 
-export const PxTitle = styled.div`
+export const PxTitle = styled(Div)`
   text-align: center;
   position: absolute;
   left: 50%;
@@ -23,7 +25,7 @@ export const PxTitle = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const PxSection = styled.div`
+export const PxSection = styled(Div)`
   __comment: px-section;
   position: relative;
   height: ${ props => props.height };
@@ -36,7 +38,7 @@ PxSection.defaultProps = {
   height: '100vh'
 }
 
-export const PxLayer = styled.div`
+export const PxLayer = styled(Div)`
   __comment: px-layer depth ${props => props.depth};
   position: absolute;
   top: 0;
