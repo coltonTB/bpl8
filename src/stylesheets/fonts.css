@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Akzidenz';
+  font-weight: normal;
+  src: url('http://d20ft6tuyvh1q2.cloudfront.net/fonts/AkzidenzGrotesk-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Akzidenz';
+  font-weight: bold;;
+  src: url('http://d20ft6tuyvh1q2.cloudfront.net/fonts/AkzidenzGrotesk-Medium.otf');
+}
