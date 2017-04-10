@@ -70,7 +70,9 @@ const Info = (props, { localContext }) => {
           </InfoLeft>
           <CenterNavPlaceholder />
           <InfoRight color={ COLORS.gold }>
-            <Image src={ content('gallery_img') } />
+            <div>
+              <Image src={ localContext.assetUrl(content('gallery_img')) } />
+            </div>
             <Div fontWeight="bold" textAlign="center">
                 { content('gallery_img_title') }
             </Div>
@@ -82,7 +84,9 @@ const Info = (props, { localContext }) => {
 
         <FlexContainer>
           <InfoLeft color={ COLORS.gold }>
-            <Image src={ content('tom_img') } />
+            <div>
+              <Image src={ localContext.assetUrl(content('tom_img')) } />
+            </div>
             <Div fontWeight="bold" textAlign="center">
                 { content('tom_img_title') }
             </Div>
