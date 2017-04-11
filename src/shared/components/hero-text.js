@@ -14,7 +14,7 @@ const HeroText = styled(FlexItem)`
 
 HeroText.defaultProps = {
   color: COLORS.white,
-  width: '400px'
+  width: '500px'
 };
 
 const HeroTextLeft = styled(HeroText)`

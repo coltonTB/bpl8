@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { COLORS } from '../constants';
 import { FlexContainer, FlexItem } from '../style/flexbox';
 import { Px, PxTitle, PxSection, PxLayer } from '../style/parallax';
-import { Button, Img, H2, H5 } from '../style/util';
+import { Button, Img, H2, H3, H5 } from '../style/util';
 
 import { CenterNav, CenterNavInner, CenterNavList, CenterNavPlaceholder } from './center-nav';
 import { HeroText, HeroTextLeft } from './hero-text';
@@ -62,11 +62,11 @@ const Home = (props, { localContext }) => {
               <CenterNavPlaceholder fullHeight />
               <HeroText>
                 <div>
-                  <Img src={ localContext.assetUrl('/images/hero_2.png') } height="26vh" />
+                  <Img src={ localContext.assetUrl('/images/hero_2.png') } height="300px" />
                 </div>
-                <h4>
+                <H3 margin="16px 0 8px 0">
                   { content('hero_2_caption') }
-                </h4>
+                </H3>
                 <p>
                   { content('hero_2_text') }
                 </p>

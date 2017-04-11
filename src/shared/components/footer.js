@@ -22,7 +22,7 @@ const Footer = (props, { localContext }) => (
           { localContext.content('footer', 'contact') }
         </H2>
         <Img src={ localContext.assetUrl('/images/social_shim.png') } height="36px" />
-        <Div marginTop="92px">
+        <Div marginTop="60px">
           { localContext.content('footer', 'brand') }
         </Div>
       </div>
