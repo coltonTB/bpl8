@@ -38,6 +38,7 @@ const sharedFeatures = [
   'paddingLeft',
   'paddingRight',
   'paddingTop',
+  'position',
   'textTransform',
   'textAlign',
   'width',

@@ -15,9 +15,8 @@ export const CenterNav = styled(Div)`
 `;
 
 export const CenterNavInner = styled(Div)`
-  position: fixed;
   width: 140px;
-  height: 110vh;
+  height: 100vh;
   padding-top: 20px;
 `;
 CenterNavInner.defaultProps = {

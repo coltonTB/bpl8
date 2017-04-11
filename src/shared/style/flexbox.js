@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const FlexContainer = styled.div`
+import { Div } from './util';
+
+export const FlexContainer = styled(Div)`
   display: flex;
   flex-direction: ${ props => props.flexDirection };
   justify-content: ${ props => props.justifyContent };
@@ -17,7 +19,7 @@ FlexContainer.defaultProps = {
   wrap: false
 };
 
-export const FlexItem = styled.div`
+export const FlexItem = styled(Div)`
   display: flex;
   flex-direction: ${ props => props.flexDirection };
   align-self: ${ props => props.align }
