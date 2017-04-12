@@ -6,7 +6,7 @@ import { FlexContainer } from '../style/flexbox';
 import { Div, H2, H5, Img, P } from '../style/util'
 
 import { HeroTextLeft, HeroText } from './hero-text';
-import { CenterNav, CenterNavList, CenterNavPlaceholder } from './center-nav';
+import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
 
 const InfoLeft = styled(HeroTextLeft)`
@@ -39,9 +39,7 @@ const Info = (props, { localContext }) => {
   return (
     <Div background={COLORS.white} paddingTop="20px">
 
-      <CenterNav>
-        <CenterNavList color={ COLORS.gold }/>
-      </CenterNav>
+      <CenterNav color={ COLORS.gold }/>
 
       <FlexContainer>
         <InfoLeft align="flex-start">
@@ -49,7 +47,7 @@ const Info = (props, { localContext }) => {
             { content('title') }
           </H2>
         </InfoLeft>
-        <CenterNavPlaceholder />
+        <CenterNavBackground />
         <InfoRight>
           <H5 color={ COLORS.gold }>
             { content('subtitle') }
@@ -68,7 +66,7 @@ const Info = (props, { localContext }) => {
               { content('mission_text') }
             </p>
           </InfoLeft>
-          <CenterNavPlaceholder />
+          <CenterNavBackground />
           <InfoRight color={ COLORS.gold }>
             <div>
               <Image src={ localContext.assetUrl(content('gallery_img')) } />
@@ -94,7 +92,7 @@ const Info = (props, { localContext }) => {
                 { content('tom_img_caption') }
             </Div>
           </InfoLeft>
-          <CenterNavPlaceholder />
+          <CenterNavBackground />
           <InfoRight align="flex-start" color={ COLORS.black }>
             <h3>
               { content('tom_title') }
@@ -111,7 +109,7 @@ const Info = (props, { localContext }) => {
               { content('partners_title') }
             </h2>
           </InfoLeft>
-          <CenterNavPlaceholder />
+          <CenterNavBackground />
           <InfoRight color={ COLORS.gold }>
             { content('partners_list').map(Collaborator) }
           </InfoRight>

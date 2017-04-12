@@ -1,13 +1,13 @@
 import React from 'react';
+import ReactSVG from 'react-svg'
 import { Link as UnstyledLink } from 'react-router';
 import styled from 'styled-components';
-import ReactSVG from 'react-svg'
 
 import { COLORS } from '../constants';
 
 import { Ul, Div } from '../style/util';
 
-export const CenterNav = styled(Div)`
+const CenterNavWrapper = styled(Div)`
   __comment: centerNav;
   display: flex;
   justify-content: center;
@@ -15,20 +15,11 @@ export const CenterNav = styled(Div)`
   width: 100vw;
 `;
 
-export const CenterNavInner = styled(Div)`
+export const CenterNavBackground = styled(Div)`
   width: 140px;
-  height: 100vh;
   padding-top: 20px;
-`;
-CenterNavInner.defaultProps = {
-  background: COLORS.gold
-};
-
-export const CenterNavPlaceholder = styled(CenterNavInner)`
   display: flex;
   flex-shrink: 0;
-  position: static;
-  background: none;
   height: ${ props => props.fullHeight ? '100vh' : 'initial' };
 `;
 
@@ -48,75 +39,46 @@ const Link = styled(UnstyledLink)`
   font-weight: bold;
 `;
 
-const ScrollPromptWrapper = styled(Div)`
-  position: absolute;
-  bottom: 0;
-  z-index: 1;
-  margin-bottom: 30px;
-  color: ${ COLORS.white }
-`;
-
-export const ScrollPrompt = (props, {localContext}) => (
-  <ScrollPromptWrapper>
-    <div>Scroll</div>
-    <ReactSVG
-      path={ localContext.assetUrl('/images/down_arrow.svg') }
-      style={{
-        fill: COLORS.white
-      }}
-    />
-  </ScrollPromptWrapper>
+export const CenterNav = (props, {localContext}) => (
+  <CenterNavWrapper>
+    <List>
+      <li>
+        <ReactSVG
+          path={ localContext.assetUrl('/images/hamburger.svg') }
+          style={{
+            fill: props.color,
+            height: '46px',
+            marginBottom: '12px'
+          }}
+        />
+      </li>
+      <li>
+        <Link color={props.color} to="/">Home</Link>
+      </li>
+      <li>
+        <Link color={props.color} to="/info">Information</Link>
+      </li>
+      <li>
+        <Link color={props.color} to="/calendar">Calendar</Link>
+      </li>
+      <li>
+        <Link color={props.color} to="/background">Background</Link>
+      </li>
+      <li>
+        <Link color={props.color} to="/overview">Overview</Link>
+      </li>
+      <li>
+        <Link color={props.color} to="/shop">Gift Shop</Link>
+      </li>
+    </List>
+    { props.children }
+  </CenterNavWrapper>
 );
 
-ScrollPrompt.contextTypes = {
+CenterNav.contextTypes = {
   localContext: React.PropTypes.object
 };
 
-export const CenterNavList = (props, {localContext}) => (
-  <List>
-    <li>
-      <ReactSVG
-        path={ localContext.assetUrl('/images/hamburger.svg') }
-        style={{
-          fill: props.color,
-          height: '46px',
-          marginBottom: '12px'
-        }}
-      />
-    </li>
-    <li>
-      <Link color={props.color} to="/">Home</Link>
-    </li>
-    <li>
-      <Link color={props.color} to="/info">Information</Link>
-    </li>
-    <li>
-      <Link color={props.color} to="/calendar">Calendar</Link>
-    </li>
-    <li>
-      <Link color={props.color} to="/background">Background</Link>
-    </li>
-    <li>
-      <Link color={props.color} to="/overview">Overview</Link>
-    </li>
-    <li>
-      <Link color={props.color} to="/shop">Gift Shop</Link>
-    </li>
-  </List>
-);
-
-CenterNavList.contextTypes = {
-  localContext: React.PropTypes.object
-};
-
-CenterNavList.defaultProps = {
+CenterNav.defaultProps = {
   color: COLORS.white
 };
-
-const CenterNavComponent = props => (
-  <CenterNav {...props} >
-    <CenterNavInner {...props} />
-  </CenterNav>
-);
-
-export default CenterNavComponent;

@@ -5,9 +5,10 @@ import { COLORS } from '../constants';
 import { FlexContainer, FlexItem } from '../style/flexbox';
 import { Button, Img, Div, H2, H3, H5 } from '../style/util';
 
-import { CenterNav, CenterNavInner, CenterNavList, CenterNavPlaceholder, ScrollPrompt } from './center-nav';
+import { CenterNav, CenterNavBackground } from './center-nav';
 import { HeroText, HeroTextLeft } from './hero-text';
 import { Footer } from './footer';
+import { ScrollPrompt } from './scroll-prompt';
 
 const Home = (props, { localContext }) => {
 
@@ -17,21 +18,17 @@ const Home = (props, { localContext }) => {
     <div>
 
       <CenterNav>
-        <CenterNavList />
         <ScrollPrompt />
       </CenterNav>
 
         <Div background={ COLORS.black }>
-          <CenterNav>
-            <CenterNavInner background={ COLORS.gold } position="absolute" />
-          </CenterNav>
           <FlexContainer>
             <HeroTextLeft>
               <h1>
                 { content('hero_text_left') }
               </h1>
             </HeroTextLeft>
-            <CenterNavPlaceholder fullHeight />
+            <CenterNavBackground fullHeight background={ COLORS.gold } />
             <HeroText>
               <h1>
                 { content('hero_text_right') }
@@ -41,10 +38,6 @@ const Home = (props, { localContext }) => {
         </Div>
 
         <Div>
-          <CenterNav>
-            <CenterNavInner background={ COLORS.black } position="absolute" />
-          </CenterNav>
-
           <FlexContainer>
             <HeroTextLeft>
               <H2 color={ COLORS.black }>
@@ -54,7 +47,7 @@ const Home = (props, { localContext }) => {
                 { content('hero_2_subtitle') }
               </H2>
             </HeroTextLeft>
-            <CenterNavPlaceholder fullHeight />
+            <CenterNavBackground fullHeight background={ COLORS.black } />
             <HeroText>
               <div>
                 <Img src={ localContext.assetUrl('/images/hero_2.png') } height="300px" />
@@ -77,7 +70,7 @@ const Home = (props, { localContext }) => {
                 { content('video_title') }
               </H2>
             </HeroTextLeft>
-            <CenterNavPlaceholder />
+            <CenterNavBackground />
             <HeroText>
               <H5 color={ COLORS.gold }>
                 { content('video_subtitle') }
@@ -97,7 +90,7 @@ const Home = (props, { localContext }) => {
                 { content('insta_title') }
               </H2>
             </HeroTextLeft>
-            <CenterNavPlaceholder />
+            <CenterNavBackground />
             <HeroText align="flex-start">
               <H5 color={ COLORS.gold }>
                 { content('insta_subtitle') }
@@ -121,7 +114,7 @@ const Home = (props, { localContext }) => {
                 { content('press_title') }
               </H2>
             </HeroTextLeft>
-            <CenterNavPlaceholder />
+            <CenterNavBackground />
             <HeroText>
               <H5 color={ COLORS.black }>
                 { content('press_subtitle') }

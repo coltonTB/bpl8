@@ -5,7 +5,7 @@ import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
 import { Input, Img, H2, Div } from '../style/util';
 
-import { CenterNavPlaceholder } from './center-nav';
+import { CenterNavBackground } from './center-nav';
 import { HeroText, HeroTextLeft } from './hero-text';
 
 const FooterContainer = styled(FlexContainer)`
@@ -27,7 +27,7 @@ const Footer = (props, { localContext }) => (
         </Div>
       </div>
     </HeroTextLeft>
-    <CenterNavPlaceholder />
+    <CenterNavBackground />
     <HeroText align="flex-start">
       <div>
         <Input placeholder={ localContext.content('footer', 'subscribe_prompt') } />

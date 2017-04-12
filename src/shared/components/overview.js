@@ -6,7 +6,7 @@ import { FlexContainer } from '../style/flexbox';
 import { Div } from '../style/util'
 
 import { HeroText, HeroTextLeft } from './hero-text';
-import { CenterNav, CenterNavList, CenterNavPlaceholder } from './center-nav';
+import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
 import { Machine } from './machine';
 
@@ -33,9 +33,7 @@ const Overview = (props, { localContext }) => {
   return (
     <Div background={COLORS.black} paddingTop="20px">
 
-      <CenterNav>
-        <CenterNavList />
-      </CenterNav>
+      <CenterNav />
 
       <FlexContainer>
         <HeroTextLeft align="flex-start">
@@ -43,7 +41,7 @@ const Overview = (props, { localContext }) => {
             { content('title') }
           </h2>
         </HeroTextLeft>
-        <CenterNavPlaceholder />
+        <CenterNavBackground />
         <HeroText color={ COLORS.gold }>
           <h5>
             { content('subtitle') }
@@ -58,7 +56,7 @@ const Overview = (props, { localContext }) => {
             <Machine data={ content('machines')[2] } />
             <Machine data={ content('machines')[4] } />
           </ImagesLeft>
-          <CenterNavPlaceholder />
+          <CenterNavBackground />
           <ImagesRight color={ COLORS.gold } align="flex-start" width="500px">
             <Machine data={ content('machines')[1] } />
             <Machine data={ content('machines')[3] } />

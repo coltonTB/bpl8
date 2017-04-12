@@ -6,7 +6,7 @@ import { FlexContainer } from '../style/flexbox';
 import { Div, H5 } from '../style/util'
 
 import { HeroText, HeroTextLeft } from './hero-text';
-import { CenterNav, CenterNavList, CenterNavPlaceholder } from './center-nav';
+import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
 import { StoreItem } from './store-item';
 
@@ -33,9 +33,7 @@ const Shop = (props, { localContext }) => {
   return (
     <Div background={COLORS.gold} paddingTop="20px">
 
-      <CenterNav>
-        <CenterNavList />
-      </CenterNav>
+      <CenterNav />
 
       <FlexContainer>
         <HeroTextLeft align="flex-start">
@@ -43,7 +41,7 @@ const Shop = (props, { localContext }) => {
             { content('title') }
           </h2>
         </HeroTextLeft>
-        <CenterNavPlaceholder />
+        <CenterNavBackground />
         <HeroText color={ COLORS.gold }>
           <H5 color={ COLORS.black }>
             { content('subtitle') }
@@ -57,7 +55,7 @@ const Shop = (props, { localContext }) => {
             <StoreItem data={ content('items')[0] } />
             <StoreItem data={ content('items')[2] } />
           </ImagesLeft>
-          <CenterNavPlaceholder />
+          <CenterNavBackground />
           <ImagesRight color={ COLORS.gold } align="flex-start" width="500px">
             <StoreItem data={ content('items')[1] } />
             <StoreItem data={ content('items')[3] } />

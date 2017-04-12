@@ -5,7 +5,7 @@ import { COLORS } from '../constants';
 import { FlexContainer, FlexItem } from '../style/flexbox';
 
 import { HeroText, HeroTextLeft } from './hero-text';
-import { CenterNav, CenterNavInner, CenterNavList, CenterNavPlaceholder } from './center-nav';
+import { CenterNav, CenterNavList, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
 
 const MachinesContainer = styled.div`
@@ -62,7 +62,7 @@ const Overview = (props, { localContext }) => {
             { content('title') }
           </h2>
         </HeroTextLeft>
-        <CenterNavPlaceholder />
+        <CenterNavBackground />
         <HeroText color={ COLORS.gold }>
           <h5>
             { content('subtitle') }
