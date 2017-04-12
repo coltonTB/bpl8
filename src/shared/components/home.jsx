@@ -5,7 +5,7 @@ import { COLORS } from '../constants';
 import { FlexContainer, FlexItem } from '../style/flexbox';
 import { Button, Img, Div, H2, H3, H5 } from '../style/util';
 
-import { CenterNav, CenterNavInner, CenterNavList, CenterNavPlaceholder } from './center-nav';
+import { CenterNav, CenterNavInner, CenterNavList, CenterNavPlaceholder, ScrollPrompt } from './center-nav';
 import { HeroText, HeroTextLeft } from './hero-text';
 import { Footer } from './footer';
 
@@ -18,6 +18,7 @@ const Home = (props, { localContext }) => {
 
       <CenterNav>
         <CenterNavList />
+        <ScrollPrompt />
       </CenterNav>
 
         <Div background={ COLORS.black }>

@@ -36,6 +36,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "node-sass": "^4.5.0",
     "null-loader": "^0.1.1",
+    "react-svg": "^2.1.19",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.13.2",
     "styled-components": "v2.0.0-10",

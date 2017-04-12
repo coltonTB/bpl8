@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link as UnstyledLink } from 'react-router';
 import styled from 'styled-components';
+import ReactSVG from 'react-svg'
 
 import { COLORS } from '../constants';
 
@@ -37,6 +38,8 @@ const List = styled(Ul)`
   position: fixed;
   z-index: 1;
   padding: 0;
+  font-size: 1.2em;
+  line-height: 1.4em;
 `;
 
 const Link = styled(UnstyledLink)`
@@ -44,12 +47,43 @@ const Link = styled(UnstyledLink)`
   color: ${ props => props.color };
   font-weight: bold;
 `;
-Link.defaultProps = {
-  color: COLORS.white
+
+const ScrollPromptWrapper = styled(Div)`
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  margin-bottom: 30px;
+  color: ${ COLORS.white }
+`;
+
+export const ScrollPrompt = (props, {localContext}) => (
+  <ScrollPromptWrapper>
+    <div>Scroll</div>
+    <ReactSVG
+      path={ localContext.assetUrl('/images/down_arrow.svg') }
+      style={{
+        fill: COLORS.white
+      }}
+    />
+  </ScrollPromptWrapper>
+);
+
+ScrollPrompt.contextTypes = {
+  localContext: React.PropTypes.object
 };
 
-export const CenterNavList = props => (
-  <List >
+export const CenterNavList = (props, {localContext}) => (
+  <List>
+    <li>
+      <ReactSVG
+        path={ localContext.assetUrl('/images/hamburger.svg') }
+        style={{
+          fill: props.color,
+          height: '46px',
+          marginBottom: '12px'
+        }}
+      />
+    </li>
     <li>
       <Link color={props.color} to="/">Home</Link>
     </li>
@@ -70,6 +104,14 @@ export const CenterNavList = props => (
     </li>
   </List>
 );
+
+CenterNavList.contextTypes = {
+  localContext: React.PropTypes.object
+};
+
+CenterNavList.defaultProps = {
+  color: COLORS.white
+};
 
 const CenterNavComponent = props => (
   <CenterNav {...props} >
