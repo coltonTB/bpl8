@@ -20,7 +20,7 @@ export const CenterNavBackground = styled(Div)`
   padding-top: 20px;
   display: flex;
   flex-shrink: 0;
-  height: ${ props => props.fullHeight ? '100vh' : 'initial' };
+  height: ${ props => props.fullHeight ? '100vh' : props.height };
 `;
 
 const List = styled(Ul)`

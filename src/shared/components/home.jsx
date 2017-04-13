@@ -18,7 +18,7 @@ const Home = (props, { localContext }) => {
     <div>
 
       <CenterNav>
-        <ScrollPrompt />
+        <ScrollPrompt/>
       </CenterNav>
 
         <Div background={ COLORS.black }>

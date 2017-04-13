@@ -6,7 +6,7 @@ import { FlexContainer, FlexItem } from '../style/flexbox';
 
 const HeroText = styled(FlexItem)`
   color: ${ props => props.color };
-  padding: 18px 28px;
+  padding: 40px 28px 18px 28px;
   width: ${ props => props.width };
   flex-wrap: wrap;
   flex-shrink: 0;

@@ -37,7 +37,7 @@ const Info = (props, { localContext }) => {
   const content = key => localContext.content('info', key);
 
   return (
-    <Div background={COLORS.white} paddingTop="20px">
+    <Div background={COLORS.white}>
 
       <CenterNav color={ COLORS.gold }/>
 

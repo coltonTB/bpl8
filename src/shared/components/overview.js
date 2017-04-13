@@ -20,55 +20,99 @@ const ImagesRight = styled(HeroText)`
 `;
 
 const MachinesContainer = styled.div`
-  margin-top: 60px;
   display: flex;
   flex-wrap: nowrap;
   max-width: 1300px;
-  margin-bottom: 60px;
 `;
 
-const Overview = (props, { localContext }) => {
-  const content = key => localContext.content('overview', key);
+class Overview extends React.Component {
 
-  return (
-    <Div background={COLORS.black} paddingTop="20px">
+  handleMachineClick = data => {
+    const selectedMachine = data.id === this.state.selectedMachine ? null : data.id;
+    this.setState({
+      selectedMachine
+    });
+  };
 
-      <CenterNav />
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedMachine: null
+    };
+  }
 
-      <FlexContainer>
-        <HeroTextLeft align="flex-start">
-          <h2>
-            { content('title') }
-          </h2>
-        </HeroTextLeft>
-        <CenterNavBackground />
-        <HeroText color={ COLORS.gold }>
-          <h5>
-            { content('subtitle') }
-          </h5>
-        </HeroText>
-      </FlexContainer>
+  render() {
+    const content = key => this.context.localContext.content('overview', key);
+    return (
+      <Div background={COLORS.black} onClick={ () => this.setState({ selectedMachine: null })}>
 
-      <FlexContainer>
-        <MachinesContainer>
-          <ImagesLeft align="flex-start" width="500px">
-            <Machine data={ content('machines')[0] } />
-            <Machine data={ content('machines')[2] } />
-            <Machine data={ content('machines')[4] } />
-          </ImagesLeft>
-          <CenterNavBackground />
-          <ImagesRight color={ COLORS.gold } align="flex-start" width="500px">
-            <Machine data={ content('machines')[1] } />
-            <Machine data={ content('machines')[3] } />
-            <Machine data={ content('machines')[5] } />
-          </ImagesRight>
-        </MachinesContainer>
-      </FlexContainer>
+        <CenterNav />
 
-      <Footer />
+        <FlexContainer>
+          <HeroTextLeft align="flex-start">
+            <h2>
+              { content('title') }
+            </h2>
+          </HeroTextLeft>
+          <CenterNavBackground height="200px" background={this.state.selectedMachine !== null ? COLORS.gold : ''} />
+          <HeroText color={ COLORS.gold } align="flex-start">
+            <h5>
+              { content('subtitle') }
+            </h5>
+          </HeroText>
+        </FlexContainer>
 
-    </Div>
-  );
+        <FlexContainer>
+          <MachinesContainer>
+            <ImagesLeft align="flex-start" width="500px">
+              <Machine
+                data={ content('machines')[0] }
+                onClick={ this.handleMachineClick }
+                selectedMachine={this.state.selectedMachine}
+                detailsOrientation="right"
+              />
+              <Machine
+                data={ content('machines')[2] }
+                onClick={ this.handleMachineClick }
+                selectedMachine={this.state.selectedMachine}
+                detailsOrientation="right"
+              />
+              <Machine
+                data={ content('machines')[4] }
+                onClick={ this.handleMachineClick }
+                selectedMachine={this.state.selectedMachine}
+                detailsOrientation="right"
+              />
+            </ImagesLeft>
+            <CenterNavBackground background={this.state.selectedMachine !== null ? COLORS.gold : ''} />
+            <ImagesRight color={ COLORS.gold } align="flex-start" width="500px">
+              <Machine
+                data={ content('machines')[1] }
+                onClick={ this.handleMachineClick }
+                selectedMachine={this.state.selectedMachine}
+                detailsOrientation="left"
+              />
+              <Machine
+                data={ content('machines')[3] }
+                onClick={ this.handleMachineClick }
+                selectedMachine={this.state.selectedMachine}
+                detailsOrientation="left"
+              />
+              <Machine
+                data={ content('machines')[5] }
+                onClick={ this.handleMachineClick }
+                selectedMachine={this.state.selectedMachine}
+                detailsOrientation="left"
+              />
+            </ImagesRight>
+          </MachinesContainer>
+        </FlexContainer>
+
+        <Footer />
+
+      </Div>
+    );
+  }
 }
 
 Overview.contextTypes = {

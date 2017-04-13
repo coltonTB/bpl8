@@ -8,6 +8,8 @@ import { Span } from '../style/util'
 const MachineWrapper = styled(FlexItem)`
   flex-direction: column;
   flex: 1 1 auto;
+  visibility: ${ props => props.visible ? 'visible' : 'hidden' };
+  position: relative;
 `;
 
 const MachineImg = styled.img`
@@ -21,22 +23,64 @@ const MachineCaption = styled.div`
   margin-bottom: 80px;
 `;
 
-const Machine = ({ data }, { localContext }) => (
-  <MachineWrapper>
-    <MachineImg src={ localContext.assetUrl(data.fullImg) }/>
-    <MachineCaption>
-      <p>
-        <Span textTransform="uppercase">{ data.title },</Span>
-        <Span color={ COLORS.gold }> from { data.year } </Span>
-        <Span color={ COLORS.gold }>{ data.caption_a }, </Span>
-        <Span>{ data.caption_b } </Span>
-      </p>
-    </MachineCaption>
-  </MachineWrapper>
+const MachineDetailsWrapper = styled.div`
+  ${
+    props => props.orientation === 'right'
+      ? "right: -700px"
+      : "left: -700px"
+  };
+  ${
+    props => props.orientation === 'right'
+      ? "text-align: left"
+      : "text-align: right"
+  };
+  position: absolute;
+  top: 0;
+  visibility: ${ props => props.visible ? 'visible' : 'hidden' };
+  width: 100%;
+  background: red;
+`;
+
+const MachineDetails = props => (
+  <MachineDetailsWrapper {...props}>
+    HI
+  </MachineDetailsWrapper>
 )
+
+const Machine = (props, { localContext }) => {
+  return (
+    <MachineWrapper
+      onClick={ (e) => {props.onClick(props.data); e.stopPropagation(); }}
+      visible={ props.selectedMachine === null || props.selectedMachine === props.data.id}
+    >
+      <MachineImg src={ localContext.assetUrl(props.data.fullImg) }/>
+      <MachineCaption>
+        <p>
+          <Span textTransform="uppercase">{ props.data.title },</Span>
+          <Span color={ COLORS.gold }> from { props.data.year } </Span>
+          <Span color={ COLORS.gold }>{ props.data.caption_a }, </Span>
+          <Span>{ props.data.caption_b } </Span>
+        </p>
+      </MachineCaption>
+
+      <MachineDetails
+        data={ props.data }
+        visible={ props.selectedMachine === props.data.id }
+        orientation={ props.detailsOrientation }
+      />
+    </MachineWrapper>
+  );
+}
 
 Machine.contextTypes =  {
   localContext: React.PropTypes.object
 };
+
+Machine.propTypes = {
+  data: React.PropTypes.object,
+  onClick: React.PropTypes.func,
+  selectedMachine: React.PropTypes.number,
+  detailsOrientation: React.PropTypes.oneOf(['left', 'right'])
+}
 
 export { Machine };
