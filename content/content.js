@@ -70,8 +70,7 @@ export const overview = {
   "machineDetails": [{
       "id": 0,
       "title": "Chinese Letter Bed Machine",
-      "subtitle": "from 1876 used in the lower easter part of Xi-An China",
-      "text": require('./machine-detail.js').default
+      "subtitle": "from 1876 used in the lower easter part of Xi-An China"
     }
   ]
 };

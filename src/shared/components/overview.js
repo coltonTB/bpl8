@@ -3,12 +3,13 @@ import styled from 'styled-components';
 
 import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
-import { Div, Span, P } from '../style/util'
+import { Div, Span, P, A } from '../style/util'
 
 import { HeroText, HeroTextLeft } from './hero-text';
 import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
 import { Machine } from './machine';
+import { Machine1 } from './machine-details';
 
 const LEFT_OFFSET = "690px";
 
@@ -36,6 +37,7 @@ const MachinesContainer = styled(Div)`
 `;
 
 const OverviewCenterNav = styled(CenterNavBackground)`
+  flex-direction: column;
   background: ${ COLORS.gold };
   opacity: ${ props => props.selectedMachine === null
     ? 0
@@ -46,7 +48,7 @@ const OverviewCenterNav = styled(CenterNavBackground)`
 const MachineDetailsWrapper = styled.div`
   position: absolute;
   top: 0;
-  left: ${ LEFT_OFFSET} ;
+  left: ${ LEFT_OFFSET } ;
   opacity: ${ props => props.selectedMachine === null
     ? 0
     : 1
@@ -66,30 +68,71 @@ const MachineDetails = props => {
           { data.subtitle }
         </Span>
       </h3>
-      <P color={ COLORS.white }>
-        { data.text }
-      </P>
+      <Machine1
+        onLinkMount={ props.onLinkMount }
+        onLinkClick={ props.onLinkClick }
+      />
     </MachineDetailsWrapper>
   );
 };
 
-class Overview extends React.Component {
 
-  handleMachineClick = data => {
+const SourceLinkCenter = ({id, el, customOffset=0}) => {
+  const Style = styled.div`
+    color: ${ COLORS.white };
+    text-align: center;
+    position: absolute;
+    top: ${ props => props.top }px;
+    width: 140px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    align-self: column;
+  `;
+  return (
+    <Style top={el.offsetTop + customOffset} >
+      <h5>
+        {id}
+      </h5>
+      <div>
+        Few thousands of characters.
+        No alphabet.
+        Millions of customers await whoever solves the puzzle first.
+      </div>
+    </Style>
+  );
+};
+
+const Overview = React.createClass({
+
+  getInitialState() {
+    return {
+      selectedMachine: null,
+      sourceLinks: []
+    }
+  },
+
+  handleMachineClick(data) {
     const selectedMachine = data.id === this.state.selectedMachine ? null : data.id;
     this.setState({
       selectedMachine
     });
-  };
+    this.sourceLinks = [];
+    window.setTimeout(() => {
+      this.setState({
+        sourceLinks: this.sourceLinks
+      });
+    }, 2);
+  },
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedMachine: null
-    };
-  }
+  renderSourceLink(link) {
+    if (!this.sourceLinks) {
+      this.sourceLinks = [];
+    }
+    this.sourceLinks.push(link);
+  },
 
   render() {
+    console.log(this.state);
     const content = key => this.context.localContext.content('overview', key);
     return (
       <Div background={COLORS.black} onClick={ () => this.setState({ selectedMachine: null })}>
@@ -137,14 +180,28 @@ class Overview extends React.Component {
                 detailsOrientation="right"
               />
             </ImagesLeft>
+
             <OverviewCenterNav
               selectedMachine={ this.state.selectedMachine }
-            />
+            >
+              {
+                this.state.selectedMachine !== null &&
+                this.state.sourceLinks &&
+                  this.state.sourceLinks.map((link, i) => (
+                    <SourceLinkCenter key={i} {...link} />
+                  ))
+              }
+            </OverviewCenterNav>
+
             <ImagesRight color={ COLORS.gold }>
-              <MachineDetails
-                data={ content('machineDetails') }
-                selectedMachine={this.state.selectedMachine}
-              />
+              {
+                this.state.selectedMachine !== null &&
+                  <MachineDetails
+                    data={ content('machineDetails') }
+                    selectedMachine={ this.state.selectedMachine }
+                    onLinkMount={ this.renderSourceLink }
+                  />
+              }
               <Machine
                 left={LEFT_OFFSET}
                 data={ content('machines')[1] }
@@ -154,7 +211,7 @@ class Overview extends React.Component {
               />
               <Machine
                 left={LEFT_OFFSET}
-                top="920px"
+                top="870px"
                 data={ content('machines')[3] }
                 onClick={ this.handleMachineClick }
                 selectedMachine={this.state.selectedMachine}
@@ -162,7 +219,7 @@ class Overview extends React.Component {
               />
               <Machine
                 left={LEFT_OFFSET}
-                top="1570px"
+                top="1520px"
                 data={ content('machines')[5] }
                 onClick={ this.handleMachineClick }
                 selectedMachine={this.state.selectedMachine}
@@ -177,7 +234,7 @@ class Overview extends React.Component {
       </Div>
     );
   }
-}
+});
 
 Overview.contextTypes = {
   localContext: React.PropTypes.object

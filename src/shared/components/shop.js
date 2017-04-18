@@ -24,14 +24,14 @@ const StoreItemContainer = styled.div`
   display: flex;
   flex-wrap: nowrap;
   max-width: 1300px;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 `;
 
 const Shop = (props, { localContext }) => {
   const content = key => localContext.content('shop', key);
 
   return (
-    <Div background={COLORS.gold} paddingTop="20px">
+    <Div background={COLORS.gold}>
 
       <CenterNav />
 

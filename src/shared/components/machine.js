@@ -11,6 +11,11 @@ const MachineWrapper = styled(Div)`
       ? 1
       : 0
   };
+  visibility: ${ props =>
+    props.selectedMachine === null || props.selectedMachine === props.data.id
+      ? 'visible'
+      : 'hidden'
+  };
   left: ${ props =>
     props.selectedMachine === props.data.id ? 0 : props.left
   };
