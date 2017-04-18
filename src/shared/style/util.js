@@ -41,6 +41,10 @@ const sharedFeatures = [
   'position',
   'textTransform',
   'textAlign',
+  'top',
+  'bottom',
+  'left',
+  'right',
   'width',
   'zIndex'
 ];

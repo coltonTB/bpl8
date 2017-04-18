@@ -3,14 +3,31 @@ import styled from 'styled-components';
 
 import { COLORS } from '../constants';
 import { FlexItem } from '../style/flexbox';
-import { Span } from '../style/util'
+import { Span, P, Div } from '../style/util'
 
-const MachineWrapper = styled(FlexItem)`
-  flex-direction: column;
-  flex: 1 1 auto;
-  visibility: ${ props => props.visible ? 'visible' : 'hidden' };
-  position: relative;
+const MachineWrapper = styled(Div)`
+  opacity: ${ props =>
+    props.selectedMachine === null || props.selectedMachine === props.data.id
+      ? 1
+      : 0
+  };
+  left: ${ props =>
+    props.selectedMachine === props.data.id ? 0 : props.left
+  };
+  top: ${ props =>
+    props.selectedMachine === props.data.id ? '12px' : props.top
+  };
+  width: 500px;
+  position: absolute;
+  /*transition:
+    top 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    left 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    opacity .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);*/
 `;
+
+MachineWrapper.defaultProps = {
+  left: 0
+};
 
 const MachineImg = styled.img`
   width: 100%;
@@ -23,35 +40,12 @@ const MachineCaption = styled.div`
   margin-bottom: 80px;
 `;
 
-const MachineDetailsWrapper = styled.div`
-  ${
-    props => props.orientation === 'right'
-      ? "right: -700px"
-      : "left: -700px"
-  };
-  ${
-    props => props.orientation === 'right'
-      ? "text-align: left"
-      : "text-align: right"
-  };
-  position: absolute;
-  top: 0;
-  visibility: ${ props => props.visible ? 'visible' : 'hidden' };
-  width: 100%;
-  background: red;
-`;
-
-const MachineDetails = props => (
-  <MachineDetailsWrapper {...props}>
-    HI
-  </MachineDetailsWrapper>
-)
 
 const Machine = (props, { localContext }) => {
   return (
     <MachineWrapper
+      { ...props }
       onClick={ (e) => {props.onClick(props.data); e.stopPropagation(); }}
-      visible={ props.selectedMachine === null || props.selectedMachine === props.data.id}
     >
       <MachineImg src={ localContext.assetUrl(props.data.fullImg) }/>
       <MachineCaption>
@@ -63,11 +57,6 @@ const Machine = (props, { localContext }) => {
         </p>
       </MachineCaption>
 
-      <MachineDetails
-        data={ props.data }
-        visible={ props.selectedMachine === props.data.id }
-        orientation={ props.detailsOrientation }
-      />
     </MachineWrapper>
   );
 }

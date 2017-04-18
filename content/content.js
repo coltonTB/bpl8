@@ -66,6 +66,13 @@ export const overview = {
       "caption_a": "used in the lower eastern part of Xi'An China",
       "caption_b": "by both scholars and students in the Universities"
     }
+  ],
+  "machineDetails": [{
+      "id": 0,
+      "title": "Chinese Letter Bed Machine",
+      "subtitle": "from 1876 used in the lower easter part of Xi-An China",
+      "text": require('./machine-detail.js').default
+    }
   ]
 };
 
