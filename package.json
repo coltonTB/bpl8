@@ -48,7 +48,7 @@
   "scripts": {
     "clean": "rm -rf dist/* && cp -r src/images src/lambda.js dist",
     "lambda-zip": "cd dist && zip -q lambda-function.zip lambda.js server-bundle.js && cd ..",
-    "deploy-assets": "aws s3 cp --recursive ./dist s3://$npm_package_config_s3BucketName --region $npm_package_config_region --exclude '*' --include 'images/*' --include 'assets/*'",
+    "deploy-assets": "aws s3 cp --recursive ./dist s3://$npm_package_config_s3BucketName/$npm_package_version --region $npm_package_config_region --exclude '*' --include 'images/*' --include 'assets/*'",
     "lambda-update": "aws lambda update-function-code --function-name $npm_package_config_lambdaFunctionName --region $npm_package_config_region --zip-file fileb://./dist/lambda-function.zip",
     "deploy": "npm run clean && npm run build && npm run lambda-zip && npm run deploy-assets && npm run lambda-update",
     "fast-deploy": "npm run lambda-zip && npm run deploy-assets && npm run lambda-update",
