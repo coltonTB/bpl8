@@ -1,5 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import ReactSVG from 'react-svg'
+import styled, { css } from 'styled-components';
+
+let scroll, page;
+if (typeof window !== 'undefined') {
+  scroll = require('scroll');
+  page = require('scroll-doc')()
+}
 
 import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
@@ -10,9 +17,15 @@ import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
 import { Machine } from './machine';
 import { Machine1 } from './machine-details';
+import { Source1Text, Source1Images } from './sources';
 
 const LEFT_OFFSET = "690px";
 const stopProp = e => e.stopPropagation();
+
+const Hideable = styled.div`
+  opacity: ${ props => props.isVisible() ? 1 : 0 };
+  transition: opacity 0.25s ease-in ${ props => props.delay || 0 };
+`;
 
 const ImagesLeft = styled(HeroTextLeft)`
   flex-wrap: nowrap;
@@ -76,7 +89,7 @@ const MachineDetails = props => {
         </Span>
       </h3>
       <Machine1
-        onSourceLinksMounted={ props.onLinkMount }
+        onSourceLinksMounted={ props.onSourceLinksMounted }
         onLinkClick={ props.onLinkClick }
       />
     </MachineDetailsWrapper>
@@ -116,6 +129,17 @@ const SourceLinkCenter = ({id, el, customOffset=0, onClick}) => {
   );
 };
 
+const SourceCloseButton = styled.div`
+  text-transform: uppercase;
+  color: ${ COLORS.white };
+  cursor: pointer;
+  span {
+    display: inline-block;
+    padding-top: 14px;
+    text-decoration: underline;
+  }
+`;
+
 const Overview = React.createClass({
 
   getInitialState() {
@@ -131,16 +155,17 @@ const Overview = React.createClass({
     this.setState({
       selectedMachine
     });
+    scroll.top(page, 0)
   },
 
   handleSourceLinkClick(id) {
     this.setState({
-      selectedSourceLink: id,
-      sourceLinks: []
+      selectedSourceLink: id
     });
+    scroll.top(page, 0)
   },
 
-  renderSourceLink(links) {
+  renderSourceLinks(links) {
     this.setState({
       sourceLinks: links
     })
@@ -153,7 +178,7 @@ const Overview = React.createClass({
   render() {
     const content = key => this.context.localContext.content('overview', key);
     return (
-      <Div background={COLORS.black} onClick={ this.clearState }>
+      <Div background={ COLORS.black } onClick={ this.clearState }>
 
         <ExpandableCenterNav
             onClick={ stopProp }
@@ -174,11 +199,28 @@ const Overview = React.createClass({
             </HeroText>
           </FlexContainer>
           <FlexContainer>
-            <HeroTextLeft align="flex-start"/>
+            <HeroTextLeft align="flex-start">
+              <Source1Images />
+            </HeroTextLeft>
             <CenterNavBackground textAlign="center">
-              LOL!
+              <Hideable isVisible={ () => this.state.selectedSourceLink !== null }>
+                <SourceCloseButton onClick={ () => this.handleSourceLinkClick(null) }>
+                  <ReactSVG
+                    path={ this.context.localContext.assetUrl('/images/close.svg') }
+                    style={{
+                      fill: COLORS.white,
+                      height: '46px',
+                      width: '100%',
+                      textAlign: 'center'
+                    }}
+                  />
+                  <Span>close</Span>
+                </SourceCloseButton>
+              </Hideable>
             </CenterNavBackground>
-            <HeroText color={ COLORS.white } align="flex-start" />
+            <HeroText color={ COLORS.white } align="flex-start" >
+              <Source1Text />
+            </HeroText>
           </FlexContainer>
         </ExpandableCenterNav>
 
@@ -189,6 +231,14 @@ const Overview = React.createClass({
             <h2>
               { content('title') }
             </h2>
+            <Hideable
+              isVisible={ () => this.state.selectedMachine !== null }
+              delay="0.3s"
+            >
+              <Div color={ COLORS.gold } textAlign="left" position="relative" bottom="40px">
+                BACK
+              </Div>
+            </Hideable>
           </HeroTextLeft>
           <CenterNavBackground />
           <HeroText color={ COLORS.gold } align="flex-start">
@@ -226,7 +276,7 @@ const Overview = React.createClass({
             <CenterNavBackground flexDirection="column" onClick={stopProp}>
               {
                 this.state.selectedMachine !== null &&
-                this.state.sourceLinks &&
+                this.state.selectedSourceLink === null &&
                   this.state.sourceLinks.map((link, i) => (
                     <SourceLinkCenter {...link} key={i} onClick={this.handleSourceLinkClick}/>
                   ))
@@ -234,14 +284,16 @@ const Overview = React.createClass({
             </CenterNavBackground>
 
             <ImagesRight color={ COLORS.gold }>
-              {
-                this.state.selectedMachine !== null &&
-                  <MachineDetails
-                    data={ content('machineDetails') }
-                    selectedMachine={ this.state.selectedMachine }
-                    onLinkMount={ this.renderSourceLink }
-                  />
-              }
+              <Hideable
+                isVisible={ () => this.state.selectedMachine !== null }
+                delay="0.3s"
+              >
+                <MachineDetails
+                  data={ content('machineDetails') }
+                  selectedMachine={ this.state.selectedMachine }
+                  onSourceLinksMounted={ this.renderSourceLinks }
+                />
+              </Hideable>
               <Machine
                 left={LEFT_OFFSET}
                 data={ content('machines')[1] }

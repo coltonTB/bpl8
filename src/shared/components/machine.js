@@ -24,10 +24,10 @@ const MachineWrapper = styled(Div)`
   };
   width: 500px;
   position: absolute;
-  /*transition:
+  transition:
     top 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95),
     left 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95),
-    opacity .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);*/
+    opacity .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 `;
 
 MachineWrapper.defaultProps = {

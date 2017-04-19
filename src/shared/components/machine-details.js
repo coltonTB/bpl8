@@ -16,32 +16,13 @@ const StyledAnchor = styled.a`
 `;
 
 const SourceLink = React.createClass({
-
   defaultProps: {
     offset: 0
   },
-
-  componentDidMount() {
-    this.props.onMount(this.payload);
-  },
-
-  onClick() {
-    this.props.onClick(this.payload);
-  },
-
   render() {
     return (
-      <StyledAnchor
-        ref={ el => {
-          this.payload = {
-            id: this.props.id,
-            el: ReactDOM.findDOMNode(el),
-            customOffset: this.props.offset
-          };
-        }}
-        onClick={this.onClick}
-      >
-        { this.props.id }
+      <StyledAnchor>
+        { this.props.children }
       </StyledAnchor>
     );
   }
@@ -50,27 +31,20 @@ const SourceLink = React.createClass({
 export const Machine1 = React.createClass({
 
   componentDidMount() {
-    this.props.onSourceLinksMounted(this.sourceLinks);
-  },
-
-  onLinkMount(link) {
-    if (!this.sourceLinks) {
-      this.sourceLinks = [];
-    }
-    this.sourceLinks.push(link);
+    const sourceLinks = Object.keys(this.refs).map(ref => ({
+      id: ref,
+      el: ReactDOM.findDOMNode(this.refs[ref]),
+      customOffset: this.refs[ref].props.offset
+    }));
+    this.props.onSourceLinksMounted(sourceLinks);
   },
 
   render() {
-    const BoundLink = p => (
-      <SourceLink {...p}
-        onMount={ this.onLinkMount }
-        onClick={ this.props.onLinkClick }/>
-    );
     return (
       <P color={ COLORS.white } onClick={ e => e.stopPropagation() }>
         Thousands of characters. No alphabet. Millions of customers
         await whoever solves the puzzle first. How would you design a
-        Chinese typewriter? <BoundLink id="01" /> Lore moluptaest et as nos et ut volorro
+        Chinese typewriter? <SourceLink ref="01">01</SourceLink> Lore moluptaest et as nos et ut volorro
         volores tibus, core voluptur adignam qui il magnihiti cor rempore
         liasped que volori re aut vit volorercil in porerspis et odis ma pera
         nesed ut eos dit quide sitio iur aut ipsa eos
@@ -81,7 +55,7 @@ export const Machine1 = React.createClass({
         anda dolliae laut rectem et hario mosam faciatu scimus audis
         eaquame nihit apeliqui to bea doluptae con estior re, aut atur?
         Del maioritem est, eos undit ut ipsaest occus sitaqui ut quo
-        blabor am non rempore nam hita nam as exerferovidi <BoundLink id="02" />
+        blabor am non rempore nam hita nam as exerferovidi <SourceLink ref="02">02</SourceLink>
         <br/>
         <br/>
 
@@ -96,13 +70,13 @@ export const Machine1 = React.createClass({
         quiae aut dolorro et untibusdaes ma sitinus cum ea quaesequiam
         qui dicil illabo. It, of c te peratum latem hita vendistioria ium is
         consedit, suntior itempore ditincium ne nissunti dolupti onsecto
-        rporeptat. <BoundLink id="03" offset={-20}/>
+        rporeptat. <SourceLink ref="03" offset={-20}>03</SourceLink>
         <br/>
         <br/>
 
         Loris quasperio blaudan diciis sum expligni tecuptiscia si qui
         dolupti simolut laccupt atiusant estrum simi, si cum am aut
-        voluptatum inctur? <BoundLink id="04" offset={80}/>
+        voluptatum inctur? <SourceLink ref="04" offset={80}>04</SourceLink>
         <br/>
         <br/>
 
