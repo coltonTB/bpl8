@@ -12,6 +12,7 @@ import { Machine } from './machine';
 import { Machine1 } from './machine-details';
 
 const LEFT_OFFSET = "690px";
+const stopProp = e => e.stopPropagation();
 
 const ImagesLeft = styled(HeroTextLeft)`
   flex-wrap: nowrap;
@@ -31,18 +32,24 @@ const ImagesRight = styled(HeroText)`
 const MachinesContainer = styled(Div)`
   display: flex;
   flex-wrap: nowrap;
+  height: 2050px;
   max-width: 1300px;
-  height: 2200px;
+  margin-top: 80px;
   position: relative;
 `;
 
-const OverviewCenterNav = styled(CenterNavBackground)`
-  flex-direction: column;
-  background: ${ COLORS.gold };
-  opacity: ${ props => props.selectedMachine === null
-    ? 0
-    : 1
-  };
+const ExpandableCenterNav = styled.div`
+  background: ${ props => props.selectedMachine === null ? '' : COLORS.gold };
+  height: 2671px;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  width: ${ props => props.selectedSourceLink === null ? '140px' : '100vw' };
+  transition: width 0.2s ease-out;
+  z-index: 1;
 `;
 
 const MachineDetailsWrapper = styled.div`
@@ -69,15 +76,14 @@ const MachineDetails = props => {
         </Span>
       </h3>
       <Machine1
-        onLinkMount={ props.onLinkMount }
+        onSourceLinksMounted={ props.onLinkMount }
         onLinkClick={ props.onLinkClick }
       />
     </MachineDetailsWrapper>
   );
 };
 
-
-const SourceLinkCenter = ({id, el, customOffset=0}) => {
+const SourceLinkCenter = ({id, el, customOffset=0, onClick}) => {
   const Style = styled.div`
     color: ${ COLORS.white };
     text-align: center;
@@ -87,12 +93,20 @@ const SourceLinkCenter = ({id, el, customOffset=0}) => {
     box-sizing: border-box;
     padding: 0 10px;
     align-self: column;
+    z-index: 2;
   `;
+  const Number = styled.h5`
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover {
+      color: #ddd;
+    }
+  `
   return (
     <Style top={el.offsetTop + customOffset} >
-      <h5>
-        {id}
-      </h5>
+      <Number onClick={() => onClick(id)}>
+        { id }
+      </Number>
       <div>
         Few thousands of characters.
         No alphabet.
@@ -107,6 +121,7 @@ const Overview = React.createClass({
   getInitialState() {
     return {
       selectedMachine: null,
+      selectedSourceLink: null,
       sourceLinks: []
     }
   },
@@ -116,26 +131,56 @@ const Overview = React.createClass({
     this.setState({
       selectedMachine
     });
-    this.sourceLinks = [];
-    window.setTimeout(() => {
-      this.setState({
-        sourceLinks: this.sourceLinks
-      });
-    }, 2);
   },
 
-  renderSourceLink(link) {
-    if (!this.sourceLinks) {
-      this.sourceLinks = [];
-    }
-    this.sourceLinks.push(link);
+  handleSourceLinkClick(id) {
+    this.setState({
+      selectedSourceLink: id,
+      sourceLinks: []
+    });
+  },
+
+  renderSourceLink(links) {
+    this.setState({
+      sourceLinks: links
+    })
+  },
+
+  clearState() {
+    this.setState(this.getInitialState());
   },
 
   render() {
-    console.log(this.state);
     const content = key => this.context.localContext.content('overview', key);
     return (
-      <Div background={COLORS.black} onClick={ () => this.setState({ selectedMachine: null })}>
+      <Div background={COLORS.black} onClick={ this.clearState }>
+
+        <ExpandableCenterNav
+            onClick={ stopProp }
+            selectedMachine={ this.state.selectedMachine }
+            selectedSourceLink={ this.state.selectedSourceLink }
+          >
+          <FlexContainer>
+            <HeroTextLeft align="flex-start">
+              <h2>
+                { content('title') }
+              </h2>
+            </HeroTextLeft>
+            <CenterNavBackground />
+            <HeroText color={ COLORS.white } align="flex-start">
+              <h5>
+                { content('subtitle') }
+              </h5>
+            </HeroText>
+          </FlexContainer>
+          <FlexContainer>
+            <HeroTextLeft align="flex-start"/>
+            <CenterNavBackground textAlign="center">
+              LOL!
+            </CenterNavBackground>
+            <HeroText color={ COLORS.white } align="flex-start" />
+          </FlexContainer>
+        </ExpandableCenterNav>
 
         <CenterNav />
 
@@ -145,10 +190,7 @@ const Overview = React.createClass({
               { content('title') }
             </h2>
           </HeroTextLeft>
-          <OverviewCenterNav
-            selectedMachine={this.state.selectedMachine}
-            height="260px"
-          />
+          <CenterNavBackground />
           <HeroText color={ COLORS.gold } align="flex-start">
             <h5>
               { content('subtitle') }
@@ -181,17 +223,15 @@ const Overview = React.createClass({
               />
             </ImagesLeft>
 
-            <OverviewCenterNav
-              selectedMachine={ this.state.selectedMachine }
-            >
+            <CenterNavBackground flexDirection="column" onClick={stopProp}>
               {
                 this.state.selectedMachine !== null &&
                 this.state.sourceLinks &&
                   this.state.sourceLinks.map((link, i) => (
-                    <SourceLinkCenter key={i} {...link} />
+                    <SourceLinkCenter {...link} key={i} onClick={this.handleSourceLinkClick}/>
                   ))
               }
-            </OverviewCenterNav>
+            </CenterNavBackground>
 
             <ImagesRight color={ COLORS.gold }>
               {

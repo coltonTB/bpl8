@@ -27,6 +27,7 @@ const sharedFeatures = [
   'color',
   'fontSize',
   'fontWeight',
+  'flexDirection',
   'height',
   'margin',
   'marginBottom',
