@@ -231,14 +231,6 @@ const Overview = React.createClass({
             <h2>
               { content('title') }
             </h2>
-            <Hideable
-              isVisible={ () => this.state.selectedMachine !== null }
-              delay="0.3s"
-            >
-              <Div color={ COLORS.gold } textAlign="left" position="relative" bottom="40px">
-                BACK
-              </Div>
-            </Hideable>
           </HeroTextLeft>
           <CenterNavBackground />
           <HeroText color={ COLORS.gold } align="flex-start">
