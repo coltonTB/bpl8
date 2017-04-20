@@ -1,7 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const POLL_MS = 200;
+const POLL_INTERVAL = 200;
+
+class EventManager {
+
+  constructor() {
+    this.events = [];
+    this.count = 0;
+    window.setInterval(this.processEvents.bind(this), POLL_INTERVAL)
+  }
+
+  addEvent(fn) {
+    const uuid = String(this.count);
+    this.count ++;
+    this.events.push({
+      uuid,
+      fn
+    });
+    return uuid;
+  }
+
+  removeEvent(uuid) {
+    window.setTimeout(() => {
+      this.events = this.events.filter(e => e.uuid !== uuid);
+    }, 0);
+  }
+
+  processEvents() {
+    this.events.forEach(e => e.fn())
+  }
+}
+
+let eventMangerInstance;
 
 const Style = styled.div`
   opacity: 1;
@@ -50,19 +81,22 @@ export const Hideable = React.createClass({
   },
 
   componentDidMount() {
-    if (this.props.listen) {
-      this.interval =
-      window.setInterval(() => {
-        this.setState({
-          isVisible: this.evaluateVisibility(this.props)
-        });
-      }, POLL_MS)
+    if (!this.props.listen) {
+      return;
     }
+    if (!eventMangerInstance) {
+      eventMangerInstance = new EventManager();
+    }
+    this.eventId = eventMangerInstance.addEvent(() => {
+      this.setState({
+        isVisible: this.evaluateVisibility(this.props)
+      });
+    });
   },
 
   componentWillUnmount() {
-    if (this.interval) {
-      window.clearInterval(this.interval);
+    if (this.eventId) {
+      eventMangerInstance.removeEvent(this.eventId);
     }
   },
 
