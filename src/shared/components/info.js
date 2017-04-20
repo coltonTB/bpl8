@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
 import { Div, H2, H5, Img, P } from '../style/util'
+import { Hideable } from '../style/hideable';
 
 import { HeroTextLeft, HeroText } from './hero-text';
 import { CenterNav, CenterNavBackground } from './center-nav';
@@ -57,64 +58,66 @@ const Info = (props, { localContext }) => {
 
       <Div padding="60px 0">
 
-        <FlexContainer>
-          <InfoLeft align="flex-start" color={ COLORS.black }>
-            <h3>
-              { content('mission_title') }
-            </h3>
-            <p>
-              { content('mission_text') }
-            </p>
-          </InfoLeft>
-          <CenterNavBackground />
-          <InfoRight color={ COLORS.gold }>
-            <div>
-              <Image src={ localContext.assetUrl(content('gallery_img')) } />
-            </div>
-            <Div fontWeight="bold" textAlign="center">
-                { content('gallery_img_title') }
-            </Div>
-            <Div textAlign="center">
-                { content('gallery_img_caption') }
-            </Div>
-          </InfoRight>
-        </FlexContainer>
+        <Hideable hideInitially isVisible>
+          <FlexContainer>
+            <InfoLeft align="flex-start" color={ COLORS.black }>
+              <h3>
+                { content('mission_title') }
+              </h3>
+              <p>
+                { content('mission_text') }
+              </p>
+            </InfoLeft>
+            <CenterNavBackground />
+            <InfoRight color={ COLORS.gold }>
+              <div>
+                <Image src={ localContext.assetUrl(content('gallery_img')) } />
+              </div>
+              <Div fontWeight="bold" textAlign="center">
+                  { content('gallery_img_title') }
+              </Div>
+              <Div textAlign="center">
+                  { content('gallery_img_caption') }
+              </Div>
+            </InfoRight>
+          </FlexContainer>
 
-        <FlexContainer>
-          <InfoLeft color={ COLORS.gold }>
-            <div>
-              <Image src={ localContext.assetUrl(content('tom_img')) } />
-            </div>
-            <Div fontWeight="bold" textAlign="center">
-                { content('tom_img_title') }
-            </Div>
-            <Div textAlign="center">
-                { content('tom_img_caption') }
-            </Div>
-          </InfoLeft>
-          <CenterNavBackground />
-          <InfoRight align="flex-start" color={ COLORS.black }>
-            <h3>
-              { content('tom_title') }
-            </h3>
-            <p>
-              { content('tom_text') }
-            </p>
-          </InfoRight>
-        </FlexContainer>
+          <FlexContainer>
+            <InfoLeft color={ COLORS.gold }>
+              <div>
+                <Image src={ localContext.assetUrl(content('tom_img')) } />
+              </div>
+              <Div fontWeight="bold" textAlign="center">
+                  { content('tom_img_title') }
+              </Div>
+              <Div textAlign="center">
+                  { content('tom_img_caption') }
+              </Div>
+            </InfoLeft>
+            <CenterNavBackground />
+            <InfoRight align="flex-start" color={ COLORS.black }>
+              <h3>
+                { content('tom_title') }
+              </h3>
+              <p>
+                { content('tom_text') }
+              </p>
+            </InfoRight>
+          </FlexContainer>
 
-        <FlexContainer>
-          <InfoLeft align="flex-start" color={ COLORS.black }>
-            <h2>
-              { content('partners_title') }
-            </h2>
-          </InfoLeft>
-          <CenterNavBackground />
-          <InfoRight color={ COLORS.gold }>
-            { content('partners_list').map(Collaborator) }
-          </InfoRight>
-        </FlexContainer>
+          <FlexContainer>
+            <InfoLeft align="flex-start" color={ COLORS.black }>
+              <h2>
+                { content('partners_title') }
+              </h2>
+            </InfoLeft>
+            <CenterNavBackground />
+            <InfoRight color={ COLORS.gold }>
+              { content('partners_list').map(Collaborator) }
+            </InfoRight>
+          </FlexContainer>
 
+        </Hideable>
       </Div>
 
       <Footer />

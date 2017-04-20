@@ -221,7 +221,7 @@ const Overview = React.createClass({
           </FlexContainer>
         </ExpandableCenterNav>
 
-        <CenterNav />
+        <CenterNav isExpanded={ this.state.selectedMachine === null }/>
 
         <FlexContainer>
           <HeroTextLeft align="flex-start">
@@ -237,78 +237,81 @@ const Overview = React.createClass({
           </HeroText>
         </FlexContainer>
 
-        <FlexContainer>
-          <MachinesContainer>
-            <ImagesLeft>
-              <Machine
-                data={ content('machines')[0] }
-                onClick={ this.handleMachineClick }
-                selectedMachine={this.state.selectedMachine}
-                detailsOrientation="right"
-              />
-              <Machine
-                top="600px"
-                data={ content('machines')[2] }
-                onClick={ this.handleMachineClick }
-                selectedMachine={this.state.selectedMachine}
-                detailsOrientation="right"
-              />
-              <Machine
-                top="1170px"
-                data={ content('machines')[4] }
-                onClick={ this.handleMachineClick }
-                selectedMachine={this.state.selectedMachine}
-                detailsOrientation="right"
-              />
-            </ImagesLeft>
+        <Hideable hideInitially isVisible>
 
-            <CenterNavBackground flexDirection="column" onClick={stopProp}>
-              {
-                this.state.selectedMachine !== null &&
-                this.state.selectedSourceLink === null &&
-                  this.state.sourceLinks.map((link, i) => (
-                    <SourceLinkCenter {...link} key={i} onClick={this.handleSourceLinkClick}/>
-                  ))
-              }
-            </CenterNavBackground>
-
-            <ImagesRight color={ COLORS.gold }>
-              <Hideable
-                isVisible={ this.state.selectedMachine !== null }
-                delay="0.3s"
-              >
-                <MachineDetails
-                  data={ content('machineDetails') }
-                  selectedMachine={ this.state.selectedMachine }
-                  onSourceLinksMounted={ this.renderSourceLinks }
+          <FlexContainer>
+            <MachinesContainer>
+              <ImagesLeft>
+                <Machine
+                  data={ content('machines')[0] }
+                  onClick={ this.handleMachineClick }
+                  selectedMachine={this.state.selectedMachine}
+                  detailsOrientation="right"
                 />
-              </Hideable>
-              <Machine
-                left={LEFT_OFFSET}
-                data={ content('machines')[1] }
-                onClick={ this.handleMachineClick }
-                selectedMachine={this.state.selectedMachine}
-                detailsOrientation="left"
-              />
-              <Machine
-                left={LEFT_OFFSET}
-                top="870px"
-                data={ content('machines')[3] }
-                onClick={ this.handleMachineClick }
-                selectedMachine={this.state.selectedMachine}
-                detailsOrientation="left"
-              />
-              <Machine
-                left={LEFT_OFFSET}
-                top="1520px"
-                data={ content('machines')[5] }
-                onClick={ this.handleMachineClick }
-                selectedMachine={this.state.selectedMachine}
-                detailsOrientation="left"
-              />
-            </ImagesRight>
-          </MachinesContainer>
-        </FlexContainer>
+                <Machine
+                  top="600px"
+                  data={ content('machines')[2] }
+                  onClick={ this.handleMachineClick }
+                  selectedMachine={this.state.selectedMachine}
+                  detailsOrientation="right"
+                />
+                <Machine
+                  top="1170px"
+                  data={ content('machines')[4] }
+                  onClick={ this.handleMachineClick }
+                  selectedMachine={this.state.selectedMachine}
+                  detailsOrientation="right"
+                />
+              </ImagesLeft>
+
+              <CenterNavBackground flexDirection="column" onClick={stopProp}>
+                {
+                  this.state.selectedMachine !== null &&
+                  this.state.selectedSourceLink === null &&
+                    this.state.sourceLinks.map((link, i) => (
+                      <SourceLinkCenter {...link} key={i} onClick={this.handleSourceLinkClick}/>
+                    ))
+                }
+              </CenterNavBackground>
+
+              <ImagesRight color={ COLORS.gold }>
+                <Hideable
+                  isVisible={ this.state.selectedMachine !== null }
+                  delay="0.3s"
+                >
+                  <MachineDetails
+                    data={ content('machineDetails') }
+                    selectedMachine={ this.state.selectedMachine }
+                    onSourceLinksMounted={ this.renderSourceLinks }
+                  />
+                </Hideable>
+                <Machine
+                  left={LEFT_OFFSET}
+                  data={ content('machines')[1] }
+                  onClick={ this.handleMachineClick }
+                  selectedMachine={this.state.selectedMachine}
+                  detailsOrientation="left"
+                />
+                <Machine
+                  left={LEFT_OFFSET}
+                  top="870px"
+                  data={ content('machines')[3] }
+                  onClick={ this.handleMachineClick }
+                  selectedMachine={this.state.selectedMachine}
+                  detailsOrientation="left"
+                />
+                <Machine
+                  left={LEFT_OFFSET}
+                  top="1520px"
+                  data={ content('machines')[5] }
+                  onClick={ this.handleMachineClick }
+                  selectedMachine={this.state.selectedMachine}
+                  detailsOrientation="left"
+                />
+              </ImagesRight>
+            </MachinesContainer>
+          </FlexContainer>
+        </Hideable>
 
         <Footer />
 

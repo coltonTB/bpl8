@@ -11,13 +11,8 @@ import { HeroText, HeroTextLeft } from './hero-text';
 import { Footer } from './footer';
 import { ScrollPrompt } from './scroll-prompt';
 
-const scrollLimit = limit => () => {
-  let scroll = window.scrollY;
-  if (scroll < limit) {
-    return true;
-  }
-  return false;
-}
+const scrollLimit = limit => () => window.scrollY < limit;
+const scrollMin = limit => () => window.scrollY > limit;
 
 const Home = (props, { localContext }) => {
   const content = key => localContext.content('home', key);
@@ -30,88 +25,95 @@ const Home = (props, { localContext }) => {
 
         <Div background={ COLORS.black }>
           <FlexContainer>
-            <HeroTextLeft>
-              <h1>
-                { content('hero_text_left') }
-              </h1>
-            </HeroTextLeft>
-            <CenterNavBackground fullHeight background={ COLORS.gold } />
-            <HeroText>
-              <h1>
-                { content('hero_text_right') }
-              </h1>
-            </HeroText>
+              <HeroTextLeft>
+                <Hideable hideInitially isVisible>
+                  <h1>
+                    { content('hero_text_left') }
+                  </h1>
+                </Hideable>
+              </HeroTextLeft>
+              <CenterNavBackground fullHeight background={ COLORS.gold } />
+              <HeroText>
+                <Hideable hideInitially isVisible>
+                  <h1>
+                    { content('hero_text_right') }
+                  </h1>
+                </Hideable>
+              </HeroText>
           </FlexContainer>
         </Div>
 
         <Div>
           <FlexContainer>
             <HeroTextLeft>
-              <H2 color={ COLORS.black }>
-                { content('hero_2_title') }&mdash;
-              </H2>
-              <H2>
-                { content('hero_2_subtitle') }
-              </H2>
+              <Hideable autoHide>
+                <H2 color={ COLORS.black }>
+                  { content('hero_2_title') }&mdash;
+                </H2>
+                <H2>
+                  { content('hero_2_subtitle') }
+                </H2>
+              </Hideable>
             </HeroTextLeft>
             <CenterNavBackground fullHeight background={ COLORS.black } />
             <HeroText>
-              <div>
-                <Img src={ localContext.assetUrl('/images/hero_2.png') } height="300px" />
-              </div>
-              <H3 margin="16px 0 8px 0">
-                { content('hero_2_caption') }
-              </H3>
-              <p>
-                { content('hero_2_text') }
-              </p>
+              <Hideable autoHide>
+                <div>
+                  <Img src={ localContext.assetUrl('/images/hero_2.png') } height="300px" />
+                </div>
+                <H3 margin="16px 0 8px 0">
+                  { content('hero_2_caption') }
+                </H3>
+                <p>
+                  { content('hero_2_text') }
+                </p>
+              </Hideable>
             </HeroText>
           </FlexContainer>
 
         </Div>
 
         <Div background={COLORS.white} padding="30px 0 70px 0">
-          <FlexContainer marginBottom="20px">
-            <HeroTextLeft>
-              <H2 color={ COLORS.black }>
-                { content('video_title') }
-              </H2>
-            </HeroTextLeft>
-            <CenterNavBackground />
-            <HeroText>
-              <H5 color={ COLORS.gold }>
-                { content('video_subtitle') }
-              </H5>
-            </HeroText>
-          </FlexContainer>
+          <Hideable autoHide>
+            <FlexContainer marginBottom="20px">
+              <HeroTextLeft>
+                <H2 color={ COLORS.black }>
+                  { content('video_title') }
+                </H2>
+              </HeroTextLeft>
+              <CenterNavBackground />
+              <HeroText>
+                <H5 color={ COLORS.gold }>
+                  { content('video_subtitle') }
+                </H5>
+              </HeroText>
+            </FlexContainer>
 
-          <FlexContainer flexDirection="column">
-            <Img src={ localContext.assetUrl('/images/video_preview.png') } height="50vh" />
-          </FlexContainer>
-        </Div>
+            <FlexContainer flexDirection="column">
+              <Img src={ localContext.assetUrl('/images/video_preview.png') } height="50vh" />
+            </FlexContainer>
 
-        <Div background={COLORS.white} paddingBottom="40px">
-          <FlexContainer marginBottom="20px">
-            <HeroTextLeft align="flex-start">
-              <H2 color={ COLORS.black }>
-                { content('insta_title') }
-              </H2>
-            </HeroTextLeft>
-            <CenterNavBackground />
-            <HeroText align="flex-start">
-              <H5 color={ COLORS.gold }>
-                { content('insta_subtitle') }
-              </H5>
-            </HeroText>
-          </FlexContainer>
+            <FlexContainer marginBottom="20px" paddingTop="40px">
+              <HeroTextLeft align="flex-start">
+                <H2 color={ COLORS.black }>
+                  { content('insta_title') }
+                </H2>
+              </HeroTextLeft>
+              <CenterNavBackground />
+              <HeroText align="flex-start">
+                <H5 color={ COLORS.gold }>
+                  { content('insta_subtitle') }
+                </H5>
+              </HeroText>
+            </FlexContainer>
 
-          <FlexContainer flexDirection="column">
-            <Img src={ localContext.assetUrl('/images/insta_shim.png') } height="30vh" />
-            <Button marginTop="40px">
-              { content('see_more_btn') }
-            </Button>
-          </FlexContainer>
-
+            <FlexContainer flexDirection="column">
+              <Img src={ localContext.assetUrl('/images/insta_shim.png') } height="30vh" />
+              <Button marginTop="40px">
+                { content('see_more_btn') }
+              </Button>
+            </FlexContainer>
+          </Hideable>
         </Div>
 
         <Div background={COLORS.gray} padding="40px 0">
