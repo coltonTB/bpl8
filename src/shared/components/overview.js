@@ -11,6 +11,7 @@ if (typeof window !== 'undefined') {
 import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
 import { Div, Span, P, A } from '../style/util'
+import { Hideable } from '../style/hideable';
 
 import { HeroText, HeroTextLeft } from './hero-text';
 import { CenterNav, CenterNavBackground } from './center-nav';
@@ -21,11 +22,6 @@ import { Source1Text, Source1Images } from './sources';
 
 const LEFT_OFFSET = "690px";
 const stopProp = e => e.stopPropagation();
-
-const Hideable = styled.div`
-  opacity: ${ props => props.isVisible() ? 1 : 0 };
-  transition: opacity 0.25s ease-in ${ props => props.delay || 0 };
-`;
 
 const ImagesLeft = styled(HeroTextLeft)`
   flex-wrap: nowrap;
@@ -52,7 +48,7 @@ const MachinesContainer = styled(Div)`
 `;
 
 const ExpandableCenterNav = styled.div`
-  background: ${ props => props.selectedMachine === null ? '' : COLORS.gold };
+  background: ${ COLORS.gold };
   height: 2671px;
   left: 0;
   margin-left: auto;
@@ -60,6 +56,7 @@ const ExpandableCenterNav = styled.div`
   overflow: hidden;
   position: absolute;
   right: 0;
+  opacity: ${ props => props.selectedMachine === null ? 0 : 1 };
   width: ${ props => props.selectedSourceLink === null ? '140px' : '100vw' };
   transition: width 0.2s ease-out;
   z-index: 1;
@@ -181,10 +178,10 @@ const Overview = React.createClass({
       <Div background={ COLORS.black } onClick={ this.clearState }>
 
         <ExpandableCenterNav
-            onClick={ stopProp }
-            selectedMachine={ this.state.selectedMachine }
-            selectedSourceLink={ this.state.selectedSourceLink }
-          >
+          onClick={ stopProp }
+          selectedMachine={ this.state.selectedMachine }
+          selectedSourceLink={ this.state.selectedSourceLink }
+        >
           <FlexContainer>
             <HeroTextLeft align="flex-start">
               <h2>
@@ -203,7 +200,7 @@ const Overview = React.createClass({
               <Source1Images />
             </HeroTextLeft>
             <CenterNavBackground textAlign="center">
-              <Hideable isVisible={ () => this.state.selectedSourceLink !== null }>
+              <Hideable isVisible={ this.state.selectedSourceLink !== null } hideInitially>
                 <SourceCloseButton onClick={ () => this.handleSourceLinkClick(null) }>
                   <ReactSVG
                     path={ this.context.localContext.assetUrl('/images/close.svg') }
@@ -277,7 +274,7 @@ const Overview = React.createClass({
 
             <ImagesRight color={ COLORS.gold }>
               <Hideable
-                isVisible={ () => this.state.selectedMachine !== null }
+                isVisible={ this.state.selectedMachine !== null }
                 delay="0.3s"
               >
                 <MachineDetails

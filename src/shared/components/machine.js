@@ -25,9 +25,9 @@ const MachineWrapper = styled(Div)`
   width: 500px;
   position: absolute;
   transition:
-    top 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95),
-    left 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95),
-    opacity .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    top 0.4s ease,
+    left 0.4s ease,
+    opacity .2s ease;
 `;
 
 MachineWrapper.defaultProps = {

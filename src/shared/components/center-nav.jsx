@@ -4,8 +4,8 @@ import { Link as UnstyledLink } from 'react-router';
 import styled from 'styled-components';
 
 import { COLORS } from '../constants';
-
 import { Ul, Div } from '../style/util';
+import { Hideable } from '../style/hideable';
 
 const CenterNavWrapper = styled(Div)`
   __comment: centerNav;
@@ -24,56 +24,102 @@ export const CenterNavBackground = styled(Div)`
 `;
 
 const List = styled(Ul)`
-  text-align: center;
   list-style: none;
-  position: fixed;
-  z-index: 1;
   padding: 0;
+  margin-top: 12px;
   font-size: 1.2em;
   line-height: 1.4em;
+`;
+
+const Fixed = styled.div`
+  position: fixed;
+  z-index: 1;
+  text-align: center;
+  margin-top: 1em;
 `;
 
 const Link = styled(UnstyledLink)`
   text-decoration: none;
   color: ${ props => props.color };
   font-weight: bold;
+  cursor: 'pointer';
+  font-style: 'normal';
+  &.active {
+    cursor: default;
+    font-style: italic;
+  }
 `;
+Link.defaultProps = {
+  activeClassName: 'active'
+};
 
-export const CenterNav = (props, {localContext}) => (
-  <CenterNavWrapper>
-    <List>
-      <li>
-        <ReactSVG
-          path={ localContext.assetUrl('/images/hamburger.svg') }
-          style={{
-            fill: props.color,
-            height: '46px',
-            marginBottom: '12px'
-          }}
-        />
-      </li>
-      <li>
-        <Link color={props.color} to="/">Home</Link>
-      </li>
-      <li>
-        <Link color={props.color} to="/info">Information</Link>
-      </li>
-      <li>
-        <Link color={props.color} to="/calendar">Calendar</Link>
-      </li>
-      <li>
-        <Link color={props.color} to="/background">Background</Link>
-      </li>
-      <li>
-        <Link color={props.color} to="/overview">Overview</Link>
-      </li>
-      <li>
-        <Link color={props.color} to="/shop">Gift Shop</Link>
-      </li>
-    </List>
-    { props.children }
-  </CenterNavWrapper>
-);
+export const CenterNav = React.createClass({
+
+  getInitialState() {
+    return {
+      isUserExpanded: false
+    }
+  },
+
+  toggleUserExpandedState() {
+    const isUserExpanded = !this.state.isUserExpanded;
+    this.setState({
+      isUserExpanded
+    });
+  },
+
+  render() {
+    const localContext = this.context.localContext;
+    const props = this.props;
+
+    return (
+      <CenterNavWrapper>
+        <Fixed>
+          <span onClick={ this.toggleUserExpandedState }>
+            <ReactSVG
+              path={ localContext.assetUrl('/images/hamburger.svg') }
+              style={{
+                fill: props.color,
+                height: '46px',
+                cursor: 'pointer'
+              }}
+            />
+          </span>
+
+          <Hideable
+            isVisible={ this.props.isExpanded }
+            forceVisibility={ this.state.isUserExpanded }
+            listen
+            showInitially
+          >
+            <List>
+              <li>
+                <Link color={props.color} to="/">Home</Link>
+              </li>
+              <li>
+                <Link color={props.color} to="/info">Information</Link>
+              </li>
+              <li>
+                <Link color={props.color} to="/calendar">Calendar</Link>
+              </li>
+              <li>
+                <Link color={props.color} to="/background">Background</Link>
+              </li>
+              <li>
+                <Link color={props.color} to="/overview">Overview</Link>
+              </li>
+              <li>
+                <Link color={props.color} to="/shop">Gift Shop</Link>
+              </li>
+            </List>
+          </Hideable>
+
+        </Fixed>
+        { props.children }
+      </CenterNavWrapper>
+    );
+  }
+});
 
 CenterNav.contextTypes = {
   localContext: React.PropTypes.object

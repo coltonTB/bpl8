@@ -4,21 +4,28 @@ import styled from 'styled-components';
 import { COLORS } from '../constants';
 import { FlexContainer, FlexItem } from '../style/flexbox';
 import { Button, Img, Div, H2, H3, H5 } from '../style/util';
+import { Hideable } from '../style/hideable';
 
 import { CenterNav, CenterNavBackground } from './center-nav';
 import { HeroText, HeroTextLeft } from './hero-text';
 import { Footer } from './footer';
 import { ScrollPrompt } from './scroll-prompt';
 
+const scrollLimit = limit => () => {
+  let scroll = window.scrollY;
+  if (scroll < limit) {
+    return true;
+  }
+  return false;
+}
+
 const Home = (props, { localContext }) => {
-
   const content = key => localContext.content('home', key);
-
   return (
     <div>
 
-      <CenterNav>
-        <ScrollPrompt/>
+      <CenterNav isExpanded={ scrollLimit(1000) }>
+        <ScrollPrompt isVisible={ scrollLimit(500) } />
       </CenterNav>
 
         <Div background={ COLORS.black }>

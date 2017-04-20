@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { COLORS } from '../constants';
 import { Div } from '../style/util';
+import { Hideable } from '../style/hideable';
 
 const ScrollPromptWrapper = styled(Div)`
   position: absolute;
@@ -15,15 +16,17 @@ const ScrollPromptWrapper = styled(Div)`
 
 export const ScrollPrompt = (props, {localContext}) => (
   <ScrollPromptWrapper>
-    <div>
-      Scroll
-    </div>
-    <ReactSVG
-      path={ localContext.assetUrl('/images/down_arrow.svg') }
-      style={{
-        fill: COLORS.white
-      }}
-    />
+    <Hideable isVisible={ props.isVisible } listen>
+      <div>
+        Scroll
+      </div>
+      <ReactSVG
+        path={ localContext.assetUrl('/images/down_arrow.svg') }
+        style={{
+          fill: COLORS.white
+        }}
+      />
+    </Hideable>
   </ScrollPromptWrapper>
 );
 
