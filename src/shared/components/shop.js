@@ -33,7 +33,7 @@ const Shop = (props, { localContext }) => {
   return (
     <Div background={COLORS.gold}>
 
-      <CenterNav />
+      <CenterNav fixed/>
 
       <FlexContainer>
         <HeroTextLeft align="flex-start">

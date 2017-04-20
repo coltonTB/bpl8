@@ -221,7 +221,7 @@ const Overview = React.createClass({
           </FlexContainer>
         </ExpandableCenterNav>
 
-        <CenterNav isExpanded={ this.state.selectedMachine === null }/>
+        <CenterNav isExpanded={ this.state.selectedMachine === null } fixed/>
 
         <FlexContainer>
           <HeroTextLeft align="flex-start">

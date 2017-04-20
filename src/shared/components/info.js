@@ -40,7 +40,7 @@ const Info = (props, { localContext }) => {
   return (
     <Div background={COLORS.white}>
 
-      <CenterNav color={ COLORS.gold }/>
+      <CenterNav color={ COLORS.gold } fixed />
 
       <FlexContainer>
         <InfoLeft align="flex-start">

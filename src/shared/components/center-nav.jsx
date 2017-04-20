@@ -29,13 +29,16 @@ const List = styled(Ul)`
   margin-top: 12px;
   font-size: 1.2em;
   line-height: 1.4em;
+  position: relative;
+  top: ${ props => props.isMini ? '-100px' : '0' };
 `;
 
-const Fixed = styled.div`
-  position: fixed;
+const Nav = styled.div`
+  position: ${ props => props.fixed ? 'fixed' : 'static' };
   z-index: 1;
   text-align: center;
   margin-top: 1em;
+  height: 80px;
 `;
 
 const Link = styled(UnstyledLink)`
@@ -52,6 +55,16 @@ const Link = styled(UnstyledLink)`
 Link.defaultProps = {
   activeClassName: 'active'
 };
+
+export const CenterNavMini = props => (
+  <CenterNavBackground>
+    <CenterNav
+      { ...props }
+      isExpanded={false}
+      isMini={true}
+    />
+  </CenterNavBackground>
+)
 
 export const CenterNav = React.createClass({
 
@@ -74,7 +87,7 @@ export const CenterNav = React.createClass({
 
     return (
       <CenterNavWrapper>
-        <Fixed>
+        <Nav fixed={ this.props.fixed }>
           <span onClick={ this.toggleUserExpandedState }>
             <ReactSVG
               path={ localContext.assetUrl('/images/hamburger.svg') }
@@ -92,7 +105,7 @@ export const CenterNav = React.createClass({
             listen
             showInitially
           >
-            <List>
+            <List isMini={ this.props.isMini } background={ this.props.background }>
               <li>
                 <Link color={props.color} to="/">Home</Link>
               </li>
@@ -114,7 +127,7 @@ export const CenterNav = React.createClass({
             </List>
           </Hideable>
 
-        </Fixed>
+        </Nav>
         { props.children }
       </CenterNavWrapper>
     );
@@ -126,5 +139,6 @@ CenterNav.contextTypes = {
 };
 
 CenterNav.defaultProps = {
-  color: COLORS.white
+  color: COLORS.white,
+  isMini: false
 };

@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
 import { Input, Img, H2, Div } from '../style/util';
+import { Hideable } from '../style/hideable';
 
-import { CenterNavBackground } from './center-nav';
+import { CenterNavBackground, CenterNav } from './center-nav';
 import { HeroText, HeroTextLeft } from './hero-text';
 
 const FooterContainer = styled(FlexContainer)`
@@ -13,6 +14,11 @@ const FooterContainer = styled(FlexContainer)`
   padding-bottom: 40px;
   background: ${ COLORS.black }
 `;
+
+const isNavVisible = () => {
+  const scrollBottom = window.scrollY + window.innerHeight;
+  return scrollBottom > document.body.scrollHeight - 20;
+}
 
 const Footer = (props, { localContext }) => (
   <FooterContainer>
@@ -27,7 +33,13 @@ const Footer = (props, { localContext }) => (
         </Div>
       </div>
     </HeroTextLeft>
-    <CenterNavBackground />
+
+    <Hideable isVisible={ isNavVisible } listen style={{alignSelf: 'baseline'}}>
+      <CenterNavBackground>
+        <CenterNav isExpanded={false} />
+      </CenterNavBackground>
+    </Hideable>
+
     <HeroText align="flex-start">
       <div>
         <Input placeholder={ localContext.content('footer', 'subscribe_prompt') } />

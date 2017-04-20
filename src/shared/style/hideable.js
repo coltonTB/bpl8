@@ -142,9 +142,7 @@ export const Hideable = React.createClass({
   render() {
     return (
       <Style
-        duration={this.props.duration}
-        delay={this.props.delay}
-        ease={this.props.ease}
+        { ...this.props }
         ref="wrapper"
         className={classNames(
           (this.props.forceVisibility || this.state.isVisible) ? 'visible' : 'hidden',
