@@ -10,13 +10,13 @@ import { HeroTextLeft, HeroText } from './hero-text';
 import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer, isFooterNavVisible } from './footer'
 
-const InfoLeft = styled(HeroTextLeft)`
+const CalendarLeft = styled(HeroTextLeft)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: 420px;
   margin-bottom: 36px;
 `;
-const InfoRight = styled(HeroText)`
+const CalendarRight = styled(HeroText)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: 420px;
@@ -25,7 +25,7 @@ const InfoRight = styled(HeroText)`
 
 const Date = (item, i) => (
   <FlexContainer key={i}>
-    <InfoLeft align="flex-start" color={ COLORS.black }>
+    <CalendarLeft align="flex-start" color={ COLORS.black }>
       <Div color={ COLORS.gold }>
         <strong>Open</strong>
       </Div>
@@ -38,9 +38,9 @@ const Date = (item, i) => (
       <h5>
         {item.close}
       </h5>
-    </InfoLeft>
+    </CalendarLeft>
     <CenterNavBackground />
-    <InfoRight color={ COLORS.black }>
+    <CalendarRight color={ COLORS.black }>
       <div>
         Stop { i+1 }&mdash;
       </div>
@@ -51,11 +51,11 @@ const Date = (item, i) => (
         { item.address1 }<br/>
         { item.address2 }
       </H4>
-    </InfoRight>
+    </CalendarRight>
   </FlexContainer>
 );
 
-const Info = (props, { localContext }) => {
+const Calendar = (props, { localContext }) => {
   const content = key => localContext.content('calendar', key);
 
   return (
@@ -64,17 +64,17 @@ const Info = (props, { localContext }) => {
       <CenterNav color={ COLORS.gold } fixed />
 
       <FlexContainer>
-        <InfoLeft align="flex-start">
+        <CalendarLeft align="flex-start">
           <H2 color={ COLORS.black }>
             { content('title') }
           </H2>
-        </InfoLeft>
+        </CalendarLeft>
         <CenterNavBackground />
-        <InfoRight>
+        <CalendarRight>
           <H5 color={ COLORS.gold }>
             { content('subtitle') }
           </H5>
-        </InfoRight>
+        </CalendarRight>
       </FlexContainer>
 
       <Div padding="20px 0 40px 0">
@@ -84,13 +84,13 @@ const Info = (props, { localContext }) => {
       </Div>
 
       <FlexContainer background={ COLORS.gold }>
-        <InfoLeft align="flex-start">
+        <CalendarLeft align="flex-start">
           <H4 color={ COLORS.white }>
             { content('contact_prompt') }
           </H4>
-        </InfoLeft>
+        </CalendarLeft>
         <CenterNavBackground />
-        <InfoRight>
+        <CalendarRight>
           <H4 color={ COLORS.black }>
             { content('contact_name') }
           </H4>
@@ -100,7 +100,7 @@ const Info = (props, { localContext }) => {
           <Div color="black" marginTop="20px">
             { content('contact_details') }
           </Div>
-        </InfoRight>
+        </CalendarRight>
       </FlexContainer>
 
       <Footer />
@@ -109,8 +109,8 @@ const Info = (props, { localContext }) => {
   );
 }
 
-Info.contextTypes = {
+Calendar.contextTypes = {
   localContext: React.PropTypes.object
 };
 
-export default Info;
+export default Calendar;

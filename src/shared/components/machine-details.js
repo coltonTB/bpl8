@@ -11,7 +11,7 @@ const StyledAnchor = styled.a`
   font-weight: bold;
   cursor: pointer;
   &:hover {
-    color: ${ COLORS.gold_light }
+    color: ${ COLORS.copper }
   }
 `;
 

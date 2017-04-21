@@ -182,6 +182,29 @@ export const calendar = {
   "contact_details": "tom@radicalmachines.info\ntsmullaney@stanford.edu"
 };
 
+export const background = {
+  "title": "Background",
+  "subtitle": "Telegraphy revolutionized global communications, trade, warfare, and more. But what happened when Morse Code encountered a language it couldn’t handle?",
+  "section_1_title": "A Radical Introduction",
+  "section_1_subtitle": "Thousands of characters. No alphabet. Millions of customers await whoever solves the puzzle  rst. How would you design a Chinese typewriter?",
+  "section_1_quote": "Chinese characters are innocent.",
+  "section_1_highlight": "A century ago, many believed that China needed to adopt an alphabet and get rid of Chinese characters. Otherwise, it could never become “modern.” A century later, this belief was proven wrong.",
+  "section_1_question": "How did Chinese become one of the world’s most successful languages in the information age—without an alphabet?",
+  "section_1_answer": "Imagine yourself at the dawn of telegraphy in the 1840s, trying to invent Morse Code for Chinese–or in the 1890s trying to invent a Chinese typewriter. How would you fit thousands of characters onto a machine with fewer than 50 keys?\n\nOr perhaps you are in the 1950s, trying to build the first Chinese computer. How would you  t Chinese onto a QWERTY keyboard? For centuries, Chinese has presented fascinating and irresistible puzzles for engineers, linguists, and entrepreneurs alike.\n\nIt may seem impossible, and yet it happened. With help from the global community, China solved these puzzles, going from “dark horse” of the information technology (I.T.) world, to a global powerhouse. How it achieved this feat has long been a mystery.\n\nIn this exhibit, we explore the design, technology, and art of Chinese characters in the information age. Through a collection of rare typewriters and computers — and a diverse array of historic photographs, telegraph code books, typing manuals, ephemera, propaganda posters, and more — we gain unprecedented insight into the still-transforming history of the world’s oldest living language.",
+  "section_1_img_2_title": "The man behind the exhibition",
+  "section_1_img_2_caption": "Thousands of characters. No alphabet. Millions of customers await whoever solves the puzzle first.",
+  "section_2_title": "Chinese Telegraphy",
+  "section_2_subtitle": "Telegraphy revolutionized global communications, trade, warfare, and more. But what happened when Morse Code encountered a language it couldn’t handle?",
+  "section_2_img_1_title": "The man behind the exhibition",
+  "section_2_img_1_caption": "Thousands of characters. No alphabet. Millions of customers await whoever solves the puzzle first.",
+  "section_2_img_2_title": "The man behind the exhibition",
+  "section_2_img_2_caption": "Thousands of characters. No alphabet. Millions of customers await whoever solves the puzzle first.",
+  "section_2_question": "How do you send a telegram in Chinese?",
+  "section_2_answer_1": "At the dawn of international telegraphy in the 1850s, Samuel Morse referred to the new technology as “the American telegraph” and, more intimately, “my telegraph.” Morse Code–the language of telegraphy– was fundamentally connected to English and the Latin alphabet. The code was designed to handle thirty discrete units: perfect for the twenty-six letters of English, but not for other languages.\n\nIn 1871, telegraphic communication reached China. This raised a critical question: As the world’s only major non-alphabetic language, how would Chinese characters be sent using Morse? This was the  rst major “puzzle” of modern Chinese I.T.",
+  "section_2_quote": "To send Chinese using Morse, each character first had to be converted into a four-digit number.",
+  "section_2_answer_2": "A Chinese telegraph code was invented in 1871 by two foreigners: H.C.F.C Schjellerup, a Danish professor of astronomy, and Septime Auguste Viguier, a French harbormaster in Shanghai. Instead of letters they used numbers."
+}
+
 export const footer = {
   "contact": "Contact",
   "subscribe_prompt": "Subscribe",

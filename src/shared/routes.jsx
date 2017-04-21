@@ -7,6 +7,7 @@ import Overview from './components/overview';
 import Shop from './components/shop';
 import Info from './components/info';
 import Calendar from './components/calendar';
+import background from './components/background';
 
 export const routes = (
   <Route path="" component={Index}>
@@ -15,5 +16,6 @@ export const routes = (
     <Route path="/shop" component={Shop}/>
     <Route path="/info" component={Info}/>
     <Route path="/calendar" component={Calendar}/>
+    <Route path="/background" component={background}/>
   </Route>
 );

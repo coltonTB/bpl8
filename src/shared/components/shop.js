@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
-import { Div, H5 } from '../style/util'
+import { Div, H5 } from '../style/util';
+import { Hideable } from '../style/hideable';
 
 import { HeroText, HeroTextLeft } from './hero-text';
 import { CenterNav, CenterNavBackground } from './center-nav';
@@ -50,18 +51,20 @@ const Shop = (props, { localContext }) => {
       </FlexContainer>
 
       <FlexContainer>
-        <StoreItemContainer>
-          <ImagesLeft align="flex-start" width="500px">
-            <StoreItem data={ content('items')[0] } />
-            <StoreItem data={ content('items')[2] } />
-          </ImagesLeft>
-          <CenterNavBackground />
-          <ImagesRight color={ COLORS.gold } align="flex-start" width="500px">
-            <StoreItem data={ content('items')[1] } />
-            <StoreItem data={ content('items')[3] } />
-            <StoreItem data={ content('items')[4] } />
-          </ImagesRight>
-        </StoreItemContainer>
+        <Hideable hideInitially isVisible>
+          <StoreItemContainer>
+            <ImagesLeft align="flex-start" width="500px">
+              <StoreItem data={ content('items')[0] } />
+              <StoreItem data={ content('items')[2] } />
+            </ImagesLeft>
+            <CenterNavBackground />
+            <ImagesRight color={ COLORS.gold } align="flex-start" width="500px">
+              <StoreItem data={ content('items')[1] } />
+              <StoreItem data={ content('items')[3] } />
+              <StoreItem data={ content('items')[4] } />
+            </ImagesRight>
+          </StoreItemContainer>
+        </Hideable>
       </FlexContainer>
 
       <Footer />
