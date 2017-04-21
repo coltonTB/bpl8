@@ -151,6 +151,37 @@ export const info = {
   ]
 };
 
+export const calendar = {
+  "title": "Calendar",
+  "subtitle": "Radical Machines is currently travelling nationwide. You will find the dates below where we have already been booked!",
+  "dates": [{
+    "open": "July 17, 2017",
+    "close": "April 21, 2017",
+    "location": "San Diego Chinese Historical Museum",
+    "address1": "404 Third Ave",
+    "address2": "San Diego, CA 92101",
+    "address3": ""
+  }, {
+    "open": "May 3, 2017",
+    "close": "September 4, 2017",
+    "location": "The Museum of Chinese in America",
+    "address1": "215 Centre St",
+    "address2": "New York, NY 10013",
+    "address3": ""
+  }, {
+    "open": "September 8, 2017",
+    "close": "December 21, 2017",
+    "location": "Stanford University Historical Museum",
+    "address1": "215 Centre St",
+    "address2": "New York, NY 10013",
+    "address3": ""
+  }],
+  "contact_prompt": "Don't see a Location Near You? Contact Us to Book Radical Machines in your local Museum or Gallery",
+  "contact_name": "Tom Mullaney",
+  "contact_sub": "Exhibition Coordinator",
+  "contact_details": "tom@radicalmachines.info\ntsmullaney@stanford.edu"
+};
+
 export const footer = {
   "contact": "Contact",
   "subscribe_prompt": "Subscribe",

@@ -6,6 +6,7 @@ import Home from './components/home';
 import Overview from './components/overview';
 import Shop from './components/shop';
 import Info from './components/info';
+import Calendar from './components/calendar';
 
 export const routes = (
   <Route path="" component={Index}>
@@ -13,5 +14,6 @@ export const routes = (
     <Route path="/overview" component={Overview}/>
     <Route path="/shop" component={Shop}/>
     <Route path="/info" component={Info}/>
+    <Route path="/calendar" component={Calendar}/>
   </Route>
 );

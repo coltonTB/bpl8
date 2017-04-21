@@ -15,7 +15,7 @@ const FooterContainer = styled(FlexContainer)`
   background: ${ COLORS.black }
 `;
 
-const isNavVisible = () => {
+export const isFooterNavVisible = () => {
   const scrollBottom = window.scrollY + window.innerHeight;
   return scrollBottom > document.body.scrollHeight - 20;
 }
@@ -34,7 +34,7 @@ const Footer = (props, { localContext }) => (
       </div>
     </HeroTextLeft>
 
-    <Hideable isVisible={ isNavVisible } listen style={{alignSelf: 'baseline'}}>
+    <Hideable isVisible={ isFooterNavVisible } listen style={{alignSelf: 'baseline'}}>
       <CenterNavBackground>
         <CenterNav isExpanded={false} />
       </CenterNavBackground>
