@@ -5,7 +5,7 @@ var routes = require('./routes.json');
 
 function downloadRoute(route, i) {
   setTimeout(function() {
-    exec('curl localhost:3000' + route, function(error, stdout, stderr) {
+    exec('curl localhost:3000 -H x-static-generator:true' + route, function(error, stdout, stderr) {
       var routeName = route === '/' ? '/index.html' : route;
       fs.writeFileSync('./dist/static-site' + routeName, stdout);
     });
