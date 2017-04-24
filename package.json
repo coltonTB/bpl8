@@ -6,7 +6,7 @@
   "author": "Colton Brown <coltonTB@me.com> (http://coltontbrown.com/)",
   "license": "ISC",
   "config": {
-    "s3BucketName": "rad-assets",
+    "s3BucketName": "rad-web-static",
     "region": "us-west-1",
     "lambdaFunctionName": "radicalMachinesWebserver"
   },
