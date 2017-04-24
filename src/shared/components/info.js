@@ -3,24 +3,26 @@ import styled from 'styled-components';
 
 import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
-import { Div, H2, H5, Img, P } from '../style/util'
+import { Div, H2, H3, H5, Img, P } from '../style/util'
 import { Hideable } from '../style/hideable';
+import { scrollLimit } from '../style/scroll-helpers';
 
 import { HeroTextLeft, HeroText } from './hero-text';
 import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
 
+const TOP_SECTION_HEIGHT = 250;
 const InfoLeft = styled(HeroTextLeft)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: 500px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 `;
 const InfoRight = styled(HeroText)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: 500px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 `;
 const Image = styled(Img)`
   width: 100%;
@@ -40,9 +42,9 @@ const Info = (props, { localContext }) => {
   return (
     <Div background={COLORS.white}>
 
-      <CenterNav color={ COLORS.gold } fixed />
+      <CenterNav color={ COLORS.gold } fixed isExpanded={scrollLimit(TOP_SECTION_HEIGHT)} />
 
-      <FlexContainer>
+      <FlexContainer height={TOP_SECTION_HEIGHT + 'px'}>
         <InfoLeft align="flex-start">
           <H2 color={ COLORS.black }>
             { content('title') }
@@ -61,9 +63,9 @@ const Info = (props, { localContext }) => {
         <Hideable hideInitially isVisible>
           <FlexContainer>
             <InfoLeft align="flex-start" color={ COLORS.black }>
-              <h3>
+              <H3 textTransform="capitalize">
                 { content('mission_title') }
-              </h3>
+              </H3>
               <p>
                 { content('mission_text') }
               </p>
@@ -96,9 +98,9 @@ const Info = (props, { localContext }) => {
             </InfoLeft>
             <CenterNavBackground />
             <InfoRight align="flex-start" color={ COLORS.black }>
-              <h3>
+              <H3 textTransform="capitalize">
                 { content('tom_title') }
-              </h3>
+              </H3>
               <p>
                 { content('tom_text') }
               </p>

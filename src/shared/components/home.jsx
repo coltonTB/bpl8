@@ -6,14 +6,12 @@ import { COLORS } from '../constants';
 import { FlexContainer, FlexItem } from '../style/flexbox';
 import { Button, Img, Div, H2, H3, H5 } from '../style/util';
 import { Hideable } from '../style/hideable';
+import { scrollLimit, scrollMin } from '../style/scroll-helpers';
 
 import { CenterNav, CenterNavBackground, CenterNavMini } from './center-nav';
 import { HeroText, HeroTextLeft } from './hero-text';
-import { Footer } from './footer';
+import { Footer, isAtPageBottom } from './footer';
 import { ScrollPrompt } from './scroll-prompt';
-
-const scrollLimit = limit => () => window.scrollY < limit;
-const scrollMin = limit => () => window.scrollY > limit;
 
 const Home = React.createClass({
 
@@ -151,7 +149,12 @@ const Home = React.createClass({
                   { content('press_title') }
                 </H2>
               </HeroTextLeft>
-              <CenterNavBackground />
+              <Hideable isVisible={ isAtPageBottom } listen>
+                <CenterNavMini
+                  color={ COLORS.gold }
+                  background={COLORS.gray}
+                />
+              </Hideable>
               <HeroText>
                 <H5 color={ COLORS.black }>
                   { content('press_subtitle') }

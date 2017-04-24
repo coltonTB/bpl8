@@ -2,16 +2,11 @@ import React from 'react';
 import ReactSVG from 'react-svg'
 import styled, { css } from 'styled-components';
 
-let scroll, page;
-if (typeof window !== 'undefined') {
-  scroll = require('scroll');
-  page = require('scroll-doc')()
-}
-
 import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
 import { Div, Span, P, A } from '../style/util'
 import { Hideable } from '../style/hideable';
+import { scrollLimit, scrollToTop } from '../style/scroll-helpers';
 
 import { HeroText, HeroTextLeft } from './hero-text';
 import { CenterNav, CenterNavBackground } from './center-nav';
@@ -20,6 +15,7 @@ import { Machine } from './machine';
 import { Machine1 } from './machine-details';
 import { Source1Text, Source1Images } from './sources';
 
+const TOP_SECTION_HEIGHT = 210;
 const LEFT_OFFSET = "690px";
 const stopProp = e => e.stopPropagation();
 
@@ -152,14 +148,14 @@ const Overview = React.createClass({
     this.setState({
       selectedMachine
     });
-    scroll.top(page, 0)
+    scrollToTop();
   },
 
   handleSourceLinkClick(id) {
     this.setState({
       selectedSourceLink: id
     });
-    scroll.top(page, 0)
+    scrollToTop();
   },
 
   renderSourceLinks(links) {
@@ -221,9 +217,9 @@ const Overview = React.createClass({
           </FlexContainer>
         </ExpandableCenterNav>
 
-        <CenterNav isExpanded={ this.state.selectedMachine === null } fixed/>
+        <CenterNav isExpanded={ () => this.state.selectedMachine === null && scrollLimit(TOP_SECTION_HEIGHT)()} fixed/>
 
-        <FlexContainer>
+        <FlexContainer height={TOP_SECTION_HEIGHT + 'px'}>
           <HeroTextLeft align="flex-start">
             <h2>
               { content('title') }

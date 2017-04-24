@@ -38,7 +38,7 @@ let eventMangerInstance;
 
 const Style = styled.div`
   opacity: 1;
-  visibility: visible;
+  visibility: inherit;
   transition:
     opacity ${ props => props.duration } ${ props => props.ease } ${ props => props.delay },
     visibility ${ props => props.duration } ${ props => props.ease } ${ props => props.delay };
