@@ -17,7 +17,7 @@ const serverConfig = {
   },
   output: {
     filename: '[name]-bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist/lambda'),
     library: 'handler',
     libraryTarget: 'commonjs2'
   },
@@ -50,7 +50,7 @@ const browserConfig = {
   entry: './src/browser/index.js',
   output: {
     filename: 'browser-bundle.js',
-    path: path.resolve(__dirname, 'dist/assets')
+    path: path.resolve(__dirname, 'dist/static/assets')
   },
   plugins: [
     new ExtractTextPlugin('style.css')
