@@ -1,1 +1,1 @@
-require('./dist/server-bundle.js').startServer();
+require('./dist/lambda/server-bundle.js').startServer();

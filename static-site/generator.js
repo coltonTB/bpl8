@@ -5,13 +5,20 @@ var routes = require('./routes.json');
 
 function downloadRoute(route, i) {
   setTimeout(function() {
-    exec('curl localhost:3000 -H x-static-generator:true' + route, function(error, stdout, stderr) {
+    exec('curl -H x-static-generator:true localhost:3000' + route, function(error, stdout, stderr) {
       var routeName = route === '/' ? '/index.html' : route;
-      fs.writeFileSync('./dist/static-site' + routeName, stdout);
+      fs.writeFileSync('./dist/static-pages' + routeName, stdout);
     });
   }, 200 * i);
 }
 
-exec('mkdir ./dist/static-site', function() {
-  routes.forEach(downloadRoute);
+exec('curl localhost:3000/health', function(error, stdout, stderr) {
+  if (stdout !== 'OK') {
+    process.stderr.write('Server process is not healthy. Exiting\n');
+    process.abort();
+  }
+  exec('mkdir ./dist/static-pages', function() {
+    routes.forEach(downloadRoute);
+    process.stdout.write('Done generating static pages\n');
+  });
 });

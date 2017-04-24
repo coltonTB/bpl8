@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'Akzidenz';
+  font-weight: normal;
+  src: url('//s3.amazonaws.com/rad-static-site/fonts/NB+International+Regular.otf');
+}
+
+@font-face {
+  font-family: 'Akzidenz';
+  font-weight: bold;;
+  src: url('//s3.amazonaws.com/rad-static-site/fonts/NB+International+Bold.otf');
+}

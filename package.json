@@ -41,13 +41,12 @@
     "webpack": "^2.2.1"
   },
   "scripts": {
-    "clean": "rm -rf dist/* && cp -r src/images src/lambda.js dist",
-    "generate-static": "node ./static-site/generator.js",
-    "lambda-zip": "cd dist && zip -q lambda-function.zip lambda.js server-bundle.js && cd ..",
-    "deploy-assets": "aws s3 cp --recursive ./dist s3://$npm_package_config_s3BucketName/$npm_package_version --region $npm_package_config_region",
-    "lambda-update": "aws lambda update-function-code --function-name $npm_package_config_lambdaFunctionName --region $npm_package_config_region --zip-file fileb://./dist/lambda-function.zip",
-    "deploy": "npm run clean && npm run build && npm run lambda-zip && npm run deploy-assets && npm run lambda-update",
-    "fast-deploy": "npm run lambda-zip && npm run deploy-assets && npm run lambda-update",
+    "clean": "rm -rf dist/* && mkdir dist/static dist/lambda && cp -r src/images dist/static && cp -r src/lambda.js dist/lambda",
+    "build-static": "node ./static-site/generator.js",
+    "deploy-static": "aws s3 cp --recursive ./dist/static-pages s3://$npm_package_config_staticBucketName --region $npm_package_config_region --acl public-read --content-type text/html && aws s3 cp --recursive ./dist/static s3://$npm_package_config_staticBucketName --region $npm_package_config_region --acl public-read",
+    "lambda-zip": "cd dist/lambda && zip -q lambda-function.zip lambda.js server-bundle.js && cd ..",
+    "lambda-update": "aws lambda update-function-code --function-name $npm_package_config_lambdaFunctionName --region $npm_package_config_region --zip-file fileb://./dist/lambda/lambda-function.zip",
+    "deploy": "npm run clean && npm run build && npm run lambda-zip && npm run build-static && npm run deploy-static && npm run lambda-update",
     "build": "./node_modules/.bin/webpack",
     "local": "./node_modules/.bin/nodemon -w ./dist/server-bundle.js",
     "watch": "npm run build -- --watch"

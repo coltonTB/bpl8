@@ -19,8 +19,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 /*
   Note: locally, the server runs out of 'dist'
 */
-app.use('/assets', express.static(`${__dirname}/assets`))
-app.use('/images', express.static(`${__dirname}/images`))
+app.use('/assets', express.static(`${__dirname}/../static/assets`))
+app.use('/images', express.static(`${__dirname}/../static/images`))
+
+app.get('/health', (req, res) => res.send('OK'));
 
 app.use(isomorphicRenderer(routes));
 
