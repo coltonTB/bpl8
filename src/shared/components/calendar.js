@@ -63,7 +63,7 @@ const Date = (item, i) => (
 );
 
 const Calendar = (props, { localContext }) => {
-  const content = key => localContext.content('calendar', key);
+  const content = key => localContext.getContent('calendar', key);
 
   return (
     <Div background={COLORS.white}>

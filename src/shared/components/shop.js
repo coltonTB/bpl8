@@ -29,7 +29,7 @@ const StoreItemContainer = styled.div`
 `;
 
 const Shop = (props, { localContext }) => {
-  const content = key => localContext.content('shop', key);
+  const content = key => localContext.getContent('shop', key);
 
   return (
     <Div background={COLORS.gold}>

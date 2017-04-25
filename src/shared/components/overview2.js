@@ -49,7 +49,7 @@ const PlaceHolderMachine = styled(MachineWrapper)`
 `;
 
 const Overview = (props, { localContext }) => {
-  const content = key => localContext.content('overview', key);
+  const content = key => localContext.getContent('overview', key);
   return (
     <div style={{ background: COLORS.black, paddingTop: '20px' }}>
       <CenterNav>

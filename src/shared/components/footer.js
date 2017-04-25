@@ -25,11 +25,11 @@ const Footer = (props, { localContext }) => (
     <HeroTextLeft align="flex-start">
       <div>
         <H2 color={ COLORS.gold } marginBottom="15px" >
-          { localContext.content('footer', 'contact') }
+          { localContext.getContent('footer', 'contact') }
         </H2>
         <Img src={ localContext.assetUrl('/images/social_shim.png') } height="36px" />
         <Div marginTop="46px">
-          { localContext.content('footer', 'brand') }
+          { localContext.getContent('footer', 'brand') }
         </Div>
       </div>
     </HeroTextLeft>
@@ -38,12 +38,12 @@ const Footer = (props, { localContext }) => (
 
     <HeroText align="flex-start">
       <div>
-        <Input placeholder={ localContext.content('footer', 'subscribe_prompt') } />
+        <Input placeholder={ localContext.getContent('footer', 'subscribe_prompt') } />
         <Div marginTop="30px">
-          { localContext.content('footer', 'tom_contact') }
+          { localContext.getContent('footer', 'tom_contact') }
         </Div>
         <Div marginTop="30px">
-          { localContext.content('footer', 'rad_contact') }
+          { localContext.getContent('footer', 'rad_contact') }
         </Div>
       </div>
     </HeroText>

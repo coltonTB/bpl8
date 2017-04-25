@@ -61,7 +61,7 @@ const Caption = styled.div`
 `;
 
 const Background = (props, { localContext }) => {
-  const content = key => localContext.content('background', key);
+  const content = key => localContext.getContent('background', key);
 
   return (
     <Div background={COLORS.white}>

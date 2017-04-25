@@ -12,7 +12,8 @@ import { preload } from './image-preloader';
 import 'Stylesheets/main';
 
 const localContext = getLocalContext({
-  stageContext: window.__locals__.stageContext
+  stageContext: window.__locals__.stageContext,
+  content: window.__locals__.content
 });
 
 preload({localContext, imageUrls: window.__locals__.imageUrls});

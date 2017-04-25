@@ -37,7 +37,7 @@ const Collaborator = (item, i) => (
 );
 
 const Info = (props, { localContext }) => {
-  const content = key => localContext.content('info', key);
+  const content = key => localContext.getContent('info', key);
 
   return (
     <Div background={COLORS.white}>

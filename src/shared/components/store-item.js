@@ -50,7 +50,7 @@ const StoreItem = ({ data }, { localContext }) => (
       </P>
     </StoreItemCaption>
     <BuyButton>
-      { localContext.content('shop', 'buy_btn') }
+      { localContext.getContent('shop', 'buy_btn') }
     </BuyButton>
   </StoreItemWrapper>
 )

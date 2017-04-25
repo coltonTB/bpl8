@@ -24,7 +24,7 @@ const Home = React.createClass({
   render() {
     const props = this.props;
     const localContext = this.context.localContext;
-    const content = key => localContext.content('home', key);
+    const content = key => localContext.getContent('home', key);
 
     return (
       <div>

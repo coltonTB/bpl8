@@ -169,7 +169,7 @@ const Overview = React.createClass({
   },
 
   render() {
-    const content = key => this.context.localContext.content('overview', key);
+    const content = key => this.context.localContext.getContent('overview', key);
     return (
       <Div background={ COLORS.black } onClick={ this.clearState }>
 
