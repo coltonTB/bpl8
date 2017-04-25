@@ -30,29 +30,28 @@ const Home = React.createClass({
       <div>
 
         <Hideable isVisible={this.isFixedNavVisible} listen>
-          <CenterNav isExpanded={ scrollLimit(1000) } fixed>
-            <ScrollPrompt isVisible={ scrollLimit(500) } />
-          </CenterNav>
+          <CenterNav isExpanded={ scrollLimit(1000) } fixed />
         </Hideable>
 
-          <Div background={ COLORS.black }>
+          <Div background={ COLORS.black } position="relative">
             <FlexContainer>
-                <HeroTextLeft>
-                  <Hideable hideInitially isVisible>
-                    <h1>
-                      { content('hero_text_left') }
-                    </h1>
-                  </Hideable>
-                </HeroTextLeft>
-                <CenterNavBackground fullHeight background={ COLORS.gold } />
-                <HeroText>
-                  <Hideable hideInitially isVisible>
-                    <h1>
-                      { content('hero_text_right') }
-                    </h1>
-                  </Hideable>
-                </HeroText>
+              <HeroTextLeft>
+                <Hideable hideInitially isVisible>
+                  <h1>
+                    { content('hero_text_left') }
+                  </h1>
+                </Hideable>
+              </HeroTextLeft>
+              <CenterNavBackground fullHeight background={ COLORS.gold } />
+              <HeroText>
+                <Hideable hideInitially isVisible>
+                  <h1>
+                    { content('hero_text_right') }
+                  </h1>
+                </Hideable>
+              </HeroText>
             </FlexContainer>
+            <ScrollPrompt isVisible={ scrollLimit(500) } />
           </Div>
 
           <Div>
@@ -152,7 +151,7 @@ const Home = React.createClass({
               <Hideable isVisible={ isAtPageBottom } listen>
                 <CenterNavMini
                   color={ COLORS.gold }
-                  background={COLORS.gray}
+                  background={ COLORS.gray }
                 />
               </Hideable>
               <HeroText>

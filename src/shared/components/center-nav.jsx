@@ -10,10 +10,12 @@ import { scrollToTop } from '../style/scroll-helpers';
 
 const CenterNavWrapper = styled(Div)`
   __comment: centerNav;
+  position: ${ props => props.fixed ? 'fixed' : 'static' };
   display: flex;
   justify-content: center;
   top: 0;
   width: 100vw;
+  z-index: 1;
 `;
 
 export const CenterNavBackground = styled(Div)`
@@ -38,8 +40,6 @@ const List = styled(Ul)`
 `;
 
 const Nav = styled.div`
-  position: ${ props => props.fixed ? 'fixed' : 'static' };
-  z-index: 1;
   text-align: center;
   margin-top: 1em;
   height: 80px;
@@ -100,8 +100,8 @@ export const CenterNav = React.createClass({
     const props = this.props;
 
     return (
-      <CenterNavWrapper>
-        <Nav fixed={ this.props.fixed }>
+      <CenterNavWrapper className="center-nav-wrapper" fixed={ this.props.fixed }>
+        <Nav>
           <span onClick={ this.toggleUserExpandedState }>
             <ReactSVG
               path={ localContext.assetUrl('/images/hamburger.svg') }
@@ -130,7 +130,7 @@ export const CenterNav = React.createClass({
           </Hideable>
 
         </Nav>
-        { props.children }
+
       </CenterNavWrapper>
     );
   }
