@@ -24,9 +24,9 @@ class EventManager {
   }
 
   removeEvent(uuid) {
-    window.setTimeout(() => {
+    // window.setTimeout(() => {
       this.events = this.events.filter(e => e.uuid !== uuid);
-    }, 0);
+    // }, 0);
   }
 
   processEvents() {
