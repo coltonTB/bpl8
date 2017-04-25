@@ -217,7 +217,7 @@ const Overview = React.createClass({
           </FlexContainer>
         </ExpandableCenterNav>
 
-        <CenterNav isExpanded={ () => this.state.selectedMachine === null && scrollLimit(TOP_SECTION_HEIGHT)()} fixed/>
+        <CenterNav isExpanded={ () => this.state.selectedMachine === null && scrollLimit(TOP_SECTION_HEIGHT)() } fixed/>
 
         <FlexContainer height={TOP_SECTION_HEIGHT + 'px'}>
           <HeroTextLeft align="flex-start">
@@ -242,21 +242,18 @@ const Overview = React.createClass({
                   data={ content('machines')[0] }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
-                  detailsOrientation="right"
                 />
                 <Machine
                   top="600px"
                   data={ content('machines')[2] }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
-                  detailsOrientation="right"
                 />
                 <Machine
                   top="1170px"
                   data={ content('machines')[4] }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
-                  detailsOrientation="right"
                 />
               </ImagesLeft>
 
@@ -275,18 +272,19 @@ const Overview = React.createClass({
                   isVisible={ this.state.selectedMachine !== null }
                   delay="0.3s"
                 >
-                  <MachineDetails
-                    data={ content('machineDetails') }
-                    selectedMachine={ this.state.selectedMachine }
-                    onSourceLinksMounted={ this.renderSourceLinks }
-                  />
+                  { this.state.selectedMachine !== null &&
+                    <MachineDetails
+                      data={ content('machineDetails') }
+                      selectedMachine={ this.state.selectedMachine }
+                      onSourceLinksMounted={ this.renderSourceLinks }
+                    />
+                  }
                 </Hideable>
                 <Machine
                   left={LEFT_OFFSET}
                   data={ content('machines')[1] }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
-                  detailsOrientation="left"
                 />
                 <Machine
                   left={LEFT_OFFSET}
@@ -294,7 +292,6 @@ const Overview = React.createClass({
                   data={ content('machines')[3] }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
-                  detailsOrientation="left"
                 />
                 <Machine
                   left={LEFT_OFFSET}
@@ -302,7 +299,6 @@ const Overview = React.createClass({
                   data={ content('machines')[5] }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
-                  detailsOrientation="left"
                 />
               </ImagesRight>
             </MachinesContainer>

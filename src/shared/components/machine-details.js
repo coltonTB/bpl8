@@ -30,6 +30,11 @@ const SourceLink = React.createClass({
 
 export const Machine1 = React.createClass({
 
+  propTypes: {
+    onSourceLinksMounted: React.PropTypes.func,
+    onLinkClick: React.PropTypes.func
+  },
+
   componentDidMount() {
     const sourceLinks = Object.keys(this.refs).map(ref => ({
       id: ref,

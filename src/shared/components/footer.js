@@ -11,7 +11,7 @@ import { HeroText, HeroTextLeft } from './hero-text';
 
 const FooterContainer = styled(FlexContainer)`
   padding-top: 40px;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
   background: ${ COLORS.black }
 `;
 
@@ -28,7 +28,7 @@ const Footer = (props, { localContext }) => (
           { localContext.content('footer', 'contact') }
         </H2>
         <Img src={ localContext.assetUrl('/images/social_shim.png') } height="36px" />
-        <Div marginTop="60px">
+        <Div marginTop="46px">
           { localContext.content('footer', 'brand') }
         </Div>
       </div>
