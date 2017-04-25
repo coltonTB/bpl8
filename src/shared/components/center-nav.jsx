@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { COLORS } from '../constants';
 import { Ul, Div } from '../style/util';
 import { Hideable } from '../style/hideable';
+import { scrollToTop } from '../style/scroll-helpers';
 
 const CenterNavWrapper = styled(Div)`
   __comment: centerNav;
@@ -31,6 +32,9 @@ const List = styled(Ul)`
   line-height: 1.4em;
   position: relative;
   top: ${ props => props.isMini ? '-100px' : '0' };
+  li a {
+    color: ${ props => props.color };
+  }
 `;
 
 const Nav = styled.div`
@@ -43,10 +47,9 @@ const Nav = styled.div`
 
 const Link = styled(UnstyledLink)`
   text-decoration: none;
-  color: ${ props => props.color };
   font-weight: bold;
-  cursor: 'pointer';
-  font-style: 'normal';
+  cursor: pointer;
+  font-style: normal;
   &.active {
     cursor: default;
     font-style: italic;
@@ -55,6 +58,17 @@ const Link = styled(UnstyledLink)`
 Link.defaultProps = {
   activeClassName: 'active'
 };
+
+const NavLink = props => (
+  <li>
+    <Link
+      to={ props.to }
+      onClick={ scrollToTop }
+    >
+      { props.children }
+    </Link>
+  </li>
+)
 
 export const CenterNavMini = props => (
   <CenterNavBackground>
@@ -105,25 +119,13 @@ export const CenterNav = React.createClass({
             listen
             showInitially
           >
-            <List isMini={ this.props.isMini } background={ this.props.background }>
-              <li>
-                <Link color={props.color} to="/">Home</Link>
-              </li>
-              <li>
-                <Link color={props.color} to="/info">Information</Link>
-              </li>
-              <li>
-                <Link color={props.color} to="/calendar">Calendar</Link>
-              </li>
-              <li>
-                <Link color={props.color} to="/background">Background</Link>
-              </li>
-              <li>
-                <Link color={props.color} to="/overview">Overview</Link>
-              </li>
-              <li>
-                <Link color={props.color} to="/shop">Gift Shop</Link>
-              </li>
+            <List isMini={ this.props.isMini } background={ this.props.background } color={ props.color }>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/info">Information</NavLink>
+              <NavLink to="/calendar">Calendar</NavLink>
+              <NavLink to="/background">Background</NavLink>
+              <NavLink to="/overview">Overview</NavLink>
+              <NavLink to="/shop">Gift Shop</NavLink>
             </List>
           </Hideable>
 
