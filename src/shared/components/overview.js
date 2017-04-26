@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import ReactSVG from 'react-svg'
 import styled, { css } from 'styled-components';
 
@@ -89,43 +90,58 @@ const MachineDetails = props => {
   );
 };
 
-const SourceLinkCenter = ({id, el, customOffset=0, onClick}) => {
-  const Style = styled.div`
-    color: ${ COLORS.white };
-    text-align: center;
-    position: absolute;
-    top: ${ props => props.top }px;
-    width: 140px;
-    box-sizing: border-box;
-    padding: 0 10px;
-    align-self: column;
-    z-index: 2;
-  `;
-  const Number = styled.h5`
-    text-decoration: underline;
-    cursor: pointer;
-    &:hover {
-      color: #ddd;
-    }
-  `
-  return (
-    <Style top={el.offsetTop + customOffset} >
-      <Number onClick={() => onClick(id)}>
-        { id }
-      </Number>
-      <div>
-        Few thousands of characters.
-        No alphabet.
-        Millions of customers await whoever solves the puzzle first.
-      </div>
-    </Style>
-  );
-};
+const SourceLinkCenterStyle = styled.div`
+  color: ${ COLORS.white };
+  text-align: center;
+  position: fixed;
+  top: 45%;
+  width: 140px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  z-index: 2;
+`;
+
+const SourceLinkCenter = React.createClass({
+
+  propTypes: {
+    id: React.PropTypes.string,
+    onClick: React.PropTypes.func
+  },
+
+  render() {
+    const Number = styled.h5`
+      text-decoration: underline;
+      cursor: pointer;
+      &:hover {
+        color: #ddd;
+      }
+    `
+    return (
+      <SourceLinkCenterStyle>
+        <Number onClick={() => this.props.onClick(this.props.id)}>
+          { this.props.id }
+        </Number>
+        {
+          this.props.id && (
+            <div>
+              Few thousands of characters.
+              No alphabet.
+              Millions of customers await whoever solves the puzzle first.
+            </div>
+          )
+        }
+      </SourceLinkCenterStyle>
+    );
+  }
+});
 
 const SourceCloseButton = styled.div`
   text-transform: uppercase;
   color: ${ COLORS.white };
   cursor: pointer;
+  position: fixed;
+  top: 45%;
+  width: 140px;
   span {
     display: inline-block;
     padding-top: 14px;
@@ -139,6 +155,7 @@ const Overview = React.createClass({
     return {
       selectedMachine: null,
       selectedSourceLink: null,
+      visibleSourceLink: null,
       sourceLinks: []
     }
   },
@@ -164,8 +181,37 @@ const Overview = React.createClass({
     })
   },
 
+  getVisibleSourceLink() {
+    let visibleSourceLink = null;
+    const sourceLinkCenter = ReactDOM.findDOMNode(this.refs.sourceLinkCenter);
+    if (sourceLinkCenter) {
+      const offset = sourceLinkCenter.offsetTop;
+      const offsetAbsoluteHeight = window.scrollY + offset - 200;
+      this.state.sourceLinks.forEach((srcLink, i) => {
+        const linkOffset = srcLink.el.offsetTop;
+        if (offsetAbsoluteHeight > linkOffset) {
+          visibleSourceLink = i;
+        }
+      });
+      const lastSourceLink = this.state.sourceLinks[this.state.sourceLinks.length - 1];
+      const lastSourceLinkOffset = lastSourceLink.el.offsetTop;
+      if (offsetAbsoluteHeight > lastSourceLinkOffset + 300) {
+        visibleSourceLink = null;
+      }
+    }
+    this.setState({visibleSourceLink});
+  },
+
   clearState() {
     this.setState(this.getInitialState());
+  },
+
+  componentDidMount() {
+    this.interval = window.setInterval(() => this.getVisibleSourceLink(), 200);
+  },
+
+  componentWillUnmount() {
+    this.interval && window.clearInterval(this.interval);
   },
 
   render() {
@@ -261,9 +307,12 @@ const Overview = React.createClass({
                 {
                   this.state.selectedMachine !== null &&
                   this.state.selectedSourceLink === null &&
-                    this.state.sourceLinks.map((link, i) => (
-                      <SourceLinkCenter {...link} key={i} onClick={this.handleSourceLinkClick}/>
-                    ))
+                  this.state.sourceLinks.length &&
+                    <SourceLinkCenter
+                      ref='sourceLinkCenter'
+                      {...this.state.sourceLinks[this.state.visibleSourceLink]}
+                      onClick={this.handleSourceLinkClick}
+                    />
                 }
               </CenterNavBackground>
 
@@ -272,7 +321,8 @@ const Overview = React.createClass({
                   isVisible={ this.state.selectedMachine !== null }
                   delay="0.3s"
                 >
-                  { this.state.selectedMachine !== null &&
+                  {
+                    this.state.selectedMachine !== null &&
                     <MachineDetails
                       data={ content('machineDetails') }
                       selectedMachine={ this.state.selectedMachine }

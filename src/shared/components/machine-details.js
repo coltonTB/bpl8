@@ -9,10 +9,6 @@ const StyledAnchor = styled.a`
   color: ${ COLORS.gold };
   text-decoration: underline;
   font-weight: bold;
-  cursor: pointer;
-  &:hover {
-    color: ${ COLORS.copper }
-  }
 `;
 
 const SourceLink = React.createClass({

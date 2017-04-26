@@ -26,7 +26,7 @@ const Home = React.createClass({
   },
 
   componentWillUnmount() {
-    this.timeout && window.clearInterval(this.interval);
+    this.interval && window.clearInterval(this.interval);
   },
 
   shouldComponentUpdate(nextProps, nextState) {
