@@ -24,9 +24,7 @@ class EventManager {
   }
 
   removeEvent(uuid) {
-    // window.setTimeout(() => {
-      this.events = this.events.filter(e => e.uuid !== uuid);
-    // }, 0);
+    this.events = this.events.filter(e => e.uuid !== uuid);
   }
 
   processEvents() {
@@ -51,7 +49,7 @@ const Style = styled.div`
   }
 `;
 Style.defaultProps = {
-  duration: '0.4s',
+  duration: '0.6s',
   ease: 'ease',
   delay: '0s'
 };

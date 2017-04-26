@@ -11,12 +11,12 @@ import { scrollToTop } from '../style/scroll-helpers';
 const CenterNavWrapper = styled(Div)`
   __comment: centerNav;
   position: ${ props => props.fixed ? 'fixed' : 'static' };
-  display: flex;
-  justify-content: center;
   top: 0;
-  width: 100vw;
-  z-index: 1;
+  width: 100%;
 `;
+CenterNavWrapper.defaultProps = {
+  zIndex: 1
+};
 
 export const CenterNavBackground = styled(Div)`
   width: 140px;
@@ -43,6 +43,11 @@ const Nav = styled.div`
   text-align: center;
   margin-top: 1em;
   height: 80px;
+  width: 140px;
+  margin-right: auto;
+  margin-left: auto;
+  right: 0;
+  left: 0;
 `;
 
 const Link = styled(UnstyledLink)`
@@ -88,10 +93,15 @@ export const CenterNav = React.createClass({
     }
   },
 
-  toggleUserExpandedState() {
-    const isUserExpanded = !this.state.isUserExpanded;
+  onMouseEnter() {
     this.setState({
-      isUserExpanded
+      isUserExpanded: true
+    });
+  },
+
+  onMouseLeave() {
+    this.setState({
+      isUserExpanded: false
     });
   },
 
@@ -100,15 +110,16 @@ export const CenterNav = React.createClass({
     const props = this.props;
 
     return (
-      <CenterNavWrapper className="center-nav-wrapper" fixed={ this.props.fixed }>
-        <Nav>
-          <span onClick={ this.toggleUserExpandedState }>
+      <CenterNavWrapper className="center-nav-wrapper" fixed={ this.props.fixed } zIndex={ this.props.zIndex }>
+        <Nav onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+          <span>
             <ReactSVG
               path={ localContext.assetUrl('/images/hamburger.svg') }
               style={{
                 fill: props.color,
                 height: '46px',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                transition: 'color 0.4s ease'
               }}
             />
           </span>

@@ -53,7 +53,7 @@ const ExpandableCenterNav = styled.div`
   position: absolute;
   right: 0;
   opacity: ${ props => props.selectedMachine === null ? 0 : 1 };
-  width: ${ props => props.selectedSourceLink === null ? '140px' : '100vw' };
+  width: ${ props => props.selectedSourceLink === null ? '140px' : '100%' };
   transition: width 0.2s ease-out;
   z-index: 1;
 `;

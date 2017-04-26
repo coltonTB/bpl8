@@ -15,10 +15,31 @@ import { ScrollPrompt } from './scroll-prompt';
 
 const Home = React.createClass({
 
-  isFixedNavVisible() {
+  getInitialState() {
+    return {
+      centerNavColor: COLORS.white
+    }
+  },
+
+  componentDidMount() {
+    this.interval = window.setInterval(() => this.getNavColor(), 200);
+  },
+
+  componentWillUnmount() {
+    this.timeout && window.clearInterval(this.interval);
+  },
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.centerNavColor !== this.state.centerNavColor;
+  },
+
+  getNavColor() {
     const whiteSectionEl = ReactDOM.findDOMNode(this.refs.whiteSection);
     const whiteSectionOffset = whiteSectionEl && whiteSectionEl.offsetTop;
-    return window.scrollY < whiteSectionOffset;
+    const color = window.scrollY > whiteSectionOffset ? COLORS.black : COLORS.white;
+    this.setState({
+      centerNavColor: color
+    });
   },
 
   render() {
@@ -29,9 +50,11 @@ const Home = React.createClass({
     return (
       <div>
 
-        <Hideable isVisible={this.isFixedNavVisible} listen>
-          <CenterNav isExpanded={ scrollLimit(1000) } fixed />
-        </Hideable>
+        <CenterNav
+          isExpanded={ scrollLimit(1000) }
+          color={ this.state.centerNavColor }
+          fixed
+        />
 
           <Div background={ COLORS.black } position="relative">
             <FlexContainer>
@@ -70,7 +93,10 @@ const Home = React.createClass({
               <HeroText>
                 <Hideable autoHide>
                   <div>
-                    <Img src={ localContext.assetUrl('/images/hero_2.png') } height="300px" />
+                    <Img
+                      src={ localContext.assetUrl('/images/hero_2.png') }
+                      height="300px"
+                    />
                   </div>
                   <H3 margin="16px 0 8px 0">
                     { content('hero_2_caption') }
@@ -92,14 +118,7 @@ const Home = React.createClass({
                     { content('video_title') }
                   </H2>
                 </HeroTextLeft>
-
-                <Hideable isVisible={ () => !this.isFixedNavVisible() } listen>
-                  <CenterNavMini
-                    color={ COLORS.gold }
-                    background={COLORS.white}
-                  />
-                </Hideable>
-
+                <CenterNavBackground />
                 <HeroText>
                   <H5 color={ COLORS.gold }>
                     { content('video_subtitle') }
@@ -108,7 +127,10 @@ const Home = React.createClass({
               </FlexContainer>
 
               <FlexContainer flexDirection="column">
-                <Img src={ localContext.assetUrl('/images/video_preview.png') } height="50vh" />
+                <Img
+                  src={ localContext.assetUrl('/images/video_preview.png') }
+                  height="50vh"
+                />
               </FlexContainer>
 
               <FlexContainer marginBottom="55px" paddingTop="60px">
@@ -117,14 +139,7 @@ const Home = React.createClass({
                     { content('insta_title') }
                   </H2>
                 </HeroTextLeft>
-
-                <Hideable isVisible={ () => !this.isFixedNavVisible() } listen>
-                  <CenterNavMini
-                    color={ COLORS.gold }
-                    background={COLORS.white}
-                  />
-                </Hideable>
-
+                <CenterNavBackground />
                 <HeroText align="flex-start">
                   <H5 color={ COLORS.gold }>
                     { content('insta_subtitle') }
@@ -133,7 +148,10 @@ const Home = React.createClass({
               </FlexContainer>
 
               <FlexContainer flexDirection="column">
-                <Img src={ localContext.assetUrl('/images/insta_shim.png') } height="30vh" />
+                <Img
+                  src={ localContext.assetUrl('/images/insta_shim.png') }
+                  height="30vh"
+                />
                 <Button marginTop="40px">
                   { content('see_more_btn') }
                 </Button>
@@ -148,12 +166,7 @@ const Home = React.createClass({
                   { content('press_title') }
                 </H2>
               </HeroTextLeft>
-              <Hideable isVisible={ isAtPageBottom } listen>
-                <CenterNavMini
-                  color={ COLORS.gold }
-                  background={ COLORS.gray }
-                />
-              </Hideable>
+              <CenterNavBackground />
               <HeroText>
                 <H5 color={ COLORS.black }>
                   { content('press_subtitle') }
@@ -161,7 +174,10 @@ const Home = React.createClass({
               </HeroText>
             </FlexContainer>
             <FlexContainer flexDirection="column">
-              <Img src={ localContext.assetUrl('/images/press.png') } height="30vh" />
+              <Img
+                src={ localContext.assetUrl('/images/press.png') }
+                height="30vh"
+              />
             </FlexContainer>
           </Div>
 
