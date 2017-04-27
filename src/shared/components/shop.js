@@ -6,7 +6,7 @@ import { FlexContainer } from '../style/flexbox';
 import { Div, H5 } from '../style/util';
 import { Hideable } from '../style/hideable';
 
-import { HeroText, HeroTextLeft } from './hero-text';
+import { HeroText, HeroTextLeft } from '../style/hero-text';
 import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
 import { StoreItem } from './store-item';

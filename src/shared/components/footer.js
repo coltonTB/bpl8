@@ -7,7 +7,7 @@ import { Input, Img, H2, Div } from '../style/util';
 import { Hideable } from '../style/hideable';
 
 import { CenterNavBackground, CenterNav } from './center-nav';
-import { HeroText, HeroTextLeft } from './hero-text';
+import { HeroText, HeroTextLeft } from '../style/hero-text';
 
 const FooterContainer = styled(FlexContainer)`
   padding-top: 40px;

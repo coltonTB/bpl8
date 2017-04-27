@@ -6,7 +6,7 @@ import { COLORS } from '../../constants';
 import { FlexContainer } from '../../style/flexbox';
 import { Hideable } from '../../style/hideable';
 
-import { HeroText, HeroTextLeft } from '../hero-text';
+import { HeroText, HeroTextLeft } from '../../style/hero-text';
 import { CenterNavBackground } from '../center-nav';
 
 import { Source1Text, Source1Images } from './sources';

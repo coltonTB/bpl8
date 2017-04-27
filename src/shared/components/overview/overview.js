@@ -10,7 +10,7 @@ import { Hideable } from '../../style/hideable';
 import { scrollLimit, scrollToTop } from '../../style/scroll-helpers';
 import { getEventManagerInstance } from '../../style/event-manager';
 
-import { HeroText, HeroTextLeft } from '../hero-text';
+import { HeroText, HeroTextLeft } from '../../style/hero-text';
 import { CenterNav, CenterNavBackground } from '../center-nav';
 import { Footer } from '../footer'
 

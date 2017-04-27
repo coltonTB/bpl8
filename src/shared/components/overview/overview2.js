@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { COLORS } from '../../constants';
 import { FlexContainer, FlexItem } from '../../style/flexbox';
 
-import { HeroText, HeroTextLeft } from '../hero-text';
+import { HeroText, HeroTextLeft } from '../../style/hero-text';
 import { CenterNav, CenterNavList, CenterNavBackground } from '../center-nav';
 import { Footer } from '../footer'
 

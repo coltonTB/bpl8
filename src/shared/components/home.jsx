@@ -9,7 +9,7 @@ import { Hideable } from '../style/hideable';
 import { scrollLimit, scrollMin } from '../style/scroll-helpers';
 
 import { CenterNav, CenterNavBackground, CenterNavMini } from './center-nav';
-import { HeroText, HeroTextLeft } from './hero-text';
+import { HeroText, HeroTextLeft } from '../style/hero-text';
 import { Footer, isAtPageBottom } from './footer';
 import { ScrollPrompt } from './scroll-prompt';
 
