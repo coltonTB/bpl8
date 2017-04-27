@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
-import { A, P } from '../style/util';
-import { COLORS } from '../constants';
+import { A, P, Span } from '../../style/util';
+import { COLORS } from '../../constants';
 
 const StyledAnchor = styled.a`
   color: ${ COLORS.gold };
@@ -24,7 +24,38 @@ const SourceLink = React.createClass({
   }
 });
 
-export const Machine1 = React.createClass({
+const MachineDetailsWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: ${ props => props.leftOffset } ;
+  opacity: ${ props => props.selectedMachine === null
+    ? 0
+    : 1
+  };
+  color: { COLORS.white }
+`;
+
+export const MachineDetails = props => {
+  const data = props.data[0];
+  return (
+    <MachineDetailsWrapper {...props}>
+      <h3>
+        <Span color={ COLORS.white } textTransform="uppercase">
+          { data.title },&nbsp;
+        </Span>
+        <Span color={ COLORS.gold }>
+          { data.subtitle }
+        </Span>
+      </h3>
+      <Machine1Content
+        onSourceLinksMounted={ props.onSourceLinksMounted }
+        onLinkClick={ props.onLinkClick }
+      />
+    </MachineDetailsWrapper>
+  );
+};
+
+export const Machine1Content = React.createClass({
 
   propTypes: {
     onSourceLinksMounted: React.PropTypes.func,

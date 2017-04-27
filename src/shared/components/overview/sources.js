@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Img, Div } from '../style/util';
+import { Img, Div } from '../../style/util';
 
 export const Source1Text = props => (
   <div>

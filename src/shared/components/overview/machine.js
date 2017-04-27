@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { COLORS } from '../constants';
-import { FlexItem } from '../style/flexbox';
-import { Span, P, Div } from '../style/util'
+import { COLORS } from '../../constants';
+import { FlexItem } from '../../style/flexbox';
+import { Span, P, Div } from '../../style/util'
 
 const MachineWrapper = styled(Div)`
   opacity: ${ props =>

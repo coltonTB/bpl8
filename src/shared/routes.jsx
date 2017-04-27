@@ -3,7 +3,7 @@ import {Route, IndexRoute} from 'react-router';
 
 import Index from './components/index'
 import Home from './components/home';
-import Overview from './components/overview';
+import Overview from './components/overview/overview.js';
 import Shop from './components/shop';
 import Info from './components/info';
 import Calendar from './components/calendar';

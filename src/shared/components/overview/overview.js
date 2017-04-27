@@ -1,21 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactSVG from 'react-svg'
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { COLORS } from '../constants';
-import { FlexContainer } from '../style/flexbox';
-import { Div, Span, P, A } from '../style/util'
-import { Hideable } from '../style/hideable';
-import { scrollLimit, scrollToTop } from '../style/scroll-helpers';
-import { getEventManagerInstance } from '../style/event-manager';
+import { COLORS } from '../../constants';
+import { FlexContainer } from '../../style/flexbox';
+import { Div } from '../../style/util'
+import { Hideable } from '../../style/hideable';
+import { scrollLimit, scrollToTop } from '../../style/scroll-helpers';
+import { getEventManagerInstance } from '../../style/event-manager';
 
-import { HeroText, HeroTextLeft } from './hero-text';
-import { CenterNav, CenterNavBackground } from './center-nav';
-import { Footer } from './footer'
+import { HeroText, HeroTextLeft } from '../hero-text';
+import { CenterNav, CenterNavBackground } from '../center-nav';
+import { Footer } from '../footer'
+
 import { Machine } from './machine';
-import { Machine1 } from './machine-details';
-import { Source1Text, Source1Images } from './sources';
+import { MachineDetails } from './machine-details';
+import { ExpandableCenterNav } from './expandable-center-nav';
+import { SourceLink } from './source-link';
 
 const TOP_SECTION_HEIGHT = 210;
 const LEFT_OFFSET = "690px";
@@ -43,106 +45,6 @@ const MachinesContainer = styled(Div)`
   max-width: 1300px;
   margin-top: 80px;
   position: relative;
-`;
-const ExpandableCenterNav = styled.div`
-  background: ${ COLORS.gold };
-  height: 2671px;
-  left: 0;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  position: absolute;
-  right: 0;
-  opacity: ${ props => props.selectedMachine === null ? 0 : 1 };
-  width: ${ props => props.selectedSourceLink === null ? '140px' : '100%' };
-  transition: width 0.2s ease-out;
-  z-index: 1;
-`;
-const MachineDetailsWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: ${ LEFT_OFFSET } ;
-  opacity: ${ props => props.selectedMachine === null
-    ? 0
-    : 1
-  };
-  color: { COLORS.white }
-`;
-const SourceLinkCenterStyle = styled.div`
-  color: ${ COLORS.white };
-  text-align: center;
-  position: fixed;
-  top: 45%;
-  width: 140px;
-  box-sizing: border-box;
-  padding: 0 10px;
-  z-index: 2;
-`;
-
-const MachineDetails = props => {
-  const data = props.data[0];
-  return (
-    <MachineDetailsWrapper {...props}>
-      <h3>
-        <Span color={ COLORS.white } textTransform="uppercase">
-          { data.title },&nbsp;
-        </Span>
-        <Span color={ COLORS.gold }>
-          { data.subtitle }
-        </Span>
-      </h3>
-      <Machine1
-        onSourceLinksMounted={ props.onSourceLinksMounted }
-        onLinkClick={ props.onLinkClick }
-      />
-    </MachineDetailsWrapper>
-  );
-};
-
-const SourceLinkCenter = React.createClass({
-  propTypes: {
-    id: React.PropTypes.string,
-    onClick: React.PropTypes.func
-  },
-  render() {
-    const Number = styled.h5`
-      text-decoration: underline;
-      cursor: pointer;
-      &:hover {
-        color: #ddd;
-      }
-    `
-    return (
-      <SourceLinkCenterStyle>
-        <Number onClick={() => this.props.onClick(this.props.id)}>
-          { this.props.id }
-        </Number>
-        {
-          this.props.id && (
-            <div>
-              Few thousands of characters.
-              No alphabet.
-              Millions of customers await whoever solves the puzzle first.
-            </div>
-          )
-        }
-      </SourceLinkCenterStyle>
-    );
-  }
-});
-
-const SourceCloseButton = styled.div`
-  text-transform: uppercase;
-  color: ${ COLORS.white };
-  cursor: pointer;
-  position: fixed;
-  top: 45%;
-  width: 140px;
-  span {
-    display: inline-block;
-    padding-top: 14px;
-    text-decoration: underline;
-  }
 `;
 
 const Overview = React.createClass({
@@ -219,47 +121,13 @@ const Overview = React.createClass({
           onClick={ stopProp }
           selectedMachine={ this.state.selectedMachine }
           selectedSourceLink={ this.state.selectedSourceLink }
-        >
-          <FlexContainer>
-            <HeroTextLeft align="flex-start">
-              <h2>
-                { content('title') }
-              </h2>
-            </HeroTextLeft>
-            <CenterNavBackground />
-            <HeroText color={ COLORS.white } align="flex-start">
-              <h5>
-                { content('subtitle') }
-              </h5>
-            </HeroText>
-          </FlexContainer>
-          <FlexContainer>
-            <HeroTextLeft align="flex-start">
-              <Source1Images />
-            </HeroTextLeft>
-            <CenterNavBackground textAlign="center">
-              <Hideable isVisible={ this.state.selectedSourceLink !== null } hideInitially>
-                <SourceCloseButton onClick={ () => this.handleSourceLinkClick(null) }>
-                  <ReactSVG
-                    path={ this.context.localContext.assetUrl('/images/close.svg') }
-                    style={{
-                      fill: COLORS.white,
-                      height: '46px',
-                      width: '100%',
-                      textAlign: 'center'
-                    }}
-                  />
-                  <Span>close</Span>
-                </SourceCloseButton>
-              </Hideable>
-            </CenterNavBackground>
-            <HeroText color={ COLORS.white } align="flex-start" >
-              <Source1Text />
-            </HeroText>
-          </FlexContainer>
-        </ExpandableCenterNav>
+          onCloseClick={ () => this.handleSourceLinkClick(null) }
+        />
 
-        <CenterNav isExpanded={ () => this.state.selectedMachine === null && scrollLimit(TOP_SECTION_HEIGHT)() } fixed/>
+        <CenterNav fixed isExpanded={ () =>
+          this.state.selectedMachine === null &&
+          scrollLimit(TOP_SECTION_HEIGHT)()
+        }/>
 
         <FlexContainer height={TOP_SECTION_HEIGHT + 'px'}>
           <HeroTextLeft align="flex-start">
@@ -304,7 +172,7 @@ const Overview = React.createClass({
                   this.state.selectedMachine !== null &&
                   this.state.selectedSourceLink === null &&
                   this.state.sourceLinks.length &&
-                    <SourceLinkCenter
+                    <SourceLink
                       ref='sourceLinkCenter'
                       {...this.state.sourceLinks[this.state.visibleSourceLink]}
                       onClick={this.handleSourceLinkClick}
@@ -319,11 +187,12 @@ const Overview = React.createClass({
                 >
                   {
                     this.state.selectedMachine !== null &&
-                    <MachineDetails
-                      data={ content('machineDetails') }
-                      selectedMachine={ this.state.selectedMachine }
-                      onSourceLinksMounted={ this.renderSourceLinks }
-                    />
+                      <MachineDetails
+                        leftOffset={ LEFT_OFFSET }
+                        data={ content('machineDetails') }
+                        selectedMachine={ this.state.selectedMachine }
+                        onSourceLinksMounted={ this.renderSourceLinks }
+                      />
                   }
                 </Hideable>
                 <Machine

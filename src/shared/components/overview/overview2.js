@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { COLORS } from '../constants';
-import { FlexContainer, FlexItem } from '../style/flexbox';
+import { COLORS } from '../../constants';
+import { FlexContainer, FlexItem } from '../../style/flexbox';
 
-import { HeroText, HeroTextLeft } from './hero-text';
-import { CenterNav, CenterNavList, CenterNavBackground } from './center-nav';
-import { Footer } from './footer'
+import { HeroText, HeroTextLeft } from '../hero-text';
+import { CenterNav, CenterNavList, CenterNavBackground } from '../center-nav';
+import { Footer } from '../footer'
 
 const MachinesContainer = styled.div`
   margin-top: 60px;
