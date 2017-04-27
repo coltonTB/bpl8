@@ -20,6 +20,7 @@ import { Source1Text, Source1Images } from './sources';
 const TOP_SECTION_HEIGHT = 210;
 const LEFT_OFFSET = "690px";
 const stopProp = e => e.stopPropagation();
+const eventMangerInstance = getEventManagerInstance();
 
 const ImagesLeft = styled(HeroTextLeft)`
   flex-wrap: nowrap;

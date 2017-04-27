@@ -1,32 +1,13 @@
 const POLL_INTERVAL = 200;
 let instance;
 
-
-function doWhileScrolling(onScrollStart, onScrollEnd) {
-  let lock = false;
-  window.addEventListener('scroll', e => {
-    scroll_position = window.scrollY;
-    if (lock) {
-      return;
-    }
-    window.requestAnimationFrame(() => {
-      // If scrollPosition has not changed
-      if (scroll_position === window.scrollY) {
-        return onScrollEnd();
-      }
-      onScrollStart();
-      lock = false;
-    });
-    lock = true;
-  });
-}
-
 class EventManager {
 
   constructor() {
     this.events = [];
     this.count = 100;
     this.started = false;
+    this.previousScrollPos = 0;
   }
 
   startLoop() {
@@ -51,7 +32,13 @@ class EventManager {
   }
 
   processEvents() {
-    this.events.forEach(e => e.fn())
+    this.isIdle = this.previousScrollPos === window.scrollY;
+    this.events.forEach(e => {
+      if (!this.isIdle) {
+        e.fn();
+      }
+    })
+    this.previousScrollPos = window.scrollY;
   }
 }
 
