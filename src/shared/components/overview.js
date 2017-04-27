@@ -8,6 +8,7 @@ import { FlexContainer } from '../style/flexbox';
 import { Div, Span, P, A } from '../style/util'
 import { Hideable } from '../style/hideable';
 import { scrollLimit, scrollToTop } from '../style/scroll-helpers';
+import { getEventManagerInstance } from '../style/event-manager';
 
 import { HeroText, HeroTextLeft } from './hero-text';
 import { CenterNav, CenterNavBackground } from './center-nav';
@@ -34,7 +35,6 @@ const ImagesRight = styled(HeroText)`
   align-self: flex-start;
   padding: 12px;
 `;
-
 const MachinesContainer = styled(Div)`
   display: flex;
   flex-wrap: nowrap;
@@ -43,7 +43,6 @@ const MachinesContainer = styled(Div)`
   margin-top: 80px;
   position: relative;
 `;
-
 const ExpandableCenterNav = styled.div`
   background: ${ COLORS.gold };
   height: 2671px;
@@ -58,7 +57,6 @@ const ExpandableCenterNav = styled.div`
   transition: width 0.2s ease-out;
   z-index: 1;
 `;
-
 const MachineDetailsWrapper = styled.div`
   position: absolute;
   top: 0;
@@ -68,6 +66,16 @@ const MachineDetailsWrapper = styled.div`
     : 1
   };
   color: { COLORS.white }
+`;
+const SourceLinkCenterStyle = styled.div`
+  color: ${ COLORS.white };
+  text-align: center;
+  position: fixed;
+  top: 45%;
+  width: 140px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  z-index: 2;
 `;
 
 const MachineDetails = props => {
@@ -90,24 +98,11 @@ const MachineDetails = props => {
   );
 };
 
-const SourceLinkCenterStyle = styled.div`
-  color: ${ COLORS.white };
-  text-align: center;
-  position: fixed;
-  top: 45%;
-  width: 140px;
-  box-sizing: border-box;
-  padding: 0 10px;
-  z-index: 2;
-`;
-
 const SourceLinkCenter = React.createClass({
-
   propTypes: {
     id: React.PropTypes.string,
     onClick: React.PropTypes.func
   },
-
   render() {
     const Number = styled.h5`
       text-decoration: underline;
@@ -207,11 +202,11 @@ const Overview = React.createClass({
   },
 
   componentDidMount() {
-    this.interval = window.setInterval(() => this.getVisibleSourceLink(), 200);
+    this.eventId = eventMangerInstance.addEvent(() => this.getVisibleSourceLink());
   },
 
   componentWillUnmount() {
-    this.interval && window.clearInterval(this.interval);
+    this.eventId && eventMangerInstance.removeEvent(this.eventId);
   },
 
   render() {

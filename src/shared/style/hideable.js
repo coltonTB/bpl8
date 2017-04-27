@@ -3,36 +3,9 @@ import classNames from 'classnames';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
-const POLL_INTERVAL = 200;
+import { getEventManagerInstance } from '../style/event-manager';
 
-class EventManager {
-
-  constructor() {
-    this.events = [];
-    this.count = 100;
-    window.setInterval(this.processEvents.bind(this), POLL_INTERVAL)
-  }
-
-  addEvent(fn) {
-    const uuid = String(this.count);
-    this.count ++;
-    this.events.push({
-      uuid,
-      fn
-    });
-    return uuid;
-  }
-
-  removeEvent(uuid) {
-    this.events = this.events.filter(e => e.uuid !== uuid);
-  }
-
-  processEvents() {
-    this.events.forEach(e => e.fn())
-  }
-}
-
-let eventMangerInstance;
+const eventMangerInstance = getEventManagerInstance();
 
 const Style = styled.div`
   opacity: 1;
@@ -87,7 +60,6 @@ export const Hideable = React.createClass({
 
   componentDidMount() {
     if (this.props.listen || this.props.autoHide) {
-      eventMangerInstance = eventMangerInstance || new EventManager();
       this.eventId = eventMangerInstance.addEvent(() => {
         this.setState({
           isVisible: this.evaluateVisibility(this.props)
