@@ -6,7 +6,7 @@ import { COLORS } from '../../constants';
 import { FlexContainer } from '../../style/flexbox';
 import { Hideable } from '../../style/hideable';
 
-import { HeroText, HeroTextLeft } from '../../style/hero-text';
+import { Content, ContentLeft } from '../../style/content-column';
 import { CenterNavBackground } from '../center-nav';
 
 import { Source1Text, Source1Images } from './sources';
@@ -49,22 +49,22 @@ export const ExpandableCenterNav = (props, {localContext}) => (
     selectedSourceLink={ props.selectedSourceLink }
   >
     <FlexContainer>
-      <HeroTextLeft align="flex-start">
+      <ContentLeft align="flex-start">
         <h2>
           { localContext.getContent('overview', 'title') }
         </h2>
-      </HeroTextLeft>
+      </ContentLeft>
       <CenterNavBackground />
-      <HeroText color={ COLORS.white } align="flex-start">
+      <Content color={ COLORS.white } align="flex-start">
         <h5>
           { localContext.getContent('overview', 'subtitle') }
         </h5>
-      </HeroText>
+      </Content>
     </FlexContainer>
     <FlexContainer>
-      <HeroTextLeft align="flex-start">
+      <ContentLeft align="flex-start">
         <Source1Images />
-      </HeroTextLeft>
+      </ContentLeft>
       <CenterNavBackground textAlign="center">
         <Hideable isVisible={ props.selectedSourceLink !== null } hideInitially>
           <SourceCloseButton onClick={ props.onCloseClick }>
@@ -81,9 +81,9 @@ export const ExpandableCenterNav = (props, {localContext}) => (
           </SourceCloseButton>
         </Hideable>
       </CenterNavBackground>
-      <HeroText color={ COLORS.white } align="flex-start" >
+      <Content color={ COLORS.white } align="flex-start" >
         <Source1Text />
-      </HeroText>
+      </Content>
     </FlexContainer>
   </ExpandableCenterNavStyle>
 );

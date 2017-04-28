@@ -7,19 +7,19 @@ import { Div, H2, H3, H4, H5, Img, P } from '../style/util'
 import { Hideable } from '../style/hideable';
 import { scrollLimit } from '../style/scroll-helpers';
 
-import { HeroTextLeft, HeroText } from '../style/hero-text';
+import { ContentLeft, Content } from '../style/content-column';
 import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer, isFooterNavVisible } from './footer'
 
 const TOP_SECTION_HEIGHT = 220;
-const CalendarLeft = styled(HeroTextLeft)`
+const CalendarLeft = styled(ContentLeft)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: ${ props => props.width };
   margin-bottom: 36px;
   align-self: flex-start;
 `;
-const CalendarRight = styled(HeroText)`
+const CalendarRight = styled(Content)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: ${ props => props.width };

@@ -6,21 +6,21 @@ import { FlexContainer } from '../style/flexbox';
 import { Div, H2, H3, H4, H5, Img, P, Span } from '../style/util'
 import { Hideable } from '../style/hideable';
 
-import { HeroTextLeft, HeroText } from '../style/hero-text';
+import { ContentLeft, Content } from '../style/content-column';
 import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
 
 const TOP_SECTION_HEIGHT = 270;
 const isBelowTopSection = () => window.scrollY > TOP_SECTION_HEIGHT;
 
-const BackgroundLeft = styled(HeroTextLeft)`
+const BackgroundLeft = styled(ContentLeft)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: 500px;
   margin-bottom: 20px;
   align-self: flex-start;
 `;
-const BackgroundRight = styled(HeroText)`
+const BackgroundRight = styled(Content)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: 500px;
@@ -90,17 +90,17 @@ const Background = (props, { localContext }) => {
       <Hideable hideInitially isVisible>
 
         <FlexContainer paddingTop="50px">
-          <HeroTextLeft align="flex-start" >
+          <ContentLeft align="flex-start" >
             <H2 color={ COLORS.black }>
               { content('section_1_title') }
             </H2>
-          </HeroTextLeft>
+          </ContentLeft>
           <CenterNavBackground />
-          <HeroText>
+          <Content>
             <H5 color={ COLORS.gold }>
               { content('section_1_subtitle') }
             </H5>
-          </HeroText>
+          </Content>
         </FlexContainer>
 
         <FlexContainer marginBottom="20px">
@@ -143,17 +143,17 @@ const Background = (props, { localContext }) => {
 
 
         <FlexContainer>
-          <HeroTextLeft align="flex-start" >
+          <ContentLeft align="flex-start" >
             <H2 color={ COLORS.black }>
               { content('section_2_title') }
             </H2>
-          </HeroTextLeft>
+          </ContentLeft>
           <CenterNavBackground />
-          <HeroText>
+          <Content>
             <H5 color={ COLORS.gold }>
               { content('section_2_subtitle') }
             </H5>
-          </HeroText>
+          </Content>
         </FlexContainer>
 
         <FlexContainer marginBottom="120px">

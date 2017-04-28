@@ -10,7 +10,7 @@ import { Hideable } from '../../style/hideable';
 import { scrollLimit, scrollToTop } from '../../style/scroll-helpers';
 import { getEventManagerInstance } from '../../style/event-manager';
 
-import { HeroText, HeroTextLeft } from '../../style/hero-text';
+import { Content, ContentLeft } from '../../style/content-column';
 import { CenterNav, CenterNavBackground } from '../center-nav';
 import { Footer } from '../footer'
 
@@ -24,14 +24,14 @@ const LEFT_OFFSET = "690px";
 const stopProp = e => e.stopPropagation();
 const eventMangerInstance = getEventManagerInstance();
 
-const ImagesLeft = styled(HeroTextLeft)`
+const ImagesLeft = styled(ContentLeft)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: 500px;
   align-self: flex-start;
   padding: 12px;
 `;
-const ImagesRight = styled(HeroText)`
+const ImagesRight = styled(Content)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: 500px;
@@ -130,17 +130,17 @@ const Overview = React.createClass({
         }/>
 
         <FlexContainer height={TOP_SECTION_HEIGHT + 'px'}>
-          <HeroTextLeft align="flex-start">
+          <ContentLeft align="flex-start">
             <h2>
               { content('title') }
             </h2>
-          </HeroTextLeft>
+          </ContentLeft>
           <CenterNavBackground />
-          <HeroText color={ COLORS.gold } align="flex-start">
+          <Content color={ COLORS.gold } align="flex-start">
             <h5>
               { content('subtitle') }
             </h5>
-          </HeroText>
+          </Content>
         </FlexContainer>
 
         <Hideable hideInitially isVisible>

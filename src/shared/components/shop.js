@@ -6,16 +6,16 @@ import { FlexContainer } from '../style/flexbox';
 import { Div, H5 } from '../style/util';
 import { Hideable } from '../style/hideable';
 
-import { HeroText, HeroTextLeft } from '../style/hero-text';
+import { Content, ContentLeft } from '../style/content-column';
 import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
 import { StoreItem } from './store-item';
 
-const ImagesLeft = styled(HeroTextLeft)`
+const ImagesLeft = styled(ContentLeft)`
   flex-wrap: nowrap;
   flex-direction: column;
 `;
-const ImagesRight = styled(HeroText)`
+const ImagesRight = styled(Content)`
   flex-wrap: nowrap;
   flex-direction: column;
 `;
@@ -37,17 +37,17 @@ const Shop = (props, { localContext }) => {
       <CenterNav fixed/>
 
       <FlexContainer>
-        <HeroTextLeft align="flex-start">
+        <ContentLeft align="flex-start">
           <h2>
             { content('title') }
           </h2>
-        </HeroTextLeft>
+        </ContentLeft>
         <CenterNavBackground />
-        <HeroText color={ COLORS.gold }>
+        <Content color={ COLORS.gold }>
           <H5 color={ COLORS.black }>
             { content('subtitle') }
           </H5>
-        </HeroText>
+        </Content>
       </FlexContainer>
 
       <FlexContainer>

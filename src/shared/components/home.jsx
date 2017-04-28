@@ -9,7 +9,7 @@ import { Hideable } from '../style/hideable';
 import { scrollLimit, scrollMin } from '../style/scroll-helpers';
 
 import { CenterNav, CenterNavBackground, CenterNavMini } from './center-nav';
-import { HeroText, HeroTextLeft } from '../style/hero-text';
+import { Content, ContentLeft } from '../style/content-column';
 import { Footer, isAtPageBottom } from './footer';
 import { ScrollPrompt } from './scroll-prompt';
 
@@ -58,28 +58,28 @@ const Home = React.createClass({
 
           <Div background={ COLORS.black } position="relative">
             <FlexContainer>
-              <HeroTextLeft>
+              <ContentLeft>
                 <Hideable hideInitially isVisible>
                   <h1>
                     { content('hero_text_left') }
                   </h1>
                 </Hideable>
-              </HeroTextLeft>
+              </ContentLeft>
               <CenterNavBackground fullHeight background={ COLORS.gold } />
-              <HeroText>
+              <Content>
                 <Hideable hideInitially isVisible>
                   <h1>
                     { content('hero_text_right') }
                   </h1>
                 </Hideable>
-              </HeroText>
+              </Content>
             </FlexContainer>
             <ScrollPrompt isVisible={ scrollLimit(500) } />
           </Div>
 
           <Div>
             <FlexContainer>
-              <HeroTextLeft>
+              <ContentLeft>
                 <Hideable autoHide>
                   <H2 color={ COLORS.black }>
                     { content('hero_2_title') }&mdash;
@@ -88,9 +88,9 @@ const Home = React.createClass({
                     { content('hero_2_subtitle') }
                   </H2>
                 </Hideable>
-              </HeroTextLeft>
+              </ContentLeft>
               <CenterNavBackground fullHeight background={ COLORS.black } />
-              <HeroText>
+              <Content>
                 <Hideable autoHide>
                   <div>
                     <Img
@@ -105,7 +105,7 @@ const Home = React.createClass({
                     { content('hero_2_text') }
                   </p>
                 </Hideable>
-              </HeroText>
+              </Content>
             </FlexContainer>
 
           </Div>
@@ -113,17 +113,17 @@ const Home = React.createClass({
           <Div background={COLORS.white} padding="30px 0 70px 0" ref="whiteSection">
             <Hideable autoHide>
               <FlexContainer marginBottom="55px" paddingTop="20px">
-                <HeroTextLeft>
+                <ContentLeft>
                   <H2 color={ COLORS.black }>
                     { content('video_title') }
                   </H2>
-                </HeroTextLeft>
+                </ContentLeft>
                 <CenterNavBackground />
-                <HeroText>
+                <Content>
                   <H5 color={ COLORS.gold }>
                     { content('video_subtitle') }
                   </H5>
-                </HeroText>
+                </Content>
               </FlexContainer>
 
               <FlexContainer flexDirection="column">
@@ -134,17 +134,17 @@ const Home = React.createClass({
               </FlexContainer>
 
               <FlexContainer marginBottom="55px" paddingTop="60px">
-                <HeroTextLeft align="flex-start">
+                <ContentLeft align="flex-start">
                   <H2 color={ COLORS.black }>
                     { content('insta_title') }
                   </H2>
-                </HeroTextLeft>
+                </ContentLeft>
                 <CenterNavBackground />
-                <HeroText align="flex-start">
+                <Content align="flex-start">
                   <H5 color={ COLORS.gold }>
                     { content('insta_subtitle') }
                   </H5>
-                </HeroText>
+                </Content>
               </FlexContainer>
 
               <FlexContainer flexDirection="column">
@@ -161,17 +161,17 @@ const Home = React.createClass({
 
           <Div background={COLORS.gray} padding="40px 0">
             <FlexContainer>
-              <HeroTextLeft>
+              <ContentLeft>
                 <H2 color={ COLORS.black }>
                   { content('press_title') }
                 </H2>
-              </HeroTextLeft>
+              </ContentLeft>
               <CenterNavBackground />
-              <HeroText>
+              <Content>
                 <H5 color={ COLORS.black }>
                   { content('press_subtitle') }
                 </H5>
-              </HeroText>
+              </Content>
             </FlexContainer>
             <FlexContainer flexDirection="column">
               <Img

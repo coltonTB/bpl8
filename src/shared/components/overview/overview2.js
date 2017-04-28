@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { COLORS } from '../../constants';
 import { FlexContainer, FlexItem } from '../../style/flexbox';
 
-import { HeroText, HeroTextLeft } from '../../style/hero-text';
+import { Content, ContentLeft } from '../../style/content-column';
 import { CenterNav, CenterNavList, CenterNavBackground } from '../center-nav';
 import { Footer } from '../footer'
 
@@ -57,17 +57,17 @@ const Overview = (props, { localContext }) => {
       </CenterNav>
 
       <FlexContainer>
-        <HeroTextLeft align="flex-start">
+        <ContentLeft align="flex-start">
           <h2>
             { content('title') }
           </h2>
-        </HeroTextLeft>
+        </ContentLeft>
         <CenterNavBackground />
-        <HeroText color={ COLORS.gold }>
+        <Content color={ COLORS.gold }>
           <h5>
             { content('subtitle') }
           </h5>
-        </HeroText>
+        </Content>
       </FlexContainer>
 
       <FlexContainer wrap>

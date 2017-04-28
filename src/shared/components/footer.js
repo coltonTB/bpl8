@@ -7,7 +7,7 @@ import { Input, Img, H2, Div } from '../style/util';
 import { Hideable } from '../style/hideable';
 
 import { CenterNavBackground, CenterNav } from './center-nav';
-import { HeroText, HeroTextLeft } from '../style/hero-text';
+import { Content, ContentLeft } from '../style/content-column';
 
 const FooterContainer = styled(FlexContainer)`
   padding-top: 40px;
@@ -22,7 +22,7 @@ export const isAtPageBottom = () => {
 
 const Footer = (props, { localContext }) => (
   <FooterContainer>
-    <HeroTextLeft align="flex-start">
+    <ContentLeft align="flex-start">
       <div>
         <H2 color={ COLORS.gold } marginBottom="15px" >
           { localContext.getContent('footer', 'contact') }
@@ -32,11 +32,11 @@ const Footer = (props, { localContext }) => (
           { localContext.getContent('footer', 'brand') }
         </Div>
       </div>
-    </HeroTextLeft>
+    </ContentLeft>
 
     <CenterNavBackground />
 
-    <HeroText align="flex-start">
+    <Content align="flex-start">
       <div>
         <Input placeholder={ localContext.getContent('footer', 'subscribe_prompt') } />
         <Div marginTop="30px">
@@ -46,7 +46,7 @@ const Footer = (props, { localContext }) => (
           { localContext.getContent('footer', 'rad_contact') }
         </Div>
       </div>
-    </HeroText>
+    </Content>
   </FooterContainer>
 );
 

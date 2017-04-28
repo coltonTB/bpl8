@@ -7,18 +7,18 @@ import { Div, H2, H3, H5, Img, P } from '../style/util'
 import { Hideable } from '../style/hideable';
 import { scrollLimit } from '../style/scroll-helpers';
 
-import { HeroTextLeft, HeroText } from '../style/hero-text';
+import { ContentLeft, Content } from '../style/content-column';
 import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
 
 const TOP_SECTION_HEIGHT = 250;
-const InfoLeft = styled(HeroTextLeft)`
+const InfoLeft = styled(ContentLeft)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: 500px;
   margin-bottom: 40px;
 `;
-const InfoRight = styled(HeroText)`
+const InfoRight = styled(Content)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: 500px;

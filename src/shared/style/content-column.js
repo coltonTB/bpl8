@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { COLORS } from '../constants';
 import { FlexContainer, FlexItem } from '../style/flexbox';
 
-const HeroText = styled(FlexItem)`
+const Content = styled(FlexItem)`
   color: ${ props => props.color };
   padding: 40px 28px 18px 28px;
   width: ${ props => props.width };
@@ -12,14 +12,14 @@ const HeroText = styled(FlexItem)`
   flex-shrink: 0;
 `;
 
-HeroText.defaultProps = {
+Content.defaultProps = {
   color: COLORS.white,
   width: '500px'
 };
 
-const HeroTextLeft = styled(HeroText)`
+const ContentLeft = styled(Content)`
   text-align: right;
   flex-direction: row-reverse;
 `;
 
-export { HeroText, HeroTextLeft };
+export { Content, ContentLeft };
