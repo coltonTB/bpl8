@@ -7,9 +7,14 @@ import { FlexContainer, FlexItem } from '../style/flexbox';
 const Content = styled(FlexItem)`
   color: ${ props => props.color };
   padding: 40px 28px 18px 28px;
+  padding: 1.6vw;
   width: ${ props => props.width };
   flex-wrap: wrap;
   flex-shrink: 0;
+  flex-grow: 1;
+  > h5 {
+    padding-right: 20%;
+  }
 `;
 
 Content.defaultProps = {

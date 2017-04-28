@@ -25,6 +25,7 @@ const domElements = [
 const sharedFeatures = [
   'background',
   'color',
+  'display',
   'fontSize',
   'fontWeight',
   'flexDirection',
@@ -86,10 +87,12 @@ Button.defaultProps = {
 */
 export const Input = styled(module.exports.Input)`
   border: 1px solid ${ COLORS.gold };
-  padding: 6px 12px;
+  padding: 12px 16px 8px 16px;
+  padding: 0.6vw 0.8vw;
+  font-size: 1.5em;
+  font-size: 2.4vw;
 `;
 Input.defaultProps = {
   background: COLORS.black,
   color: COLORS.white,
-  fontSize: '1.5em'
 };
