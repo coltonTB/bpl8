@@ -40,7 +40,7 @@ const MachinesContainer = styled(Div)`
   display: flex;
   flex-wrap: nowrap;
   height: 2050px;
-  max-width: 1300px;
+  max-width: 1200px;
   margin-top: 80px;
   position: relative;
 `;

@@ -20,7 +20,6 @@ CenterNavWrapper.defaultProps = {
 
 export const CenterNavBackground = styled(Div)`
   width: 140px;
-  width: 8vw;
   padding-top: 20px;
   display: flex;
   flex-shrink: 0;
@@ -31,10 +30,8 @@ const List = styled(Ul)`
   list-style: none;
   padding: 0;
   margin-top: 12px;
-  font-size: 1.2em;
-  line-height: 1.4em;
-  font-size: 1.1vw;
-  line-height: 1.7vw;
+  font-size: 1.1rem;
+  line-height: 1.7rem;
   position: relative;
   top: ${ props => props.isMini ? '-100px' : '0' };
   li a {
@@ -47,7 +44,6 @@ const Nav = styled.div`
   margin-top: 1em;
   height: 80px;
   width: 140px;
-  width: 8vw;
   margin-right: auto;
   margin-left: auto;
   right: 0;
@@ -55,7 +51,6 @@ const Nav = styled.div`
   .hamburger-svg {
     fill: ${ props => props.color };
     width: 46px;
-    width: 2.3vw;
     cursor: pointer;
     transition: color 0.4s ease;
   }

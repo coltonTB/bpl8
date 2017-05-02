@@ -27,37 +27,37 @@ const CalendarRight = styled(Content)`
   align-self: flex-start;
 `;
 CalendarLeft.defaultProps = CalendarRight.defaultProps = {
-  width: '420px'
+  width: '620px'
 };
 
 const Date = (item, i) => (
   <FlexContainer key={i}>
     <CalendarLeft color={ COLORS.black }>
-      <P color={ COLORS.gold } margin="0">
+      <H5 color={ COLORS.gold }>
         Open
-      </P>
-      <h4>
+      </H5>
+      <h3>
         { item.open }
-      </h4>
-      <P color={ COLORS.gold } margin="14px 0 0 0">
+      </h3>
+      <H5 color={ COLORS.gold } margin="14px 0 0 0">
         Close
-      </P>
-      <h4>
+      </H5>
+      <h3>
         { item.close }
-      </h4>
+      </h3>
     </CalendarLeft>
     <CenterNavBackground />
     <CalendarRight color={ COLORS.black }>
-      <P margin="0">
+      <H5>
         Stop { i+1 }&mdash;
-      </P>
-      <H3 margin="4px 0">
+      </H5>
+      <H2 margin="4px 0">
         { item.location }
-      </H3>
-      <H4 color={ COLORS.gold } fontWeight="normal">
+      </H2>
+      <H3 color={ COLORS.gold } fontWeight="normal">
         { item.address1 }<br/>
         { item.address2 }
-      </H4>
+      </H3>
     </CalendarRight>
   </FlexContainer>
 );
