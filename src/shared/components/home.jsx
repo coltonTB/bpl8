@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import styled from 'styled-components';
+import ReactSVG from 'react-svg';
 
 import { COLORS } from '../constants';
 import { FlexContainer, FlexItem } from '../style/flexbox';
@@ -60,17 +61,25 @@ const Home = React.createClass({
             <FlexContainer>
               <ContentLeft>
                 <Hideable hideInitially isVisible>
-                  <h1>
-                    { content('hero_text_left') }
-                  </h1>
+                  <ReactSVG
+                    path={ localContext.assetUrl('/images/logo_left.svg') }
+                    style={{
+                      fill: COLORS.white,
+                      width: '50vw'
+                    }}
+                  />
                 </Hideable>
               </ContentLeft>
               <CenterNavBackground fullHeight background={ COLORS.gold } />
               <Content>
                 <Hideable hideInitially isVisible>
-                  <h1>
-                    { content('hero_text_right') }
-                  </h1>
+                  <ReactSVG
+                    path={ localContext.assetUrl('/images/logo_right.svg') }
+                    style={{
+                      fill: COLORS.white,
+                      width: '50vw'
+                    }}
+                  />
                 </Hideable>
               </Content>
             </FlexContainer>
@@ -110,7 +119,7 @@ const Home = React.createClass({
 
           </Div>
 
-          <Div background={COLORS.white} padding="30px 0 70px 0" ref="whiteSection">
+          <Div background={ COLORS.white } padding="30px 0 70px 0" ref="whiteSection">
             <Hideable autoHide>
               <FlexContainer marginBottom="55px" paddingTop="20px">
                 <ContentLeft>

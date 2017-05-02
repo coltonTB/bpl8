@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactSVG from 'react-svg'
 import styled from 'styled-components';
 
 import { COLORS } from '../../constants';
