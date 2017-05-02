@@ -10,7 +10,7 @@ const Content = styled(FlexItem)`
   padding: 1.6vw;
   width: ${ props => props.width };
   flex-wrap: wrap;
-  flex-shrink: 0;
+  flex-shrink: 1;
   flex-grow: 1;
   > h5 {
     padding-right: 20%;

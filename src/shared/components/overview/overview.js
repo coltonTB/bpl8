@@ -27,14 +27,12 @@ const eventMangerInstance = getEventManagerInstance();
 const ImagesLeft = styled(ContentLeft)`
   flex-wrap: nowrap;
   flex-direction: column;
-  width: 500px;
   align-self: flex-start;
   padding: 12px;
 `;
 const ImagesRight = styled(Content)`
   flex-wrap: nowrap;
   flex-direction: column;
-  width: 500px;
   align-self: flex-start;
   padding: 12px;
 `;
