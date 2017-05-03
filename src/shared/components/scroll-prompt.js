@@ -15,7 +15,7 @@ const ScrollPromptWrapper = styled(Div)`
   width: 100%;
 `;
 const ScrollPromptInner = styled.div`
-  width: 45px;
+  width: 3rem;
   margin-right: auto;
   margin-left: auto;
   left: 0;

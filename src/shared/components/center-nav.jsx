@@ -24,6 +24,9 @@ export const CenterNavBackground = styled(Div)`
   display: flex;
   flex-shrink: 0;
   height: ${ props => props.fullHeight ? '100vh' : props.height };
+  @media (max-width: 1230px) {
+    width: 120px;
+  }
 `;
 
 const List = styled(Ul)`
@@ -48,9 +51,12 @@ const Nav = styled.div`
   margin-left: auto;
   right: 0;
   left: 0;
+  @media (max-width: 1230px) {
+    width: 120px;
+  }
   .hamburger-svg {
     fill: ${ props => props.color };
-    width: 46px;
+    width: 3rem;
     cursor: pointer;
     transition: color 0.4s ease;
   }

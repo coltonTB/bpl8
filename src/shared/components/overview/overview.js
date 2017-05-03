@@ -20,7 +20,7 @@ import { ExpandableCenterNav } from './expandable-center-nav';
 import { SourceLink } from './source-link';
 
 const TOP_SECTION_HEIGHT = 210;
-const LEFT_OFFSET = "690px";
+const LEFT_OFFSET = 690;
 const stopProp = e => e.stopPropagation();
 const eventMangerInstance = getEventManagerInstance();
 
@@ -43,6 +43,9 @@ const MachinesContainer = styled(Div)`
   max-width: 1200px;
   margin-top: 80px;
   position: relative;
+  @media (max-width: 1230px) {
+    max-width: 1000px;
+  }
 `;
 
 const Overview = React.createClass({

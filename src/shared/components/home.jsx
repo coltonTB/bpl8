@@ -13,9 +13,15 @@ import { Content, ContentLeft } from '../style/content-column';
 import { Footer, isAtPageBottom } from './footer';
 import { ScrollPrompt } from './scroll-prompt';
 
+const HeroContent = styled(Content)`
+  margin-right: 0;
+`;
+const HeroContentLeft = styled(ContentLeft)`
+  margin-left: 0;
+`;
 const HeroH1 = styled.h1`
-  font-size: 7.5vw;
-  line-height: 7.5vw;
+  font-size: 7.2vw;
+  line-height: 7.2vw;
 `;
 const Hero2Caption = styled.h3`
   margin: 16px 0 8px 0;
@@ -73,21 +79,21 @@ const Home = React.createClass({
 
           <Div background={ COLORS.black } position="relative">
             <FlexContainer>
-              <ContentLeft>
+              <HeroContentLeft>
                 <Hideable hideInitially isVisible>
                   <HeroH1>
                     { content('hero_text_left') }
                   </HeroH1>
                 </Hideable>
-              </ContentLeft>
+              </HeroContentLeft>
               <CenterNavBackground fullHeight background={ COLORS.gold } />
-              <Content>
+              <HeroContent>
                 <Hideable hideInitially isVisible>
                   <HeroH1>
                     { content('hero_text_right') }
                   </HeroH1>
                 </Hideable>
-              </Content>
+              </HeroContent>
             </FlexContainer>
             <ScrollPrompt isVisible={ scrollLimit(500) } />
           </Div>

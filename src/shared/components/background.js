@@ -114,7 +114,12 @@ const Background = (props, { localContext }) => {
             <Quote>
               "{ content('section_1_quote') }"
             </Quote>
-            <H5 color={ COLORS.gold } textAlign="center" padding="40px 20px 60px 20px">
+            <H5
+              className="nopad"
+              color={ COLORS.gold }
+              textAlign="center"
+              padding="40px 20px 60px 20px"
+            >
               { content('section_1_highlight') }
             </H5>
             <div>

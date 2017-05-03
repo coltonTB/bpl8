@@ -6,14 +6,17 @@ import { FlexContainer, FlexItem } from '../style/flexbox';
 
 const Content = styled(FlexItem)`
   color: ${ props => props.color };
-  padding: 40px 28px 18px 28px;
-  padding: 1.6rem;
+  padding: 1.6rem 3rem 1.6rem 1.6rem;
   max-width: ${ props => props.width };
   flex-wrap: wrap;
   flex-shrink: 1;
   flex-grow: 1;
-  h5.heading {
+  overflow: hidden;
+  > h5 {
     padding-right: 20%;
+    &.nopad {
+      padding-right: 0;
+    }
   }
 `;
 
@@ -23,6 +26,7 @@ Content.defaultProps = {
 };
 
 const ContentLeft = styled(Content)`
+  padding: 1.6rem 1.6rem 1.6rem 3rem;
   text-align: right;
   flex-direction: row-reverse;
 `;

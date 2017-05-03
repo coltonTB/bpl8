@@ -12,6 +12,9 @@ const SourceLinkStyle = styled.div`
   box-sizing: border-box;
   padding: 0 10px;
   z-index: 2;
+  @media (max-width: 1230px) {
+    width: 120px;
+  }
 `;
 const Number = styled.h5`
   text-decoration: underline;

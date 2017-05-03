@@ -33,13 +33,13 @@ CalendarLeft.defaultProps = CalendarRight.defaultProps = {
 const Date = (item, i) => (
   <FlexContainer key={i}>
     <CalendarLeft color={ COLORS.black }>
-      <H5 color={ COLORS.gold }>
+      <H5 color={ COLORS.gold } className="nopad">
         Open
       </H5>
       <h3>
         { item.open }
       </h3>
-      <H5 color={ COLORS.gold } margin="14px 0 0 0">
+      <H5 color={ COLORS.gold } margin="14px 0 0 0" className="nopad">
         Close
       </H5>
       <h3>

@@ -33,6 +33,10 @@ const ExpandableCenterNavStyle = styled.div`
   width: ${ props => props.selectedSourceLink === null ? '140px' : '100%' };
   transition: width 0.2s ease-out;
   z-index: 1;
+
+  @media (max-width: 1230px) {
+    width: ${ props => props.selectedSourceLink === null ? '120px' : '100%' };
+  }
 `;
 
 const SourceCloseButton = styled.div`
@@ -42,6 +46,9 @@ const SourceCloseButton = styled.div`
   position: fixed;
   top: 45%;
   width: 140px;
+  @media (max-width: 1230px) {
+    width: 120px;
+  }
   span {
     display: inline-block;
     padding-top: 14px;
