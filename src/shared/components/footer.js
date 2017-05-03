@@ -20,27 +20,21 @@ const SubscribeInputStyle = styled.span`
   > button {
     margin-left: 5%;
     padding: 6px 16px;
-    padding: 0.6vw 1.5vw;
   }
   .right-arrow-svg {
     width: 30px;
-    width: 3vw;
     stroke: ${ COLORS.white }
   }
 `;
 const Contact = styled.p`
   margin-top: 40px;
-  margin-top: 2vw;
 `;
 const SocialLinks = styled.img`
   margin-top: 15px;
-  margin-top: 1.3vw;
   height: 36px;
-  height: 3.6vw;
 `;
 const Brand = styled.p`
-  margin-top: 46px;
-  margin-top: 5vw;
+  margin-top: 110px;
 `;
 
 const SubscribeInput = (props, {localContext}) => (

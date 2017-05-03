@@ -13,6 +13,13 @@ import { Source1Text, Source1Images } from './sources';
 
 const stopProp = e => e.stopPropagation();
 
+const ExpandableContent = styled(Content)`
+  flex-shrink: 0;
+`;
+const ExpandableContentLeft = styled(ContentLeft)`
+  flex-shrink: 0;
+`;
+
 const ExpandableCenterNavStyle = styled.div`
   background: ${ COLORS.gold };
   height: 100vh;
@@ -49,22 +56,22 @@ export const ExpandableCenterNav = (props, {localContext}) => (
     selectedSourceLink={ props.selectedSourceLink }
   >
     <FlexContainer>
-      <ContentLeft align="flex-start">
+      <ExpandableContentLeft align="flex-start">
         <h2>
           { localContext.getContent('overview', 'title') }
         </h2>
-      </ContentLeft>
+      </ExpandableContentLeft>
       <CenterNavBackground />
-      <Content color={ COLORS.white } align="flex-start">
+      <ExpandableContent color={ COLORS.white } align="flex-start">
         <h5>
           { localContext.getContent('overview', 'subtitle') }
         </h5>
-      </Content>
+      </ExpandableContent>
     </FlexContainer>
     <FlexContainer>
-      <ContentLeft align="flex-start">
+      <ExpandableContentLeft align="flex-start">
         <Source1Images />
-      </ContentLeft>
+      </ExpandableContentLeft>
       <CenterNavBackground textAlign="center">
         <Hideable isVisible={ props.selectedSourceLink !== null } hideInitially>
           <SourceCloseButton onClick={ props.onCloseClick }>
@@ -81,9 +88,9 @@ export const ExpandableCenterNav = (props, {localContext}) => (
           </SourceCloseButton>
         </Hideable>
       </CenterNavBackground>
-      <Content color={ COLORS.white } align="flex-start" >
+      <ExpandableContent color={ COLORS.white } align="flex-start" >
         <Source1Text />
-      </Content>
+      </ExpandableContent>
     </FlexContainer>
   </ExpandableCenterNavStyle>
 );

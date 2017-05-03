@@ -16,7 +16,6 @@ const ScrollPromptWrapper = styled(Div)`
 `;
 const ScrollPromptInner = styled.div`
   width: 45px;
-  width: 3.2vw;
   margin-right: auto;
   margin-left: auto;
   left: 0;
@@ -24,11 +23,11 @@ const ScrollPromptInner = styled.div`
   text-align: center;
   .scroll-svg {
     fill: ${ COLORS.white };
-    width: 2.3vw;
+    width: 100%;
   }
   div.text {
     font-weight: bold;
-    font-size: 1.1vw;
+    font-size: 100%;
   }
 `;
 

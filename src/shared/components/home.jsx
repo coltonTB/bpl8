@@ -13,16 +13,19 @@ import { Content, ContentLeft } from '../style/content-column';
 import { Footer, isAtPageBottom } from './footer';
 import { ScrollPrompt } from './scroll-prompt';
 
+const HeroH1 = styled.h1`
+  font-size: 7.5vw;
+  line-height: 7.5vw;
+`;
 const Hero2Caption = styled.h3`
   margin: 16px 0 8px 0;
-  margin: 2vw 0;
 `;
 const Hero2Text = styled.p`
   margin-right: 18%;
 `;
 const LargeImg = styled.img`
   width: 88%;
-  width: 88vw;
+  max-width: 1200px;
 `;
 
 const Home = React.createClass({
@@ -72,17 +75,17 @@ const Home = React.createClass({
             <FlexContainer>
               <ContentLeft>
                 <Hideable hideInitially isVisible>
-                  <h1>
+                  <HeroH1>
                     { content('hero_text_left') }
-                  </h1>
+                  </HeroH1>
                 </Hideable>
               </ContentLeft>
               <CenterNavBackground fullHeight background={ COLORS.gold } />
               <Content>
                 <Hideable hideInitially isVisible>
-                  <h1>
+                  <HeroH1>
                     { content('hero_text_right') }
-                  </h1>
+                  </HeroH1>
                 </Hideable>
               </Content>
             </FlexContainer>
