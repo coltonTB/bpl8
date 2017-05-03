@@ -19,21 +19,19 @@ import { ExpandableCenterNav } from './expandable-center-nav';
 import { SourceLink } from './source-link';
 
 const TOP_SECTION_HEIGHT = 210;
-const LEFT_OFFSET = "690px";
+const LEFT_OFFSET = 690;
 const stopProp = e => e.stopPropagation();
 const eventMangerInstance = getEventManagerInstance();
 
 const ImagesLeft = styled(ContentLeft)`
   flex-wrap: nowrap;
   flex-direction: column;
-  width: 500px;
   align-self: flex-start;
   padding: 12px;
 `;
 const ImagesRight = styled(Content)`
   flex-wrap: nowrap;
   flex-direction: column;
-  width: 500px;
   align-self: flex-start;
   padding: 12px;
 `;
@@ -41,9 +39,12 @@ const MachinesContainer = styled(Div)`
   display: flex;
   flex-wrap: nowrap;
   height: 2050px;
-  max-width: 1300px;
+  max-width: 1200px;
   margin-top: 80px;
   position: relative;
+  @media (max-width: 1230px) {
+    max-width: 1000px;
+  }
 `;
 
 const Overview = React.createClass({

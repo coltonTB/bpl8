@@ -22,7 +22,6 @@ const InfoRight = styled(Content)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: 500px;
-  margin-bottom: 40px;
 `;
 const Image = styled(Img)`
   width: 100%;

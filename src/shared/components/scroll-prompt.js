@@ -15,26 +15,32 @@ const ScrollPromptWrapper = styled(Div)`
   width: 100%;
 `;
 const ScrollPromptInner = styled.div`
-  width: 45px;
+  width: 3rem;
   margin-right: auto;
   margin-left: auto;
   left: 0;
   right: 0;
   text-align: center;
+  .scroll-svg {
+    fill: ${ COLORS.white };
+    width: 100%;
+  }
+  div.text {
+    font-weight: bold;
+    font-size: 100%;
+  }
 `;
 
 export const ScrollPrompt = (props, {localContext}) => (
   <ScrollPromptWrapper className="scroll-prompt-wrapper">
     <ScrollPromptInner>
       <Hideable isVisible={ props.isVisible } listen>
-        <div>
+        <div className="text">
           Scroll
         </div>
         <ReactSVG
           path={ localContext.assetUrl('/images/down_arrow.svg') }
-          style={{
-            fill: COLORS.white
-          }}
+          className="scroll-svg"
         />
       </Hideable>
     </ScrollPromptInner>

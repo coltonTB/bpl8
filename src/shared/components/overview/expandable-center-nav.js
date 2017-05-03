@@ -13,6 +13,13 @@ import { Source1Text, Source1Images } from './sources';
 
 const stopProp = e => e.stopPropagation();
 
+const ExpandableContent = styled(Content)`
+  flex-shrink: 0;
+`;
+const ExpandableContentLeft = styled(ContentLeft)`
+  flex-shrink: 0;
+`;
+
 const ExpandableCenterNavStyle = styled.div`
   background: ${ COLORS.gold };
   height: 100vh;
@@ -26,6 +33,10 @@ const ExpandableCenterNavStyle = styled.div`
   width: ${ props => props.selectedSourceLink === null ? '140px' : '100%' };
   transition: width 0.2s ease-out;
   z-index: 1;
+
+  @media (max-width: 1230px) {
+    width: ${ props => props.selectedSourceLink === null ? '120px' : '100%' };
+  }
 `;
 
 const SourceCloseButton = styled.div`
@@ -35,6 +46,9 @@ const SourceCloseButton = styled.div`
   position: fixed;
   top: 45%;
   width: 140px;
+  @media (max-width: 1230px) {
+    width: 120px;
+  }
   span {
     display: inline-block;
     padding-top: 14px;
@@ -49,22 +63,22 @@ export const ExpandableCenterNav = (props, {localContext}) => (
     selectedSourceLink={ props.selectedSourceLink }
   >
     <FlexContainer>
-      <ContentLeft align="flex-start">
+      <ExpandableContentLeft align="flex-start">
         <h2>
           { localContext.getContent('overview', 'title') }
         </h2>
-      </ContentLeft>
+      </ExpandableContentLeft>
       <CenterNavBackground />
-      <Content color={ COLORS.white } align="flex-start">
+      <ExpandableContent color={ COLORS.white } align="flex-start">
         <h5>
           { localContext.getContent('overview', 'subtitle') }
         </h5>
-      </Content>
+      </ExpandableContent>
     </FlexContainer>
     <FlexContainer>
-      <ContentLeft align="flex-start">
+      <ExpandableContentLeft align="flex-start">
         <Source1Images />
-      </ContentLeft>
+      </ExpandableContentLeft>
       <CenterNavBackground textAlign="center">
         <Hideable isVisible={ props.selectedSourceLink !== null } hideInitially>
           <SourceCloseButton onClick={ props.onCloseClick }>
@@ -81,9 +95,9 @@ export const ExpandableCenterNav = (props, {localContext}) => (
           </SourceCloseButton>
         </Hideable>
       </CenterNavBackground>
-      <Content color={ COLORS.white } align="flex-start" >
+      <ExpandableContent color={ COLORS.white } align="flex-start" >
         <Source1Text />
-      </Content>
+      </ExpandableContent>
     </FlexContainer>
   </ExpandableCenterNavStyle>
 );

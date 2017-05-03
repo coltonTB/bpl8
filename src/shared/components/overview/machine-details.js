@@ -27,12 +27,18 @@ const SourceLink = React.createClass({
 const MachineDetailsWrapper = styled.div`
   position: absolute;
   top: 0;
-  left: ${ props => props.leftOffset } ;
+  left: ${ props => props.leftOffset }px;
   opacity: ${ props => props.selectedMachine === null
     ? 0
     : 1
   };
-  color: { COLORS.white }
+  color: { COLORS.white };
+
+  @media (max-width: 1230px) {
+    left: ${ props =>
+      props.leftOffset !== 0 ? props.leftOffset - 100 : props.leftOffset
+    }px;
+  }
 `;
 
 export const MachineDetails = props => {

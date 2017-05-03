@@ -24,14 +24,17 @@ export const CenterNavBackground = styled(Div)`
   display: flex;
   flex-shrink: 0;
   height: ${ props => props.fullHeight ? '100vh' : props.height };
+  @media (max-width: 1230px) {
+    width: 120px;
+  }
 `;
 
 const List = styled(Ul)`
   list-style: none;
   padding: 0;
   margin-top: 12px;
-  font-size: 1.2em;
-  line-height: 1.4em;
+  font-size: 1.1rem;
+  line-height: 1.7rem;
   position: relative;
   top: ${ props => props.isMini ? '-100px' : '0' };
   li a {
@@ -48,6 +51,15 @@ const Nav = styled.div`
   margin-left: auto;
   right: 0;
   left: 0;
+  @media (max-width: 1230px) {
+    width: 120px;
+  }
+  .hamburger-svg {
+    fill: ${ props => props.color };
+    width: 3rem;
+    cursor: pointer;
+    transition: color 0.4s ease;
+  }
 `;
 
 const Link = styled(UnstyledLink)`
@@ -111,16 +123,11 @@ export const CenterNav = React.createClass({
 
     return (
       <CenterNavWrapper className="center-nav-wrapper" fixed={ this.props.fixed } zIndex={ this.props.zIndex }>
-        <Nav onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+        <Nav onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} color={ props.color }>
           <span>
             <ReactSVG
               path={ localContext.assetUrl('/images/hamburger.svg') }
-              style={{
-                fill: props.color,
-                height: '46px',
-                cursor: 'pointer',
-                transition: 'color 0.4s ease'
-              }}
+              className="hamburger-svg"
             />
           </span>
 

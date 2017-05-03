@@ -14,6 +14,21 @@ import { Content, ContentLeft } from '../style/content-column';
 import { Footer, isAtPageBottom } from './footer';
 import { ScrollPrompt } from './scroll-prompt';
 
+const HeroH1 = styled.h1`
+  font-size: 7.2vw;
+  line-height: 7.2vw;
+`;
+const Hero2Caption = styled.h3`
+  margin: 16px 0 8px 0;
+`;
+const Hero2Text = styled.p`
+  margin-right: 18%;
+`;
+const LargeImg = styled.img`
+  width: 88%;
+  max-width: 1200px;
+`;
+
 const Home = React.createClass({
 
   getInitialState() {
@@ -62,7 +77,7 @@ const Home = React.createClass({
               <ContentLeft>
                 <Hideable hideInitially isVisible>
                   <ReactSVG
-                    path={ localContext.assetUrl('/images/logo_left.svg') }
+                    path={ localContext.assetUrl('/images/radical_left.svg') }
                     style={{
                       fill: COLORS.white,
                       width: '50vw'
@@ -74,7 +89,7 @@ const Home = React.createClass({
               <Content>
                 <Hideable hideInitially isVisible>
                   <ReactSVG
-                    path={ localContext.assetUrl('/images/logo_right.svg') }
+                    path={ localContext.assetUrl('/images/radical_right.svg') }
                     style={{
                       fill: COLORS.white,
                       width: '50vw'
@@ -93,7 +108,7 @@ const Home = React.createClass({
                   <H2 color={ COLORS.black }>
                     { content('hero_2_title') }&mdash;
                   </H2>
-                  <H2>
+                  <H2 fontWeight="normal">
                     { content('hero_2_subtitle') }
                   </H2>
                 </Hideable>
@@ -101,18 +116,16 @@ const Home = React.createClass({
               <CenterNavBackground fullHeight background={ COLORS.black } />
               <Content>
                 <Hideable autoHide>
-                  <div>
-                    <Img
-                      src={ localContext.assetUrl('/images/hero_2.png') }
-                      height="300px"
-                    />
-                  </div>
-                  <H3 margin="16px 0 8px 0">
+                  <Img
+                    width="90%"
+                    src={ localContext.assetUrl('/images/hero_2.png') }
+                  />
+                  <Hero2Caption>
                     { content('hero_2_caption') }
-                  </H3>
-                  <p>
+                  </Hero2Caption>
+                  <Hero2Text>
                     { content('hero_2_text') }
-                  </p>
+                  </Hero2Text>
                 </Hideable>
               </Content>
             </FlexContainer>
@@ -136,20 +149,19 @@ const Home = React.createClass({
               </FlexContainer>
 
               <FlexContainer flexDirection="column">
-                <Img
+                <LargeImg
                   src={ localContext.assetUrl('/images/video_preview.png') }
-                  height="50vh"
                 />
               </FlexContainer>
 
               <FlexContainer marginBottom="55px" paddingTop="60px">
-                <ContentLeft align="flex-start">
+                <ContentLeft>
                   <H2 color={ COLORS.black }>
                     { content('insta_title') }
                   </H2>
                 </ContentLeft>
                 <CenterNavBackground />
-                <Content align="flex-start">
+                <Content>
                   <H5 color={ COLORS.gold }>
                     { content('insta_subtitle') }
                   </H5>
@@ -157,9 +169,8 @@ const Home = React.createClass({
               </FlexContainer>
 
               <FlexContainer flexDirection="column">
-                <Img
+                <LargeImg
                   src={ localContext.assetUrl('/images/insta_shim.png') }
-                  height="30vh"
                 />
                 <Button marginTop="40px">
                   { content('see_more_btn') }
@@ -183,9 +194,8 @@ const Home = React.createClass({
               </Content>
             </FlexContainer>
             <FlexContainer flexDirection="column">
-              <Img
+              <LargeImg
                 src={ localContext.assetUrl('/images/press.png') }
-                height="30vh"
               />
             </FlexContainer>
           </Div>

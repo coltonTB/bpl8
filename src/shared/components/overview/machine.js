@@ -18,7 +18,7 @@ const MachineWrapper = styled(Div)`
   };
   left: ${ props =>
     props.selectedMachine === props.data.id ? 0 : props.left
-  };
+  }px;
   top: ${ props =>
     props.selectedMachine === props.data.id ? '12px' : props.top
   };
@@ -28,6 +28,16 @@ const MachineWrapper = styled(Div)`
     top 0.4s ease,
     left 0.4s ease,
     opacity .2s ease;
+
+  @media (max-width: 1230px) {
+    width: 400px;
+
+    left: ${ props =>
+      props.selectedMachine === props.data.id
+        ? 0
+        : (props.left !== 0 ? props.left - 100 : props.left)
+    }px;
+  }
 `;
 
 MachineWrapper.defaultProps = {
