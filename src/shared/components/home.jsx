@@ -13,6 +13,7 @@ import { CenterNav, CenterNavBackground, CenterNavMini } from './center-nav';
 import { Content, ContentLeft } from '../style/content-column';
 import { Footer, isAtPageBottom } from './footer';
 import { ScrollPrompt } from './scroll-prompt';
+import { HeroScroll } from './hero-scroll';
 
 const HeroH1 = styled.h1`
   font-size: 7.2vw;
@@ -72,27 +73,33 @@ const Home = React.createClass({
           fixed
         />
 
-          <Div background={ COLORS.black } position="relative">
+          <Div background={ COLORS.black } position="relative" overflow="hidden">
             <FlexContainer>
-              <ContentLeft>
+              <ContentLeft position="relative" overflow="visible">
+                <HeroScroll left/>
                 <Hideable hideInitially isVisible>
                   <ReactSVG
                     path={ localContext.assetUrl('/images/radical_left.svg') }
                     style={{
                       fill: COLORS.white,
-                      width: '50vw'
+                      width: '60vh',
+                      position: 'relative',
+                      zIndex: '1'
                     }}
                   />
                 </Hideable>
               </ContentLeft>
               <CenterNavBackground fullHeight background={ COLORS.gold } />
-              <Content>
+              <Content position="relative" overflow="visible">
+                <HeroScroll right/>
                 <Hideable hideInitially isVisible>
                   <ReactSVG
                     path={ localContext.assetUrl('/images/radical_right.svg') }
                     style={{
                       fill: COLORS.white,
-                      width: '50vw'
+                      width: '60vh',
+                      position: 'relative',
+                      zIndex: '1'
                     }}
                   />
                 </Hideable>

@@ -11,7 +11,6 @@ const Content = styled(FlexItem)`
   flex-wrap: wrap;
   flex-shrink: 1;
   flex-grow: 1;
-  overflow: hidden;
   > h5 {
     padding-right: 20%;
     &.nopad {
@@ -22,7 +21,8 @@ const Content = styled(FlexItem)`
 
 Content.defaultProps = {
   color: COLORS.white,
-  width: '600px'
+  width: '600px',
+  overflow: 'hidden'
 };
 
 const ContentLeft = styled(Content)`
