@@ -12,17 +12,15 @@ import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
 
 const TOP_SECTION_HEIGHT = 250;
-const InfoLeft = styled(ContentLeft)`
+const infoStyle = `
   flex-wrap: nowrap;
   flex-direction: column;
   width: 500px;
   margin-bottom: 2.5rem;
+  align-self: flex-start;
 `;
-const InfoRight = styled(Content)`
-  flex-wrap: nowrap;
-  flex-direction: column;
-  width: 500px;
-`;
+const InfoLeft = styled(ContentLeft)`${infoStyle}`;
+const InfoRight = styled(Content)`${infoStyle};`
 const Image = styled(Img)`
   width: 100%;
   margin-bottom: 1.25rem;
@@ -58,10 +56,9 @@ const Info = (props, { localContext }) => {
       </FlexContainer>
 
       <Div padding="3.75rem 0">
-
         <Hideable hideInitially isVisible>
           <FlexContainer>
-            <InfoLeft align="flex-start" color={ COLORS.black }>
+            <InfoLeft color={ COLORS.black }>
               <H3 textTransform="capitalize">
                 { content('mission_title') }
               </H3>

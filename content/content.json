@@ -76,42 +76,13 @@
         "title": "Exhibition Store",
         "subtitle": "await whoever solves the puzzle first. How would you design a Chinese typewriter? Lore moluptaest et as nos et ut volorro volores tibus, core voluptur adignam qui il magnihiti cor rempore liasped que volori re aut vit volorercil in porerspis et odis ma pera nesed. ut eos dit quide sitio iur aut ipsa eos",
         "buy_btn": "Buy Now",
-        "items": [{
-            "img": "/images/store_item_1.png",
-            "title": "Limited edition exhibition poster",
-            "title_2": "Screenprint archival paper",
-            "price": 20,
-            "printInfo": "24\" x 36\", Printed in Italy. Edition of 500.",
-            "fgm": "Design by For Good Measure"
-        }, {
-            "img": "/images/store_item_2.png",
-            "title": "Radical Machines Totebag",
-            "title_2": "100% Recycled Canvas Material",
-            "price": 30,
-            "printInfo": "24\" x 36\", Printed in Italy. Edition of 500.",
-            "fgm": "Design by For Good Measure"
-        }, {
-            "img": "/images/store_item_3.png",
-            "title": "Technology & Culture",
-            "title_2": "by Tom Mullaney",
-            "price": 24,
-            "printInfo": "24\" x 36\", Printed in Italy. Edition of 500.",
-            "fgm": "Design by For Good Measure"
-        }, {
-            "img": "/images/store_item_4.png",
-            "title": "Radical Slider Toy",
-            "title_2": "Plastic and Metal, 12+",
-            "price": 24,
-            "printInfo": "24\" x 36\", Printed in Italy. Edition of 500.",
-            "fgm": "Design by For Good Measure"
-        }, {
-            "img": "/images/store_item_5.png",
-            "title": "Postcard Set",
-            "title_2": "Paper",
-            "price": 24,
-            "printInfo": "24\" x 36\", Printed in Italy. Edition of 500.",
-            "fgm": "Design by For Good Measure"
-        }]
+        "book_img": "/images/store_item_3.png",
+        "book_title": "Technology & Culture",
+        "book_title_2": "by Tom Mullaney",
+        "book_price": 24,
+        "book_printInfo": "24\" x 36\", Printed in Italy. Edition of 500.",
+        "book_fgm": "Design by For Good Measure",
+        "book_summary": "Thousands of characters. No alphabet. Millions of customers await whoever solves the puzzle first. How would you design a Chinese typewriter? Lore moluptaest et as nos et ut volorro volores tibus, core voluptur adignam qui il magnihiti cor rempore liasped que volori re aut vit volorercil in porerspis et odis ma pera nesed ut eos dit quide sitio iur aut ipsa eos\n\nTam lab ipsant perae. Nequi nis modis non porecti cus aut anda dolliae laut rectem et hario mosam faciatu scimus audis eaquame nihit apeliqui to bea doluptae con estior re, aut atur? Del maioritem est, eos undit ut ipsaest occus sitaqui ut quo blabor am non rempore nam hita nam as exerferovidi\n\nLoris quasperio blaudan diciis sum expligni tecuptiscia si qui dolupti simolut laccupt atiusant estrum simi, si cum am aut voluptatum inctur?\n\nNem am fugitatur, voluptatenia cusam debit et la nis re paris rem quodi sequi volupta tendior eritata dellaut et ut molendae. Num inctotaerrum untem. Ipsam, cor as et ut quat modis autecta ssumque ipit ant res autendernam ut fugias eaquo mi, nullecu sandictur?"
     },
     "info": {
         "title": "Information",

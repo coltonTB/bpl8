@@ -28,11 +28,11 @@ const Number = styled.div`
   &:hover {
     color: #ddd;
   }
-`
+`;
 const Text = styled.div`
-font-size: 1rem;
-line-height: 1.2rem;
-`
+  font-size: 1rem;
+  line-height: 1.2rem;
+`;
 
 export const SourceLink = React.createClass({
   propTypes: {

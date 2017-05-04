@@ -3,33 +3,41 @@ import styled from 'styled-components';
 
 import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
-import { Div, H5 } from '../style/util';
+import { Div, H5, Img, Span, Button, P } from '../style/util';
 import { Hideable } from '../style/hideable';
 
 import { Content, ContentLeft } from '../style/content-column';
 import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer } from './footer'
-import { StoreItem } from './store-item';
 
-const ImagesLeft = styled(ContentLeft)`
+const bookStyle = `
   flex-wrap: nowrap;
   flex-direction: column;
+  width: 500px;
+  margin-bottom: 2.5rem;
+  align-self: flex-start;
 `;
-const ImagesRight = styled(Content)`
-  flex-wrap: nowrap;
-  flex-direction: column;
+const BookLeft = styled(ContentLeft)`${ bookStyle }`;
+const BookRight = styled(Content)`${ bookStyle }`;
+const Image = styled(Img)`
+  width: 100%;
+  margin-bottom: 1.25rem;
 `;
-
-const StoreItemContainer = styled.div`
-  margin-top: 60px;
-  display: flex;
-  flex-wrap: nowrap;
-  max-width: 1300px;
-  margin-bottom: 80px;
+const StoreItemCaption = styled.div`
+  text-align: left;
+  color: ${ COLORS.white };
+  font-weight: bold;
+  margin-top: 20px;
+`;
+const BuyButton = styled(Button)`
+  background: ${ COLORS.black };
+  font-size: 1.8rem;
+  width: 260px;
 `;
 
 const Shop = (props, { localContext }) => {
   const content = key => localContext.getContent('shop', key);
+  const book = content('book');
 
   return (
     <Div background={COLORS.gold}>
@@ -50,22 +58,49 @@ const Shop = (props, { localContext }) => {
         </Content>
       </FlexContainer>
 
-      <FlexContainer>
+      <Div padding="2.75rem 0">
         <Hideable hideInitially isVisible>
-          <StoreItemContainer>
-            <ImagesLeft align="flex-start" width="500px">
-              <StoreItem data={ content('items')[0] } />
-              <StoreItem data={ content('items')[2] } />
-            </ImagesLeft>
+          <FlexContainer>
+            <BookLeft>
+              <div>
+                <Image src={ localContext.assetUrl('/images/store_item_3.png') } />
+              </div>
+              <StoreItemCaption>
+                <h3>
+                  <Span textTransform="capitalize" color={ COLORS.black }>
+                      { content('book_title') },&nbsp;
+                  </Span>
+                  <Span textTransform="capitalize" color={ COLORS.white }>
+                      { content('book_title_2') }&nbsp;
+                  </Span>
+                  <Span color={ COLORS.white }>
+                    &mdash;&nbsp;${ content('book_price') }
+                  </Span>
+                </h3>
+                <P color={ COLORS.black } fontSize="1em">
+                  { content('book_printInfo') }
+                  <br/>
+                  { content('book_fgm') }
+                </P>
+              </StoreItemCaption>
+            </BookLeft>
             <CenterNavBackground />
-            <ImagesRight color={ COLORS.gold } align="flex-start" width="500px">
-              <StoreItem data={ content('items')[1] } />
-              <StoreItem data={ content('items')[3] } />
-              <StoreItem data={ content('items')[4] } />
-            </ImagesRight>
-          </StoreItemContainer>
+            <BookRight>
+              <h3>
+                <Span color={ COLORS.white } textTransform="uppercase">
+                  { content('book_title') },&nbsp;
+                </Span>
+                <Span color={ COLORS.black }>
+                  { content('book_title_2') }
+                </Span>
+              </h3>
+              <P>
+                { content('book_summary') }
+              </P>
+            </BookRight>
+          </FlexContainer>
         </Hideable>
-      </FlexContainer>
+      </Div>
 
       <Footer />
 

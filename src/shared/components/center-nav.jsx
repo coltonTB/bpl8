@@ -24,7 +24,7 @@ export const CenterNavBackground = styled(Div)`
   display: flex;
   flex-shrink: 0;
   height: ${ props => props.fullHeight ? '100vh' : props.height };
-  min-height: ${ props => props.fullHeight ? '650px' : 0 };
+  min-height: ${ props => props.fullHeight ? '700px' : 0 };
   @media (max-width: 1230px) {
     width: 120px;
   }
@@ -160,7 +160,7 @@ export const CenterNav = React.createClass({
               <NavLink to="/calendar">Calendar</NavLink>
               <NavLink to="/background">Background</NavLink>
               <NavLink to="/overview">Overview</NavLink>
-              <NavLink to="/shop">Gift Shop</NavLink>
+              <NavLink to="/book">Book</NavLink>
             </List>
           </Hideable>
 
