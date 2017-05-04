@@ -21,13 +21,17 @@ const HeroScrollStyle = styled.div`
   img {
     height: 100%;
     margin: 0 20px;
-
-    transform: translateY( ${ p => p.direction === 'up' ? '-' : ''}1000px );
-    animation-name: ${ p => p.direction === 'up' ? spinUp : spinDown };
-    animation-duration: 6s;
-    animation-timing-function: ease;
-    animation-delay: 0;
-    animation-iteration-count: infinite;
+    transform: ${ p =>
+      p.direction === 'up' ? 'translateY(1000px)' : 'translateY(-1000px)'
+    };
+    &.animate {
+      transform: translateY( ${ p => p.direction === 'up' ? '-' : ''}1000px );
+      animation-name: ${ p => p.direction === 'up' ? spinUp : spinDown };
+      animation-duration: 6s;
+      animation-timing-function: ease;
+      animation-delay: 0;
+      animation-iteration-count: infinite;
+    }
 
   }
 `;
@@ -41,13 +45,17 @@ export const HeroScroll = React.createClass({
   animationDelay: 6,
 
   getInitialState() {
-    const index = this.props.left ? 2 : 3;
     return {
-      imgUrl: this.getImage(index)
-    }
+      isAnimating: false,
+      imageUrl: null
+    };
   },
 
   componentDidMount() {
+    this.setState({
+      isAnimating: true,
+      imageUrl: this.getImage()
+    });
     this.interval = window.setInterval(() => {
       this.setState({
         imageUrl: this.getImage()
@@ -55,9 +63,12 @@ export const HeroScroll = React.createClass({
     }, this.animationDelay * 1000);
   },
 
-  // componentWillUnmount() {
-  //   this.interval && window.clearInterval(this.interval);
-  // },
+  componentWillUnmount() {
+    this.interval && window.clearInterval(this.interval);
+    this.setState({
+      isAnimating: false
+    });
+  },
 
   getImage(defaultIndex) {
     const side = this.props.left ? 'left' : 'right';
@@ -71,7 +82,10 @@ export const HeroScroll = React.createClass({
     const localContext = this.context.localContext;
     return (
       <HeroScrollStyle direction={ this.props.left ? 'up' : 'down' }>
-        <img src={ localContext.assetUrl(this.state.imageUrl) } />
+        <img
+          className={ this.state.isAnimating ? 'animate' : '' }
+          src={ localContext.assetUrl(this.state.imageUrl) }
+        />
       </HeroScrollStyle>
     );
   }

@@ -82,7 +82,7 @@ const Home = React.createClass({
                     path={ localContext.assetUrl('/images/radical_left.svg') }
                     style={{
                       fill: COLORS.white,
-                      width: '60vh',
+                      width: '60vmin',
                       position: 'relative',
                       zIndex: '1'
                     }}
@@ -97,7 +97,7 @@ const Home = React.createClass({
                     path={ localContext.assetUrl('/images/radical_right.svg') }
                     style={{
                       fill: COLORS.white,
-                      width: '60vh',
+                      width: '60vmin',
                       position: 'relative',
                       zIndex: '1'
                     }}
