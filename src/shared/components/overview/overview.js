@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import ReactSVG from 'react-svg';
 
 import { COLORS } from '../../constants';
 import { FlexContainer } from '../../style/flexbox';
@@ -55,6 +56,38 @@ const MachinesContainer = styled(Div)`
     max-width: 600px;
   }
 `;
+
+const BackButtonStyle = styled.div`
+  position: absolute;
+  top: -45px;
+  color: ${ COLORS.darkgrey };
+  cursor: pointer;
+  display: flex;
+  &:hover {
+    color: ${ COLORS.gold };
+    .right-arrow-svg {
+      stroke: ${ COLORS.gold };
+    }
+  }
+  .right-arrow-svg {
+    transform: rotate(-180deg);
+    height: 1.5rem;
+    stroke: ${ COLORS.darkgrey }
+  }
+  > span {
+    padding-left: 8px;
+  }
+`;
+const BackButton = (props, {localContext}) => (
+  <BackButtonStyle onClick={ props.onClick }>
+    <ReactSVG
+      path={ localContext.assetUrl('/images/right_arrow.svg') }
+      className="right-arrow-svg"
+    />
+    <span>Back</span>
+  </BackButtonStyle>
+);
+BackButton.contextTypes = { localContext: React.PropTypes.object };
 
 const Overview = React.createClass({
 
@@ -157,6 +190,11 @@ const Overview = React.createClass({
           <FlexContainer>
             <MachinesContainer>
               <ImagesLeft>
+
+                <Hideable isVisible={ this.state.selectedMachine !== null }>
+                  <BackButton onClick={ this.clearState } />
+                </Hideable>
+
                 <Machine
                   data={ content('machines')[0] }
                   onClick={ this.handleMachineClick }

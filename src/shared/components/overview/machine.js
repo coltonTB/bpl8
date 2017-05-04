@@ -28,7 +28,6 @@ const MachineWrapper = styled(Div)`
     top 0.4s ease,
     left 0.4s ease,
     opacity .2s ease;
-
   @media (max-width: 1230px) {
     width: 420px;
     left: ${ props =>
@@ -53,15 +52,18 @@ const MachineWrapper = styled(Div)`
         : (props.left !== 0 ? props.left - 330 : props.left)
     }px;
   }
+  img {
+    width: 100%;
+    &:hover {
+      outline: ${ p => p.selectedMachine === null ? '4px solid #eee' : 'none' };
+      cursor: pointer;
+    }
+  }
 `;
 
 MachineWrapper.defaultProps = {
   left: 0
 };
-
-const MachineImg = styled.img`
-  width: 100%;
-`;
 
 const MachineCaption = styled.div`
   text-align: left;
@@ -70,14 +72,13 @@ const MachineCaption = styled.div`
   margin-bottom: 80px;
 `;
 
-
 const Machine = (props, { localContext }) => {
   return (
     <MachineWrapper
       { ...props }
       onClick={ (e) => {props.onClick(props.data); e.stopPropagation(); }}
     >
-      <MachineImg src={ localContext.assetUrl(props.data.fullImg) }/>
+      <img src={ localContext.assetUrl(props.data.fullImg) }/>
       <MachineCaption>
         <p>
           <Span textTransform="uppercase">{ props.data.title },</Span>

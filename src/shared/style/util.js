@@ -75,9 +75,16 @@ export const Button = styled(module.exports.Button)`
   border: none;
   border-radius: 0;
   padding: 12px 36px;
+  &:focus {
+    outline: 2px solid ${ COLORS.gold };
+  }
+  &:hover {
+    background: ${ p => p.hoverColor }
+  }
 `;
 Button.defaultProps = {
   background: COLORS.gold,
+  hoverColor: COLORS.lightgold,
   color: COLORS.white,
   fontWeight: 'bold',
   fontSize: '1.4rem'
@@ -90,6 +97,9 @@ export const Input = styled(module.exports.Input)`
   border: 1px solid ${ COLORS.gold };
   padding: 12px 16px 8px 16px;
   font-size: 1.5rem;
+  &:focus {
+    outline: 2px solid ${ COLORS.gold };
+  }
 `;
 Input.defaultProps = {
   background: COLORS.black,

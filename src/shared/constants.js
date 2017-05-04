@@ -3,5 +3,7 @@ export const COLORS = {
   copper: "#ba8b5e",
   black: '#212121',
   white: '#f2f2f2',
-  gray: '#bcbcbc'
+  gray: '#bcbcbc',
+  darkgrey: '#777',
+  lightgold: '#b19762'
 };
