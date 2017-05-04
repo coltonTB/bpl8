@@ -19,7 +19,7 @@ import { ExpandableCenterNav } from './expandable-center-nav';
 import { SourceLink } from './source-link';
 
 const TOP_SECTION_HEIGHT = 210;
-const LEFT_OFFSET = 690;
+const LEFT_OFFSET = 695;
 const stopProp = e => e.stopPropagation();
 const eventMangerInstance = getEventManagerInstance();
 

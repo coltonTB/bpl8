@@ -16,7 +16,7 @@ const stopProp = e => e.stopPropagation();
 const contentStyle = `
   flex-shrink: 0;
   flex-grow: 0;
-  width: 500px;
+  width: 600px;
   @media (max-width: 1230px) {
     width: 420px;
   }
@@ -57,7 +57,6 @@ const ExpandableCenterNavInner = styled.div`
   margin-left: auto;
   right: 0;
   left: 0;
-  max-width: 1200px;
 `;
 const SourceCloseButton = styled.div`
   text-transform: uppercase;
@@ -66,7 +65,7 @@ const SourceCloseButton = styled.div`
   position: fixed;
   top: 45%;
   width: 140px;
-  @media (max-width: 1230px, max-width: 1000px) {
+  @media (max-width: 1230px) {
     width: 120px;
   }
   @media (max-width: 800px) {

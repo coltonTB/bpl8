@@ -34,7 +34,7 @@ const MachineWrapper = styled(Div)`
     left: ${ props =>
       props.selectedMachine === props.data.id
         ? 0
-        : (props.left !== 0 ? props.left - 110 : props.left)
+        : (props.left !== 0 ? props.left - 115 : props.left)
     }px;
   }
   @media (max-width: 1000px) {
@@ -42,7 +42,7 @@ const MachineWrapper = styled(Div)`
     left: ${ props =>
       props.selectedMachine === props.data.id
         ? 0
-        : (props.left !== 0 ? props.left - 210 : props.left)
+        : (props.left !== 0 ? props.left - 215 : props.left)
     }px;
   }
   @media (max-width: 800px) {
@@ -50,7 +50,7 @@ const MachineWrapper = styled(Div)`
     left: ${ props =>
       props.selectedMachine === props.data.id
         ? 0
-        : (props.left !== 0 ? props.left - 320 : props.left)
+        : (props.left !== 0 ? props.left - 330 : props.left)
     }px;
   }
 `;

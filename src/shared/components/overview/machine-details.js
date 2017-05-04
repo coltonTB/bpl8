@@ -36,17 +36,17 @@ const MachineDetailsWrapper = styled.div`
 
   @media (max-width: 1230px) {
     left: ${ props =>
-      props.leftOffset !== 0 ? props.leftOffset - 110 : props.leftOffset
+      props.leftOffset !== 0 ? props.leftOffset - 115 : props.leftOffset
     }px;
   }
   @media (max-width: 1000px) {
     left: ${ props =>
-      props.leftOffset !== 0 ? props.leftOffset - 210 : props.leftOffset
+      props.leftOffset !== 0 ? props.leftOffset - 215 : props.leftOffset
     }px;
   }
   @media (max-width: 800px) {
     left: ${ props =>
-      props.leftOffset !== 0 ? props.leftOffset - 320 : props.leftOffset
+      props.leftOffset !== 0 ? props.leftOffset - 330 : props.leftOffset
     }px;
   }
 `;
