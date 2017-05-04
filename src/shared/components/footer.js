@@ -10,7 +10,13 @@ import { Hideable } from '../style/hideable';
 import { CenterNavBackground, CenterNav } from './center-nav';
 import { Content, ContentLeft } from '../style/content-column';
 
-const FooterContainer = styled(FlexContainer)`
+const fcstyle = `
+  padding-bottom: 0;
+  padding-top: 0;
+`;
+const FooterContent = styled(Content)`${fcstyle}`
+const FooterContentLeft = styled(ContentLeft)`${fcstyle}`
+const FooterContainer = styled.div`
   padding-top: 2.5rem;
   padding-bottom: 3.75rem;
   background: ${ COLORS.black }
@@ -26,21 +32,12 @@ const SubscribeInputStyle = styled.span`
     stroke: ${ COLORS.white }
   }
 `;
-const Contact = styled.p`
-  margin-top: 2.5rem;
-`;
 const SocialLinks = styled.img`
   margin-top: 1rem;
-  height: 2.25rem;
+  height: 3rem;
 `;
 const Brand = styled.p`
-  margin-top: 6.55rem;
-  @media (max-width: 1000px) {
-    margin-top: 7rem;
-  }
-  @media (max-width: 800px) {
-    margin-top: 7.4rem;
-  }
+  margin-top: 5.8rem;
 `;
 
 const SubscribeInput = (props, {localContext}) => (
@@ -62,31 +59,41 @@ export const isAtPageBottom = () => {
 
 const Footer = (props, { localContext }) => (
   <FooterContainer>
-    <ContentLeft align="flex-start">
-      <div>
+
+    <FlexContainer>
+      <FooterContentLeft align="flex-start" paddingBottom="0">
         <H2 color={ COLORS.gold }>
           { localContext.getContent('footer', 'contact') }
         </H2>
-        <SocialLinks src={ localContext.assetUrl('/images/social_shim.png') } />
-        <Brand>
-          { localContext.getContent('footer', 'brand') }
-        </Brand>
-      </div>
-    </ContentLeft>
-
-    <CenterNavBackground />
-
-    <Content align="flex-start">
-      <div>
+      </FooterContentLeft>
+      <CenterNavBackground />
+      <FooterContent paddingBottom="0">
         <SubscribeInput />
-        <Contact>
-          { localContext.getContent('footer', 'tom_contact') }
-        </Contact>
-        <Contact>
-          { localContext.getContent('footer', 'rad_contact') }
-        </Contact>
-      </div>
-    </Content>
+      </FooterContent>
+    </FlexContainer>
+
+    <FlexContainer>
+      <FooterContentLeft>
+        <div>
+          <SocialLinks src={ localContext.assetUrl('/images/social_shim.png') } />
+          <Brand>
+            { localContext.getContent('footer', 'brand') }
+          </Brand>
+        </div>
+      </FooterContentLeft>
+      <CenterNavBackground />
+      <FooterContent align="flex-start">
+        <div>
+          <P marginTop="1rem">
+            { localContext.getContent('footer', 'tom_contact') }
+          </P>
+          <P marginTop="2.5rem">
+            { localContext.getContent('footer', 'rad_contact') }
+          </P>
+        </div>
+      </FooterContent>
+    </FlexContainer>
+
   </FooterContainer>
 );
 
