@@ -30,12 +30,12 @@ const MachineWrapper = styled(Div)`
     opacity .2s ease;
 
   @media (max-width: 1230px) {
-    width: 400px;
+    width: 420px;
 
     left: ${ props =>
       props.selectedMachine === props.data.id
         ? 0
-        : (props.left !== 0 ? props.left - 100 : props.left)
+        : (props.left !== 0 ? props.left - 110 : props.left)
     }px;
   }
 `;

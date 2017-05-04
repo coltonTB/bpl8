@@ -16,7 +16,7 @@ const InfoLeft = styled(ContentLeft)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: 500px;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 `;
 const InfoRight = styled(Content)`
   flex-wrap: nowrap;
@@ -25,13 +25,13 @@ const InfoRight = styled(Content)`
 `;
 const Image = styled(Img)`
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 `;
 
 const Collaborator = (item, i) => (
   <div key={i}>
     <h3>{ item.name }</h3>
-    <P margin="0 0 12px 0">{ item.description }</P>
+    <P margin="0 0 0.75rem 0">{ item.description }</P>
   </div>
 );
 
@@ -43,7 +43,7 @@ const Info = (props, { localContext }) => {
 
       <CenterNav color={ COLORS.gold } fixed isExpanded={scrollLimit(TOP_SECTION_HEIGHT)} />
 
-      <FlexContainer height={TOP_SECTION_HEIGHT + 'px'}>
+      <FlexContainer>
         <InfoLeft align="flex-start">
           <H2 color={ COLORS.black }>
             { content('title') }
@@ -57,7 +57,7 @@ const Info = (props, { localContext }) => {
         </InfoRight>
       </FlexContainer>
 
-      <Div padding="60px 0">
+      <Div padding="3.75rem 0">
 
         <Hideable hideInitially isVisible>
           <FlexContainer>

@@ -16,18 +16,18 @@ const CalendarLeft = styled(ContentLeft)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: ${ props => props.width };
-  margin-bottom: 36px;
+  margin-bottom: 2.25rem;
   align-self: flex-start;
 `;
 const CalendarRight = styled(Content)`
   flex-wrap: nowrap;
   flex-direction: column;
   width: ${ props => props.width };
-  margin-bottom: 36px;
+  margin-bottom: 2.25rem;
   align-self: flex-start;
 `;
 CalendarLeft.defaultProps = CalendarRight.defaultProps = {
-  width: '620px'
+  width: '38.75rem'
 };
 
 const Date = (item, i) => (
@@ -39,7 +39,7 @@ const Date = (item, i) => (
       <h3>
         { item.open }
       </h3>
-      <H5 color={ COLORS.gold } margin="14px 0 0 0" className="nopad">
+      <H5 color={ COLORS.gold } margin="0.875rem 0 0 0" className="nopad">
         Close
       </H5>
       <h3>
@@ -51,7 +51,7 @@ const Date = (item, i) => (
       <H5>
         Stop { i+1 }&mdash;
       </H5>
-      <H2 margin="4px 0">
+      <H2 margin="0.25rem 0">
         { item.location }
       </H2>
       <H3 color={ COLORS.gold } fontWeight="normal">
@@ -70,7 +70,7 @@ const Calendar = (props, { localContext }) => {
 
       <CenterNav color={ COLORS.gold } isExpanded={scrollLimit(TOP_SECTION_HEIGHT)} fixed/>
 
-      <FlexContainer height={ TOP_SECTION_HEIGHT + 'px' }>
+      <FlexContainer>
         <CalendarLeft>
           <H2 color={ COLORS.black }>
             { content('title') }
@@ -84,27 +84,27 @@ const Calendar = (props, { localContext }) => {
         </CalendarRight>
       </FlexContainer>
 
-      <Div paddingBottom="90px">
+      <Div paddingBottom="5.625rem">
         <Hideable hideInitially isVisible>
           { content('dates').map(Date) }
         </Hideable>
       </Div>
 
-      <FlexContainer background={ COLORS.gold } padding="30px 0 50px 0">
-        <CalendarLeft width="500px">
+      <FlexContainer background={ COLORS.gold } padding="1.875rem 0 3.125rem 0">
+        <CalendarLeft width="31.25rem">
           <H3 color={ COLORS.white }>
             { content('contact_prompt') }
           </H3>
         </CalendarLeft>
         <CenterNavBackground />
-        <CalendarRight width="500px">
+        <CalendarRight width="31.25rem">
           <H3 color={ COLORS.black }>
             { content('contact_name') }
           </H3>
           <P color={ COLORS.white } margin="0">
             { content('contact_sub') }
           </P>
-          <P color="black" marginTop="30px">
+          <P color="black" marginTop="1.875rem">
             { content('contact_details') }
           </P>
         </CalendarRight>

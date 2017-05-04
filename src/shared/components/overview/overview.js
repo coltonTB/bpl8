@@ -129,7 +129,7 @@ const Overview = React.createClass({
           scrollLimit(TOP_SECTION_HEIGHT)()
         }/>
 
-        <FlexContainer height={TOP_SECTION_HEIGHT + 'px'}>
+        <FlexContainer>
           <ContentLeft align="flex-start">
             <h2>
               { content('title') }
@@ -154,13 +154,13 @@ const Overview = React.createClass({
                   selectedMachine={this.state.selectedMachine}
                 />
                 <Machine
-                  top="600px"
+                  top="37.5rem"
                   data={ content('machines')[2] }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
                 />
                 <Machine
-                  top="1170px"
+                  top="73.125rem"
                   data={ content('machines')[4] }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
@@ -203,14 +203,14 @@ const Overview = React.createClass({
                 />
                 <Machine
                   left={LEFT_OFFSET}
-                  top="870px"
+                  top="54.375rem"
                   data={ content('machines')[3] }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
                 />
                 <Machine
                   left={LEFT_OFFSET}
-                  top="1520px"
+                  top="95rem"
                   data={ content('machines')[5] }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}

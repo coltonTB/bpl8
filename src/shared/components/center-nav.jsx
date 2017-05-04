@@ -24,8 +24,12 @@ export const CenterNavBackground = styled(Div)`
   display: flex;
   flex-shrink: 0;
   height: ${ props => props.fullHeight ? '100vh' : props.height };
+  min-height: ${ props => props.fullHeight ? '650px' : 0 };
   @media (max-width: 1230px) {
     width: 120px;
+  }
+  @media (max-width: 800px) {
+    width: 100px;
   }
 `;
 
@@ -35,6 +39,16 @@ const List = styled(Ul)`
   margin-top: 12px;
   font-size: 1.1rem;
   line-height: 1.7rem;
+
+  @media (max-width: 1000px) {
+    font-size: 15.4px;
+    line-height: 23.8px;
+  }
+  @media (max-width: 800px) {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
   position: relative;
   top: ${ props => props.isMini ? '-100px' : '0' };
   li a {
@@ -53,6 +67,9 @@ const Nav = styled.div`
   left: 0;
   @media (max-width: 1230px) {
     width: 120px;
+  }
+  @media (max-width: 800px) {
+    width: 100px;
   }
   .hamburger-svg {
     fill: ${ props => props.color };

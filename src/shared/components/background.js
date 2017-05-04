@@ -16,22 +16,22 @@ const isBelowTopSection = () => window.scrollY > TOP_SECTION_HEIGHT;
 const BackgroundLeft = styled(ContentLeft)`
   flex-wrap: nowrap;
   flex-direction: column;
-  width: 500px;
-  margin-bottom: 20px;
+  width: 31.25rem;
+  margin-bottom: 1.25rem;
   align-self: flex-start;
 `;
 const BackgroundRight = styled(Content)`
   flex-wrap: nowrap;
   flex-direction: column;
-  width: 500px;
-  margin-bottom: 20px;
+  width: 31.25rem;
+  margin-bottom: 1.25rem;
   align-self: flex-start;
 `;
 const Image = styled(Img)`
   width: 100%;
 `;
 const Question = props => (
-  <H3 marginBottom="10px">
+  <H3 marginBottom="0.625rem">
     <Span color={ COLORS.gold }>Q: </Span>
     <span>
       { props.children }
@@ -41,23 +41,23 @@ const Question = props => (
 const Quote = styled(H3)`
   text-align: center;
   font-weight: 500;
-  padding: ${ props => props.padding || '0 55px' };
+  padding: ${ props => props.padding || '0 3.4375rem' };
 `;
 const Provocation = styled(Div)`
   text-align: center;
-  padding: 24px 0;
+  padding: 1.5rem 0;
   span {
     background: ${ COLORS.copper };
     color: ${ COLORS.white };
     text-transform: uppercase;
-    padding: 5px;
+    padding: 0.375rem;
   }
 `;
 const Caption = styled.div`
   text-align: center;
   color: ${ COLORS.gold };
-  padding: 0 36px;
-  margin: 24px 0 42px 0;
+  padding: 0 2.25rem;
+  margin: 1.5rem 0 2.625rem 0;
 `;
 
 const Background = (props, { localContext }) => {
@@ -73,7 +73,7 @@ const Background = (props, { localContext }) => {
         <CenterNav color={ COLORS.gold } fixed isExpanded={false} />
       </Hideable>
 
-      <FlexContainer background={ COLORS.gold } height={`${TOP_SECTION_HEIGHT}px`}>
+      <FlexContainer background={ COLORS.gold }>
         <BackgroundLeft align="flex-start">
           <H2 color={ COLORS.white }>
             { content('title') }
@@ -89,7 +89,7 @@ const Background = (props, { localContext }) => {
 
       <Hideable hideInitially isVisible>
 
-        <FlexContainer paddingTop="50px">
+        <FlexContainer paddingTop="3.125rem">
           <ContentLeft align="flex-start" >
             <H2 color={ COLORS.black }>
               { content('section_1_title') }
@@ -103,12 +103,12 @@ const Background = (props, { localContext }) => {
           </Content>
         </FlexContainer>
 
-        <FlexContainer marginBottom="20px">
+        <FlexContainer marginBottom="1.25rem">
           <BackgroundLeft align="flex-start" color={ COLORS.black } textAlign="center">
             <div>
               <Image src={ localContext.assetUrl('/images/bg_image_1.png') } />
             </div>
-            <Provocation marginTop="30px">
+            <Provocation marginTop="1.875rem">
               <span>Provocation</span>
             </Provocation>
             <Quote>
@@ -118,7 +118,7 @@ const Background = (props, { localContext }) => {
               className="nopad"
               color={ COLORS.gold }
               textAlign="center"
-              padding="40px 20px 60px 20px"
+              padding="2.5rem 1.25rem 3.75rem 1.25rem"
             >
               { content('section_1_highlight') }
             </H5>
@@ -161,7 +161,7 @@ const Background = (props, { localContext }) => {
           </Content>
         </FlexContainer>
 
-        <FlexContainer marginBottom="120px">
+        <FlexContainer marginBottom="7.5rem">
           <BackgroundLeft align="flex-start" color={ COLORS.black } textAlign="center">
             <div>
               <Image src={ localContext.assetUrl('/images/bg_image_3.png') } />
@@ -175,7 +175,7 @@ const Background = (props, { localContext }) => {
                 { content('section_2_img_1_caption') }
               </span>
             </Caption>
-            <Div marginTop="20px">
+            <Div marginTop="1.25rem">
               <Image src={ localContext.assetUrl('/images/bg_image_4.png') } />
             </Div>
             <Caption>
@@ -196,7 +196,7 @@ const Background = (props, { localContext }) => {
             <p>
               { content('section_2_answer_1') }
             </p>
-            <Quote color={ COLORS.gold } padding="20px 40px 20px">
+            <Quote color={ COLORS.gold } padding="1.25rem 2.5rem 1.25rem">
               { content('section_2_quote') }
             </Quote>
             <p>

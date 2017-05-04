@@ -89,7 +89,7 @@ Button.defaultProps = {
 export const Input = styled(module.exports.Input)`
   border: 1px solid ${ COLORS.gold };
   padding: 12px 16px 8px 16px;
-  font-size: 1.5em;
+  font-size: 1.5rem;
 `;
 Input.defaultProps = {
   background: COLORS.black,

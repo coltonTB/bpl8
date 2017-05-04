@@ -11,30 +11,30 @@ import { CenterNavBackground, CenterNav } from './center-nav';
 import { Content, ContentLeft } from '../style/content-column';
 
 const FooterContainer = styled(FlexContainer)`
-  padding-top: 40px;
-  padding-bottom: 60px;
+  padding-top: 2.5rem;
+  padding-bottom: 3.75rem;
   background: ${ COLORS.black }
 `;
 const SubscribeInputStyle = styled.span`
   display: flex;
   > button {
     margin-left: 5%;
-    padding: 6px 16px;
+    padding: 0.375rem 1rem;
   }
   .right-arrow-svg {
-    width: 30px;
+    width: 1.875rem;
     stroke: ${ COLORS.white }
   }
 `;
 const Contact = styled.p`
-  margin-top: 40px;
+  margin-top: 2.5rem;
 `;
 const SocialLinks = styled.img`
-  margin-top: 15px;
-  height: 36px;
+  margin-top: 1rem;
+  height: 2.25rem;
 `;
 const Brand = styled.p`
-  margin-top: 110px;
+  margin-top: 6.55rem;
 `;
 
 const SubscribeInput = (props, {localContext}) => (

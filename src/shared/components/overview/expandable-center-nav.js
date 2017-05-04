@@ -33,12 +33,20 @@ const ExpandableCenterNavStyle = styled.div`
   width: ${ props => props.selectedSourceLink === null ? '140px' : '100%' };
   transition: width 0.2s ease-out;
   z-index: 1;
-
   @media (max-width: 1230px) {
     width: ${ props => props.selectedSourceLink === null ? '120px' : '100%' };
   }
 `;
-
+const ExpandableCenterNavInner = styled.div`
+  margin-right: auto;
+  margin-left: auto;
+  right: 0;
+  left: 0;
+  max-width: 1200px;
+  @media (max-width: 1230px) {
+    max-width: 1000px;
+  }
+`;
 const SourceCloseButton = styled.div`
   text-transform: uppercase;
   color: ${ COLORS.white };
@@ -62,43 +70,45 @@ export const ExpandableCenterNav = (props, {localContext}) => (
     selectedMachine={ props.selectedMachine }
     selectedSourceLink={ props.selectedSourceLink }
   >
-    <FlexContainer>
-      <ExpandableContentLeft align="flex-start">
-        <h2>
-          { localContext.getContent('overview', 'title') }
-        </h2>
-      </ExpandableContentLeft>
-      <CenterNavBackground />
-      <ExpandableContent color={ COLORS.white } align="flex-start">
-        <h5>
-          { localContext.getContent('overview', 'subtitle') }
-        </h5>
-      </ExpandableContent>
-    </FlexContainer>
-    <FlexContainer>
-      <ExpandableContentLeft align="flex-start">
-        <Source1Images />
-      </ExpandableContentLeft>
-      <CenterNavBackground textAlign="center">
-        <Hideable isVisible={ props.selectedSourceLink !== null } hideInitially>
-          <SourceCloseButton onClick={ props.onCloseClick }>
-            <ReactSVG
-              path={ localContext.assetUrl('/images/close.svg') }
-              style={{
-                fill: COLORS.white,
-                height: '46px',
-                width: '100%',
-                textAlign: 'center'
-              }}
-            />
-            <span>close</span>
-          </SourceCloseButton>
-        </Hideable>
-      </CenterNavBackground>
-      <ExpandableContent color={ COLORS.white } align="flex-start" >
-        <Source1Text />
-      </ExpandableContent>
-    </FlexContainer>
+    <ExpandableCenterNavInner>
+      <FlexContainer>
+        <ExpandableContentLeft align="flex-start">
+          <h2>
+            { localContext.getContent('overview', 'title') }
+          </h2>
+        </ExpandableContentLeft>
+        <CenterNavBackground />
+        <ExpandableContent color={ COLORS.white } align="flex-start">
+          <h5>
+            { localContext.getContent('overview', 'subtitle') }
+          </h5>
+        </ExpandableContent>
+      </FlexContainer>
+      <FlexContainer>
+        <ExpandableContentLeft align="flex-start">
+          <Source1Images />
+        </ExpandableContentLeft>
+        <CenterNavBackground textAlign="center">
+          <Hideable isVisible={ props.selectedSourceLink !== null } hideInitially>
+            <SourceCloseButton onClick={ props.onCloseClick }>
+              <ReactSVG
+                path={ localContext.assetUrl('/images/close.svg') }
+                style={{
+                  fill: COLORS.white,
+                  height: '2.75rem',
+                  width: '100%',
+                  textAlign: 'center'
+                }}
+              />
+              <span>close</span>
+            </SourceCloseButton>
+          </Hideable>
+        </CenterNavBackground>
+        <ExpandableContent color={ COLORS.white } align="flex-start" >
+          <Source1Text />
+        </ExpandableContent>
+      </FlexContainer>
+    </ExpandableCenterNavInner>
   </ExpandableCenterNavStyle>
 );
 

@@ -20,7 +20,7 @@ const HeroH1 = styled.h1`
   line-height: 7.2vw;
 `;
 const Hero2Caption = styled.h3`
-  margin: 16px 0 8px 0;
+  margin: 1rem 0 0.5rem 0;
 `;
 const Hero2Text = styled.p`
   margin-right: 18%;
@@ -141,7 +141,7 @@ const Home = React.createClass({
 
           <Div background={ COLORS.white } padding="30px 0 70px 0" ref="whiteSection">
             <Hideable autoHide>
-              <FlexContainer marginBottom="55px" paddingTop="20px">
+              <FlexContainer marginBottom="3.4rem" paddingTop="1.25rem">
                 <ContentLeft>
                   <H2 color={ COLORS.black }>
                     { content('video_title') }
@@ -161,7 +161,7 @@ const Home = React.createClass({
                 />
               </FlexContainer>
 
-              <FlexContainer marginBottom="55px" paddingTop="60px">
+              <FlexContainer marginBottom="3.4rem" paddingTop="3.75rem">
                 <ContentLeft>
                   <H2 color={ COLORS.black }>
                     { content('insta_title') }
@@ -179,14 +179,14 @@ const Home = React.createClass({
                 <LargeImg
                   src={ localContext.assetUrl('/images/insta_shim.png') }
                 />
-                <Button marginTop="40px">
+                <Button marginTop="2.5rem">
                   { content('see_more_btn') }
                 </Button>
               </FlexContainer>
             </Hideable>
           </Div>
 
-          <Div background={COLORS.gray} padding="40px 0">
+          <Div background={COLORS.gray} padding="2.5rem 0">
             <FlexContainer>
               <ContentLeft>
                 <H2 color={ COLORS.black }>
