@@ -43,7 +43,16 @@ const MachinesContainer = styled(Div)`
   margin-top: 80px;
   position: relative;
   @media (max-width: 1230px) {
+    height: 1850px;
     max-width: 1000px;
+  }
+  @media (max-width: 1000px) {
+    height: 1550px;
+    max-width: 800px;
+  }
+  @media (max-width: 800px) {
+    height: 1300px;
+    max-width: 600px;
   }
 `;
 

@@ -35,6 +35,12 @@ const SocialLinks = styled.img`
 `;
 const Brand = styled.p`
   margin-top: 6.55rem;
+  @media (max-width: 1000px) {
+    margin-top: 7rem;
+  }
+  @media (max-width: 800px) {
+    margin-top: 7.4rem;
+  }
 `;
 
 const SubscribeInput = (props, {localContext}) => (

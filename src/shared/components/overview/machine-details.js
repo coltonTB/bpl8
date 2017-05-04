@@ -39,6 +39,16 @@ const MachineDetailsWrapper = styled.div`
       props.leftOffset !== 0 ? props.leftOffset - 110 : props.leftOffset
     }px;
   }
+  @media (max-width: 1000px) {
+    left: ${ props =>
+      props.leftOffset !== 0 ? props.leftOffset - 210 : props.leftOffset
+    }px;
+  }
+  @media (max-width: 800px) {
+    left: ${ props =>
+      props.leftOffset !== 0 ? props.leftOffset - 320 : props.leftOffset
+    }px;
+  }
 `;
 
 export const MachineDetails = props => {

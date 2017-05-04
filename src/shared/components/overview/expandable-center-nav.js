@@ -13,12 +13,24 @@ import { Source1Text, Source1Images } from './sources';
 
 const stopProp = e => e.stopPropagation();
 
-const ExpandableContent = styled(Content)`
+const contentStyle = `
   flex-shrink: 0;
+  flex-grow: 0;
+  width: 500px;
+  @media (max-width: 1230px) {
+    width: 420px;
+  }
+  @media (max-width: 1000px) {
+    width: 340px;
+  }
+  @media (max-width: 800px) {
+    width: 240px;
+  }
 `;
-const ExpandableContentLeft = styled(ContentLeft)`
-  flex-shrink: 0;
-`;
+const ExpandableContent = styled(Content)`${contentStyle}`;
+const ExpandableContentLeft = styled(ContentLeft)`${contentStyle}`;
+
+const Container = styled(FlexContainer)``;
 
 const ExpandableCenterNavStyle = styled.div`
   background: ${ COLORS.gold };
@@ -36,6 +48,9 @@ const ExpandableCenterNavStyle = styled.div`
   @media (max-width: 1230px) {
     width: ${ props => props.selectedSourceLink === null ? '120px' : '100%' };
   }
+  @media (max-width: 800px) {
+    width: ${ props => props.selectedSourceLink === null ? '100px' : '100%' };
+  }
 `;
 const ExpandableCenterNavInner = styled.div`
   margin-right: auto;
@@ -43,9 +58,6 @@ const ExpandableCenterNavInner = styled.div`
   right: 0;
   left: 0;
   max-width: 1200px;
-  @media (max-width: 1230px) {
-    max-width: 1000px;
-  }
 `;
 const SourceCloseButton = styled.div`
   text-transform: uppercase;
@@ -54,8 +66,11 @@ const SourceCloseButton = styled.div`
   position: fixed;
   top: 45%;
   width: 140px;
-  @media (max-width: 1230px) {
+  @media (max-width: 1230px, max-width: 1000px) {
     width: 120px;
+  }
+  @media (max-width: 800px) {
+    width: 100px;
   }
   span {
     display: inline-block;
@@ -71,7 +86,7 @@ export const ExpandableCenterNav = (props, {localContext}) => (
     selectedSourceLink={ props.selectedSourceLink }
   >
     <ExpandableCenterNavInner>
-      <FlexContainer>
+      <Container>
         <ExpandableContentLeft align="flex-start">
           <h2>
             { localContext.getContent('overview', 'title') }
@@ -83,8 +98,8 @@ export const ExpandableCenterNav = (props, {localContext}) => (
             { localContext.getContent('overview', 'subtitle') }
           </h5>
         </ExpandableContent>
-      </FlexContainer>
-      <FlexContainer>
+      </Container>
+      <Container>
         <ExpandableContentLeft align="flex-start">
           <Source1Images />
         </ExpandableContentLeft>
@@ -107,7 +122,7 @@ export const ExpandableCenterNav = (props, {localContext}) => (
         <ExpandableContent color={ COLORS.white } align="flex-start" >
           <Source1Text />
         </ExpandableContent>
-      </FlexContainer>
+      </Container>
     </ExpandableCenterNavInner>
   </ExpandableCenterNavStyle>
 );
