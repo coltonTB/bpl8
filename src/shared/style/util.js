@@ -35,6 +35,7 @@ const sharedFeatures = [
   'marginLeft',
   'marginRight',
   'marginTop',
+  'minHeight',
   'overflow',
   'padding',
   'paddingBottom',

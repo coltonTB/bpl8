@@ -13,22 +13,24 @@ import { Footer } from './footer'
 const TOP_SECTION_HEIGHT = 270;
 const isBelowTopSection = () => window.scrollY > TOP_SECTION_HEIGHT;
 
-const BackgroundLeft = styled(ContentLeft)`
+const bgStyle = `
   flex-wrap: nowrap;
   flex-direction: column;
   width: 31.25rem;
   margin-bottom: 1.25rem;
   align-self: flex-start;
 `;
-const BackgroundRight = styled(Content)`
-  flex-wrap: nowrap;
-  flex-direction: column;
-  width: 31.25rem;
-  margin-bottom: 1.25rem;
-  align-self: flex-start;
-`;
+const BackgroundLeft = styled(ContentLeft)`${ bgStyle }`;
+const BackgroundRight = styled(Content)`${ bgStyle }`;
 const Image = styled(Img)`
   width: 100%;
+`;
+const HeadingContainer = styled(FlexContainer)`
+  background: ${ COLORS.gold };
+  min-height: 17.5rem;
+  @media (max-width: 1000px) {
+    min-height: 19rem;
+  }
 `;
 const Question = props => (
   <H3 marginBottom="0.625rem">
@@ -73,7 +75,7 @@ const Background = (props, { localContext }) => {
         <CenterNav color={ COLORS.gold } fixed isExpanded={false} />
       </Hideable>
 
-      <FlexContainer background={ COLORS.gold }>
+      <HeadingContainer>
         <BackgroundLeft align="flex-start">
           <H2 color={ COLORS.white }>
             { content('title') }
@@ -85,7 +87,7 @@ const Background = (props, { localContext }) => {
             { content('subtitle') }
           </H5>
         </BackgroundRight>
-      </FlexContainer>
+      </HeadingContainer>
 
       <Hideable hideInitially isVisible>
 

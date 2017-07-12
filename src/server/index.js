@@ -6,9 +6,10 @@ import express from 'express'
 
 import { routes } from '../shared/routes';
 import isomorphicRenderer from '../../lib/isomorphic-renderer';
+import adminApp from '../../lib/admin-app.jsx';
 
 const PORT = 3000;
-const app = express()
+const app = express();
 
 let serverlessExpress = null;
 
@@ -23,6 +24,8 @@ app.use('/assets', express.static(`${__dirname}/../static/assets`))
 app.use('/images', express.static(`${__dirname}/../static/images`))
 
 app.get('/health', (req, res) => res.send('OK'));
+
+app.use('/admin', adminApp);
 
 app.use(isomorphicRenderer(routes));
 
