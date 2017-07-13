@@ -5,12 +5,6 @@
   "properties": {
     "home": {
       "properties": {
-        "hero_text_left": {
-          "type": "string"
-        },
-        "hero_text_right": {
-          "type": "string"
-        },
         "hero_2_title": {
           "type": "string"
         },
@@ -61,7 +55,8 @@
           "type": "string"
         },
         "mission_text": {
-          "type": "string"
+          "type": "string",
+          "format": "textarea"
         },
         "gallery_img": {
           "type": "string"
@@ -85,7 +80,8 @@
           "type": "string"
         },
         "tom_text": {
-          "type": "string"
+          "type": "string",
+          "format": "textarea"
         },
         "partners_title": {
           "type": "string"
@@ -153,72 +149,80 @@
           "type": "string"
         },
         "contact_details": {
-          "type": "string"
+          "type": "string",
+          "format": "textarea"
         }
       },
       "type": "object"
     },
     "background": {
       "properties": {
-        "section_1_answer": {
-          "type": "string"
-        },
-        "section_1_highlight": {
-          "type": "string"
-        },
-        "section_1_img_2_caption": {
-          "type": "string"
-        },
-        "section_1_img_2_title": {
-          "type": "string"
-        },
-        "section_1_question": {
-          "type": "string"
-        },
-        "section_1_quote": {
-          "type": "string"
-        },
-        "section_1_subtitle": {
-          "type": "string"
-        },
-        "section_1_title": {
-          "type": "string"
-        },
-        "section_2_answer_1": {
-          "type": "string"
-        },
-        "section_2_answer_2": {
-          "type": "string"
-        },
-        "section_2_img_1_caption": {
-          "type": "string"
-        },
-        "section_2_img_1_title": {
-          "type": "string"
-        },
-        "section_2_img_2_caption": {
-          "type": "string"
-        },
-        "section_2_img_2_title": {
-          "type": "string"
-        },
-        "section_2_question": {
-          "type": "string"
-        },
-        "section_2_quote": {
-          "type": "string"
-        },
-        "section_2_subtitle": {
-          "type": "string"
-        },
-        "section_2_title": {
+        "title": {
           "type": "string"
         },
         "subtitle": {
           "type": "string"
         },
-        "title": {
+        "section_1_title": {
           "type": "string"
+        },
+        "section_1_subtitle": {
+          "type": "string",
+          "format": "textarea"
+        },
+        "section_1_quote": {
+          "type": "string"
+        },
+        "section_1_highlight": {
+          "type": "string",
+          "format": "textarea"
+        },
+        "section_1_question": {
+          "type": "string",
+          "format": "textarea"
+        },
+        "section_1_answer": {
+          "type": "string",
+          "format": "textarea"
+        },
+        "section_1_img_2_title": {
+          "type": "string"
+        },
+        "section_1_img_2_caption": {
+          "type": "string"
+        },
+        "section_2_title": {
+          "type": "string"
+        },
+        "section_2_subtitle": {
+          "type": "string",
+          "format": "textarea"
+        },
+        "section_2_img_1_title": {
+          "type": "string"
+        },
+        "section_2_img_1_caption": {
+          "type": "string"
+        },
+        "section_2_img_2_title": {
+          "type": "string"
+        },
+        "section_2_img_2_caption": {
+          "type": "string"
+        },
+        "section_2_question": {
+          "type": "string"
+        },
+        "section_2_answer_1": {
+          "type": "string",
+          "format": "textarea"
+        },
+        "section_2_quote": {
+          "type": "string"
+        },
+        "section_2_answer_2": {
+          "type": "string",
+          "format": "textarea"
         }
       },
       "type": "object"
@@ -302,19 +306,16 @@
     },
     "book": {
       "properties": {
-        "book_fgm": {
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "buy_btn": {
           "type": "string"
         },
         "book_img": {
-          "type": "string"
-        },
-        "book_price": {
-          "type": "integer"
-        },
-        "book_printInfo": {
-          "type": "string"
-        },
-        "book_summary": {
           "type": "string"
         },
         "book_title": {
@@ -323,14 +324,18 @@
         "book_title_2": {
           "type": "string"
         },
-        "buy_btn": {
+        "book_price": {
+          "type": "integer"
+        },
+        "book_printInfo": {
           "type": "string"
         },
-        "subtitle": {
+        "book_fgm": {
           "type": "string"
         },
-        "title": {
-          "type": "string"
+        "book_summary": {
+          "type": "string",
+          "format": "textarea"
         }
       },
       "type": "object"

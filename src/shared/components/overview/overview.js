@@ -59,6 +59,7 @@ const MachinesContainer = styled(Div)`
 
 const BackButtonStyle = styled.div`
   position: absolute;
+  left: -1px;
   top: -45px;
   color: ${ COLORS.darkgrey };
   cursor: pointer;
