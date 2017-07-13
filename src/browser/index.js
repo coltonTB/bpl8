@@ -27,6 +27,8 @@ const RouterWithLocalContext = withLocalContext(
   localContext
 );
 
+history.listen( e => window.top.postMessage(JSON.stringify(e), '*'));
+
 match({ history, routes }, (error, redirectLocation, renderProps) => {
   render(
     React.createElement(RouterWithLocalContext, {...renderProps}),

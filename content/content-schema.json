@@ -297,7 +297,7 @@
       },
       "type": "object"
     },
-    "shop": {
+    "book": {
       "properties": {
         "book_fgm": {
           "type": "string"
