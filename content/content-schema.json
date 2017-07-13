@@ -1,0 +1,337 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "background": {
+      "properties": {
+        "section_1_answer": {
+          "type": "string",
+          "format": "textarea"
+        },
+        "section_1_highlight": {
+          "type": "string"
+        },
+        "section_1_img_2_caption": {
+          "type": "string"
+        },
+        "section_1_img_2_title": {
+          "type": "string"
+        },
+        "section_1_question": {
+          "type": "string"
+        },
+        "section_1_quote": {
+          "type": "string"
+        },
+        "section_1_subtitle": {
+          "type": "string"
+        },
+        "section_1_title": {
+          "type": "string"
+        },
+        "section_2_answer_1": {
+          "type": "string"
+        },
+        "section_2_answer_2": {
+          "type": "string"
+        },
+        "section_2_img_1_caption": {
+          "type": "string"
+        },
+        "section_2_img_1_title": {
+          "type": "string"
+        },
+        "section_2_img_2_caption": {
+          "type": "string"
+        },
+        "section_2_img_2_title": {
+          "type": "string"
+        },
+        "section_2_question": {
+          "type": "string"
+        },
+        "section_2_quote": {
+          "type": "string"
+        },
+        "section_2_subtitle": {
+          "type": "string"
+        },
+        "section_2_title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "calendar": {
+      "properties": {
+        "contact_details": {
+          "type": "string"
+        },
+        "contact_name": {
+          "type": "string"
+        },
+        "contact_prompt": {
+          "type": "string"
+        },
+        "contact_sub": {
+          "type": "string"
+        },
+        "dates": {
+          "items": {
+            "properties": {
+              "address1": {
+                "type": "string"
+              },
+              "address2": {
+                "type": "string"
+              },
+              "address3": {
+                "type": "string"
+              },
+              "close": {
+                "type": "string"
+              },
+              "location": {
+                "type": "string"
+              },
+              "open": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "footer": {
+      "properties": {
+        "brand": {
+          "type": "string"
+        },
+        "contact": {
+          "type": "string"
+        },
+        "rad_contact": {
+          "type": "string"
+        },
+        "subscribe_prompt": {
+          "type": "string"
+        },
+        "tom_contact": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "home": {
+      "properties": {
+        "hero_2_caption": {
+          "type": "string"
+        },
+        "hero_2_subtitle": {
+          "type": "string"
+        },
+        "hero_2_text": {
+          "type": "string"
+        },
+        "hero_2_title": {
+          "type": "string"
+        },
+        "hero_text_left": {
+          "type": "string"
+        },
+        "hero_text_right": {
+          "type": "string"
+        },
+        "insta_subtitle": {
+          "type": "string"
+        },
+        "insta_title": {
+          "type": "string"
+        },
+        "press_subtitle": {
+          "type": "string"
+        },
+        "press_title": {
+          "type": "string"
+        },
+        "see_more_btn": {
+          "type": "string"
+        },
+        "video_subtitle": {
+          "type": "string"
+        },
+        "video_title": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "info": {
+      "properties": {
+        "gallery_img": {
+          "type": "string"
+        },
+        "gallery_img_caption": {
+          "type": "string"
+        },
+        "gallery_img_title": {
+          "type": "string"
+        },
+        "mission_text": {
+          "type": "string"
+        },
+        "mission_title": {
+          "type": "string"
+        },
+        "partners_list": {
+          "items": {
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "partners_title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "tom_img": {
+          "type": "string"
+        },
+        "tom_img_caption": {
+          "type": "string"
+        },
+        "tom_img_title": {
+          "type": "string"
+        },
+        "tom_text": {
+          "type": "string"
+        },
+        "tom_title": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "overview": {
+      "properties": {
+        "machineDetails": {
+          "items": {
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "subtitle": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "machines": {
+          "items": {
+            "properties": {
+              "caption_a": {
+                "type": "string"
+              },
+              "caption_b": {
+                "type": "string"
+              },
+              "fullImg": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "img": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "shop": {
+      "properties": {
+        "book_fgm": {
+          "type": "string"
+        },
+        "book_img": {
+          "type": "string"
+        },
+        "book_price": {
+          "type": "integer"
+        },
+        "book_printInfo": {
+          "type": "string"
+        },
+        "book_summary": {
+          "type": "string"
+        },
+        "book_title": {
+          "type": "string"
+        },
+        "book_title_2": {
+          "type": "string"
+        },
+        "buy_btn": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

@@ -2,73 +2,27 @@ import { render } from 'react-dom';
 import React from 'react';
 import JsonEditor from 'json-editor';
 
+import contentSchema from '../../content/content-schema.json';
+import content from '../../content/content.json';
+
 const Index = React.createClass({
 
   componentDidMount() {
-    var starting_value = [
-      {
-        name: "John Smith",
-        age: 35,
-        gender: "male",
-        location: {
-          city: "San Francisco",
-          state: "California",
-          citystate: ""
-        },
-        pets: [
-          {
-            name: "Spot",
-            type: "dog",
-            fixed: true
-          },
-          {
-            name: "Whiskers",
-            type: "cat",
-            fixed: false
-          }
-        ]
-      }
-    ];
-
-    // Initialize the editor
-    var editor = new JSONEditor(document.getElementById('editor_holder'),{
-      // Enable fetching schemas via ajax
-      ajax: false,
-
-      // The schema for the editor
-      schema: {
-        type: "array",
-        title: "People",
-        format: "tabs",
-        items: {
-          title: "Person",
-          headerTemplate: "{{i}} - {{self.name}}",
-          oneOf: [
-            {
-              title: "Basic Person"
-            },
-            {
-              title: "Complex Person"
-            }
-          ]
-        }
-      },
-
-      // Seed the form with a starting value
-      startval: starting_value,
-
-      // Disable additional properties
-      no_additional_properties: true,
-
-      // Require all properties by default
-      required_by_default: true
+    var editor = new JSONEditor(this.refs.container, {
+      schema: contentSchema,
+      startval: content,
+      required_by_default: true,
+      disable_properties: true,
+      disable_edit_json: true,
+      theme: 'bootstrap3',
+      iconlib: 'bootstrap3',
+      expand_height: true
     });
   },
 
   render() {
     return (
-      <div id="editor_holder">
-        HI
+      <div ref="container">
       </div>
     );
   }
