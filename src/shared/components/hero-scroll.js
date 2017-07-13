@@ -19,6 +19,8 @@ const HeroScrollStyle = styled.div`
   top: 0;
   left: 0;
   img {
+    position: absolute;
+    ${ p => p.direction === 'up' ? 'right' : 'left' }: 0;
     height: 100%;
     margin: 0 20px;
     transform: ${ p =>
@@ -37,6 +39,11 @@ const HeroScrollStyle = styled.div`
 `;
 
 export const HeroScroll = React.createClass({
+
+  propTypes: {
+    left: React.PropTypes.bool,
+    right: React.PropTypes.bool
+  },
 
   contextTypes: {
     localContext: React.PropTypes.object
