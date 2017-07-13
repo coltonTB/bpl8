@@ -1,6 +1,6 @@
 import { render } from 'react-dom';
 import React from 'react';
-import JsonEditor from 'json-editor';
+import Form from 'react-jsonschema-form';
 import styled from 'styled-components';
 
 import contentSchema from '../../content/content-schema.json';
@@ -13,7 +13,7 @@ const EditorContainer = styled.div`
   position: absolute;
   left: 0;
   background: #303030;
-  padding: 0 40px;
+  padding: 40px 40px 200px;
   textarea {
     resize: vertical;
   }
@@ -37,50 +37,67 @@ const Index = React.createClass({
     }
   },
 
-  renderJSONEditor() {
+  componentDidMount() {
+    window.onmessage = this.onIframeRouteChange;
+  },
+
+  getSchema() {
     const modifiedSchema = {...contentSchema};
     modifiedSchema.properties = contentSchema.properties[this.state.path].properties;
     Object.keys(modifiedSchema.properties).forEach((key, i) => {
       const val = modifiedSchema.properties[key];
       val.propertyOrder = i + 1;
     });
+    return modifiedSchema;
+  },
 
+  getValues() {
+    return content[this.state.path];
+  },
+
+  renderJSONEditor() {
     this.editor = new JSONEditor(this.editorContainer, {
-      schema: modifiedSchema,
-      startval: content[this.state.path],
-      required_by_default: true,
-      disable_properties: true,
-      disable_edit_json: true,
-      disable_array_reorder: true,
-      theme: 'bootstrap3',
-      iconlib: 'bootstrap3',
-      expand_height: true
+      ...editorStaticConfig,
+      schema: this.getSchema(),
+      startval: this.getValues()
+    });
+    this.editor.on('ready', () => {
+      const inputs = this.editorContainer.querySelectorAll('input');
+      Array.from(inputs).forEach(input => input.on('change', e => console.log(e)));
     });
   },
 
-  componentDidMount() {
-    this.renderJSONEditor();
-    window.onmessage = this.handleIframeRouteChange;
+  onFormChange(e) {
+    console.log(e);
   },
 
-  componentDidUpdate() {
-    this.editor.destroy();
-    this.renderJSONEditor();
+  onIframeRouteChange(e) {
+    let data;
+    try {
+      data = JSON.parse(e.data);
+      var newPath = data && data.pathname && data.pathname.substr(1);
+      newPath = newPath === '' ? 'home' : newPath;
+      this.setState({
+        path: newPath
+      });
+    } catch(e) {}
   },
 
-  handleIframeRouteChange(e) {
-    const data = e.data && JSON.parse(e.data);
-    var newPath = data && data.pathname && data.pathname.substr(1);
-    newPath = newPath === '' ? 'home' : newPath;
-    this.setState({
-      path: newPath
-    });
+  onSubmitClick(e) {
+    console.log(e);
   },
 
   render() {
     return (
       <div>
-        <EditorContainer innerRef={comp => this.editorContainer = comp}/>
+        <EditorContainer>
+          <Form
+            schema={this.getSchema()}
+            formData={this.getValues()}
+            onSubmit={this.onSubmitClick}
+            onChange={this.onFormChange}
+          />
+        </EditorContainer>
         <PreviewContainer>
           <iframe src="/" />
         </PreviewContainer>
