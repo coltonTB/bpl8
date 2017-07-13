@@ -14,6 +14,9 @@ const EditorContainer = styled.div`
   left: 0;
   background: #303030;
   padding: 0 40px;
+  textarea {
+    resize: vertical;
+  }
 `;
 const PreviewContainer = styled.div`
   width: 60%;
@@ -37,6 +40,10 @@ const Index = React.createClass({
   renderJSONEditor() {
     const modifiedSchema = {...contentSchema};
     modifiedSchema.properties = contentSchema.properties[this.state.path].properties;
+    Object.keys(modifiedSchema.properties).forEach((key, i) => {
+      const val = modifiedSchema.properties[key];
+      val.propertyOrder = i + 1;
+    });
 
     this.editor = new JSONEditor(this.editorContainer, {
       schema: modifiedSchema,

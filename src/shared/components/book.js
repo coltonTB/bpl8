@@ -35,9 +35,8 @@ const BuyButton = styled(Button)`
   width: 260px;
 `;
 
-const Shop = (props, { localContext }) => {
-  const content = key => localContext.getContent('shop', key);
-  const book = content('book');
+const Book = (props, { localContext }) => {
+  const content = key => localContext.getContent('book', key);
 
   return (
     <Div background={COLORS.gold}>
@@ -108,8 +107,8 @@ const Shop = (props, { localContext }) => {
   );
 }
 
-Shop.contextTypes = {
+Book.contextTypes = {
   localContext: React.PropTypes.object
 };
 
-export default Shop;
+export default Book;
