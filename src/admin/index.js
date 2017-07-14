@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import contentSchema from '../../content/content-schema.json';
 import content from '../../content/content.json';
 
+import { tryParse } from './admin-page-bridge';
+
 const EditorContainer = styled.div`
   width: 40%;
   height: 100%;
@@ -42,41 +44,24 @@ const Index = React.createClass({
   },
 
   getSchema() {
-    const modifiedSchema = {...contentSchema};
-    modifiedSchema.properties = contentSchema.properties[this.state.path].properties;
-    Object.keys(modifiedSchema.properties).forEach((key, i) => {
-      const val = modifiedSchema.properties[key];
-      val.propertyOrder = i + 1;
-    });
-    return modifiedSchema;
+    return {
+      ...contentSchema,
+      properties: contentSchema.properties[this.state.path].properties
+    };
   },
 
   getValues() {
     return content[this.state.path];
   },
 
-  renderJSONEditor() {
-    this.editor = new JSONEditor(this.editorContainer, {
-      ...editorStaticConfig,
-      schema: this.getSchema(),
-      startval: this.getValues()
-    });
-    this.editor.on('ready', () => {
-      const inputs = this.editorContainer.querySelectorAll('input');
-      Array.from(inputs).forEach(input => input.on('change', e => console.log(e)));
-    });
-  },
-
   onIframeRouteChange(e) {
-    let data;
-    try {
-      data = JSON.parse(e.data);
-      var newPath = data && data.pathname && data.pathname.substr(1);
-      newPath = newPath === '' ? 'home' : newPath;
+    const data = tryParse(e.data);
+    if (data.topic === '__viewer_route_change') {
+      const newPath = data.path === '' ? 'home' : data.path;
       this.setState({
         path: newPath
       });
-    } catch(e) {}
+    }
   },
 
   onFormChange(e) {
@@ -86,7 +71,7 @@ const Index = React.createClass({
       [this.state.path]: e.formData
     };
     const data = JSON.stringify({
-      topic: 'refresh_content',
+      topic: '__refresh_content',
       content: modifiedContent
     });
     this.refs.viewerIframe.contentWindow.postMessage(data, '*');

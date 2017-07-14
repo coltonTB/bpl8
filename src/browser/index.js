@@ -3,21 +3,18 @@ import { render } from 'react-dom';
 import { Router, match } from 'react-router';
 import React from 'react';
 
+import { onMessage, sendMessage } from '../admin/admin-page-bridge';
 import { routes } from '../shared/routes.jsx';
 import getLocalContext from '../../lib/get-local-context';
 import withLocalContext from '../../lib/with-local-context';
-
 import { preload } from './image-preloader';
 
 import 'Stylesheets/main';
 
-window.addEventListener('message', e => {
-  const message = JSON.parse(e.data);
-  if (message.topic === 'refresh_content') {
-    window.__locals__.content = message.content;
-    renderPage();
-  }
-});
+window.addEventListener('message', onMessage(() => {
+  window.__locals__.content = message.content;
+  renderPage();
+}));
 
 function renderPage() {
 
@@ -32,7 +29,7 @@ function renderPage() {
     basename: localContext.stageContext.resourceBase
   });
 
-  history.listen( e => window.top.postMessage(JSON.stringify(e), '*'));
+  history.listen(sendMessage);
 
   const RouterWithLocalContext = withLocalContext(
     Router,
