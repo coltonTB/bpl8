@@ -67,10 +67,6 @@ const Index = React.createClass({
     });
   },
 
-  onFormChange(e) {
-    console.log(e);
-  },
-
   onIframeRouteChange(e) {
     let data;
     try {
@@ -83,7 +79,20 @@ const Index = React.createClass({
     } catch(e) {}
   },
 
-  onSubmitClick(e) {
+  onFormChange(e) {
+    // Merge in modified content
+    const modifiedContent = {
+      ...content,
+      [this.state.path]: e.formData
+    };
+    const data = JSON.stringify({
+      topic: 'refresh_content',
+      content: modifiedContent
+    });
+    this.refs.viewerIframe.contentWindow.postMessage(data, '*');
+  },
+
+  onFormSubmit(e) {
     console.log(e);
   },
 
@@ -94,12 +103,12 @@ const Index = React.createClass({
           <Form
             schema={this.getSchema()}
             formData={this.getValues()}
-            onSubmit={this.onSubmitClick}
+            onSubmit={this.onFormSubmit}
             onChange={this.onFormChange}
           />
         </EditorContainer>
         <PreviewContainer>
-          <iframe src="/" />
+          <iframe src="/" ref="viewerIframe"/>
         </PreviewContainer>
       </div>
     );

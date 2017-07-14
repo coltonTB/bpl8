@@ -11,27 +11,40 @@ import { preload } from './image-preloader';
 
 import 'Stylesheets/main';
 
-const localContext = getLocalContext({
-  stageContext: window.__locals__.stageContext,
-  content: window.__locals__.content
+window.addEventListener('message', e => {
+  const message = JSON.parse(e.data);
+  if (message.topic === 'refresh_content') {
+    window.__locals__.content = message.content;
+    renderPage();
+  }
 });
 
-preload({localContext, imageUrls: window.__locals__.imageUrls});
+function renderPage() {
 
-const history = useBasename(createHistory)({
-  basename: localContext.stageContext.resourceBase
-});
+  const localContext = getLocalContext({
+    stageContext: window.__locals__.stageContext,
+    content: window.__locals__.content
+  });
 
-const RouterWithLocalContext = withLocalContext(
-  Router,
-  localContext
-);
+  preload({localContext, imageUrls: window.__locals__.imageUrls});
 
-history.listen( e => window.top.postMessage(JSON.stringify(e), '*'));
+  const history = useBasename(createHistory)({
+    basename: localContext.stageContext.resourceBase
+  });
 
-match({ history, routes }, (error, redirectLocation, renderProps) => {
-  render(
-    React.createElement(RouterWithLocalContext, {...renderProps}),
-    document.getElementById('app-content')
-  )
-});
+  history.listen( e => window.top.postMessage(JSON.stringify(e), '*'));
+
+  const RouterWithLocalContext = withLocalContext(
+    Router,
+    localContext
+  );
+
+  match({ history, routes }, (error, redirectLocation, renderProps) => {
+    render(
+      React.createElement(RouterWithLocalContext, {...renderProps}),
+      document.getElementById('app-content')
+    )
+  });
+}
+
+renderPage();
