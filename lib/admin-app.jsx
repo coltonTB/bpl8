@@ -17,7 +17,7 @@ const authConfig = {
   realm: 'ihnjq5hmd4'
 };
 
-app.get('/', basicAuth(authConfig), (req, res) => {
+app.get('/', (req, res) => {
   const stageContext = getStageContext(req);
   fetchSiteContent(stageContext, (err, content) => {
     const html = renderPage({
@@ -31,7 +31,7 @@ app.get('/', basicAuth(authConfig), (req, res) => {
   });
 });
 
-app.post('/content', basicAuth(authConfig), bodyParser.json(), (req, res) => {
+app.post('/content', bodyParser.json(), (req, res) => {
   const stageContext = getStageContext(req);
   updateSiteContent(stageContext, req.body, (err, response) => {
     res.status(200).send('OK');

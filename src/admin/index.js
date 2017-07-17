@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import request from 'superagent';
 
 import contentSchema from '../../content/content-schema.json';
+import getLocalContext from '../../lib/get-local-context';
+import withLocalContext from '../../lib/with-local-context';
 
 import { tryParse } from './admin-page-bridge';
 
@@ -103,14 +105,35 @@ const Index = React.createClass({
           />
         </EditorContainer>
         <PreviewContainer>
-          <iframe src="/" ref="viewerIframe"/>
+          <iframe
+            src={this.context.localContext.resourceUrl("/")}
+            ref="viewerIframe"
+          />
         </PreviewContainer>
       </div>
     );
   }
 });
 
-render(
-  React.createElement(Index),
-  document.getElementById('app-content')
-);
+Index.contextTypes = {
+  localContext: React.PropTypes.object
+};
+
+function renderPage() {
+  const localContext = getLocalContext({
+    stageContext: window.__locals__.stageContext,
+    content: window.__locals__.content
+  });
+
+  const IndexWithLocalContext = withLocalContext(
+    Index,
+    localContext
+  );
+
+  render(
+    React.createElement(IndexWithLocalContext),
+    document.getElementById('app-content')
+  );
+}
+
+renderPage();
