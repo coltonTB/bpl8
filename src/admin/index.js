@@ -2,9 +2,9 @@ import { render } from 'react-dom';
 import React from 'react';
 import Form from 'react-jsonschema-form';
 import styled from 'styled-components';
+import request from 'superagent';
 
 import contentSchema from '../../content/content-schema.json';
-import content from '../../content/content.json';
 
 import { tryParse } from './admin-page-bridge';
 
@@ -51,6 +51,7 @@ const Index = React.createClass({
   },
 
   getValues() {
+    const content = window.__locals__.content;
     return content[this.state.path];
   },
 
@@ -65,6 +66,7 @@ const Index = React.createClass({
   },
 
   onFormChange(e) {
+    const content = window.__locals__.content;
     // Merge in modified content
     const modifiedContent = {
       ...content,
@@ -78,7 +80,15 @@ const Index = React.createClass({
   },
 
   onFormSubmit(e) {
-    console.log(e);
+    request
+      .post('/admin/content')
+      .send({
+        data: e.formData,
+        path: this.state.path
+      })
+      .end((err, res) => {
+        console.log(err, res);
+      });
   },
 
   render() {

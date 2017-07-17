@@ -1,10 +1,12 @@
 import express from 'express'
 import basicAuth from 'express-basic-auth';
+import bodyParser from 'body-parser'
 
 import { renderPage } from './isomorphic-renderer';
 import getStageContext from './get-stage-context';
-import fetchSiteContent from './fetch-site-content';
+import {fetchSiteContent, updateSiteContent} from './rw-site-content';
 import adminScaffold from './admin-scaffold.js';
+
 
 const app = express();
 const authConfig = {
@@ -26,6 +28,13 @@ app.get('/', basicAuth(authConfig), (req, res) => {
       scaffolder: adminScaffold
     });
     res.status(200).send(html);
+  });
+});
+
+app.post('/content', basicAuth(authConfig), bodyParser.json(), (req, res) => {
+  const stageContext = getStageContext(req);
+  updateSiteContent(stageContext, req.body, (err, response) => {
+    res.status(200).send('OK');
   });
 });
 
