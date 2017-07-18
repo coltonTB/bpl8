@@ -6,11 +6,13 @@ export function tryParse(input) {
   }
 }
 
-export function onMessage(e, cb) {
+export function onMessage(fn) {
+  return (e) => {
    const message = tryParse(e.data);
    if (message.topic === '__refresh_content') {
-     cb();
+     fn(message);
    }
+ };
 }
 
 export function sendMessage(e) {

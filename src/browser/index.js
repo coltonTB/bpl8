@@ -11,7 +11,7 @@ import { preload } from './image-preloader';
 
 import 'Stylesheets/main';
 
-window.addEventListener('message', onMessage(() => {
+window.addEventListener('message', onMessage((message) => {
   window.__locals__.content = message.content;
   renderPage();
 }));
