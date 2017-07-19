@@ -43,9 +43,9 @@ app.post('/content', bodyParser.json(), (req, res) => {
 
 app.post('/publish', (req, res) => {
   const stageContext = getStageContext(req);
-  publishSite(stageContext, (err, res) => {
+  publishSite(stageContext, (err, response) => {
     if (err) {
-      return res.status(500).send(err);
+      return res.status(500).send(String(err));
     }
     res.status(200).send('OK');
   })

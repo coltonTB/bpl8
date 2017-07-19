@@ -93,6 +93,14 @@ const Index = React.createClass({
       });
   },
 
+  onPublishClick() {
+    request
+      .post(this.context.localContext.resourceUrl('/admin/publish'))
+      .end((err, res) => {
+        console.log(err, res);
+      });
+  },
+
   render() {
     return (
       <div>
@@ -103,6 +111,12 @@ const Index = React.createClass({
             onSubmit={this.onFormSubmit}
             onChange={this.onFormChange}
           />
+          <button
+            onClick={this.onPublishClick}
+            className="btn"
+          >
+            Publish
+          </button>
         </EditorContainer>
         <PreviewContainer>
           <iframe
