@@ -83,7 +83,7 @@ const Index = React.createClass({
 
   onFormSubmit(e) {
     request
-      .post('/admin/content')
+      .post(this.context.localContext.resourceUrl('/admin/content'))
       .send({
         data: e.formData,
         path: this.state.path

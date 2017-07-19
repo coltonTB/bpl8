@@ -34,6 +34,9 @@ app.get('/', (req, res) => {
 app.post('/content', bodyParser.json(), (req, res) => {
   const stageContext = getStageContext(req);
   updateSiteContent(stageContext, req.body, (err, response) => {
+    if (err) {
+      return res.status(500).send(err);
+    }
     res.status(200).send('OK');
   });
 });
