@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 
 import { renderPage } from './isomorphic-renderer';
 import getStageContext from './get-stage-context';
-import {fetchSiteContent, updateSiteContent} from './rw-site-content';
+import {fetchSiteContent, updateSiteContent, publishSite} from './rw-site-content';
 import adminScaffold from './admin-scaffold.js';
 
 
@@ -39,6 +39,16 @@ app.post('/content', bodyParser.json(), (req, res) => {
     }
     res.status(200).send('OK');
   });
+});
+
+app.post('/publish', (req, res) => {
+  const stageContext = getStageContext(req);
+  publishSite(stageContext, (err, res) => {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    res.status(200).send('OK');
+  })
 });
 
 export default app;

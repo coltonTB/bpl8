@@ -55,18 +55,14 @@
   "scripts": {
     "clone-content": "aws s3 cp s3://$npm_package_config_s3BucketName/content/content.json ./content/content.json",
     "clean": "rm -rf dist/* && mkdir dist/static dist/lambda dist/static-pages && cp -r src/images dist/static",
-    "build-static-pages": "node ./static-site/generator.js",
     "build-server": "./node_modules/.bin/webpack",
-    "upload-static-pages": "aws s3 cp --recursive ./dist/static-pages s3://$npm_package_config_s3BucketName --region $npm_package_config_region --acl public-read --content-type text/html",
     "upload-assets": "aws s3 cp --recursive ./dist/static s3://$npm_package_config_s3BucketName --region $npm_package_config_region --acl public-read",
     "upload-lambda": "aws s3 cp --recursive ./dist/lambda s3://$npm_package_config_s3BucketName/lambda --region $npm_package_config_region --acl private",
     "upload-content": "aws s3 cp --recursive ./content s3://$npm_package_config_s3BucketName/content --region $npm_package_config_region --acl public-read",
     "lambda-zip": "cd dist/lambda && zip -q lambda-function.zip lambda.js server-bundle.js && cd ..",
     "lambda-update": "aws lambda update-function-code --function-name $npm_package_config_lambdaFunctionName --region $npm_package_config_region --s3-bucket $npm_package_config_s3BucketName --s3-key lambda/lambda-function.zip",
-    "deploy": "npm run clean && npm run build-server && npm run deploy-lambda && npm run deploy-static && npm run upload-assets && npm run upload-content",
+    "deploy": "npm run clean && npm run build-server && npm run deploy-lambda && npm run upload-assets && npm run upload-content",
     "deploy-lambda": "cp -r src/lambda.js dist/lambda && npm run lambda-zip && npm run upload-lambda && npm run lambda-update",
-    "deploy-static": "npm run build-static-pages && npm run upload-static-pages",
-    "deploy-static-fast": "npm run deploy-static && aws s3 cp --recursive ./dist/static/assets s3://$npm_package_config_s3BucketName/assets --region $npm_package_config_region --acl public-read",
     "local": "./node_modules/.bin/nodemon -w ./dist",
     "watch": "npm run clone-content && npm run build-server -- --watch"
   }
