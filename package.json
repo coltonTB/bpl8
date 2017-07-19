@@ -53,6 +53,7 @@
     "webpack": "^2.2.1"
   },
   "scripts": {
+    "clone-content": "aws s3 cp s3://$npm_package_config_s3BucketName/content/content.json ./content/content.json",
     "clean": "rm -rf dist/* && mkdir dist/static dist/lambda dist/static-pages && cp -r src/images dist/static",
     "build-static-pages": "node ./static-site/generator.js",
     "build-server": "./node_modules/.bin/webpack",
@@ -67,6 +68,6 @@
     "deploy-static": "npm run build-static-pages && npm run upload-static-pages",
     "deploy-static-fast": "npm run deploy-static && aws s3 cp --recursive ./dist/static/assets s3://$npm_package_config_s3BucketName/assets --region $npm_package_config_region --acl public-read",
     "local": "./node_modules/.bin/nodemon -w ./dist",
-    "watch": "npm run build-server -- --watch"
+    "watch": "npm run clone-content && npm run build-server -- --watch"
   }
 }
