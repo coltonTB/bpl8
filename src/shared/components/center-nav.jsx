@@ -13,6 +13,10 @@ const CenterNavWrapper = styled(Div)`
   position: ${ props => props.fixed ? 'fixed' : 'static' };
   top: 0;
   width: 100%;
+  @media (max-width: 450px) {
+    width: 0;
+    display: none;
+  }
 `;
 CenterNavWrapper.defaultProps = {
   zIndex: 1

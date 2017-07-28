@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { COLORS } from '../constants';
-import { FlexContainer, FlexItem } from '../style/flexbox';
+import { FlexContainer, FlexItem } from './flexbox';
 
 const Content = styled(FlexItem)`
   color: ${ props => props.color };

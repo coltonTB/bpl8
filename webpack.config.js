@@ -38,7 +38,11 @@ const serverConfig = {
         exclude: /node_modules/,
         query: {
           presets: ['es2015', 'stage-2', 'react'],
-          plugins: ["transform-class-properties", ["inline-json-import", {}]]
+          plugins: [
+            "transform-class-properties",
+            ["inline-json-import", {}],
+            "styled-components"
+          ]
         }
       }
     ]
@@ -68,7 +72,11 @@ const browserConfig = {
         exclude: /node_modules/,
         query: {
           presets: ['es2015', 'stage-2', 'react'],
-          plugins: ["transform-class-properties", ["inline-json-import", {}]]
+          plugins: [
+            "transform-class-properties",
+            ["inline-json-import", {}],
+            "styled-components"
+          ]
         }
       },
       {
