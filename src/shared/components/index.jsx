@@ -15,9 +15,16 @@ export const Welcome = () => (
   </div>
 );
 
-export const Dashboard = () => (
+export const Dashboard = (props, context) => (
   <div>
     Cool Dashboard
     <Link to="/">Home</Link>
+    <div>
+      { context.localContext.assetUrl('test.jpg') }
+    </div>
   </div>
 );
+
+Dashboard.contextTypes = {
+  localContext: React.PropTypes.object
+}

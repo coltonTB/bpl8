@@ -1,26 +1,44 @@
+import awsServerlessExpress from 'aws-serverless-express';
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
 
-import { applyMiddleware } from './lib';
-import { routes } from '../routes';
-import { asArray } from './html-head';
+import { routes } from '../shared/routes';
+import isomorphicRenderer from '../../lib/isomorphic-renderer';
 
 const PORT = 3000;
 const app = express()
+
+let serverlessExpress = null;
 
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/assets', express.static(`${__dirname}/../../dist/assets`))
+/*
+  Note: locally, the server runs out of 'dist'
+*/
+app.use('/assets', express.static(`${__dirname}/../static/assets`))
+app.use('/images', express.static(`${__dirname}/../static/images`))
 
-app.use(applyMiddleware({
-  routes,
-  header: asArray
-}));
+app.get('/health', (req, res) => res.send('OK'));
 
-app.listen(PORT, () => console.log(`Listening on ${PORT} ...`))
+app.use(isomorphicRenderer(routes));
 
-module.exports = app
+module.exports = {
+  app,
+  awsServerlessProxy(event, context) {
+    /*
+      Proxy APIGateway events to the expres server
+    */
+    if (!serverlessExpress) {
+      serverlessExpress = awsServerlessExpress.createServer(app);
+    }
+    awsServerlessExpress.proxy(serverlessExpress, event, context)
+  },
+
+  startServer(port=PORT) {
+    app.listen(port, () => `Listening on ${port} ...`)
+  }
+}

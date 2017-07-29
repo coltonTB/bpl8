@@ -1,19 +1,30 @@
 import { createHistory, useBasename } from 'history';
 import { render } from 'react-dom';
 import { Router, match } from 'react-router';
-import { routes } from '../routes.jsx';
 import React from 'react';
 
-import 'stylesheets/main';
+import { routes } from '../shared/routes.jsx';
+import getLocalContext from '../../lib/get-local-context';
+import withLocalContext from '../../lib/with-local-context';
 
-// Run our app under the /base URL.
-const history = useBasename(createHistory)({
-  basename: window.__locals__.stageContext.pathPrefix
+import 'Stylesheets/main';
+
+const localContext = getLocalContext({
+  stageContext: window.__locals__.stageContext
 });
+
+const history = useBasename(createHistory)({
+  basename: localContext.stageContext.resourceBase
+});
+
+const RouterWithLocalContext = withLocalContext(
+  Router,
+  localContext
+);
 
 match({ history, routes }, (error, redirectLocation, renderProps) => {
   render(
-    React.createElement(Router, {...renderProps}),
+    React.createElement(RouterWithLocalContext, {...renderProps}),
     document.getElementById('app-content')
   )
-})
+});

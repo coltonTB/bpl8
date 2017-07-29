@@ -6,14 +6,54 @@ const sassLoaders = [
   'sass-loader?indentedSyntax=sass&includePaths[]=' + path.resolve(__dirname, './src/stylehseets')
 ]
 
-module.exports = {
+const serverConfig = {
+  target: 'node',
+  node: {
+    __filename: false,
+    __dirname: false
+  },
+  entry: {
+    server: './src/server/index.js'
+  },
+  output: {
+    filename: '[name]-bundle.js',
+    path: path.resolve(__dirname, 'dist/lambda'),
+    library: 'handler',
+    libraryTarget: 'commonjs2'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.sass'],
+    alias: {
+      Stylesheets: path.resolve(__dirname, './src/stylesheets')
+    }
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.sass$|\.css$/,
+        loader: 'null-loader'
+      },
+      {
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'stage-2', 'react'],
+          plugins: ["transform-class-properties"]
+        }
+      }
+    ]
+  }
+};
+
+const browserConfig = {
+  target: 'web',
   entry: './src/browser/index.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist/assets')
+    filename: 'browser-bundle.js',
+    path: path.resolve(__dirname, 'dist/static/assets')
   },
   plugins: [
-    new ExtractTextPlugin('[name].css')
+    new ExtractTextPlugin('style.css')
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.sass'],
@@ -27,7 +67,8 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react']
+          presets: ['es2015', 'stage-2', 'react'],
+          plugins: ["transform-class-properties"]
         }
       },
       {
@@ -39,4 +80,6 @@ module.exports = {
       }
     ]
   }
-};
+}
+
+module.exports = [serverConfig, browserConfig];
