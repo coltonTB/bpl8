@@ -7,7 +7,7 @@ import { routes } from '../shared/routes.jsx';
 import getLocalContext from '../../lib/get-local-context';
 import withLocalContext from '../../lib/with-local-context';
 
-import 'Stylesheets/main';
+import 'stylesheets/main';
 
 const localContext = getLocalContext({
   stageContext: window.__locals__.stageContext
