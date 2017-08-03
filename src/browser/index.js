@@ -6,6 +6,7 @@ import React from 'react';
 import { routes } from '../shared/routes.jsx';
 import getLocalContext from '../../lib/get-local-context';
 import withLocalContext from '../../lib/with-local-context';
+import scripts from './scripts';
 
 import 'stylesheets/main';
 
@@ -26,5 +27,6 @@ match({ history, routes }, (error, redirectLocation, renderProps) => {
   render(
     React.createElement(RouterWithLocalContext, {...renderProps}),
     document.getElementById('app-content')
-  )
+  );
+  scripts();
 });
