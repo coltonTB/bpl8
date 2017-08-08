@@ -13,8 +13,7 @@ const CenterNavWrapper = styled(Div)`
   position: ${ props => props.fixed ? 'fixed' : 'static' };
   top: 0;
   width: 100%;
-  @media (max-width: 450px) {
-    width: 0;
+  @media (max-width: 500px) {
     display: none;
   }
 `;
@@ -34,6 +33,9 @@ export const CenterNavBackground = styled(Div)`
   }
   @media (max-width: 800px) {
     width: 100px;
+  }
+  @media (max-width: 500px) {
+    display: none;
   }
 `;
 

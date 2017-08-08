@@ -16,6 +16,9 @@ const bookStyle = `
   width: 500px;
   margin-bottom: 2.5rem;
   align-self: flex-start;
+  @media (max-width: 500px) {
+    width: auto;
+  }
 `;
 const BookLeft = styled(ContentLeft)`${ bookStyle }`;
 const BookRight = styled(Content)`${ bookStyle }`;

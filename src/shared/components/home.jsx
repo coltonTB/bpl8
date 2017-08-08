@@ -24,10 +24,30 @@ const Hero2Caption = styled.h3`
 `;
 const Hero2Text = styled.p`
   margin-right: 18%;
+  @media (max-width: 500px) {
+    margin-right: 0;
+    margin-bottom: 3rem;
+  }
 `;
 const LargeImg = styled.img`
   width: 88%;
   max-width: 1200px;
+  @media (max-width: 500px) {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+`;
+const SectionSub = styled(H5)`
+  padding-right: 20%;
+  &.nopad {
+    padding-right: 0;
+  }
+  @media (max-width: 500px) {
+    text-align: center;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    padding: 0 0 3rem 0;
+  }
 `;
 
 const Home = React.createClass({
@@ -123,8 +143,7 @@ const Home = React.createClass({
               <CenterNavBackground fullHeight background={ COLORS.black } />
               <Content>
                 <Hideable autoHide>
-                  <Img
-                    width="90%"
+                  <LargeImg
                     src={ localContext.assetUrl('/images/hero_2.png') }
                   />
                   <Hero2Caption>
@@ -149,9 +168,9 @@ const Home = React.createClass({
                 </ContentLeft>
                 <CenterNavBackground />
                 <Content>
-                  <H5 color={ COLORS.gold }>
+                  <SectionSub color={ COLORS.gold }>
                     { content('video_subtitle') }
-                  </H5>
+                  </SectionSub>
                 </Content>
               </FlexContainer>
 
@@ -169,9 +188,9 @@ const Home = React.createClass({
                 </ContentLeft>
                 <CenterNavBackground />
                 <Content>
-                  <H5 color={ COLORS.gold }>
+                  <SectionSub color={ COLORS.gold }>
                     { content('insta_subtitle') }
-                  </H5>
+                  </SectionSub>
                 </Content>
               </FlexContainer>
 
@@ -195,9 +214,9 @@ const Home = React.createClass({
               </ContentLeft>
               <CenterNavBackground />
               <Content>
-                <H5 color={ COLORS.black }>
+                <SectionSub color={ COLORS.black }>
                   { content('press_subtitle') }
-                </H5>
+                </SectionSub>
               </Content>
             </FlexContainer>
             <FlexContainer flexDirection="column">

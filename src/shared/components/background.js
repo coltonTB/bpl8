@@ -19,6 +19,10 @@ const bgStyle = `
   width: 31.25rem;
   margin-bottom: 1.25rem;
   align-self: flex-start;
+  @media (max-width: 500px) {
+    width: 100vw;
+    box-sizing: border-box;
+  }
 `;
 const BackgroundLeft = styled(ContentLeft)`${ bgStyle }`;
 const BackgroundRight = styled(Content)`${ bgStyle }`;

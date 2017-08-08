@@ -11,11 +11,9 @@ const Content = styled(FlexItem)`
   flex-wrap: wrap;
   flex-shrink: 1;
   flex-grow: 1;
-  > h5 {
-    padding-right: 20%;
-    &.nopad {
-      padding-right: 0;
-    }
+  @media (max-width: 500px) {
+    width: auto;
+    padding: 3rem 3rem 0 3rem;
   }
 `;
 
@@ -29,6 +27,10 @@ const ContentLeft = styled(Content)`
   padding: 1.6rem 1.6rem 1.6rem 3rem;
   text-align: right;
   flex-direction: row-reverse;
+  @media (max-width: 500px) {
+    text-align: left;
+    padding: 3rem 3rem 0 3rem;
+  }
 `;
 
 export { Content, ContentLeft };

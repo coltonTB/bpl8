@@ -12,19 +12,21 @@ import { CenterNav, CenterNavBackground } from './center-nav';
 import { Footer, isFooterNavVisible } from './footer'
 
 const TOP_SECTION_HEIGHT = 220;
-const CalendarLeft = styled(ContentLeft)`
+const CalendarStyle = `
   flex-wrap: nowrap;
   flex-direction: column;
   width: ${ props => props.width };
   margin-bottom: 2.25rem;
   align-self: flex-start;
 `;
+const CalendarLeft = styled(ContentLeft)`
+  ${CalendarStyle}
+  @media (max-width: 500px) {
+    margin: 5rem 0 0 0;
+  }
+`;
 const CalendarRight = styled(Content)`
-  flex-wrap: nowrap;
-  flex-direction: column;
-  width: ${ props => props.width };
-  margin-bottom: 2.25rem;
-  align-self: flex-start;
+  ${CalendarStyle}
 `;
 CalendarLeft.defaultProps = CalendarRight.defaultProps = {
   width: '38.75rem'
