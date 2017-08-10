@@ -18,9 +18,7 @@
         "machines": [{
             "id": 0,
             "img": "",
-            "fullImg": {
-              "src": "/images/machine_1.png"
-            },
+            "fullImg": "/images/machine_1.png",
             "title": "Chinese Letter Bed Machine",
             "year": "1876",
             "caption_a": "used in the lower eastern part of Xi'An China",
@@ -28,9 +26,7 @@
         }, {
             "id": 1,
             "img": "",
-            "fullImg": {
-              "src": "/images/machine_2.png"
-            },
+            "fullImg": "/images/machine_2.png",
             "title": "A Concentric Typewriter",
             "year": "1876",
             "caption_a": "used in the lower eastern part of Xi'An China",
@@ -38,9 +34,7 @@
         }, {
             "id": 2,
             "img": "/",
-            "fullImg": {
-              "src": "/images/machine_3.png"
-            },
+            "fullImg": "/images/machine_3.png",
             "title": "American Typewriter",
             "year": "1876",
             "caption_a": "used in the lower eastern part of Xi'An China",
@@ -48,9 +42,7 @@
         }, {
             "id": 3,
             "img": "/",
-            "fullImg": {
-              "src": "/images/machine_4.png"
-            },
+            "fullImg": "/images/machine_4.png",
             "title": "A Character Manual",
             "year": "1876",
             "caption_a": "used in the lower eastern part of Xi'An China",
@@ -58,9 +50,7 @@
         }, {
             "id": 4,
             "img": "/",
-            "fullImg": {
-              "src": "/images/machine_5.png"
-            },
+            "fullImg": "/images/machine_5.png",
             "title": "First Computer Typer",
             "year": "1876",
             "caption_a": "used in the lower eastern part of Xi'An China",
@@ -68,9 +58,7 @@
         }, {
             "id": 5,
             "img": "/",
-            "fullImg": {
-              "src": "/images/machine_6.png"
-            },
+            "fullImg": "/images/machine_6.png",
             "title": "A Dictionary Booklet",
             "year": "1876",
             "caption_a": "used in the lower eastern part of Xi'An China",
@@ -86,9 +74,7 @@
         "title": "About the Book",
         "subtitle": "The following information is about the book recently published by Tom Mullaney on the same subject as the exhibition. Filler.",
         "buy_btn": "Buy Now",
-        "book_img": {
-          "src": "/images/store_item_3.png"
-        },
+        "book_img": "raw::/images/store_item_3.png",
         "book_title": "Technology & Culture",
         "book_title_2": "by Tom Mullaney",
         "book_price": 24,
@@ -101,14 +87,10 @@
         "subtitle": "Just wondering, how would you design a Chinese typewriter? Lore moluptaest et as nos et ut volorro volores tibus, core voluptur adignam qui il magnihiti cor rempore liasped que volori re aut vit volorercil in porerspis et odis ma pera nesed.",
         "mission_title": "The Mission",
         "mission_text": "Thousands of characters. No alphabet. Millions of customers await whoever solves the puzzle first. How would you design a Chinese typewriter? Lore moluptaest et as nos et ut volorro volores tibus, core voluptur adignam qui il magnihiti cor rempore liasped que volori re aut vit volorercil in porerspis et odis ma pera nesed ut eos dit quide sitio iur aut ipsa eos\n\nTam lab ipsant perae. Nequi nis modis non porecti cus aut anda dolliae laut rectem et hario mosam faciatu scimus audis eaquame nihit apeliqui to bea doluptae con estior re, aut atur? Del maioritem est, eos undit ut ipsaest occus sitaqui ut quo blabor am non rempore nam hita nam as exerferovidi",
-        "gallery_img": {
-          "src": "/images/gallery_info.png"
-        },
+        "gallery_img": "raw::/images/gallery_info.png",
         "gallery_img_title": "The man behind the exhibition",
         "gallery_img_caption": "Thousands of characters. No alphabet. Millions of customre await whoever solves the puzzle fist.",
-        "tom_img": {
-          "src": "/images/tom_mug.png"
-        },
+        "tom_img": "raw::/images/tom_mug.png",
         "tom_img_title": "Thomas S. Mullaney",
         "tom_img_caption": "Associate Professor of Chinese History at Stanford University",
         "tom_title": "The man behind the radical machines exhibition",
@@ -197,7 +179,7 @@
     },
     "footer": {
         "contact": "Contact",
-        "subscribe_prompt": "Subscribe",
+        "subscribe_prompt": "raw::Subscribe",
         "brand": "Website designed and developed\nby For Good Measure",
         "tom_contact": "Tom Mullaney\n213 239 6094\ntsmullaney@stanford.edu",
         "rad_contact": "Radical Machines\n1245 Walloughby Way\nSydney, Australia 21039"

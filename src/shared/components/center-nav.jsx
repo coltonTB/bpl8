@@ -190,9 +190,6 @@ export const CenterNav = React.createClass({
   render() {
     const localContext = this.context.localContext;
     const props = this.props;
-
-    console.log(this.state.isUserExpanded);
-
     return (
       <CenterNavWrapper
         className="center-nav-wrapper"
