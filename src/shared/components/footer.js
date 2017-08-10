@@ -23,7 +23,10 @@ const FooterContentLeft = styled(ContentLeft)`${footerContentStyle}`
 const FooterContainer = styled.div`
   padding-top: 2.5rem;
   padding-bottom: 3.75rem;
-  background: ${ COLORS.black }
+  background: ${ COLORS.black };
+  @media (max-width: 500px) {
+    padding-top: 6rem;
+  }
 `;
 const FlexContainerCenterSmall = FlexContainer.extend`
   @media (max-width: 500px) {

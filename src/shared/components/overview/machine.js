@@ -79,6 +79,9 @@ const MachineCaption = styled.div`
   color: ${ COLORS.white };
   font-weight: bold;
   margin-bottom: 80px;
+  @media (max-width: 500px) {
+    margin-bottom: 40px;
+  }
 `;
 
 const Machine = (props, { localContext }) => {

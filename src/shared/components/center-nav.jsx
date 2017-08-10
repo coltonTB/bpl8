@@ -13,11 +13,9 @@ const CenterNavWrapper = styled(Div)`
   position: ${ props => props.fixed ? 'fixed' : 'static' };
   top: 0;
   width: 100%;
+  overflow: hidden;
   @media (max-width: 500px) {
     background: ${ COLORS.gold };
-    > div {
-      height: 50px;
-    }
   }
 `;
 CenterNavWrapper.defaultProps = {
@@ -48,7 +46,8 @@ const List = styled(Ul)`
   margin-top: 12px;
   font-size: 1.1rem;
   line-height: 1.7rem;
-
+  position: relative;
+  top: ${ props => props.isMini ? '-100px' : '0' };
   @media (max-width: 1000px) {
     font-size: 15.4px;
     line-height: 23.8px;
@@ -57,13 +56,6 @@ const List = styled(Ul)`
     font-size: 12px;
     line-height: 20px;
   }
-  @media (max-width: 500px) {
-    display: ${ props => props.forceVisibilty ? 'block' : 'none'}
-  }
-
-
-  position: relative;
-  top: ${ props => props.isMini ? '-100px' : '0' };
   li a {
     color: ${ props => props.color };
   }
@@ -78,22 +70,27 @@ const Nav = styled.div`
   margin-left: auto;
   right: 0;
   left: 0;
+  transition: height 0.4s ease-in-out;
   @media (max-width: 1230px) {
     width: 120px;
   }
   @media (max-width: 800px) {
     width: 100px;
   }
+  @media (max-width: 500px) {
+    height: ${ props => props.isExpanded ? '200px' : '50px' };
+    .hamburger-svg {
+      fill: white !important;
+    }
+    .desk-nav-list {
+      display: none;
+    }
+  }
   .hamburger-svg {
     fill: ${ props => props.color };
     width: 3rem;
     cursor: pointer;
     transition: color 0.4s ease;
-  }
-  @media (max-width: 500px) {
-    .hamburger-svg {
-      fill: white !important;
-    }
   }
 `;
 
@@ -130,7 +127,43 @@ export const CenterNavMini = props => (
       isMini={true}
     />
   </CenterNavBackground>
-)
+);
+
+const NavigationList = props => (
+  <List
+    isMini={ props.isMini }
+    background={ props.background }
+    color={ props.color }
+    className={ props.className }
+  >
+    <NavLink to="/">Home</NavLink>
+    <NavLink to="/info">Information</NavLink>
+    <NavLink to="/calendar">Calendar</NavLink>
+    <NavLink to="/background">Background</NavLink>
+    <NavLink to="/overview">Overview</NavLink>
+    <NavLink to="/book">Book</NavLink>
+  </List>
+);
+
+const MobileMenuStyle = styled.div`
+  display: none;
+  ul {
+    position: static;
+  }
+  @media (max-width: 500px) {
+    display: block;
+    visibility: ${ props => props.isVisible ? 'visible' : 'hidden'};
+    height: ${ props => props.isVisible ? '200px' : '0'};
+  }
+`;
+const MobileMenu = props => (
+  <MobileMenuStyle {...props} isVisible={true}>
+    <NavigationList
+      isMini={true}
+      color='white'
+    />
+  </MobileMenuStyle>
+);
 
 export const CenterNav = React.createClass({
 
@@ -156,9 +189,20 @@ export const CenterNav = React.createClass({
     const localContext = this.context.localContext;
     const props = this.props;
 
+    console.log(this.state.isUserExpanded);
+
     return (
-      <CenterNavWrapper className="center-nav-wrapper" fixed={ this.props.fixed } zIndex={ this.props.zIndex }>
-        <Nav onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} color={ props.color }>
+      <CenterNavWrapper
+        className="center-nav-wrapper"
+        fixed={ this.props.fixed }
+        zIndex={ this.props.zIndex }
+      >
+        <Nav
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
+          color={ props.color }
+          isExpanded={ this.state.isUserExpanded }
+        >
           <span>
             <ReactSVG
               path={ localContext.assetUrl('/images/hamburger.svg') }
@@ -166,24 +210,17 @@ export const CenterNav = React.createClass({
             />
           </span>
 
+          <MobileMenu
+            isVisible={ this.state.isUserExpanded }
+          />
+
           <Hideable
             isVisible={ this.props.isExpanded }
             forceVisibility={ this.state.isUserExpanded }
             listen
             showInitially
           >
-            <List
-              isMini={ this.props.isMini }
-              background={ this.props.background }
-              color={ props.color }
-            >
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="/info">Information</NavLink>
-              <NavLink to="/calendar">Calendar</NavLink>
-              <NavLink to="/background">Background</NavLink>
-              <NavLink to="/overview">Overview</NavLink>
-              <NavLink to="/book">Book</NavLink>
-            </List>
+            <NavigationList {...props} className="desk-nav-list"/>
           </Hideable>
 
         </Nav>

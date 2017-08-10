@@ -22,6 +22,9 @@ const bgStyle = `
   @media (max-width: 500px) {
     width: 100vw;
     box-sizing: border-box;
+    h2 {
+      text-align: center;
+    }
   }
 `;
 const BackgroundLeft = styled(ContentLeft)`${ bgStyle }`;

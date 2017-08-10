@@ -5,7 +5,7 @@ import ReactSVG from 'react-svg';
 
 import { COLORS } from '../../constants';
 import { FlexContainer } from '../../style/flexbox';
-import { Div } from '../../style/util'
+import { Div, H2 } from '../../style/util'
 import { Hideable } from '../../style/hideable';
 import { scrollLimit, scrollToTop } from '../../style/scroll-helpers';
 import { getEventManagerInstance } from '../../style/event-manager';
@@ -36,6 +36,11 @@ const ImagesLeft = ContentLeft.extend`
 const ImagesRight = Content.extend`
   ${imagesStyles}
 `;
+const OverviewTitle = H2.extend`
+  @media (max-width: 500px) {
+    text-align: center;
+  }
+`;
 const MachinesContainer = styled(Div)`
   display: flex;
   flex-wrap: nowrap;
@@ -59,6 +64,7 @@ const MachinesContainer = styled(Div)`
     height: auto;
     width: 100vw;
     display: block;
+    margin-top: 20px;
   }
 `;
 
@@ -199,9 +205,9 @@ const Overview = React.createClass({
 
         <FlexContainer>
           <ContentLeft align="flex-start">
-            <h2>
+            <OverviewTitle>
               { content('title') }
-            </h2>
+            </OverviewTitle>
           </ContentLeft>
           <CenterNavBackground />
           <Content color={ COLORS.gold } align="flex-start">
