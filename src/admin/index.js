@@ -110,6 +110,7 @@ const Index = React.createClass({
             formData={this.getValues()}
             onSubmit={this.onFormSubmit}
             onChange={this.onFormChange}
+            acceptcharset="ISO-8859-1"
           />
           <button
             onClick={this.onPublishClick}

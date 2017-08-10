@@ -249,22 +249,11 @@
     },
     "overview": {
       "properties": {
-        "machineDetails": {
-          "items": {
-            "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "subtitle": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              }
-            },
-            "type": "object"
-          },
-          "type": "array"
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
         },
         "machines": {
           "items": {
@@ -295,11 +284,22 @@
           },
           "type": "array"
         },
-        "subtitle": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
+        "machineDetails": {
+          "items": {
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "subtitle": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
         }
       },
       "type": "object"
