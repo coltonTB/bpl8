@@ -26,6 +26,8 @@ const contentStyle = `
   @media (max-width: 800px) {
     width: 240px;
   }
+  @media (max-width: 500px) {
+  }
 `;
 const ExpandableContent = styled(Content)`${contentStyle}`;
 const ExpandableContentLeft = styled(ContentLeft)`${contentStyle}`;
@@ -50,6 +52,9 @@ const ExpandableCenterNavStyle = styled.div`
   }
   @media (max-width: 800px) {
     width: ${ props => props.selectedSourceLink === null ? '100px' : '100%' };
+  }
+  @media (max-width: 500px) {
+    width: ${ props => props.selectedSourceLink === null ? 0 : '100%' };
   }
 `;
 const ExpandableCenterNavInner = styled.div`

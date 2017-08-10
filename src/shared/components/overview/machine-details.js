@@ -49,6 +49,9 @@ const MachineDetailsWrapper = styled.div`
       props.leftOffset !== 0 ? props.leftOffset - 330 : props.leftOffset
     }px;
   }
+  @media (max-width: 800px) {
+    position: static;
+  }
 `;
 
 export const MachineDetails = props => {

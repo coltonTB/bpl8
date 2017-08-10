@@ -26,13 +26,15 @@ const HeroScrollStyle = styled.div`
     transform: ${ p =>
       p.direction === 'up' ? 'translateY(1000px)' : 'translateY(-1000px)'
     };
-    &.animate {
-      transform: translateY( ${ p => p.direction === 'up' ? '-' : ''}1000px );
-      animation-name: ${ p => p.direction === 'up' ? spinUp : spinDown };
-      animation-duration: 6s;
-      animation-timing-function: ease;
-      animation-delay: 0;
-      animation-iteration-count: infinite;
+    @media (min-width: 500px) {
+      &.animate {
+        transform: translateY( ${ p => p.direction === 'up' ? '-' : ''}1000px );
+        animation-name: ${ p => p.direction === 'up' ? spinUp : spinDown };
+        animation-duration: 6s;
+        animation-timing-function: ease;
+        animation-delay: 0;
+        animation-iteration-count: infinite;
+      }
     }
 
   }

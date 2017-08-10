@@ -52,6 +52,15 @@ const MachineWrapper = styled(Div)`
         : (props.left !== 0 ? props.left - 330 : props.left)
     }px;
   }
+  @media (max-width: 500px) {
+    width: 100%;
+    position: static;
+    display: ${ props =>
+      props.selectedMachine === null || props.selectedMachine === props.data.id
+        ? 'block'
+        : 'none'
+    };
+  }
   img {
     width: 100%;
     &:hover {

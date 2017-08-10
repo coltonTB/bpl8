@@ -10,16 +10,27 @@ import { Hideable } from '../style/hideable';
 import { CenterNavBackground, CenterNav } from './center-nav';
 import { Content, ContentLeft } from '../style/content-column';
 
-const fcstyle = `
+const footerContentStyle = `
   padding-bottom: 0;
   padding-top: 0;
+  @media (max-width: 500px) {
+    align-self: flex-start;
+    text-align: left;
+  }
 `;
-const FooterContent = styled(Content)`${fcstyle}`
-const FooterContentLeft = styled(ContentLeft)`${fcstyle}`
+const FooterContent = styled(Content)`${footerContentStyle}`
+const FooterContentLeft = styled(ContentLeft)`${footerContentStyle}`
 const FooterContainer = styled.div`
   padding-top: 2.5rem;
   padding-bottom: 3.75rem;
   background: ${ COLORS.black }
+`;
+const FlexContainerCenterSmall = FlexContainer.extend`
+  @media (max-width: 500px) {
+    > div {
+      align-self: center;
+    }
+  }
 `;
 const SubscribeInputStyle = styled.span`
   display: flex;
@@ -31,13 +42,22 @@ const SubscribeInputStyle = styled.span`
     width: 1.875rem;
     stroke: ${ COLORS.white }
   }
+  @media (max-width: 500px) {
+    margin: 2rem 0;
+  }
 `;
 const SocialLinks = styled.img`
   margin-top: 1rem;
   height: 3rem;
+  @media (max-width: 500px) {
+    height: 5rem;
+  }
 `;
 const Brand = styled.p`
   margin-top: 5.8rem;
+  @media (max-width: 500px) {
+    margin-top: 2rem;
+  }
 `;
 
 const SubscribeInput = (props, {localContext}) => (
@@ -60,7 +80,7 @@ export const isAtPageBottom = () => {
 const Footer = (props, { localContext }) => (
   <FooterContainer>
 
-    <FlexContainer>
+    <FlexContainerCenterSmall>
       <FooterContentLeft align="flex-start" paddingBottom="0">
         <H2 color={ COLORS.gold }>
           { localContext.getContent('footer', 'contact') }
@@ -70,7 +90,7 @@ const Footer = (props, { localContext }) => (
       <FooterContent paddingBottom="0">
         <SubscribeInput />
       </FooterContent>
-    </FlexContainer>
+    </FlexContainerCenterSmall>
 
     <FlexContainer>
       <FooterContentLeft>

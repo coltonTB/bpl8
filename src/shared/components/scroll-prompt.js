@@ -13,6 +13,9 @@ const ScrollPromptWrapper = styled(Div)`
   margin-bottom: 30px;
   color: ${ COLORS.white };
   width: 100%;
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 const ScrollPromptInner = styled.div`
   width: 3rem;

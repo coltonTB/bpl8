@@ -14,7 +14,10 @@ const CenterNavWrapper = styled(Div)`
   top: 0;
   width: 100%;
   @media (max-width: 500px) {
-    display: none;
+    background: ${ COLORS.gold };
+    > div {
+      height: 50px;
+    }
   }
 `;
 CenterNavWrapper.defaultProps = {
@@ -54,6 +57,10 @@ const List = styled(Ul)`
     font-size: 12px;
     line-height: 20px;
   }
+  @media (max-width: 500px) {
+    display: ${ props => props.forceVisibilty ? 'block' : 'none'}
+  }
+
 
   position: relative;
   top: ${ props => props.isMini ? '-100px' : '0' };
@@ -82,6 +89,11 @@ const Nav = styled.div`
     width: 3rem;
     cursor: pointer;
     transition: color 0.4s ease;
+  }
+  @media (max-width: 500px) {
+    .hamburger-svg {
+      fill: white !important;
+    }
   }
 `;
 
@@ -160,7 +172,11 @@ export const CenterNav = React.createClass({
             listen
             showInitially
           >
-            <List isMini={ this.props.isMini } background={ this.props.background } color={ props.color }>
+            <List
+              isMini={ this.props.isMini }
+              background={ this.props.background }
+              color={ props.color }
+            >
               <NavLink to="/">Home</NavLink>
               <NavLink to="/info">Information</NavLink>
               <NavLink to="/calendar">Calendar</NavLink>

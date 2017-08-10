@@ -49,6 +49,15 @@ const SectionSub = styled(H5)`
     padding: 0 0 3rem 0;
   }
 `;
+const FlexContainerStayRow = FlexContainer.extend`
+  @media (max-width: 500px) {
+    flex-direction: row;
+    > div {
+      height: 50vh;
+      align-items: center;
+    }
+  }
+`;
 
 const Home = React.createClass({
 
@@ -94,7 +103,7 @@ const Home = React.createClass({
         />
 
           <Div background={ COLORS.black } position="relative" overflow="hidden">
-            <FlexContainer>
+            <FlexContainerStayRow>
               <ContentLeft position="relative" overflow="visible">
                 <HeroScroll left/>
                 <Hideable hideInitially isVisible>
@@ -124,7 +133,7 @@ const Home = React.createClass({
                   />
                 </Hideable>
               </Content>
-            </FlexContainer>
+            </FlexContainerStayRow>
             <ScrollPrompt isVisible={ scrollLimit(500) } />
           </Div>
 

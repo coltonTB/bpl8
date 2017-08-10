@@ -22,7 +22,9 @@ const CalendarStyle = `
 const CalendarLeft = styled(ContentLeft)`
   ${CalendarStyle}
   @media (max-width: 500px) {
-    margin: 5rem 0 0 0;
+    &:not(:first-of-type) {
+      margin: 5rem 0 0 0;
+    }
   }
 `;
 const CalendarRight = styled(Content)`

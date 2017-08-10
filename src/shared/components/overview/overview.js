@@ -24,17 +24,17 @@ const LEFT_OFFSET = 695;
 const stopProp = e => e.stopPropagation();
 const eventMangerInstance = getEventManagerInstance();
 
-const ImagesLeft = styled(ContentLeft)`
+const imagesStyles = `
   flex-wrap: nowrap;
   flex-direction: column;
   align-self: flex-start;
   padding: 12px;
 `;
-const ImagesRight = styled(Content)`
-  flex-wrap: nowrap;
-  flex-direction: column;
-  align-self: flex-start;
-  padding: 12px;
+const ImagesLeft = ContentLeft.extend`
+  ${imagesStyles}
+`;
+const ImagesRight = Content.extend`
+  ${imagesStyles}
 `;
 const MachinesContainer = styled(Div)`
   display: flex;
@@ -54,6 +54,11 @@ const MachinesContainer = styled(Div)`
   @media (max-width: 800px) {
     height: 1300px;
     max-width: 600px;
+  }
+  @media (max-width: 500px) {
+    height: auto;
+    width: 100vw;
+    display: block;
   }
 `;
 
@@ -77,6 +82,26 @@ const BackButtonStyle = styled.div`
   }
   > span {
     padding-left: 8px;
+  }
+  > div {
+    line-height: 1.2rem;
+  }
+  @media (max-width: 500px) {
+    left: 52px;
+    transform: scale(2);
+    position: fixed;
+    top: 22px;
+    z-index: 100;
+    color: white;
+    .right-arrow-svg {
+      stroke: white;
+    }
+    &:hover {
+      color: ${ COLORS.darkgrey };
+      .right-arrow-svg {
+        stroke: ${ COLORS.darkgrey };
+      }
+    }
   }
 `;
 const BackButton = (props, {localContext}) => (
@@ -229,20 +254,6 @@ const Overview = React.createClass({
               </CenterNavBackground>
 
               <ImagesRight color={ COLORS.gold }>
-                <Hideable
-                  isVisible={ this.state.selectedMachine !== null }
-                  delay="0.3s"
-                >
-                  {
-                    this.state.selectedMachine !== null &&
-                      <MachineDetails
-                        leftOffset={ LEFT_OFFSET }
-                        data={ content('machineDetails') }
-                        selectedMachine={ this.state.selectedMachine }
-                        onSourceLinksMounted={ this.renderSourceLinks }
-                      />
-                  }
-                </Hideable>
                 <Machine
                   left={LEFT_OFFSET}
                   data={ content('machines')[1] }
@@ -263,6 +274,20 @@ const Overview = React.createClass({
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
                 />
+                <Hideable
+                  isVisible={ this.state.selectedMachine !== null }
+                  delay="0.3s"
+                >
+                  {
+                    this.state.selectedMachine !== null &&
+                      <MachineDetails
+                        leftOffset={ LEFT_OFFSET }
+                        data={ content('machineDetails') }
+                        selectedMachine={ this.state.selectedMachine }
+                        onSourceLinksMounted={ this.renderSourceLinks }
+                      />
+                  }
+                </Hideable>
               </ImagesRight>
             </MachinesContainer>
           </FlexContainer>

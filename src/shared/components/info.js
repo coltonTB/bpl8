@@ -18,6 +18,10 @@ const infoStyle = `
   width: 500px;
   margin-bottom: 2.5rem;
   align-self: flex-start;
+  @media (max-width: 500px) {
+    width: 100vw;
+    box-sizing: border-box;
+  }
 `;
 const InfoLeft = styled(ContentLeft)`${infoStyle}`;
 const InfoRight = styled(Content)`${infoStyle};`
