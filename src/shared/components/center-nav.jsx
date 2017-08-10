@@ -9,13 +9,13 @@ import { Hideable } from '../style/hideable';
 import { scrollToTop } from '../style/scroll-helpers';
 
 const CenterNavWrapper = styled(Div)`
-  __comment: centerNav;
   position: ${ props => props.fixed ? 'fixed' : 'static' };
   top: 0;
   width: 100%;
-  overflow: hidden;
   @media (max-width: 500px) {
     background: ${ COLORS.gold };
+    overflow: hidden;
+    z-index: 100;
   }
 `;
 CenterNavWrapper.defaultProps = {
@@ -78,7 +78,8 @@ const Nav = styled.div`
     width: 100px;
   }
   @media (max-width: 500px) {
-    height: ${ props => props.isExpanded ? '200px' : '50px' };
+    height: ${ props => props.isExpanded ? '260px' : '50px' };
+    width: auto;
     .hamburger-svg {
       fill: white !important;
     }
@@ -149,11 +150,12 @@ const MobileMenuStyle = styled.div`
   display: none;
   ul {
     position: static;
+    font-size: 20px;
+    line-height: 30px;
   }
   @media (max-width: 500px) {
     display: block;
     visibility: ${ props => props.isVisible ? 'visible' : 'hidden'};
-    height: ${ props => props.isVisible ? '200px' : '0'};
   }
 `;
 const MobileMenu = props => (
@@ -210,16 +212,15 @@ export const CenterNav = React.createClass({
             />
           </span>
 
-          <MobileMenu
-            isVisible={ this.state.isUserExpanded }
-          />
-
           <Hideable
             isVisible={ this.props.isExpanded }
             forceVisibility={ this.state.isUserExpanded }
             listen
-            showInitially
+            hideInitially
           >
+            <MobileMenu
+              isVisible={ this.state.isUserExpanded }
+            />
             <NavigationList {...props} className="desk-nav-list"/>
           </Hideable>
 
