@@ -37,6 +37,33 @@ const LargeImg = styled.img`
     margin-bottom: 2rem;
   }
 `;
+const InstaWrapper = styled.div`
+  width: 88%;
+  max-width: 1200px;
+  height: 400px;
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    overflow: hidden;
+  }
+  @media (max-width: 1100px) {
+    height: 350px;
+  }
+  @media (max-width: 1000px) {
+    height: 300px;
+  }
+  @media (max-width: 900px) {
+    height: 250px;
+  }
+  @media (max-width: 700px) {
+    height: 200px;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+`;
 const SectionSub = styled(H5)`
   padding-right: 20%;
   &.nopad {
@@ -189,7 +216,7 @@ const Home = React.createClass({
                 />
               </FlexContainer>
 
-              <FlexContainer marginBottom="3.4rem" paddingTop="3.75rem">
+              <FlexContainer marginBottom="3.4rem" paddingTop="3.75rem" marginTop="2rem">
                 <ContentLeft>
                   <H2 color={ COLORS.black }>
                     { content('insta_title') }
@@ -204,9 +231,13 @@ const Home = React.createClass({
               </FlexContainer>
 
               <FlexContainer flexDirection="column">
-                <LargeImg
-                  src={ localContext.assetUrl('/images/insta_shim.png') }
-                />
+                <InstaWrapper>
+                  <iframe
+                    src="//lightwidget.com/widgets/5b1f946ab3d85c48b8e6609b596fc9e1.html"
+                    scrolling="no"
+                    allowTransparency="true"
+                  />
+                </InstaWrapper>
                 <Button marginTop="2.5rem">
                   { content('see_more_btn') }
                 </Button>

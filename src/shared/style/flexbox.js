@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Div } from './util';
 
-export const FlexContainer = styled.div`
+export const FlexContainer = styled(Div)`
   display: flex;
   flex-direction: ${ props => props.flexDirection };
   justify-content: ${ props => props.justifyContent };

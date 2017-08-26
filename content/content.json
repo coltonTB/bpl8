@@ -6,10 +6,10 @@
         "hero_2_text": "Thousands of characters. No alphabet. Millions of customers await whoever solves the puzzle first. How would you design a Chinese typewriter? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam gravida non est sit amet luctus. Duis vitae tellus ex. Cras non pharetra odio. Nunc dignissim sem vitae nunc sagittis mollis laoreet ac ex. Sed aliquet risus finibus porta rhoncus. In euismod finibus tincidunt. Sed tempor gravida commodo.",
         "video_title": "The Show",
         "video_subtitle": "Await whoever solves the puzzle first. How would you design a Chinese typewriter?",
-        "insta_title": "Insta-Feed",
+        "insta_title": "Tour Photos",
         "see_more_btn": "See More",
         "insta_subtitle": "Await whoever solves the puzzle first. How would you design a Chinese typewriter? Lore",
-        "press_title": "Press Coverage",
+        "press_title": "Media Coverage",
         "press_subtitle": "Await whoever solves the puzzle first. How would you design a Chinese typewriter?"
     },
     "overview": {
@@ -75,11 +75,11 @@
         "subtitle": "The following information is about the book recently published by Tom Mullaney on the same subject as the exhibition. Filler.",
         "buy_btn": "Buy Now",
         "book_img": "raw::/images/store_item_3.png",
-        "book_title": "Technology & Culture",
-        "book_title_2": "by Tom Mullaney",
+        "book_title": "THE CHINESE TYPEWRITER: A HISTORY",
+        "book_title_2": "by Thomas S. Mullaney",
         "book_price": 24,
         "book_printInfo": "24\" x 36\", Printed in Italy. Edition of 500.",
-        "book_fgm": "Available filler text",
+        "book_fgm": "MIT Press 2017",
         "book_summary": "Chinese writing is character based, the one major world script that is neither alphabetic nor syllabic. Through the years, the Chinese written language encountered presumed alphabetic universalism in the form of Morse Code, Braille, stenography, Linotype, punch cards, word processing, and other systems developed with the Latin alphabet in mind. This book is about those encounters -- in particular thousands of Chinese characters versus the typewriter and its QWERTY keyboard. Thomas Mullaney describes a fascinating series of experiments, prototypes, failures, and successes in the century-long quest for a workable Chinese typewriter. \n\nThe earliest Chinese typewriters, Mullaney tells us, were figments of popular imagination, sensational accounts of twelve-foot keyboards with 5,000 keys. One of the first Chinese typewriters actually constructed was invented by a Christian missionary, who organized characters by common usage (but promoted the less-common characters for \"Jesus\" to the common usage level). Later came typewriters manufactured for use in Chinese offices, and typewriting schools that turned out trained \"typewriter girls\" and \"typewriter boys.\" Still later was the \"Double Pigeon\" typewriter produced by the Shanghai Calculator and Typewriter Factory, the typewriter of choice under Mao. Clerks and secretaries in this era experimented with alternative ways of organizing characters on their tray beds, inventing an arrangement method that was the first instance of \"predictive text.\" \n\nToday, after more than a century of resistance against the alphabetic, not only have Chinese characters prevailed, they form the linguistic substrate of the vibrant world of Chinese information technology.  The Chinese Typewriter, not just an \"object history\" but grappling with broad questions of technological change and global communication, shows how this happened.\n\n_______________\n\nThe Chinese Typewriter is a fascinating and extensive study into the characteristics of the Chinese language.\n- Ai Weiwei\n\nHow to make a typewriter for a language that has a discrete picture for each word? Here's the story of a century of experiments. Fascinating.\n\n- Maxine Hong Kingston, author of The Woman Warrior, China Men, and Tripmaster Monkey \n\nMullaney reveals a topic I have always attempted to investigate through my art. The book is not about the tool itself, but the characteristics of Chinese-writing cultures. It explains what is behind Chinese thinking and its unique working method, and why China is what it is today.\n- Xu Bing, artist; creator of  Book from the Sky and  Square Word Calligraphy\n\nThe Chinese Typewriter is lucidly written and brilliantly conceived. This book will help readers understand and appreciate China, the Chinese language, and writing in general with greater and necessary nuance.\n- Lisa Gitelman, editor of  \"Raw Data\" Is an Oxymoron and author of  Paper Knowledge\n\nThe Chinese Typewriter is a fascinating book: in the light of new developments in computer science, Thomas Mullaney brings us a completely different interpretation of nonalphabetic Chinese and the modern fate of Chinese culture through the historical lens of the Chinese typewriter. This is a rich book that encompasses different resources, historical insights, and intriguing storytelling from long and broad perspectives.\n- Wang Hui, Professor of Literature and History, Tsinghua University; author of  China's Twentieth Century)"
     },
     "info": {
@@ -100,8 +100,8 @@
             "name": "For Good Measure",
             "description": "Exhibiton design / website design / web development"
         }, {
-            "name": "Barbara Walters",
-            "description": "Press coverage / social media"
+            "name": "Nina Fairles",
+            "description": "Independent Contract Registrar"
         }, {
             "name": "Sandra Bullock",
             "description": "Museum engagement / Citation expert"
@@ -146,14 +146,14 @@
         }, {
             "open": "March 2020",
             "close": "September 2020",
-            "location": "Linda Hall Library (KS)",
+            "location": "Linda Hall Library",
             "address1": "1234 Address Ave",
             "address2": "Kansas City, KS 29302"
         }],
         "contact_prompt": "Don't see a Location Near You? Contact us to book Radical Machines in your local museum or gallery",
         "contact_name": "Tom Mullaney",
         "contact_sub": "Exhibition Coordinator",
-        "contact_details": "tom@radicalmachines.info\ntsmullaney@stanford.edu"
+        "contact_details": "tsmullaney@stanford.edu"
     },
     "background": {
         "title": "Background",
