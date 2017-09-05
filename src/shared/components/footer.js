@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReactSVG from 'react-svg'
 
 import { COLORS } from '../constants';
 import { FlexContainer } from '../style/flexbox';
@@ -9,6 +8,7 @@ import { Hideable } from '../style/hideable';
 
 import { CenterNavBackground, CenterNav } from './center-nav';
 import { Content, ContentLeft } from '../style/content-column';
+import { SubscribeInput } from './subscribe-input';
 
 const footerContentStyle = `
   padding-bottom: 0;
@@ -35,20 +35,7 @@ const FlexContainerCenterSmall = FlexContainer.extend`
     }
   }
 `;
-const SubscribeInputStyle = styled.span`
-  display: flex;
-  > button {
-    margin-left: 5%;
-    padding: 0.375rem 1rem;
-  }
-  .right-arrow-svg {
-    width: 1.875rem;
-    stroke: ${ COLORS.white }
-  }
-  @media (max-width: 500px) {
-    margin: 2rem 0;
-  }
-`;
+
 const SocialLinks = styled.img`
   margin-top: 1rem;
   height: 3rem;
@@ -62,18 +49,6 @@ const Brand = styled.p`
     margin-top: 2rem;
   }
 `;
-
-const SubscribeInput = (props, {localContext}) => (
-  <SubscribeInputStyle display="flex">
-    <Input placeholder={ localContext.getContent('footer', 'subscribe_prompt') } />
-    <Button>
-      <ReactSVG
-        path={ localContext.assetUrl('/images/right_arrow.svg') }
-        className="right-arrow-svg"
-      />
-    </Button>
-  </SubscribeInputStyle>
-)
 
 export const isAtPageBottom = () => {
   const scrollBottom = window.scrollY + window.innerHeight;
@@ -120,7 +95,7 @@ const Footer = (props, { localContext }) => (
   </FooterContainer>
 );
 
-Footer.contextTypes = SubscribeInput.contextTypes = {
+Footer.contextTypes = {
   localContext: React.PropTypes.object
 };
 
