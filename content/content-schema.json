@@ -285,21 +285,41 @@
           "type": "array"
         },
         "machineDetails": {
+          "type": "array",
           "items": {
+            "type": "object",
             "properties": {
-              "id": {
-                "type": "integer"
+              "title": {
+                "type": "string"
               },
               "subtitle": {
                 "type": "string"
               },
-              "title": {
-                "type": "string"
+              "body": {
+                "type": "string",
+                "format": "textarea"
               }
-            },
-            "type": "object"
-          },
-          "type": "array"
+            }
+          }
+        },
+        "sourceLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "leftBody": {
+                "type": "string",
+                "format": "textarea"
+              },
+              "rightBody": {
+                "type": "string",
+                "format": "textarea"
+              }
+            }
+          }
         }
       },
       "type": "object"

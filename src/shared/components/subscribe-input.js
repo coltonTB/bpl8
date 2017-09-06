@@ -23,6 +23,7 @@ const SubscribeInputStyle = styled.span`
 export const SubscribeInput = React.createClass({
 
   componentDidMount() {
+    return;
     gapi.load('client', () => {
       gapi.client.init({
         discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],

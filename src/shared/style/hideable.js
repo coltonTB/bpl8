@@ -14,7 +14,7 @@ const Style = styled.div`
     opacity ${ props => props.duration } ${ props => props.ease } ${ props => props.delay },
     visibility ${ props => props.duration } ${ props => props.ease } ${ props => props.delay };
   &.visible {
-    transition-delay: 0s;
+    transition-delay: ${ props => props.delay || '0s'};
   }
   &.hidden {
     opacity: 0;
