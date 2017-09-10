@@ -40,17 +40,17 @@ export const SourceLink = React.createClass({
     onClick: React.PropTypes.func
   },
   render() {
+    const sourceLinks = this.context.localContext.getContent('overview', 'sourceLinks');
+    const selectedSourceLink = sourceLinks.find(el => el.id == this.props.id);
     return (
       <SourceLinkStyle>
         <Number onClick={() => this.props.onClick(this.props.id)}>
           { this.props.id }
         </Number>
         {
-          this.props.id && (
+          selectedSourceLink && (
             <Text>
-              Few thousands of characters.
-              No alphabet.
-              Millions of customers await whoever solves the puzzle first.
+              { selectedSourceLink.title }
             </Text>
           )
         }
@@ -58,3 +58,7 @@ export const SourceLink = React.createClass({
     );
   }
 });
+
+SourceLink.contextTypes = {
+  localContext: React.PropTypes.object
+}

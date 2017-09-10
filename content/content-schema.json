@@ -310,9 +310,20 @@
               "id": {
                 "type": "number"
               },
-              "leftBody": {
-                "type": "string",
-                "format": "textarea"
+              "title": {
+                "type": "string"
+              },
+              "image_1_src": {
+                "type": "string"
+              },
+              "image_1_caption": {
+                "type": "string"
+              },
+              "image_2_src": {
+                "type": "string"
+              },
+              "image_2_caption": {
+                "type": "string"
               },
               "rightBody": {
                 "type": "string",

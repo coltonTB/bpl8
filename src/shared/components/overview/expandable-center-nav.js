@@ -9,7 +9,7 @@ import { Hideable } from '../../style/hideable';
 import { Content, ContentLeft } from '../../style/content-column';
 import { CenterNavBackground } from '../center-nav';
 
-import { Source1Text, Source1Images } from './sources';
+import { SourceRight, SourceLeft } from './sources';
 
 const stopProp = e => e.stopPropagation();
 
@@ -105,7 +105,7 @@ export const ExpandableCenterNav = (props, {localContext}) => (
       </Container>
       <Container>
         <ExpandableContentLeft align="flex-start">
-          <Source1Images />
+          <SourceLeft selectedSourceLink={props.selectedSourceLink} />
         </ExpandableContentLeft>
         <CenterNavBackground textAlign="center">
           <Hideable isVisible={ props.selectedSourceLink !== null } hideInitially>
@@ -124,7 +124,7 @@ export const ExpandableCenterNav = (props, {localContext}) => (
           </Hideable>
         </CenterNavBackground>
         <ExpandableContent color={ COLORS.white } align="flex-start" >
-          <Source1Text />
+          <SourceRight selectedSourceLink={props.selectedSourceLink} />
         </ExpandableContent>
       </Container>
     </ExpandableCenterNavInner>
