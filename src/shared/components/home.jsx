@@ -259,10 +259,22 @@ const Home = React.createClass({
                 </SectionSub>
               </Content>
             </FlexContainer>
-            <FlexContainer flexDirection="column">
-              <LargeImg
-                src={ localContext.assetUrl('/images/press.png') }
-              />
+            <FlexContainer >
+              <ContentLeft>
+                <div>
+                  <LargeImg
+                    src={ localContext.assetUrl('/images/RAD_sponsors-01.png') }
+                  />
+                </div>
+              </ContentLeft>
+              <CenterNavBackground />
+              <Content>
+                <div>
+                  <LargeImg
+                    src={ localContext.assetUrl('/images/RAD_sponsors-02.png') }
+                  />
+                </div>
+              </Content>
             </FlexContainer>
           </Div>
 
