@@ -130,7 +130,7 @@ export const CenterNavMini = props => (
   </CenterNavBackground>
 );
 
-const NavigationList = props => (
+const DesktopMenu = props => (
   <List
     isMini={ props.isMini }
     background={ props.background }
@@ -160,7 +160,7 @@ const MobileMenuStyle = styled.div`
 `;
 const MobileMenu = props => (
   <MobileMenuStyle {...props} isVisible={true}>
-    <NavigationList
+    <DesktopMenu
       isMini={true}
       color='white'
     />
@@ -187,6 +187,13 @@ export const CenterNav = React.createClass({
     });
   },
 
+  toggleVisibility() {
+    const expandedState = this.state.isUserExpanded;
+    this.setState({
+      isUserExpanded: !expandedState
+    });
+  },
+
   render() {
     const localContext = this.context.localContext;
     const props = this.props;
@@ -199,6 +206,7 @@ export const CenterNav = React.createClass({
         <Nav
           onMouseEnter={this.onMouseEnter}
           onMouseLeave={this.onMouseLeave}
+          onClick={this.toggleVisibility}
           color={ props.color }
           isExpanded={ this.state.isUserExpanded }
         >
@@ -215,11 +223,10 @@ export const CenterNav = React.createClass({
             listen
             hideInitially
           >
-            <MobileMenu
-              isVisible={ this.state.isUserExpanded }
-            />
-            <NavigationList {...props} className="desk-nav-list"/>
+            <DesktopMenu {...props} className="desk-nav-list"/>
           </Hideable>
+
+          <MobileMenu />
 
         </Nav>
 
