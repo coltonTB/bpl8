@@ -280,11 +280,13 @@ const Overview = React.createClass({
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
                 />
-                <MachineDetails
-                  leftOffset={ LEFT_OFFSET }
-                  selectedMachine={ this.state.selectedMachine }
-                  onSourceLinksMounted={ this.renderSourceLinks }
-                />
+                { this.state.selectedMachine !== null &&
+                  <MachineDetails
+                    leftOffset={ LEFT_OFFSET }
+                    selectedMachine={ this.state.selectedMachine }
+                    onSourceLinksMounted={ this.renderSourceLinks }
+                  />
+                }
               </ImagesRight>
             </MachinesContainer>
           </FlexContainer>

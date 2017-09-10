@@ -5,25 +5,6 @@ import styled from 'styled-components';
 import { A, P, Span } from '../../style/util';
 import { COLORS } from '../../constants';
 
-const StyledAnchor = styled.a`
-  color: ${ COLORS.gold };
-  text-decoration: underline;
-  font-weight: bold;
-`;
-
-const SourceLink = React.createClass({
-  defaultProps: {
-    offset: 0
-  },
-  render() {
-    return (
-      <StyledAnchor>
-        { this.props.children }
-      </StyledAnchor>
-    );
-  }
-});
-
 const MachineDetailsWrapper = styled.div`
   position: absolute;
   top: 0;
@@ -38,6 +19,12 @@ const MachineDetailsWrapper = styled.div`
   };
   transition: opacity 0.3s ease-in-out 1s;
   color: { COLORS.white };
+
+  a.source-link {
+    color: ${ COLORS.gold };
+    text-decoration: underline;
+    font-weight: bold;
+  }
 
   @media (max-width: 1230px) {
     left: ${ props =>
@@ -59,53 +46,47 @@ const MachineDetailsWrapper = styled.div`
   }
 `;
 
-export const MachineDetails = (props, {localContext}) => {
-  const selectedMachine = props.selectedMachine;
-  const data = localContext.getContent('overview', `machineDetails.${selectedMachine}`) || {};
-  const body = localContext.getContent('overview', `machineDetails.${selectedMachine}.body`);
-
-  return (
-    <MachineDetailsWrapper {...props}>
-      <h3>
-        <Span color={ COLORS.white } textTransform="uppercase">
-          { data.title },&nbsp;
-        </Span>
-        <Span color={ COLORS.gold }>
-          { data.subtitle }
-        </Span>
-      </h3>
-      <MachineDetailsContent
-        onSourceLinksMounted={ props.onSourceLinksMounted }
-        body={ body }
-      />
-    </MachineDetailsWrapper>
-  );
-};
-
-MachineDetails.contextTypes = {
-  localContext: React.PropTypes.object
-};
-
-export const MachineDetailsContent = React.createClass({
+export const MachineDetails = React.createClass({
 
   propTypes: {
     onSourceLinksMounted: React.PropTypes.func
   },
 
   componentDidMount() {
-    const sourceLinks = Object.keys(this.refs).map(ref => ({
-      id: ref,
-      el: ReactDOM.findDOMNode(this.refs[ref]),
-      customOffset: this.refs[ref].props.offset
+    const links = Array.from(
+      document.querySelectorAll('a.source-link')
+    );
+
+    const sourceLinks = links.map(el => ({
+      id: el.dataset.id,
+      el
     }));
     this.props.onSourceLinksMounted(sourceLinks);
   },
 
   render() {
+    const selectedMachine = this.props.selectedMachine;
+    const data = this.context.localContext.getContent('overview', `machineDetails.${selectedMachine}`) || {};
+    const body = this.context.localContext.getContent('overview', `machineDetails.${selectedMachine}.body`);
+
     return (
-      <P color={ COLORS.white } onClick={ e => e.stopPropagation() }>
-        { this.props.body }
-      </P>
+      <MachineDetailsWrapper {...this.props}>
+        <h3>
+          <Span color={ COLORS.white } textTransform="uppercase">
+            { data.title },&nbsp;
+          </Span>
+          <Span color={ COLORS.gold }>
+            { data.subtitle }
+          </Span>
+        </h3>
+        <P color={ COLORS.white } onClick={ e => e.stopPropagation() }>
+          { body }
+        </P>
+      </MachineDetailsWrapper>
     );
   }
 });
+
+MachineDetails.contextTypes = {
+  localContext: React.PropTypes.object
+};
