@@ -218,7 +218,7 @@ const Home = React.createClass({
 
               <FlexContainer marginBottom="3.4rem" paddingTop="3.75rem" marginTop="2rem">
                 <ContentLeft>
-                  <H2 color={ COLORS.black }>
+                  <H2 color={ COLORS.black } textAlign="center">
                     { content('insta_title') }
                   </H2>
                 </ContentLeft>
@@ -248,7 +248,7 @@ const Home = React.createClass({
           <Div background={COLORS.gray} padding="2.5rem 0">
             <FlexContainer>
               <ContentLeft>
-                <H2 color={ COLORS.black }>
+                <H2 color={ COLORS.black } textAlign="center">
                   { content('press_title') }
                 </H2>
               </ContentLeft>
