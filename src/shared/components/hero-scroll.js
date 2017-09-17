@@ -21,7 +21,8 @@ const HeroScrollStyle = styled.div`
   img {
     position: absolute;
     ${ p => p.direction === 'up' ? 'right' : 'left' }: 0;
-    height: 100%;
+    height: 85%;
+    top: 7.5%;
     margin: 0 20px;
     transform: ${ p =>
       p.direction === 'up' ? 'translateY(1000px)' : 'translateY(-1000px)'

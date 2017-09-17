@@ -5,6 +5,8 @@ import ReactSVG from 'react-svg'
 import { Input, Button } from '../style/util';
 import { COLORS } from '../constants';
 
+let request;
+
 const SubscribeInputStyle = styled.span`
   display: flex;
   > button {
@@ -23,34 +25,66 @@ const SubscribeInputStyle = styled.span`
 export const SubscribeInput = React.createClass({
 
   componentDidMount() {
-    return;
-    gapi.load('client', () => {
-      gapi.client.init({
-        discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-        clientId: 'radicalmachines-178018',
-        scope: 'https://www.googleapis.com/auth/spreadsheets'
-      }).then(function() {
-        const params = {
-          spreadsheetId: '1sAj3MByJhiCBYirt18O4wU6g04fDaFpQh94h3KXuZPc',
-          range: 'A:A'
-        };
-        gapi.client.setApiKey('AIzaSyAaEwMaskeL5T6BKo5r1PQOVhnxAPZcovc');
-        gapi.client.sheets.spreadsheets.values.get(params);
+    request = require('superagent');
+  },
 
+  getInitialState() {
+    return {
+      value: '',
+      loadingState: 'ready'
+    }
+  },
 
-      }).then(function(response) {
-        console.log(response.result);
-      }, function(reason) {
-        console.log(reason);
-      });
+  handleInputChange(e) {
+    this.setState({
+      value: e.target.value
     });
   },
 
+  handleSubmit() {
+    if (!request || this.state.loadingState !== 'ready') {
+      return;
+    }
+
+    this.setState({
+      loadingState: 'loading'
+    });
+    request
+      .post('https://x5a6rxfai1.execute-api.us-west-1.amazonaws.com/prod/signup')
+      .send({
+        emailToAdd: this.state.value
+      })
+      .end((err, res) => {
+        if (err) {
+          return this.setState({
+            loadingState: 'error'
+          })
+        }
+        this.setState({
+          loadingState: 'success'
+        });
+      });
+  },
+
   render() {
+
+    if (this.state.loadingState === 'success') {
+      return (
+        <SubscribeInputStyle display="flex">
+          Thank you for subscribing!
+        </SubscribeInputStyle>
+      );
+    }
+
     return (
       <SubscribeInputStyle display="flex">
-        <Input placeholder={ this.context.localContext.getContent('footer', 'subscribe_prompt') } />
-        <Button>
+        <Input
+          placeholder={ this.context.localContext.getContent('footer', 'subscribe_prompt') }
+          value={ this.state.value }
+          onChange={ this.handleInputChange }
+          disabled={ this.state.loadingState !== 'ready' }
+        />
+        <Button onClick={ this.handleSubmit }>
           <ReactSVG
             path={ this.context.localContext.assetUrl('/images/right_arrow.svg') }
             className="right-arrow-svg"
