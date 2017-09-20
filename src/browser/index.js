@@ -8,6 +8,7 @@ import { routes } from '../shared/routes.jsx';
 import getLocalContext from '../../lib/get-local-context';
 import withLocalContext from '../../lib/with-local-context';
 import { preload } from './image-preloader';
+import grain from './grain';
 
 import 'Stylesheets/main';
 
@@ -41,6 +42,17 @@ function renderPage() {
       React.createElement(RouterWithLocalContext, {...renderProps}),
       document.getElementById('app-content')
     )
+  });
+
+  grain(window, window.document);
+  grained('#app-content', {
+    animate: true,
+    patternWidth: 100,
+    patternHeight: 100,
+    grainOpacity: .05,
+    grainDensity: 1,
+    grainWidth: 1,
+    grainHeight: 1
   });
 }
 

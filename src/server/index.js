@@ -8,7 +8,7 @@ import { routes } from '../shared/routes';
 import isomorphicRenderer from '../../lib/isomorphic-renderer';
 import adminApp from '../../lib/admin-app.jsx';
 
-const PORT = 3000;
+const PORT = 3300;
 const app = express();
 
 let serverlessExpress = null;
