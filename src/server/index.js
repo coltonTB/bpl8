@@ -42,6 +42,10 @@ module.exports = {
   },
 
   startServer(port=PORT) {
-    app.listen(port, () => `Listening on ${port} ...`)
+    try {
+      app.listen(port, () => `Listening on ${port} ...`)
+    } catch (e) {
+      console.log(e);
+    }
   }
 }

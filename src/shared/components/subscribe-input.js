@@ -41,6 +41,12 @@ export const SubscribeInput = React.createClass({
     });
   },
 
+  handleKeydown(e) {
+    if (e.key === 'Enter') {
+      this.handleSubmit();
+    }
+  },
+
   handleSubmit() {
     if (!request || this.state.loadingState !== 'ready') {
       return;
@@ -68,10 +74,16 @@ export const SubscribeInput = React.createClass({
 
   render() {
 
-    if (this.state.loadingState === 'success') {
+    if (this.state.loadingState === 'loading') {
       return (
         <SubscribeInputStyle display="flex">
           Thank you for subscribing!
+        </SubscribeInputStyle>
+      );
+    } else if (this.state.loadingState === 'error') {
+      return (
+        <SubscribeInputStyle display="flex">
+          An error occured. Please try again.
         </SubscribeInputStyle>
       );
     }
@@ -83,6 +95,7 @@ export const SubscribeInput = React.createClass({
           value={ this.state.value }
           onChange={ this.handleInputChange }
           disabled={ this.state.loadingState !== 'ready' }
+          onKeyDown={ this.handleKeydown }
         />
         <Button onClick={ this.handleSubmit }>
           <ReactSVG
