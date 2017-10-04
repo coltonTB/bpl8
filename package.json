@@ -7,8 +7,8 @@
   "license": "ISC",
   "config": {
     "s3BucketName": "rad-web-static",
-    "region": "us-west-1",
-    "lambdaFunctionName": "radicalMachinesWebserver"
+    "lambdaRegion": "us-east-1",
+    "lambdaFunctionName": "serverless-dev-hello"
   },
   "dependencies": {
     "async": "^2.5.0",
@@ -61,13 +61,10 @@
     "clone-content": "aws s3 cp s3://$npm_package_config_s3BucketName/content/content.json ./content/content.json",
     "clean": "rm -rf dist/* && mkdir dist/static dist/lambda dist/static-pages && cp -r src/images dist/static",
     "build-server": "./node_modules/.bin/webpack",
-    "upload-assets": "aws s3 cp --recursive ./dist/static s3://$npm_package_config_s3BucketName --region $npm_package_config_region --acl public-read",
-    "upload-lambda": "aws s3 cp --recursive ./dist/lambda s3://$npm_package_config_s3BucketName/lambda --region $npm_package_config_region --acl private",
-    "upload-content": "aws s3 cp --recursive ./content s3://$npm_package_config_s3BucketName/content --region $npm_package_config_region --acl public-read",
-    "lambda-zip": "cd dist/lambda && zip -q lambda-function.zip lambda.js server-bundle.js && cd ..",
-    "lambda-update": "aws lambda update-function-code --function-name $npm_package_config_lambdaFunctionName --region $npm_package_config_region --s3-bucket $npm_package_config_s3BucketName --s3-key lambda/lambda-function.zip",
+    "deploy-lambda": "serverless deploy -f hello",
+    "upload-assets": "aws s3 cp --recursive ./dist/static s3://$npm_package_config_s3BucketName --acl public-read",
+    "upload-content": "aws s3 cp --recursive ./content s3://$npm_package_config_s3BucketName/content --acl public-read",
     "deploy": "npm run clean && npm run build-server && npm run deploy-lambda && npm run upload-assets && npm run upload-content",
-    "deploy-lambda": "cp -r src/lambda.js dist/lambda && npm run lambda-zip && npm run upload-lambda && npm run lambda-update",
     "local": "./node_modules/.bin/nodemon -w ./dist",
     "watch": "npm run clone-content && npm run build-server -- --watch"
   }

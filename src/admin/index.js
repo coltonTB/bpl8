@@ -82,6 +82,9 @@ const Index = React.createClass({
   },
 
   onFormSubmit(e) {
+    if (!window.confirm("Are you sure? This will save changes to the staging server.")) {
+      return;
+    }
     request
       .post(this.context.localContext.resourceUrl('/admin/content'))
       .send({
@@ -89,14 +92,25 @@ const Index = React.createClass({
         path: this.state.path
       })
       .end((err, res) => {
+        if (err) {
+          return window.alert('There was an error saving the content.');
+        }
+        window.alert('Content successfully saved');
         console.log(err, res);
       });
   },
 
   onPublishClick() {
+    if (!window.confirm("Are you sure? This will publish your changes to the production website.")) {
+      return;
+    }
     request
       .post(this.context.localContext.resourceUrl('/admin/publish'))
       .end((err, res) => {
+        if (err) {
+          return window.alert('There was an error publishing the content.');
+        }
+        window.alert('Content successfully published!');
         console.log(err, res);
       });
   },
