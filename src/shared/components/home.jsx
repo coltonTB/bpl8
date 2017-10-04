@@ -176,7 +176,7 @@ const Home = React.createClass({
                   </H2>
                 </Hideable>
               </ContentLeft>
-              <CenterNavBackground height="66vh" background={ COLORS.black } />
+              <CenterNavBackground fullHeight background={ COLORS.black } />
               <Content>
                 <Hideable autoHide>
                   <LargeImg
