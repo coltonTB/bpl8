@@ -6,9 +6,11 @@ import express from 'express'
 
 import { routes } from '../shared/routes';
 import isomorphicRenderer from '../../lib/isomorphic-renderer';
+import adminApp from '../../lib/admin-app.jsx';
+import globalStyles from '../shared/style.js';
 
-const PORT = 3000;
-const app = express()
+const PORT = 3300;
+const app = express();
 
 let serverlessExpress = null;
 
@@ -24,7 +26,16 @@ app.use('/images', express.static(`${__dirname}/../static/images`))
 
 app.get('/health', (req, res) => res.send('OK'));
 
+app.use('/admin', adminApp);
+
 app.use(isomorphicRenderer(routes));
+
+// inject global styles
+app.use((req, res, next) => {
+  globalStyles();
+  next();
+});
+
 
 module.exports = {
   app,
@@ -39,6 +50,10 @@ module.exports = {
   },
 
   startServer(port=PORT) {
-    app.listen(port, () => `Listening on ${port} ...`)
+    try {
+      app.listen(port, () => `Listening on ${port} ...`)
+    } catch (e) {
+      console.log(e);
+    }
   }
 }

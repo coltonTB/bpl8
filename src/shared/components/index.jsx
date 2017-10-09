@@ -1,5 +1,6 @@
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export const App = (props) => (
   <div>
@@ -26,5 +27,5 @@ export const Dashboard = (props, context) => (
 );
 
 Dashboard.contextTypes = {
-  localContext: React.PropTypes.object
+  localContext: PropTypes.object
 }

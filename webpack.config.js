@@ -1,10 +1,4 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const path = require('path');
-
-const sassLoaders = [
-  'css-loader',
-  'sass-loader?indentedSyntax=sass&includePaths[]=' + path.resolve(__dirname, './src/stylehseets')
-]
 
 const serverConfig = {
   target: 'node',
@@ -22,23 +16,20 @@ const serverConfig = {
     libraryTarget: 'commonjs2'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.sass'],
-    alias: {
-      Stylesheets: path.resolve(__dirname, './src/stylesheets')
-    }
+    extensions: ['.js', '.jsx']
   },
   module: {
     loaders: [
-      {
-        test: /\.sass$|\.css$/,
-        loader: 'null-loader'
-      },
       {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
           presets: ['es2015', 'stage-2', 'react'],
-          plugins: ["transform-class-properties"]
+          plugins: [
+            "transform-class-properties",
+            ["inline-json-import", {}],
+            "styled-components"
+          ]
         }
       }
     ]
@@ -52,13 +43,38 @@ const browserConfig = {
     filename: 'browser-bundle.js',
     path: path.resolve(__dirname, 'dist/static/assets')
   },
-  plugins: [
-    new ExtractTextPlugin('style.css')
-  ],
   resolve: {
-    extensions: ['.js', '.jsx', '.sass'],
+    extensions: ['.js', '.jsx']
+  },
+  module: {
+    loaders: [
+      {
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'stage-2', 'react'],
+          plugins: [
+            "transform-class-properties",
+            ["inline-json-import", {}],
+            "styled-components"
+          ]
+        }
+      }
+    ]
+  }
+}
+
+const adminAppConfig = {
+  target: 'web',
+  entry: './src/admin/index.js',
+  output: {
+    filename: 'admin-bundle.js',
+    path: path.resolve(__dirname, 'dist/static/assets')
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
     alias: {
-      stylesheets: path.resolve(__dirname, './src/stylesheets')
+      Stylesheets: path.resolve(__dirname, './src/stylesheets')
     }
   },
   module: {
@@ -68,18 +84,11 @@ const browserConfig = {
         exclude: /node_modules/,
         query: {
           presets: ['es2015', 'stage-2', 'react'],
-          plugins: ["transform-class-properties"]
+          plugins: ["transform-class-properties", ["inline-json-import", {}]]
         }
-      },
-      {
-        test: /\.sass$|\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: sassLoaders.join('!')
-        })
       }
     ]
   }
 }
 
-module.exports = [serverConfig, browserConfig];
+module.exports = [serverConfig, browserConfig, adminAppConfig];
