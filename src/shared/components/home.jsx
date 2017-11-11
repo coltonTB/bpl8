@@ -85,6 +85,20 @@ const FlexContainerStayRow = FlexContainer.extend`
     }
   }
 `;
+const Frame = styled.div`
+  position: relative;
+  width: 90%;
+  height: 0;
+  padding-bottom: 51%;
+  iframe {
+    border: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0; right: 0;
+  }
+`;
+
 
 const Home = React.createClass({
 
@@ -167,18 +181,18 @@ const Home = React.createClass({
           <Div>
             <FlexContainer>
               <ContentLeft>
-                <Hideable autoHide>
+                <div>
                   <H2 color={ COLORS.black }>
                     { content('hero_2_title') }&mdash;
                   </H2>
                   <H2 fontWeight="normal">
                     { content('hero_2_subtitle') }
                   </H2>
-                </Hideable>
+                </div>
               </ContentLeft>
               <CenterNavBackground fullHeight background={ COLORS.black } />
               <Content>
-                <Hideable autoHide>
+                <div>
                   <LargeImg
                     src={ localContext.assetUrl('/images/hero_2.png') }
                   />
@@ -188,7 +202,7 @@ const Home = React.createClass({
                   <Hero2Text>
                     { content('hero_2_text') }
                   </Hero2Text>
-                </Hideable>
+                </div>
               </Content>
             </FlexContainer>
 
@@ -211,9 +225,12 @@ const Home = React.createClass({
               </FlexContainer>
 
               <FlexContainer flexDirection="column">
-                <LargeImg
-                  src={ localContext.assetUrl('/images/video_preview.png') }
-                />
+                <Frame>
+                  <iframe
+                    src="https://www.youtube.com/embed/doKR3fg9vU8"
+                    frameborder="0" allowfullscreen
+                  />
+                </Frame>
               </FlexContainer>
 
               <FlexContainer marginBottom="3.4rem" paddingTop="3.75rem" marginTop="2rem">

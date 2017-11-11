@@ -45,15 +45,15 @@ function renderPage() {
   });
 
   grain(window, window.document);
-  grained('#app-content', {
-    animate: true,
-    patternWidth: 100,
-    patternHeight: 100,
-    grainOpacity: .05,
-    grainDensity: 1,
-    grainWidth: 1,
-    grainHeight: 1
-  });
+  // grained('#app-content', {
+  //   animate: true,
+  //   patternWidth: 100,
+  //   patternHeight: 100,
+  //   grainOpacity: .05,
+  //   grainDensity: 1,
+  //   grainWidth: 1,
+  //   grainHeight: 1
+  // });
 }
 
 renderPage();
