@@ -84,7 +84,8 @@
           "format": "textarea"
         },
         "partners_title": {
-          "type": "string"
+          "type": "string",
+          "format": "textarea"
         },
         "partners_list": {
           "items": {
@@ -93,6 +94,9 @@
                 "type": "string"
               },
               "description": {
+                "type": "string"
+              },
+              "linkUrl": {
                 "type": "string"
               }
             },
@@ -230,19 +234,22 @@
     "footer": {
       "properties": {
         "brand": {
-          "type": "string"
+          "type": "string",
+          "format": "textarea"
         },
         "contact": {
           "type": "string"
         },
         "rad_contact": {
-          "type": "string"
+          "type": "string",
+          "format": "textarea"
         },
         "subscribe_prompt": {
           "type": "string"
         },
         "tom_contact": {
-          "type": "string"
+          "type": "string",
+          "format": "textarea"
         }
       },
       "type": "object"
@@ -258,20 +265,15 @@
         "machines": {
           "items": {
             "properties": {
-              "caption_a": {
-                "type": "string"
-              },
-              "caption_b": {
-                "type": "string"
+              "caption": {
+                "type": "string",
+                "format": "textarea"
               },
               "fullImg": {
                 "type": "string"
               },
               "id": {
                 "type": "integer"
-              },
-              "img": {
-                "type": "string"
               },
               "title": {
                 "type": "string"
@@ -293,7 +295,8 @@
                 "type": "string"
               },
               "subtitle": {
-                "type": "string"
+                "type": "string",
+                "format": "textarea"
               },
               "body": {
                 "type": "string",
@@ -365,6 +368,10 @@
           "type": "string"
         },
         "book_summary": {
+          "type": "string",
+          "format": "textarea"
+        },
+        "buy_here": {
           "type": "string",
           "format": "textarea"
         }

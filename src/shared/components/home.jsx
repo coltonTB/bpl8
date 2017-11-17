@@ -15,6 +15,8 @@ import { Footer, isAtPageBottom } from './footer';
 import { ScrollPrompt } from './scroll-prompt';
 import { HeroScroll } from './hero-scroll';
 
+const IG_LINK = '';
+
 const HeroH1 = styled.h1`
   font-size: 7.2vw;
   line-height: 7.2vw;
@@ -29,7 +31,7 @@ const Hero2Text = styled.p`
     margin-bottom: 3rem;
   }
 `;
-const LargeImg = styled.img`
+const LargeImg = styled(Img)`
   width: 88%;
   max-width: 1200px;
   @media (max-width: 500px) {
@@ -144,7 +146,7 @@ const Home = React.createClass({
         />
 
           <Div background={ COLORS.black } position="relative" overflow="hidden">
-            <FlexContainerStayRow>
+            <FlexContainerStayRow height="100vh">
               <ContentLeft position="relative" overflow="visible">
                 <HeroScroll left/>
                 <Hideable hideInitially isVisible>
@@ -179,7 +181,7 @@ const Home = React.createClass({
           </Div>
 
           <Div>
-            <FlexContainer>
+            <FlexContainer height="100vh">
               <ContentLeft>
                 <div>
                   <H2 color={ COLORS.black }>
@@ -255,9 +257,11 @@ const Home = React.createClass({
                     allowTransparency="true"
                   />
                 </InstaWrapper>
-                <Button marginTop="2.5rem">
-                  { content('see_more_btn') }
-                </Button>
+                <a href={ IG_LINK }>
+                  <Button marginTop="2.5rem">
+                    { content('see_more_btn') }
+                  </Button>
+                </a>
               </FlexContainer>
             </Hideable>
           </Div>
@@ -265,7 +269,7 @@ const Home = React.createClass({
           <Div background={COLORS.gray} padding="2.5rem 0">
             <FlexContainer>
               <ContentLeft>
-                <H2 color={ COLORS.black } textAlign="center">
+                <H2 color={ COLORS.black }>
                   { content('press_title') }
                 </H2>
               </ContentLeft>
@@ -279,7 +283,7 @@ const Home = React.createClass({
             <FlexContainer >
               <ContentLeft>
                 <div>
-                  <LargeImg
+                  <LargeImg marginRight="-1.9em"
                     src={ localContext.assetUrl('/images/RAD_sponsors-01.png') }
                   />
                 </div>
@@ -287,7 +291,7 @@ const Home = React.createClass({
               <CenterNavBackground />
               <Content>
                 <div>
-                  <LargeImg
+                  <LargeImg marginLeft="-2.3em"
                     src={ localContext.assetUrl('/images/RAD_sponsors-02.png') }
                   />
                 </div>

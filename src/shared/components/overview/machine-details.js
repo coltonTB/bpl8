@@ -65,22 +65,20 @@ export const MachineDetails = React.createClass({
   },
 
   render() {
-    const selectedMachine = this.props.selectedMachine;
-    const data = this.context.localContext.getContent('overview', `machineDetails.${selectedMachine}`) || {};
-    const body = this.context.localContext.getContent('overview', `machineDetails.${selectedMachine}.body`);
-
+    const getContent = key => this.context.localContext.getContent('overview', `machineDetails.${ this.props.selectedMachine }.${ key }`, true);
     return (
       <MachineDetailsWrapper {...this.props}>
         <h3>
           <Span color={ COLORS.white } textTransform="uppercase">
-            { data.title },&nbsp;
+            { getContent('title') }
           </Span>
+          &nbsp;
           <Span color={ COLORS.gold }>
-            { data.subtitle }
+            { getContent('subtitle') }
           </Span>
         </h3>
         <P color={ COLORS.white } onClick={ e => e.stopPropagation() }>
-          { body }
+          { getContent('body') }
         </P>
       </MachineDetailsWrapper>
     );

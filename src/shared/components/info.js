@@ -18,6 +18,10 @@ const infoStyle = `
   width: 500px;
   margin-bottom: 2.5rem;
   align-self: flex-start;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
   @media (max-width: 500px) {
     width: 100vw;
     box-sizing: border-box;
@@ -30,10 +34,22 @@ const Image = styled(Img)`
   margin-bottom: 1.25rem;
 `;
 
+const ConditionalLink = props => (
+  props.href
+    ? <a href={ props.href } target="_blank">{ props.children }</a>
+    : <span>{ props.children }</span>
+);
+
 const Collaborator = (item, i) => (
   <div key={i}>
-    <h3>{ item.name }</h3>
-    <P margin="0 0 0.75rem 0">{ item.description }</P>
+    <h3>
+      <ConditionalLink href={ item.linkUrl }>
+        { item.name }
+      </ConditionalLink>
+    </h3>
+    <P margin="0 0 0.75rem 0">
+      { item.description }
+    </P>
   </div>
 );
 

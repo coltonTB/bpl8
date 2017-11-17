@@ -11,9 +11,9 @@ export const SourceRight = (props, {localContext}) => (
     <h3>
       { getSource(props.selectedSourceLink, localContext, 'title') }
     </h3>
-    <p>
-      { getSource(props.selectedSourceLink, localContext, 'rightBody') }
-    </p>
+    <p dangerouslySetInnerHTML={{
+      __html: getSource(props.selectedSourceLink, localContext, 'rightBody')
+    }} />
   </div>
 );
 

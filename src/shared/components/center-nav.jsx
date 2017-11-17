@@ -23,11 +23,12 @@ CenterNavWrapper.defaultProps = {
 };
 
 export const CenterNavBackground = styled(Div)`
+  box-sizing: border-box;
   width: 140px;
   padding-top: 20px;
   display: flex;
   flex-shrink: 0;
-  height: ${ props => props.fullHeight ? '100vh' : props.height };
+  height: ${ props => props.fullHeight ? '100%' : props.height };
   min-height: ${ props => props.fullHeight ? '800px' : 0 };
   @media (max-width: 1230px) {
     width: 120px;

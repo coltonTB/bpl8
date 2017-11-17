@@ -16,6 +16,13 @@ const bookStyle = `
   width: 500px;
   margin-bottom: 2.5rem;
   align-self: flex-start;
+  text-align: left;
+  a {
+    color: ${ COLORS.black };
+  }
+  h4 {
+    margin-top: 2em;
+  }
   @media (max-width: 500px) {
     width: auto;
   }
@@ -70,7 +77,7 @@ const Book = (props, { localContext }) => {
               <StoreItemCaption>
                 <h3>
                   <Span textTransform="capitalize" color={ COLORS.black }>
-                      { content('book_title') },&nbsp;
+                      { content('book_title') }&nbsp;
                   </Span>
                   <Span textTransform="capitalize" color={ COLORS.white }>
                       { content('book_title_2') }&nbsp;
@@ -85,12 +92,18 @@ const Book = (props, { localContext }) => {
                   { content('book_fgm') }
                 </P>
               </StoreItemCaption>
+              <div>
+                <h4>Where to Buy:</h4>
+                <p>
+                  { content('buy_here') }
+                </p>
+              </div>
             </BookLeft>
             <CenterNavBackground />
             <BookRight>
               <h3>
                 <Span color={ COLORS.white } textTransform="uppercase">
-                  { content('book_title') },&nbsp;
+                  { content('book_title') }&nbsp;
                 </Span>
                 <Span color={ COLORS.black }>
                   { content('book_title_2') }

@@ -132,8 +132,8 @@ const Overview = React.createClass({
     }
   },
 
-  handleMachineClick(data) {
-    const selectedMachine = data.id === this.state.selectedMachine ? null : data.id;
+  handleMachineClick(id) {
+    const selectedMachine = id === this.state.selectedMachine ? null : id;
     this.setState({
       selectedMachine
     });
@@ -179,11 +179,11 @@ const Overview = React.createClass({
   },
 
   componentDidMount() {
-    this.eventId = eventMangerInstance.addEvent(() => this.getVisibleSourceLink());
+    window.addEventListener('scroll', this.getVisibleSourceLink );
   },
 
   componentWillUnmount() {
-    this.eventId && eventMangerInstance.removeEvent(this.eventId);
+    window.removeEventListener('scroll', this.getVisibleSourceLink );
   },
 
   render() {
@@ -228,19 +228,19 @@ const Overview = React.createClass({
                 </Hideable>
 
                 <Machine
-                  data={ content('machines')[0] }
+                  machineId={ 0 }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
                 />
                 <Machine
                   top="37.5rem"
-                  data={ content('machines')[2] }
+                  machineId={ 2 }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
                 />
                 <Machine
                   top="73.125rem"
-                  data={ content('machines')[4] }
+                  machineId={ 4 }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
                 />
@@ -262,21 +262,21 @@ const Overview = React.createClass({
               <ImagesRight color={ COLORS.gold }>
                 <Machine
                   left={LEFT_OFFSET}
-                  data={ content('machines')[1] }
+                  machineId={ 1 }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
                 />
                 <Machine
                   left={LEFT_OFFSET}
                   top="54.375rem"
-                  data={ content('machines')[3] }
+                  machineId={ 3 }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
                 />
                 <Machine
                   left={LEFT_OFFSET}
                   top="95rem"
-                  data={ content('machines')[5] }
+                  machineId={ 5 }
                   onClick={ this.handleMachineClick }
                   selectedMachine={this.state.selectedMachine}
                 />

@@ -7,20 +7,20 @@ import { Span, P, Div } from '../../style/util'
 
 const MachineWrapper = styled(Div)`
   opacity: ${ props =>
-    props.selectedMachine === null || props.selectedMachine === props.data.id
+    props.selectedMachine === null || props.selectedMachine === props.machineId
       ? 1
       : 0
   };
   visibility: ${ props =>
-    props.selectedMachine === null || props.selectedMachine === props.data.id
+    props.selectedMachine === null || props.selectedMachine === props.machineId
       ? 'visible'
       : 'hidden'
   };
   left: ${ props =>
-    props.selectedMachine === props.data.id ? 0 : props.left
+    props.selectedMachine === props.machineId ? 0 : props.left
   }px;
   top: ${ props =>
-    props.selectedMachine === props.data.id ? '12px' : props.top
+    props.selectedMachine === props.machineId ? '12px' : props.top
   };
   width: 500px;
   position: absolute;
@@ -28,10 +28,16 @@ const MachineWrapper = styled(Div)`
     top 0.4s ease,
     left 0.4s ease,
     opacity .2s ease;
+
+  u {
+    text-decoration: none;
+    color: ${ COLORS.gold };
+  }
+
   @media (max-width: 1230px) {
     width: 420px;
     left: ${ props =>
-      props.selectedMachine === props.data.id
+      props.selectedMachine === props.machineId
         ? 0
         : (props.left !== 0 ? props.left - 115 : props.left)
     }px;
@@ -39,7 +45,7 @@ const MachineWrapper = styled(Div)`
   @media (max-width: 1000px) {
     width: 320px;
     left: ${ props =>
-      props.selectedMachine === props.data.id
+      props.selectedMachine === props.machineId
         ? 0
         : (props.left !== 0 ? props.left - 215 : props.left)
     }px;
@@ -47,7 +53,7 @@ const MachineWrapper = styled(Div)`
   @media (max-width: 800px) {
     width: 230px;
     left: ${ props =>
-      props.selectedMachine === props.data.id
+      props.selectedMachine === props.machineId
         ? 0
         : (props.left !== 0 ? props.left - 330 : props.left)
     }px;
@@ -56,7 +62,7 @@ const MachineWrapper = styled(Div)`
     width: 100%;
     position: static;
     display: ${ props =>
-      props.selectedMachine === null || props.selectedMachine === props.data.id
+      props.selectedMachine === null || props.selectedMachine === props.machineId
         ? 'block'
         : 'none'
     };
@@ -85,18 +91,22 @@ const MachineCaption = styled.div`
 `;
 
 const Machine = (props, { localContext }) => {
+  const getContent = (key, forceHTML) => localContext.getContent('overview', `machines.${ props.machineId }.${ key }`, forceHTML);
   return (
     <MachineWrapper
       { ...props }
-      onClick={ (e) => {props.onClick(props.data); e.stopPropagation(); }}
+      onClick={ e => { props.onClick(props.machineId); e.stopPropagation(); }}
     >
-      <img src={ localContext.assetUrl(props.data.fullImg) }/>
+      <img src={ localContext.assetUrl( getContent('fullImg') ) }/>
       <MachineCaption>
         <p>
-          <Span textTransform="uppercase">{ props.data.title },</Span>
-          <Span color={ COLORS.gold }> from { props.data.year } </Span>
-          <Span color={ COLORS.gold }>{ props.data.caption_a }, </Span>
-          <Span>{ props.data.caption_b } </Span>
+          <Span textTransform="uppercase">
+            { getContent('title', true) }
+          </Span>
+          &nbsp;
+          <Span>
+            { getContent('caption', true) }
+          </Span>
         </p>
       </MachineCaption>
 
