@@ -20,7 +20,7 @@ const bookStyle = `
   a {
     color: ${ COLORS.black };
   }
-  h4 {
+  h3 {
     margin-top: 2em;
   }
   @media (max-width: 500px) {
@@ -93,10 +93,10 @@ const Book = (props, { localContext }) => {
                 </P>
               </StoreItemCaption>
               <div>
-                <h4>Where to Buy:</h4>
-                <p>
+                <h3>Where to Buy</h3>
+                <P fontSize="1em">
                   { content('buy_here') }
-                </p>
+                </P>
               </div>
             </BookLeft>
             <CenterNavBackground />
