@@ -1,10 +1,13 @@
 import React from 'react';
-import {Route, IndexRoute} from 'react-router';
-import {App, Welcome, Dashboard} from './components/index'
+import { actions } from 'redux-ghost';
+import dotty from 'dotty';
+import { Redirect } from 'found';
 
-export const routes = (
-  <Route path="/" component={App}>
-    <IndexRoute component={Welcome}/>
-    <Route path="/dashboard" component={Dashboard}/>
-  </Route>
-);
+import App from './components/app.jsx';
+
+export const routeConfig = [
+  {
+    path: '/:string?',
+    Component: App
+  }
+];

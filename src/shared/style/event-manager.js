@@ -1,4 +1,4 @@
-const POLL_INTERVAL = 200;
+const POLL_INTERVAL = 100;
 let instance;
 
 class EventManager {

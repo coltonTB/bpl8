@@ -1,3 +1,4 @@
+import dotty from 'dotty';
 import { render } from 'react-dom';
 import React from 'react';
 import Form from 'react-jsonschema-form';
@@ -9,7 +10,7 @@ import contentSchema from '../../content/content-schema.json';
 import getLocalContext from '../../lib/get-local-context';
 import withLocalContext from '../../lib/with-local-context';
 
-import { tryParse } from './admin-page-bridge';
+import { tryParse } from '../../lib/admin-page-bridge';
 
 const EditorContainer = styled.div`
   width: 40%;
@@ -34,29 +35,34 @@ const PreviewContainer = styled.div`
   }
 `;
 
-const Index = React.createClass({
+class Index extends React.Component {
 
-  getInitialState() {
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
       path: 'home'
     }
-  },
+  }
 
   componentDidMount() {
     window.onmessage = this.onIframeRouteChange;
-  },
+  }
 
   getSchema() {
+    const properties = dotty.get(
+      contentSchema,
+      `properties.${ this.state.path }.properties`
+    ) || [];
     return {
       ...contentSchema,
-      properties: contentSchema.properties[this.state.path].properties
+      properties
     };
-  },
+  }
 
   getValues() {
     const content = window.__locals__.content;
     return content[this.state.path];
-  },
+  }
 
   onIframeRouteChange(e) {
     const data = tryParse(e.data);
@@ -66,7 +72,7 @@ const Index = React.createClass({
         path: newPath
       });
     }
-  },
+  }
 
   onFormChange(e) {
     const content = window.__locals__.content;
@@ -80,7 +86,7 @@ const Index = React.createClass({
       content: modifiedContent
     });
     this.refs.viewerIframe.contentWindow.postMessage(data, '*');
-  },
+  }
 
   onFormSubmit(e) {
     if (!window.confirm("Are you sure? This will save changes to the staging server.")) {
@@ -99,7 +105,7 @@ const Index = React.createClass({
         window.alert('Content successfully saved');
         console.log(err, res);
       });
-  },
+  }
 
   onPublishClick() {
     if (!window.confirm("Are you sure? This will publish your changes to the production website.")) {
@@ -114,7 +120,7 @@ const Index = React.createClass({
         window.alert('Content successfully published!');
         console.log(err, res);
       });
-  },
+  }
 
   render() {
     return (
@@ -143,7 +149,8 @@ const Index = React.createClass({
       </div>
     );
   }
-});
+
+}
 
 Index.contextTypes = {
   localContext: PropTypes.object

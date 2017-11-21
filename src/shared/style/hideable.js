@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { getEventManagerInstance } from '../style/event-manager';
@@ -27,36 +28,36 @@ Style.defaultProps = {
   delay: '0s'
 };
 
-export const Hideable = React.createClass({
+const propTypes = {
+  listen: PropTypes.bool,
+  isVisible: PropTypes.any,
+  forceVisibility: PropTypes.bool,
+  showInitially: PropTypes.bool,
+  hideInitially: PropTypes.bool
+};
+const defaultProps = {
+  listen: false,
+  showInitially: true,
+  hideInitially: false
+};
 
-  propTypes: {
-    listen: React.PropTypes.bool,
-    isVisible: React.PropTypes.any,
-    forceVisibility: React.PropTypes.bool,
-    showInitially: React.PropTypes.bool,
-    hideInitially: React.PropTypes.bool
-  },
+class Hideable extends React.Component {
 
-  defaultProps: {
-    listen: false,
-    showInitially: true,
-    hideInitially: false
-  },
-
-  getInitialState() {
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
       isVisible: (
         this.props.showInitially === true &&
         this.props.hideInitially === false
       )
     };
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       isVisible: this.evaluateVisibility(nextProps)
     });
-  },
+  }
 
   componentDidMount() {
     if (this.props.listen || this.props.autoHide) {
@@ -69,14 +70,14 @@ export const Hideable = React.createClass({
     this.setState({
       isVisible: this.evaluateVisibility(this.props)
     });
-  },
+  }
 
   componentWillUnmount() {
     if (this.eventId) {
       eventMangerInstance.removeEvent(this.eventId);
     }
 
-  },
+  }
 
   evaluateVisibility(props) {
     const computeVisibility = () => {
@@ -106,8 +107,7 @@ export const Hideable = React.createClass({
       return true;
     }
     return computeVisibility();
-  },
-
+  }
 
   render() {
     return (
@@ -124,4 +124,9 @@ export const Hideable = React.createClass({
     );
   }
 
-});
+};
+
+Hideable.propTypes = propTypes;
+Hideable.defaultProps = defaultProps;
+
+export default { Hideable };

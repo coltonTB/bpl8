@@ -10,3 +10,7 @@ export const scrollMin = limit => () => window.scrollY > limit;
 export const scrollToTop = () => {
   scroll.top(page, 0);
 }
+
+export const scrollTo = offset => {
+  scroll.top(page, offset)
+}

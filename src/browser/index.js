@@ -1,46 +1,20 @@
-import { createHistory, useBasename } from 'history';
-import { render } from 'react-dom';
-import { Router, match } from 'react-router';
-import React from 'react';
+import { onMessage } from '../../lib/admin-page-bridge';
+import browserRenderer from '../../lib/browser-renderer';
+import genStore from '../shared/gen-store';
 
-import { onMessage, sendMessage } from '../admin/admin-page-bridge';
-import { routes } from '../shared/routes.jsx';
-import getLocalContext from '../../lib/get-local-context';
-import withLocalContext from '../../lib/with-local-context';
-import { preload } from './image-preloader';
+function renderPage() {
+  browserRenderer(
+    genStore,
+    document.getElementById('app-content')
+  );
+}
 
-window.addEventListener('message', onMessage((message) => {
+/*
+  Admin bridge setup
+*/
+window.addEventListener('message', onMessage(message => {
   window.__locals__.content = message.content;
   renderPage();
 }));
-
-function renderPage() {
-
-  const localContext = getLocalContext({
-    stageContext: window.__locals__.stageContext,
-    content: window.__locals__.content
-  });
-
-  preload({localContext, imageUrls: window.__locals__.imageUrls});
-
-  const history = useBasename(createHistory)({
-    basename: localContext.stageContext.resourceBase
-  });
-
-  history.listen(sendMessage);
-
-  const RouterWithLocalContext = withLocalContext(
-    Router,
-    localContext
-  );
-
-  match({ history, routes }, (error, redirectLocation, renderProps) => {
-    render(
-      React.createElement(RouterWithLocalContext, {...renderProps}),
-      document.getElementById('app-content')
-    )
-  });
-
-}
 
 renderPage();

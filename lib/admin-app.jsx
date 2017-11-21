@@ -2,11 +2,10 @@ import express from 'express'
 import basicAuth from 'express-basic-auth';
 import bodyParser from 'body-parser'
 
-import { renderPage } from './isomorphic-renderer';
 import getStageContext from './get-stage-context';
 import {fetchSiteContent, updateSiteContent, publishSite} from './rw-site-content';
 import adminScaffold from './admin-scaffold.js';
-
+import getLocalContext from './get-local-context';
 
 const app = express();
 const authConfig = {};
@@ -14,13 +13,10 @@ const authConfig = {};
 app.get('/', (req, res) => {
   const stageContext = getStageContext(req);
   fetchSiteContent(stageContext, (err, content) => {
-    const html = renderPage({
-      locals: {
-        stageContext,
-        content
-      },
-      scaffolder: adminScaffold
-    });
+    const localContext = getLocalContext({stageContext, content});
+    const html = adminScaffold({
+      localContext
+    })
     res.status(200).send(html);
   });
 });

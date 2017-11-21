@@ -31,6 +31,9 @@ const serverConfig = {
             "styled-components"
           ]
         }
+      }, {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       }
     ]
   }
@@ -59,6 +62,9 @@ const browserConfig = {
             "styled-components"
           ]
         }
+      }, {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
       }
     ]
   }

@@ -4,12 +4,13 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
 
-import { routes } from '../shared/routes';
-import isomorphicRenderer from '../../lib/isomorphic-renderer';
+import serverRenderer from '../../lib/server-renderer';
 import adminApp from '../../lib/admin-app.jsx';
+import redirectApp from './redirect.js';
 import globalStyles from '../shared/style.js';
+import genStore from '../shared/gen-store';
 
-const PORT = 3300;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 let serverlessExpress = null;
@@ -28,14 +29,15 @@ app.get('/health', (req, res) => res.send('OK'));
 
 app.use('/admin', adminApp);
 
-app.use(isomorphicRenderer(routes));
-
 // inject global styles
 app.use((req, res, next) => {
   globalStyles();
   next();
 });
 
+app.use(redirectApp);
+
+app.use(serverRenderer(genStore));
 
 module.exports = {
   app,
